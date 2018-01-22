@@ -8,20 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		CD0F711A2014D379000B2BCD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0F71192014D379000B2BCD /* AppDelegate.swift */; };
-		CD0F711C2014D379000B2BCD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0F711B2014D379000B2BCD /* ViewController.swift */; };
 		CD0F711F2014D379000B2BCD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD0F711D2014D379000B2BCD /* Main.storyboard */; };
 		CD0F71212014D379000B2BCD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD0F71202014D379000B2BCD /* Assets.xcassets */; };
 		CD0F71242014D379000B2BCD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD0F71222014D379000B2BCD /* LaunchScreen.storyboard */; };
+		CD0F712C201521C0000B2BCD /* RecordsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0F712B201521C0000B2BCD /* RecordsViewController.swift */; };
+		CD0F712E201521DC000B2BCD /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0F712D201521DC000B2BCD /* SettingsViewController.swift */; };
+		CD0F71302015221A000B2BCD /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0F712F2015221A000B2BCD /* DashboardViewController.swift */; };
+		CDEBB29D2015650E009ED68F /* WalletModel1.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CDEBB29B2015650E009ED68F /* WalletModel1.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		CD0F71162014D379000B2BCD /* SmartWallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartWallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD0F71192014D379000B2BCD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CD0F711B2014D379000B2BCD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		CD0F711E2014D379000B2BCD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CD0F71202014D379000B2BCD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CD0F71232014D379000B2BCD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CD0F71252014D379000B2BCD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CD0F712B201521C0000B2BCD /* RecordsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordsViewController.swift; sourceTree = "<group>"; };
+		CD0F712D201521DC000B2BCD /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		CD0F712F2015221A000B2BCD /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
+		CDEBB29C2015650E009ED68F /* WalletModel1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WalletModel1.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,8 +60,11 @@
 		CD0F71182014D379000B2BCD /* SmartWallet */ = {
 			isa = PBXGroup;
 			children = (
+				CDEBB29B2015650E009ED68F /* WalletModel1.xcdatamodeld */,
 				CD0F71192014D379000B2BCD /* AppDelegate.swift */,
-				CD0F711B2014D379000B2BCD /* ViewController.swift */,
+				CD0F712F2015221A000B2BCD /* DashboardViewController.swift */,
+				CD0F712B201521C0000B2BCD /* RecordsViewController.swift */,
+				CD0F712D201521DC000B2BCD /* SettingsViewController.swift */,
 				CD0F711D2014D379000B2BCD /* Main.storyboard */,
 				CD0F71202014D379000B2BCD /* Assets.xcassets */,
 				CD0F71222014D379000B2BCD /* LaunchScreen.storyboard */,
@@ -136,8 +145,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD0F711C2014D379000B2BCD /* ViewController.swift in Sources */,
 				CD0F711A2014D379000B2BCD /* AppDelegate.swift in Sources */,
+				CD0F712C201521C0000B2BCD /* RecordsViewController.swift in Sources */,
+				CD0F712E201521DC000B2BCD /* SettingsViewController.swift in Sources */,
+				CDEBB29D2015650E009ED68F /* WalletModel1.xcdatamodeld in Sources */,
+				CD0F71302015221A000B2BCD /* DashboardViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,6 +289,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VQ3DDEUQ7K;
 				INFOPLIST_FILE = SmartWallet/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.novinfard.SmartWallet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -292,6 +305,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VQ3DDEUQ7K;
 				INFOPLIST_FILE = SmartWallet/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.novinfard.SmartWallet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -322,6 +336,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		CDEBB29B2015650E009ED68F /* WalletModel1.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				CDEBB29C2015650E009ED68F /* WalletModel1.xcdatamodel */,
+			);
+			currentVersion = CDEBB29C2015650E009ED68F /* WalletModel1.xcdatamodel */;
+			path = WalletModel1.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = CD0F710E2014D378000B2BCD /* Project object */;
 }
