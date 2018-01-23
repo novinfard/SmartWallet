@@ -14,7 +14,14 @@
 		CD0F712C201521C0000B2BCD /* RecordsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0F712B201521C0000B2BCD /* RecordsViewController.swift */; };
 		CD0F712E201521DC000B2BCD /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0F712D201521DC000B2BCD /* SettingsViewController.swift */; };
 		CD0F71302015221A000B2BCD /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0F712F2015221A000B2BCD /* DashboardViewController.swift */; };
-		CDEBB29D2015650E009ED68F /* WalletModel1.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CDEBB29B2015650E009ED68F /* WalletModel1.xcdatamodeld */; };
+		CDC80A1E2017E61D00AD4B35 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC80A1D2017E61D00AD4B35 /* MainTabBarViewController.swift */; };
+		CDEBB29D2015650E009ED68F /* WalletModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CDEBB29B2015650E009ED68F /* WalletModel.xcdatamodeld */; };
+		CDEBB2A82017E350009ED68F /* Accounts+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEBB2A22017E350009ED68F /* Accounts+CoreDataClass.swift */; };
+		CDEBB2A92017E350009ED68F /* Accounts+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEBB2A32017E350009ED68F /* Accounts+CoreDataProperties.swift */; };
+		CDEBB2AA2017E350009ED68F /* Categories+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEBB2A42017E350009ED68F /* Categories+CoreDataClass.swift */; };
+		CDEBB2AB2017E350009ED68F /* Categories+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEBB2A52017E350009ED68F /* Categories+CoreDataProperties.swift */; };
+		CDEBB2AC2017E350009ED68F /* Records+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEBB2A62017E350009ED68F /* Records+CoreDataClass.swift */; };
+		CDEBB2AD2017E350009ED68F /* Records+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEBB2A72017E350009ED68F /* Records+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,7 +34,14 @@
 		CD0F712B201521C0000B2BCD /* RecordsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordsViewController.swift; sourceTree = "<group>"; };
 		CD0F712D201521DC000B2BCD /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		CD0F712F2015221A000B2BCD /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
+		CDC80A1D2017E61D00AD4B35 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		CDEBB29C2015650E009ED68F /* WalletModel1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WalletModel1.xcdatamodel; sourceTree = "<group>"; };
+		CDEBB2A22017E350009ED68F /* Accounts+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Accounts+CoreDataClass.swift"; sourceTree = "<group>"; };
+		CDEBB2A32017E350009ED68F /* Accounts+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Accounts+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		CDEBB2A42017E350009ED68F /* Categories+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Categories+CoreDataClass.swift"; sourceTree = "<group>"; };
+		CDEBB2A52017E350009ED68F /* Categories+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Categories+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		CDEBB2A62017E350009ED68F /* Records+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Records+CoreDataClass.swift"; sourceTree = "<group>"; };
+		CDEBB2A72017E350009ED68F /* Records+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Records+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,8 +74,9 @@
 		CD0F71182014D379000B2BCD /* SmartWallet */ = {
 			isa = PBXGroup;
 			children = (
-				CDEBB29B2015650E009ED68F /* WalletModel1.xcdatamodeld */,
+				CDEBB2AE2017E396009ED68F /* Model */,
 				CD0F71192014D379000B2BCD /* AppDelegate.swift */,
+				CDC80A1D2017E61D00AD4B35 /* MainTabBarViewController.swift */,
 				CD0F712F2015221A000B2BCD /* DashboardViewController.swift */,
 				CD0F712B201521C0000B2BCD /* RecordsViewController.swift */,
 				CD0F712D201521DC000B2BCD /* SettingsViewController.swift */,
@@ -71,6 +86,20 @@
 				CD0F71252014D379000B2BCD /* Info.plist */,
 			);
 			path = SmartWallet;
+			sourceTree = "<group>";
+		};
+		CDEBB2AE2017E396009ED68F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CDEBB2A22017E350009ED68F /* Accounts+CoreDataClass.swift */,
+				CDEBB2A32017E350009ED68F /* Accounts+CoreDataProperties.swift */,
+				CDEBB2A42017E350009ED68F /* Categories+CoreDataClass.swift */,
+				CDEBB2A52017E350009ED68F /* Categories+CoreDataProperties.swift */,
+				CDEBB2A62017E350009ED68F /* Records+CoreDataClass.swift */,
+				CDEBB2A72017E350009ED68F /* Records+CoreDataProperties.swift */,
+				CDEBB29B2015650E009ED68F /* WalletModel.xcdatamodeld */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -146,10 +175,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD0F711A2014D379000B2BCD /* AppDelegate.swift in Sources */,
+				CDEBB2AB2017E350009ED68F /* Categories+CoreDataProperties.swift in Sources */,
 				CD0F712C201521C0000B2BCD /* RecordsViewController.swift in Sources */,
 				CD0F712E201521DC000B2BCD /* SettingsViewController.swift in Sources */,
-				CDEBB29D2015650E009ED68F /* WalletModel1.xcdatamodeld in Sources */,
+				CDEBB2AC2017E350009ED68F /* Records+CoreDataClass.swift in Sources */,
+				CDEBB2AA2017E350009ED68F /* Categories+CoreDataClass.swift in Sources */,
+				CDEBB2AD2017E350009ED68F /* Records+CoreDataProperties.swift in Sources */,
+				CDEBB29D2015650E009ED68F /* WalletModel.xcdatamodeld in Sources */,
 				CD0F71302015221A000B2BCD /* DashboardViewController.swift in Sources */,
+				CDC80A1E2017E61D00AD4B35 /* MainTabBarViewController.swift in Sources */,
+				CDEBB2A92017E350009ED68F /* Accounts+CoreDataProperties.swift in Sources */,
+				CDEBB2A82017E350009ED68F /* Accounts+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -338,13 +374,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		CDEBB29B2015650E009ED68F /* WalletModel1.xcdatamodeld */ = {
+		CDEBB29B2015650E009ED68F /* WalletModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
 				CDEBB29C2015650E009ED68F /* WalletModel1.xcdatamodel */,
 			);
 			currentVersion = CDEBB29C2015650E009ED68F /* WalletModel1.xcdatamodel */;
-			path = WalletModel1.xcdatamodeld;
+			path = WalletModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

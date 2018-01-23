@@ -1,5 +1,5 @@
 # SmartWallet
-This is an iOS application for managing money written in Swift language. The different reports is presented in the application to help the user managing the money and keeping track of it easily.
+This is an iOS application for managing money written in Swift language. Different reports are presented in the application to help the user managing the money and keeping track of it easily.
 
 <!--
 ## Screenshots
