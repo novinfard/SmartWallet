@@ -13,12 +13,12 @@ import CoreData
 
 extension Records {
 
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<Records> {
+    @nonobjc public class func createFetchRequest() -> NSFetchRequest<Records> {
         return NSFetchRequest<Records>(entityName: "Records")
     }
 
     @NSManaged public var amount: Double
-    @NSManaged public var datetime: NSDate
+    @NSManaged public var datetime: Date
     @NSManaged public var direction: Int16
     @NSManaged public var note: String
     @NSManaged public var reported: Bool

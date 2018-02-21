@@ -13,7 +13,7 @@ import CoreData
 
 extension Accounts {
 
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<Accounts> {
+    @nonobjc public class func createFetchRequest() -> NSFetchRequest<Accounts> {
         return NSFetchRequest<Accounts>(entityName: "Accounts")
     }
 
