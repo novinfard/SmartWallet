@@ -104,5 +104,4 @@ class RecordsViewController: UITableViewController, NSFetchedResultsControllerDe
 		}
 	}
 
-
 }
