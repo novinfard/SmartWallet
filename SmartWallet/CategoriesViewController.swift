@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import Segmentio
 
 class CategoriesViewController: UITableViewController, NSFetchedResultsControllerDelegate {
 	
@@ -16,11 +17,11 @@ class CategoriesViewController: UITableViewController, NSFetchedResultsControlle
 	var fetchedResultsController: NSFetchedResultsController<Categories>!
 	var topSegments: UISegmentedControl!
 	var filterDirection: Int = -1
+	var segmentioView: Segmentio!
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		
 		// initialise core data
 		container = NSPersistentContainer(name: "WalletModel")
 		
@@ -49,7 +50,32 @@ class CategoriesViewController: UITableViewController, NSFetchedResultsControlle
 		let frame = tableView.frame
 		topSegments.frame = CGRect(x: frame.minX, y: frame.minY, width: frame.width, height: 20)
 		topSegments.addTarget(self, action: #selector(filterChanged(_:)), for: .valueChanged)
-		tableView.tableHeaderView = topSegments
+		
+		let segmentioViewRect = CGRect(x: frame.minX, y: frame.minY, width: UIScreen.main.bounds.width, height: 50)
+		segmentioView = Segmentio(frame: segmentioViewRect)
+		segmentioView.setup(
+			content: CategoriesViewController.segmentioContent(),
+			style: .imageBeforeLabel,
+			options: CategoriesViewController.segmentioOptions(segmentioStyle: .imageBeforeLabel)
+		)
+		segmentioView.selectedSegmentioIndex = 0
+		segmentioView.valueDidChange = { [weak self] _, segmentIndex in
+			switch segmentIndex {
+			case 0:
+				self?.filterDirection = -1
+			case 1:
+				self?.filterDirection = 1
+			default:
+				break
+			}
+			self?.loadSavedData()
+		}
+
+
+		
+		tableView.tableHeaderView = segmentioView
+		
+//		tableView.tableHeaderView = topSegments
 		
 //		let headerView: UIView = UIView.init(frame: CGRect(x:1, y:50, width:276, height:30));
 //		headerView.backgroundColor = UIColor(red: 235/255.0, green: 235/255.0, blue: 235/255.0, alpha: 1.0)
@@ -60,6 +86,45 @@ class CategoriesViewController: UITableViewController, NSFetchedResultsControlle
 //		headerView.addSubview(labelView)
 //		tableView.tableHeaderView = headerView
 
+	}
+	
+	
+	private static func segmentioContent() -> [SegmentioItem] {
+		return [
+			SegmentioItem(title: "Expense", image: UIImage(named: "ExpenseIcon")),
+			SegmentioItem(title: "Income", image: UIImage(named: "IncomeIcon")),
+		]
+	}
+	
+	private static func segmentioOptions(segmentioStyle: SegmentioStyle, segmentioPosition: SegmentioPosition = .fixed(maxVisibleItems: 3)) -> SegmentioOptions {
+		var imageContentMode = UIViewContentMode.center
+		switch segmentioStyle {
+		case .imageBeforeLabel, .imageAfterLabel:
+			imageContentMode = .scaleAspectFit
+		default:
+			break
+		}
+		
+		return SegmentioOptions(
+			backgroundColor: UIColor.white,
+			segmentPosition: segmentioPosition,
+			scrollEnabled: true,
+//			indicatorOptions: segmentioIndicatorOptions(),
+			horizontalSeparatorOptions: SegmentioHorizontalSeparatorOptions(
+				type: SegmentioHorizontalSeparatorType.bottom, // Top, Bottom, TopAndBottom
+				height: 1,
+				color: .lightGray
+			),
+			verticalSeparatorOptions: SegmentioVerticalSeparatorOptions(
+				ratio: 0.6, // from 0.1 to 1
+				color: .lightGray
+			),
+			imageContentMode: imageContentMode,
+			labelTextAlignment: .center,
+			labelTextNumberOfLines: 1,
+//			segmentStates: segmentioStates(),
+			animationDuration: 0.3
+		)
 	}
 	
 	override func numberOfSections(in tableView: UITableView) -> Int {
