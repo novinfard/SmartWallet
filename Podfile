@@ -8,6 +8,6 @@ target 'SmartWallet' do
   use_frameworks!
 
   # Pods for SmartWallet
-  pod 'Segmentio'
+  pod 'Segmentio', '~> 3.0'
 
 end
