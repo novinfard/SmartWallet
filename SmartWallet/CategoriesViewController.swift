@@ -35,8 +35,6 @@ class CategoriesViewController: UITableViewController, NSFetchedResultsControlle
 				
 		// if there is any need to load data from server #ONLINE
 		//		performSelector(inBackground: #selector(fetchRecords), with:nil)
-		
-		self.loadSavedData();
 	
 		let items = ["Expense", "Income"]
 		topSegments = UISegmentedControl(items: items)
@@ -84,6 +82,12 @@ class CategoriesViewController: UITableViewController, NSFetchedResultsControlle
 //		headerView.addSubview(labelView)
 //		tableView.tableHeaderView = headerView
 
+	}
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		
+		self.loadSavedData()
 	}
 	
 	
