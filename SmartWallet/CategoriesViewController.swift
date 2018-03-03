@@ -32,9 +32,7 @@ class CategoriesViewController: UITableViewController, NSFetchedResultsControlle
 				print("Unsolved error \(error.localizedDescription)")
 			}
 		}
-		
-		addSampleData()
-		
+				
 		// if there is any need to load data from server #ONLINE
 		//		performSelector(inBackground: #selector(fetchRecords), with:nil)
 		
@@ -127,26 +125,6 @@ class CategoriesViewController: UITableViewController, NSFetchedResultsControlle
 		)
 	}
 	
-	override func numberOfSections(in tableView: UITableView) -> Int {
-		return fetchedResultsController.sections?.count ?? 0
-	}
-	
-	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		let sectionInfo = fetchedResultsController.sections![section]
-		return sectionInfo.numberOfObjects
-		
-	}
-	
-	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCell(withIdentifier: "categoryCell", for: indexPath)
-		let category = fetchedResultsController.object(at: indexPath)
-		
-		cell.textLabel?.text = category.name
-		cell.detailTextLabel?.text = category.direction > 0 ? "+" : "-"
-		
-		return cell
-	}
-	
 //	override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
 //		return fetchedResultsController.sections![section].name
 //	}
@@ -183,6 +161,27 @@ class CategoriesViewController: UITableViewController, NSFetchedResultsControlle
 		saveContext()
 	}
 	
+	func addCategory(name: String, direction: Int16) {
+		// initialise core data
+		container = NSPersistentContainer(name: "WalletModel")
+		
+		container.loadPersistentStores { (storeDescription, error) in
+			self.container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+			
+			if let error = error {
+				print("Unsolved error \(error.localizedDescription)")
+			}
+		}
+
+		
+		let cateory = Categories(context: self.container.viewContext)
+		cateory.name = name
+		cateory.direction = direction
+		cateory.uid = UUID().uuidString
+		
+		saveContext()
+	}
+	
 	func saveContext() {
 		if container.viewContext.hasChanges {
 			do {
@@ -208,3 +207,30 @@ class CategoriesViewController: UITableViewController, NSFetchedResultsControlle
 	}
 	
 }
+
+// MARK: TableView DataSource
+extension CategoriesViewController {
+	
+	override func numberOfSections(in tableView: UITableView) -> Int {
+		return fetchedResultsController.sections?.count ?? 0
+	}
+	
+	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		let sectionInfo = fetchedResultsController.sections![section]
+		return sectionInfo.numberOfObjects
+		
+	}
+	
+	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		let cell = tableView.dequeueReusableCell(withIdentifier: "categoryCell", for: indexPath)
+		let category = fetchedResultsController.object(at: indexPath)
+		
+		cell.textLabel?.text = category.name
+		//		cell.detailTextLabel?.text = category.direction > 0 ? "+" : "-"
+		
+		return cell
+	}
+	
+}
+
+

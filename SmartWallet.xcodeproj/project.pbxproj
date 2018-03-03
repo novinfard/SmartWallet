@@ -15,6 +15,7 @@
 		CD0F712C201521C0000B2BCD /* RecordsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0F712B201521C0000B2BCD /* RecordsViewController.swift */; };
 		CD0F712E201521DC000B2BCD /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0F712D201521DC000B2BCD /* SettingsViewController.swift */; };
 		CD0F71302015221A000B2BCD /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0F712F2015221A000B2BCD /* DashboardViewController.swift */; };
+		CD2E553B2046D3FF00976EAA /* AddCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2E553A2046D3FF00976EAA /* AddCategoryViewController.swift */; };
 		CD86E77A2041A62D0007F817 /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD86E7792041A62D0007F817 /* CategoriesViewController.swift */; };
 		CDC80A1E2017E61D00AD4B35 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC80A1D2017E61D00AD4B35 /* MainTabBarViewController.swift */; };
 		CDEBB29D2015650E009ED68F /* WalletModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CDEBB29B2015650E009ED68F /* WalletModel.xcdatamodeld */; };
@@ -39,6 +40,7 @@
 		CD0F712B201521C0000B2BCD /* RecordsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordsViewController.swift; sourceTree = "<group>"; };
 		CD0F712D201521DC000B2BCD /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		CD0F712F2015221A000B2BCD /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
+		CD2E553A2046D3FF00976EAA /* AddCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoryViewController.swift; sourceTree = "<group>"; };
 		CD86E7792041A62D0007F817 /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
 		CDC80A1D2017E61D00AD4B35 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		CDEBB29C2015650E009ED68F /* WalletModel1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WalletModel1.xcdatamodel; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 				CD0F712B201521C0000B2BCD /* RecordsViewController.swift */,
 				CD0F712D201521DC000B2BCD /* SettingsViewController.swift */,
 				CD86E7792041A62D0007F817 /* CategoriesViewController.swift */,
+				CD2E553A2046D3FF00976EAA /* AddCategoryViewController.swift */,
 				CD0F711D2014D379000B2BCD /* Main.storyboard */,
 				CD0F71202014D379000B2BCD /* Assets.xcassets */,
 				CD0F71222014D379000B2BCD /* LaunchScreen.storyboard */,
@@ -270,6 +273,7 @@
 				CDC80A1E2017E61D00AD4B35 /* MainTabBarViewController.swift in Sources */,
 				CDEBB2A92017E350009ED68F /* Accounts+CoreDataProperties.swift in Sources */,
 				CDEBB2A82017E350009ED68F /* Accounts+CoreDataClass.swift in Sources */,
+				CD2E553B2046D3FF00976EAA /* AddCategoryViewController.swift in Sources */,
 				CD86E77A2041A62D0007F817 /* CategoriesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
