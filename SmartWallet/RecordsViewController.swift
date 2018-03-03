@@ -29,9 +29,25 @@ class RecordsViewController: UITableViewController, NSFetchedResultsControllerDe
 			}
 		}
 		
-		addSampleData()
-		addSampleData()
-		addSampleData()
+		do {
+			let fetchRequest : NSFetchRequest<Accounts> = Accounts.createFetchRequest()
+//			fetchRequest.predicate = NSPredicate(format: "uniqueId == %@", contactIdentifier)
+			let result = try container.viewContext.fetch(fetchRequest)
+			if result.count == 0 {
+				let account = Accounts(context: self.container.viewContext)
+				account.currency = "£"
+				account.initial = 0
+				account.name = "Default Account"
+				account.uid = UUID().uuidString
+				
+				saveContext()
+			}
+		}
+		catch {
+			print ("fetch task failed", error)
+		}
+		
+
 
 		
 		// if there is any need to load data from server #ONLINE
