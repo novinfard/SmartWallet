@@ -32,6 +32,8 @@ class CategoriesViewController: UITableViewController, NSFetchedResultsControlle
 				print("Unsolved error \(error.localizedDescription)")
 			}
 		}
+		
+		self.loadSavedData()
 				
 		// if there is any need to load data from server #ONLINE
 		//		performSelector(inBackground: #selector(fetchRecords), with:nil)
@@ -87,7 +89,7 @@ class CategoriesViewController: UITableViewController, NSFetchedResultsControlle
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		
-		self.loadSavedData()
+		self.tableView.reloadData()
 	}
 	
 	
