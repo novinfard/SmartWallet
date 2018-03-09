@@ -17,6 +17,8 @@
 		CD0F71302015221A000B2BCD /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0F712F2015221A000B2BCD /* DashboardViewController.swift */; };
 		CD2E553B2046D3FF00976EAA /* AddCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2E553A2046D3FF00976EAA /* AddCategoryViewController.swift */; };
 		CD2E553D204B0E3800976EAA /* AddRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2E553C204B0E3800976EAA /* AddRecordViewController.swift */; };
+		CD31509520531661001AD682 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD31509420531661001AD682 /* Style.swift */; };
+		CD315098205316CF001AD682 /* Style+MyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD315097205316CF001AD682 /* Style+MyApp.swift */; };
 		CD86E77A2041A62D0007F817 /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD86E7792041A62D0007F817 /* CategoriesViewController.swift */; };
 		CDC80A1E2017E61D00AD4B35 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC80A1D2017E61D00AD4B35 /* MainTabBarViewController.swift */; };
 		CDEBB29D2015650E009ED68F /* WalletModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CDEBB29B2015650E009ED68F /* WalletModel.xcdatamodeld */; };
@@ -43,6 +45,8 @@
 		CD0F712F2015221A000B2BCD /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		CD2E553A2046D3FF00976EAA /* AddCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoryViewController.swift; sourceTree = "<group>"; };
 		CD2E553C204B0E3800976EAA /* AddRecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecordViewController.swift; sourceTree = "<group>"; };
+		CD31509420531661001AD682 /* Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
+		CD315097205316CF001AD682 /* Style+MyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Style+MyApp.swift"; sourceTree = "<group>"; };
 		CD86E7792041A62D0007F817 /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
 		CDC80A1D2017E61D00AD4B35 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		CDEBB29C2015650E009ED68F /* WalletModel1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WalletModel1.xcdatamodel; sourceTree = "<group>"; };
@@ -104,8 +108,9 @@
 		CD0F71182014D379000B2BCD /* SmartWallet */ = {
 			isa = PBXGroup;
 			children = (
-				CDEBB2AE2017E396009ED68F /* Model */,
 				CD0F71192014D379000B2BCD /* AppDelegate.swift */,
+				CDEBB2AE2017E396009ED68F /* Model */,
+				CD31509620531669001AD682 /* General */,
 				CDC80A1D2017E61D00AD4B35 /* MainTabBarViewController.swift */,
 				CD0F712F2015221A000B2BCD /* DashboardViewController.swift */,
 				CD0F712B201521C0000B2BCD /* RecordsViewController.swift */,
@@ -119,6 +124,15 @@
 				CD0F71252014D379000B2BCD /* Info.plist */,
 			);
 			path = SmartWallet;
+			sourceTree = "<group>";
+		};
+		CD31509620531669001AD682 /* General */ = {
+			isa = PBXGroup;
+			children = (
+				CD31509420531661001AD682 /* Style.swift */,
+				CD315097205316CF001AD682 /* Style+MyApp.swift */,
+			);
+			path = General;
 			sourceTree = "<group>";
 		};
 		CDEBB2AE2017E396009ED68F /* Model */ = {
@@ -271,7 +285,9 @@
 				CD0F712E201521DC000B2BCD /* SettingsViewController.swift in Sources */,
 				CDEBB2AC2017E350009ED68F /* Records+CoreDataClass.swift in Sources */,
 				CDEBB2AA2017E350009ED68F /* Categories+CoreDataClass.swift in Sources */,
+				CD31509520531661001AD682 /* Style.swift in Sources */,
 				CDEBB2AD2017E350009ED68F /* Records+CoreDataProperties.swift in Sources */,
+				CD315098205316CF001AD682 /* Style+MyApp.swift in Sources */,
 				CDEBB29D2015650E009ED68F /* WalletModel.xcdatamodeld in Sources */,
 				CD0F71302015221A000B2BCD /* DashboardViewController.swift in Sources */,
 				CDC80A1E2017E61D00AD4B35 /* MainTabBarViewController.swift in Sources */,

@@ -14,9 +14,27 @@ class RecordsViewController: UITableViewController, NSFetchedResultsControllerDe
 	var container: NSPersistentContainer!
 	var commitPredicate: NSPredicate?
 	var fetchedResultsController: NSFetchedResultsController<Records>!
+	
+	let style: Style = Style.myApp
+	
+//	init(style: Style) {
+//		self.style = style
+//		super.init(nibName: nil, bundle: nil)
+//	}
+//
+//	required init?(coder aDecoder: NSCoder) {
+//		super.init(coder: aDecoder)
+//	}
+	
+	
+	override var preferredStatusBarStyle: UIStatusBarStyle {
+		return style.preferredStatusBarStyle
+	}
 
     override func viewDidLoad() {
 		super.viewDidLoad()
+		
+		applyStyle()
 
 		// initialise core data
 		container = NSPersistentContainer(name: "WalletModel")
@@ -56,6 +74,19 @@ class RecordsViewController: UITableViewController, NSFetchedResultsControllerDe
 		self.loadSavedData();
     }
 	
+	func applyStyle() {
+		view.backgroundColor = style.backgroundColor
+		
+//		style.apply(textStyle: .title, to: tableView.visibleCells)
+//		style.apply(textStyle: .subtitle, to: subtitleLabel)
+//		style.apply(textStyle: .body, to: bodyLabel)
+//		style.apply(to: actionButton)
+		
+		if let navBar = navigationController?.navigationBar {
+			style.apply(to: navBar)
+		}
+	}
+	
 	override func numberOfSections(in tableView: UITableView) -> Int {
 		return fetchedResultsController.sections?.count ?? 0
 	}
@@ -70,7 +101,13 @@ class RecordsViewController: UITableViewController, NSFetchedResultsControllerDe
 		let cell = tableView.dequeueReusableCell(withIdentifier: "recordCell", for: indexPath)
 		let record = fetchedResultsController.object(at: indexPath)
 		
-		cell.detailTextLabel!.text = record.direction > 0 ? "Deposit" : "Withdraw"
+		if record.direction > 0 {
+			cell.detailTextLabel!.text = "Income"
+			cell.backgroundColor = UIColor.myAppLightGreen
+		} else {
+			cell.detailTextLabel!.text = "Cost"
+			cell.backgroundColor = UIColor.myAppLightOrange
+		}
 		cell.textLabel?.text = "\(record.amount)"
 		
 		return cell
