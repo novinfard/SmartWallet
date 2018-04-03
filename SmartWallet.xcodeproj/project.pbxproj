@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8A9C529B4CE63FD813D87F6E /* Pods_SmartWallet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8989CB5E46A29FD42343368F /* Pods_SmartWallet.framework */; };
+		CD0246AE2073FB2600E7C705 /* PersistentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0246AD2073FB2600E7C705 /* PersistentModel.swift */; };
 		CD0F711A2014D379000B2BCD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0F71192014D379000B2BCD /* AppDelegate.swift */; };
 		CD0F711F2014D379000B2BCD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD0F711D2014D379000B2BCD /* Main.storyboard */; };
 		CD0F71212014D379000B2BCD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD0F71202014D379000B2BCD /* Assets.xcassets */; };
@@ -34,6 +35,7 @@
 		8989CB5E46A29FD42343368F /* Pods_SmartWallet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmartWallet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FE1EC0EBB3B261BDFCA12B7 /* Pods-SmartWallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartWallet.release.xcconfig"; path = "Pods/Target Support Files/Pods-SmartWallet/Pods-SmartWallet.release.xcconfig"; sourceTree = "<group>"; };
 		A430F933AB393EA4260F5817 /* Pods-SmartWallet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartWallet.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SmartWallet/Pods-SmartWallet.debug.xcconfig"; sourceTree = "<group>"; };
+		CD0246AD2073FB2600E7C705 /* PersistentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PersistentModel.swift; path = SmartWallet/Model/PersistentModel.swift; sourceTree = SOURCE_ROOT; };
 		CD0F71162014D379000B2BCD /* SmartWallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartWallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD0F71192014D379000B2BCD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CD0F711E2014D379000B2BCD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 				CDEBB2A62017E350009ED68F /* Records+CoreDataClass.swift */,
 				CDEBB2A72017E350009ED68F /* Records+CoreDataProperties.swift */,
 				CDEBB29B2015650E009ED68F /* WalletModel.xcdatamodeld */,
+				CD0246AD2073FB2600E7C705 /* PersistentModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -292,6 +295,7 @@
 				CD0F71302015221A000B2BCD /* DashboardViewController.swift in Sources */,
 				CDC80A1E2017E61D00AD4B35 /* MainTabBarViewController.swift in Sources */,
 				CDEBB2A92017E350009ED68F /* Accounts+CoreDataProperties.swift in Sources */,
+				CD0246AE2073FB2600E7C705 /* PersistentModel.swift in Sources */,
 				CDEBB2A82017E350009ED68F /* Accounts+CoreDataClass.swift in Sources */,
 				CD2E553B2046D3FF00976EAA /* AddCategoryViewController.swift in Sources */,
 				CD86E77A2041A62D0007F817 /* CategoriesViewController.swift in Sources */,
