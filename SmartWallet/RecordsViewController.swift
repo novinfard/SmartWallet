@@ -94,16 +94,16 @@ class RecordsViewController: UITableViewController, NSFetchedResultsControllerDe
     }
 	
 	func applyStyle() {
-        view.backgroundColor = style.backgroundColor
+//		view.backgroundColor = style.backgroundColor
 		
 //		style.apply(textStyle: .title, to: tableView.visibleCells)
 //		style.apply(textStyle: .subtitle, to: subtitleLabel)
 //		style.apply(textStyle: .body, to: bodyLabel)
 //		style.apply(to: actionButton)
 		
-        if let navBar = navigationController?.navigationBar {
-            style.apply(to: navBar)
-        }
+//		if let navBar = navigationController?.navigationBar {
+//			style.apply(to: navBar)
+//		}
 	}
 	
 	override func numberOfSections(in tableView: UITableView) -> Int {
