@@ -51,12 +51,34 @@ class RecordsViewController: UITableViewController, NSFetchedResultsControllerDe
 			let fetchRequest : NSFetchRequest<Accounts> = Accounts.createFetchRequest()
 //			fetchRequest.predicate = NSPredicate(format: "uniqueId == %@", contactIdentifier)
 			let result = try container.viewContext.fetch(fetchRequest)
+			// luncdhing data initialisation
 			if result.count == 0 {
+				// add a default account
 				let account = Accounts(context: self.container.viewContext)
 				account.currency = "£"
 				account.initial = 0
 				account.name = "Default Account"
 				account.uid = UUID().uuidString
+				
+				saveContext()
+				
+				// pre-defined cateogories import
+				let expenseCategoryNames = ["Foods & Drinks", "Shopping", "Housing", "Transportation", "Financial Expenses", "Entertainment", "Others"]
+				let incomeCategoryNames = ["Investments", "Gifts", "Copuns", "Rental Income", "Sale", "Interests"]
+				
+				for categoryName in expenseCategoryNames {
+					let category = Categories(context: self.container.viewContext)
+					category.direction = -1
+					category.name = categoryName
+					category.parent = ""
+				}
+				
+				for categoryName in incomeCategoryNames {
+					let category = Categories(context: self.container.viewContext)
+					category.direction = 1
+					category.name = categoryName
+					category.parent = ""
+				}
 				
 				saveContext()
 			}
@@ -65,9 +87,6 @@ class RecordsViewController: UITableViewController, NSFetchedResultsControllerDe
 			print ("fetch task failed", error)
 		}
 		
-
-
-		
 		// if there is any need to load data from server #ONLINE
 //		performSelector(inBackground: #selector(fetchRecords), with:nil)
 		
@@ -75,16 +94,16 @@ class RecordsViewController: UITableViewController, NSFetchedResultsControllerDe
     }
 	
 	func applyStyle() {
-		view.backgroundColor = style.backgroundColor
+        view.backgroundColor = style.backgroundColor
 		
 //		style.apply(textStyle: .title, to: tableView.visibleCells)
 //		style.apply(textStyle: .subtitle, to: subtitleLabel)
 //		style.apply(textStyle: .body, to: bodyLabel)
 //		style.apply(to: actionButton)
 		
-		if let navBar = navigationController?.navigationBar {
-			style.apply(to: navBar)
-		}
+        if let navBar = navigationController?.navigationBar {
+            style.apply(to: navBar)
+        }
 	}
 	
 	override func numberOfSections(in tableView: UITableView) -> Int {

@@ -11,7 +11,7 @@ import UIKit
 extension Style {
 	static var myApp: Style {
 		return Style(
-			backgroundColor: .black,
+			backgroundColor: .white,
 			preferredStatusBarStyle: .lightContent,
 			attributesForStyle: { $0.myAppAttributes }
 		)
@@ -22,7 +22,7 @@ private extension Style.TextStyle {
 	var myAppAttributes: Style.TextAttributes {
 		switch self {
 		case .navigationBar:
-			return Style.TextAttributes(font: .myAppTitle, color: .myAppGreen, backgroundColor: .black)
+			return Style.TextAttributes(font: .myAppTitle, color: .white, backgroundColor: .white)
 		case .title:
 			return Style.TextAttributes(font: .myAppTitle, color: .myAppGreen)
 		case .subtitle:
