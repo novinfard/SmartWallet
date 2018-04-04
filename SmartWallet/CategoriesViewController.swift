@@ -77,7 +77,8 @@ class CategoriesViewController: UITableViewController, NSFetchedResultsControlle
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		
-		self.tableView.reloadData()
+//		self.tableView.reloadData()
+		self.loadSavedData()
 	}
 	
 //	func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
