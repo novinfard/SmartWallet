@@ -53,6 +53,16 @@ class RecordsViewController: UITableViewController, NSFetchedResultsControllerDe
 		self.loadSavedData();
     }
 	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		
+		self.loadSavedData();
+	}
+	
+//	func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+//		self.loadSavedData()
+//	}
+	
 	func applyStyle() {
 //		view.backgroundColor = style.backgroundColor
 		
@@ -67,6 +77,7 @@ class RecordsViewController: UITableViewController, NSFetchedResultsControllerDe
 	}
 	
 	override func numberOfSections(in tableView: UITableView) -> Int {
+//		print(fetchedResultsController.sections?.count ?? 1100)
 		return fetchedResultsController.sections?.count ?? 0
 	}
 	
@@ -76,6 +87,18 @@ class RecordsViewController: UITableViewController, NSFetchedResultsControllerDe
 		
 	}
 	
+	
+	override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+		let sectionInfo = fetchedResultsController.sections![section]
+		let objects = sectionInfo.objects
+		if let topRecord:Records = objects![0] as? Records  {
+			let formatter = DateFormatter()
+			formatter.dateStyle = .medium
+			return formatter.string(from: topRecord.datetime)
+		} else {
+			return sectionInfo.indexTitle
+		}
+	}
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "recordCell", for: indexPath)
 		let record = fetchedResultsController.object(at: indexPath)
@@ -96,7 +119,9 @@ class RecordsViewController: UITableViewController, NSFetchedResultsControllerDe
 		if fetchedResultsController == nil {
 			let request = Records.createFetchRequest()
 			let sort = NSSortDescriptor(key: "datetime", ascending: false)
-			request.sortDescriptors = [sort]
+			let sort2 = NSSortDescriptor(key: "uid", ascending: false)
+
+			request.sortDescriptors = [sort, sort2]
 			request.fetchBatchSize = 20
 			
 			fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: container.viewContext, sectionNameKeyPath: "datetime", cacheName: nil)
