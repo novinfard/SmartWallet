@@ -35,9 +35,9 @@ class AddCategoryViewController: UIViewController {
 			categoryType = 1
 		}
 		
-		cvc.addCategory(name: categoryName, direction: categoryType)
-		
-		navigationController?.popViewController(animated: true)
+		if(cvc.addCategory(name: categoryName, direction: categoryType)) {
+			navigationController?.popViewController(animated: true)
+		}
 	}
 	/*
     // MARK: - Navigation

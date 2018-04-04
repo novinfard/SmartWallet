@@ -12,7 +12,6 @@ import Segmentio
 
 class CategoriesViewController: UITableViewController, NSFetchedResultsControllerDelegate {
 	
-	var container: NSPersistentContainer!
 	var generalPredicate: NSPredicate?
 	var fetchedResultsController: NSFetchedResultsController<Categories>!
 	var topSegments: UISegmentedControl!
@@ -21,17 +20,6 @@ class CategoriesViewController: UITableViewController, NSFetchedResultsControlle
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-
-		// initialise core data
-		container = NSPersistentContainer(name: "WalletModel")
-		
-		container.loadPersistentStores { (storeDescription, error) in
-			self.container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
-			
-			if let error = error {
-				print("Unsolved error \(error.localizedDescription)")
-			}
-		}
 		
 		self.loadSavedData()
 				
@@ -92,6 +80,10 @@ class CategoriesViewController: UITableViewController, NSFetchedResultsControlle
 		self.tableView.reloadData()
 	}
 	
+//	func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+////		self.tableView.reloadData()
+//	}
+	
 	
 	private static func segmentioContent() -> [SegmentioItem] {
 		return [
@@ -142,7 +134,7 @@ class CategoriesViewController: UITableViewController, NSFetchedResultsControlle
 			request.sortDescriptors = [sort]
 			request.fetchBatchSize = 20
 			
-			fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: container.viewContext, sectionNameKeyPath: "direction", cacheName: nil)
+			fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: Facade.share.model.container.viewContext, sectionNameKeyPath: "direction", cacheName: nil)
 			fetchedResultsController.delegate = self
 		}
 		
@@ -159,7 +151,7 @@ class CategoriesViewController: UITableViewController, NSFetchedResultsControlle
 	}
 	
 	func addSampleData() {
-		let cateory = Categories(context: self.container.viewContext)
+		let cateory = Categories(context: Facade.share.model.container.viewContext)
 		cateory.name = "Test " + UUID().uuidString.prefix(5)
 		cateory.direction = drand48() > 0.5 ? 1 : -1
 		cateory.uid = UUID().uuidString
@@ -167,35 +159,21 @@ class CategoriesViewController: UITableViewController, NSFetchedResultsControlle
 		saveContext()
 	}
 	
-	func addCategory(name: String, direction: Int16) {
-		// initialise core data
-		container = NSPersistentContainer(name: "WalletModel")
-		
-		container.loadPersistentStores { (storeDescription, error) in
-			self.container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
-			
-			if let error = error {
-				print("Unsolved error \(error.localizedDescription)")
-			}
-		}
+	func addCategory(name: String, direction: Int16) -> Bool {
 
 		
-		let cateory = Categories(context: self.container.viewContext)
-		cateory.name = name
-		cateory.direction = direction
-		cateory.uid = UUID().uuidString
+		let category = Categories(context: Facade.share.model.container.viewContext)
+		category.name = name
+		category.direction = direction
+		category.uid = UUID().uuidString
 		
 		saveContext()
+		
+		return true
 	}
 	
 	func saveContext() {
-		if container.viewContext.hasChanges {
-			do {
-				try container.viewContext.save()
-			} catch {
-				print("An error occurred while saving: \(error)")
-			}
-		}
+		Facade.share.model.saveContext()
 	}
 	
 	@objc func filterChanged(_ segControl: UISegmentedControl) {
