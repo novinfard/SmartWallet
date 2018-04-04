@@ -15,8 +15,8 @@ class AddRecordViewController: UIViewController, UIPickerViewDataSource, UIPicke
 	@IBOutlet weak var amountTextField: UITextField!
 	@IBOutlet weak var dateTextField: UITextField!
 	@IBOutlet weak var categoryTextField: UITextField!
-	@IBOutlet weak var accountTextField: UITextField!
-	@IBOutlet weak var reportingSegmentedControl: UISegmentedControl!
+//	@IBOutlet weak var accountTextField: UITextField!
+//	@IBOutlet weak var reportingSegmentedControl: UISegmentedControl!
 	
 	var container: NSPersistentContainer!
 	var categoryPicker: UIPickerView!
@@ -35,7 +35,7 @@ class AddRecordViewController: UIViewController, UIPickerViewDataSource, UIPicke
 			record.relatedCategory = incomeCategoriesList[categoryPicker.selectedRow(inComponent: 0)]
 		}
 		record.relatedAccount = accountsList[accountPicker.selectedRow(inComponent: 0)]
-		record.reported = (reportingSegmentedControl.selectedSegmentIndex == 0) ? true : false
+//		record.reported = (reportingSegmentedControl.selectedSegmentIndex == 0) ? true : false
 		
 		let formatter = DateFormatter()
 		formatter.dateStyle = .medium
@@ -95,15 +95,15 @@ class AddRecordViewController: UIViewController, UIPickerViewDataSource, UIPicke
 		// directionField config
 		directionSegmentedControl.addTarget(self, action: #selector(directionChanged(_:)), for: .valueChanged)
 		
-		// accountPicker config
-		setupAuthorList()
-		let accFrame = CGRect(x: frame.minX, y: frame.minY, width: frame.width, height: 200)
-		accountPicker = UIPickerView(frame: accFrame)
-		accountPicker.dataSource = self
-		accountPicker.delegate = self
-		accountTextField.inputView = accountPicker
-		accountTextField.delegate = self
-		accountTextField.text = (accountsList.count > 0) ? accountsList[0].name : ""
+//		// accountPicker config
+//		setupAuthorList()
+//		let accFrame = CGRect(x: frame.minX, y: frame.minY, width: frame.width, height: 200)
+//		accountPicker = UIPickerView(frame: accFrame)
+//		accountPicker.dataSource = self
+//		accountPicker.delegate = self
+//		accountTextField.inputView = accountPicker
+//		accountTextField.delegate = self
+//		accountTextField.text = (accountsList.count > 0) ? accountsList[0].name : ""
 		
     }
 	
@@ -182,9 +182,10 @@ class AddRecordViewController: UIViewController, UIPickerViewDataSource, UIPicke
 			} else {
 				categoryTextField.text = incomeCategoriesList[row].name
 			}
-		} else if pickerView == accountPicker {
-			accountTextField.text = accountsList[row].name
 		}
+//		else if pickerView == accountPicker {
+//			accountTextField.text = accountsList[row].name
+//		}
 	}
 	
 	@objc public func datePickerValueChanged(sender:UIDatePicker) {
