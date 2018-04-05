@@ -10,6 +10,7 @@
 		8A9C529B4CE63FD813D87F6E /* Pods_SmartWallet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8989CB5E46A29FD42343368F /* Pods_SmartWallet.framework */; };
 		CD0246AE2073FB2600E7C705 /* PersistentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0246AD2073FB2600E7C705 /* PersistentModel.swift */; };
 		CD0246B02074F9D100E7C705 /* Facade.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0246AF2074F9D100E7C705 /* Facade.swift */; };
+		CD0246B320768ED900E7C705 /* RecordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0246B220768ED900E7C705 /* RecordTableViewCell.swift */; };
 		CD0F711A2014D379000B2BCD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0F71192014D379000B2BCD /* AppDelegate.swift */; };
 		CD0F711F2014D379000B2BCD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD0F711D2014D379000B2BCD /* Main.storyboard */; };
 		CD0F71212014D379000B2BCD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD0F71202014D379000B2BCD /* Assets.xcassets */; };
@@ -38,6 +39,7 @@
 		A430F933AB393EA4260F5817 /* Pods-SmartWallet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartWallet.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SmartWallet/Pods-SmartWallet.debug.xcconfig"; sourceTree = "<group>"; };
 		CD0246AD2073FB2600E7C705 /* PersistentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PersistentModel.swift; path = SmartWallet/Model/PersistentModel.swift; sourceTree = SOURCE_ROOT; };
 		CD0246AF2074F9D100E7C705 /* Facade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Facade.swift; sourceTree = "<group>"; };
+		CD0246B220768ED900E7C705 /* RecordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTableViewCell.swift; sourceTree = "<group>"; };
 		CD0F71162014D379000B2BCD /* SmartWallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartWallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD0F71192014D379000B2BCD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CD0F711E2014D379000B2BCD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -91,6 +93,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		CD0246B52076975700E7C705 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				CD0246B220768ED900E7C705 /* RecordTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		CD0F710D2014D378000B2BCD = {
 			isa = PBXGroup;
 			children = (
@@ -116,6 +126,7 @@
 				CD0246AF2074F9D100E7C705 /* Facade.swift */,
 				CDEBB2AE2017E396009ED68F /* Model */,
 				CD31509620531669001AD682 /* General */,
+				CD0246B52076975700E7C705 /* Cells */,
 				CDC80A1D2017E61D00AD4B35 /* MainTabBarViewController.swift */,
 				CD0F712F2015221A000B2BCD /* DashboardViewController.swift */,
 				CD0F712B201521C0000B2BCD /* RecordsViewController.swift */,
@@ -302,6 +313,7 @@
 				CD0246B02074F9D100E7C705 /* Facade.swift in Sources */,
 				CDEBB2A82017E350009ED68F /* Accounts+CoreDataClass.swift in Sources */,
 				CD2E553B2046D3FF00976EAA /* AddCategoryViewController.swift in Sources */,
+				CD0246B320768ED900E7C705 /* RecordTableViewCell.swift in Sources */,
 				CD86E77A2041A62D0007F817 /* CategoriesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

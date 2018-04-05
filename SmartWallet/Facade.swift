@@ -13,6 +13,6 @@ class Facade {
 	let model = PersistentModel()
 
 	private init() {
-		print("Facade - init")
+//		print("Facade - init")
 	}
 }

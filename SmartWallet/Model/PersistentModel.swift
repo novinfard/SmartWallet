@@ -16,7 +16,7 @@ class PersistentModel {
 	var resultController: NSFetchRequestResult!
 	
 	init() {
-		print("PersistentModel - init")
+//		print("PersistentModel - init")
 		// initialise core data
 		container = NSPersistentContainer(name: "WalletModel")
 		

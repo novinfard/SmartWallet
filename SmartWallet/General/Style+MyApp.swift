@@ -40,7 +40,7 @@ extension UIColor {
 		return UIColor(red: 1, green: 0.1, blue: 0.1, alpha: 1)
 	}
 	static var myAppGreen: UIColor {
-		return UIColor(red: 0, green: 1, blue: 0, alpha: 1)
+		return UIColor(red: 10/255, green: 105/255, blue: 68/255, alpha: 1)
 	}
 	static var myAppBlue: UIColor {
 		return UIColor(red: 0, green: 0.2, blue: 0.9, alpha: 1)

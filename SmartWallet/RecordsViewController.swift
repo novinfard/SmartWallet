@@ -100,17 +100,21 @@ class RecordsViewController: UITableViewController, NSFetchedResultsControllerDe
 		}
 	}
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCell(withIdentifier: "recordCell", for: indexPath)
+		let cell = tableView.dequeueReusableCell(withIdentifier: "recordCell", for: indexPath) as! RecordTableViewCell
 		let record = fetchedResultsController.object(at: indexPath)
-		
 		if record.direction > 0 {
-			cell.detailTextLabel!.text = "Income"
-			cell.backgroundColor = UIColor.myAppLightGreen
+			cell.amoutPrefixLabel.text = "+£"
+			cell.icon.image = UIImage(named: "IncomeIcon")
+			cell.amountLabel.textColor = UIColor.myAppGreen
+			cell.amoutPrefixLabel.textColor = UIColor.myAppGreen
 		} else {
-			cell.detailTextLabel!.text = "Cost"
-			cell.backgroundColor = UIColor.myAppLightOrange
+			cell.amoutPrefixLabel.text = "-£"
+			cell.icon.image = UIImage(named: "ExpenseIcon")
+			cell.amountLabel.textColor = UIColor.myAppRed
+			cell.amoutPrefixLabel.textColor = UIColor.myAppRed
 		}
-		cell.textLabel?.text = "\(record.amount)"
+		cell.amountLabel.text = "\(record.amount)"
+		cell.titleLabel.text = record.relatedCategory.name
 		
 		return cell
 	}
