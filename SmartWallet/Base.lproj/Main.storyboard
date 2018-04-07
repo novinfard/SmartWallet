@@ -390,18 +390,48 @@
             <point key="canvasLocation" x="2805.5999999999999" y="716.49175412293857"/>
         </scene>
         <!--Dashboard View Controller-->
-        <scene sceneID="5Ry-tF-ulj">
+        <scene sceneID="diZ-Sl-XJg">
             <objects>
-                <viewController id="EM0-wE-2OL" customClass="DashboardViewController" customModule="SmartWallet" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="yyS-Nh-riY">
+                <tableViewController id="cXW-z4-hvK" customClass="DashboardViewController" customModule="SmartWallet" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="Ri2-Eo-wcm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="xV0-Vg-Z4s"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="jID-lK-Qpu"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="H3y-2O-tgT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="dashboardCell" textLabel="hoz-8X-iOv" detailTextLabel="ko1-pK-jgk" style="IBUITableViewCellStyleValue1" id="Dr0-e4-bKE" customClass="DashboardTableViewCell" customModule="SmartWallet" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Dr0-e4-bKE" id="mEL-QL-OEE">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Total" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hoz-8X-iOv">
+                                            <rect key="frame" x="16" y="12" width="37.5" height="20.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ko1-pK-jgk">
+                                            <rect key="frame" x="315" y="12" width="44" height="20.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="cXW-z4-hvK" id="JYd-NH-iYP"/>
+                            <outlet property="delegate" destination="cXW-z4-hvK" id="kR1-6q-TFc"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="5FZ-mo-i2S"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CtZ-LN-PWF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1180" y="-653"/>
         </scene>
@@ -455,7 +485,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="EM0-wE-2OL" kind="relationship" relationship="rootViewController" id="jfF-Mh-3zO"/>
+                        <segue destination="cXW-z4-hvK" kind="relationship" relationship="rootViewController" id="Vg9-So-lxe"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nA0-qG-lQ6" userLabel="First Responder" sceneMemberID="firstResponder"/>

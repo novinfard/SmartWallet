@@ -75,6 +75,89 @@ class PersistentModel {
 		
 	}
 	
+	func getMinMaxDateInRecords() -> (min: Date, max: Date){
+		do {
+			let fetchRequest : NSFetchRequest<Records> = Records.createFetchRequest()
+			let sort = NSSortDescriptor(key: "datetime", ascending: true)
+			fetchRequest.sortDescriptors = [sort]
+			let authorList: [Records] = try container.viewContext.fetch(fetchRequest)
+			return (authorList.first?.datetime ?? Date(), authorList.last?.datetime ?? Date())
+		} catch {
+			return (Date(), Date())
+		}
+	}
+	
+	func getTotalMonth(year: Int, month: Int, type: recordType) -> Double {
+		do {
+			let fetchRequest : NSFetchRequest<Records> = Records.createFetchRequest()
+			
+			var direction: Int
+			if(type == .recordTypeCost) {
+				direction = -1
+			} else {
+				direction = 1
+			}
+			
+			fetchRequest.predicate = NSPredicate(format: "year = %d and month = %d and direction = %d", year, month, direction)
+			let recordsList: [Records] = try container.viewContext.fetch(fetchRequest)
+			let recordArray = recordsList as NSArray
+			return recordArray.value(forKeyPath: "@sum.amount") as! Double
+		} catch {
+			
+		}
+		
+		return 0
+	}
+	
+	func getMonthlyTotalByCategory(year: Int, month: Int, type: recordType) -> Array<(amount: Double, category: Categories)> {
+		var output = Array<(amount: Double, category: Categories)>()
+		do {
+			let fetchRequest = NSFetchRequest<NSDictionary>(entityName:"Records")
+			
+			var direction: Int
+			if(type == .recordTypeCost) {
+				direction = -1
+			} else {
+				direction = 1
+			}
+			fetchRequest.predicate = NSPredicate(format: "year = %d and month = %d and direction = %d", year, month, direction)
+			fetchRequest.resultType = .dictionaryResultType
+			
+			let sumExpression = NSExpression(format: "sum:(amount)")
+			let sumED = NSExpressionDescription()
+			sumED.expression = sumExpression
+			sumED.name = "sumOfAmount"
+			sumED.expressionResultType = .doubleAttributeType
+			fetchRequest.propertiesToFetch = ["relatedCategory", sumED]
+			
+			fetchRequest.propertiesToGroupBy = ["relatedCategory"]
+			let sort = NSSortDescriptor(key: "relatedCategory", ascending: false)
+			fetchRequest.sortDescriptors = [sort]
+
+			let recordsList = try container.viewContext.fetch(fetchRequest) as NSArray?
+			
+			if let results = recordsList {
+				for result in results {
+					if let sum =  (result as! NSDictionary)["sumOfAmount"] , let cat =  (result as! NSDictionary)["relatedCategory"] {
+						let sumDoulbe = sum as! Double
+						
+						let catId = cat as! NSManagedObjectID
+						let categoryObject: Categories = Facade.share.model.container.viewContext.object(with: catId) as! Categories
+						
+						output.append((amount: sumDoulbe, category: categoryObject))
+					}
+				}
+			}
+			output = output.sorted(by: {$0.amount > $1.amount})
+			return output
+			
+		} catch {
+			
+		}
+		
+		return output
+	}
+	
 	func saveContext() {
 		if container.viewContext.hasChanges {
 			do {

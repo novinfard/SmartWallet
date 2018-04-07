@@ -2,7 +2,7 @@
 //  Records+CoreDataProperties.swift
 //  SmartWallet
 //
-//  Created by Soheil on 23/01/2018.
+//  Created by Soheil on 07/04/2018.
 //  Copyright © 2018 Soheil Novinfard. All rights reserved.
 //
 //
@@ -23,7 +23,21 @@ extension Records {
     @NSManaged public var note: String
     @NSManaged public var reported: Bool
     @NSManaged public var uid: String
+    @NSManaged public var year: Int64
+    @NSManaged public var month: Int16
     @NSManaged public var relatedAccount: Accounts
     @NSManaged public var relatedCategory: Categories
+	
+	public override func willSave() {
+		super.willSave()
+		
+			if self.year != Int64(datetime.year()) {
+				self.year = Int64(datetime.year())
+			}
+			
+			if self.month != Int64(datetime.month()) {
+				self.month = Int16(datetime.month())
+			}
+		}
 
 }

@@ -22,7 +22,9 @@
 		CD2E553D204B0E3800976EAA /* AddRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2E553C204B0E3800976EAA /* AddRecordViewController.swift */; };
 		CD31509520531661001AD682 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD31509420531661001AD682 /* Style.swift */; };
 		CD315098205316CF001AD682 /* Style+MyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD315097205316CF001AD682 /* Style+MyApp.swift */; };
+		CD397BCA2078F5EA00103E5C /* DashboardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD397BC92078F5EA00103E5C /* DashboardTableViewCell.swift */; };
 		CD86E77A2041A62D0007F817 /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD86E7792041A62D0007F817 /* CategoriesViewController.swift */; };
+		CDAF4ECD207846EA00392459 /* GeneralHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDAF4ECC207846EA00392459 /* GeneralHelper.swift */; };
 		CDC80A1E2017E61D00AD4B35 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC80A1D2017E61D00AD4B35 /* MainTabBarViewController.swift */; };
 		CDEBB29D2015650E009ED68F /* WalletModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CDEBB29B2015650E009ED68F /* WalletModel.xcdatamodeld */; };
 		CDEBB2A82017E350009ED68F /* Accounts+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEBB2A22017E350009ED68F /* Accounts+CoreDataClass.swift */; };
@@ -53,7 +55,9 @@
 		CD2E553C204B0E3800976EAA /* AddRecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecordViewController.swift; sourceTree = "<group>"; };
 		CD31509420531661001AD682 /* Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
 		CD315097205316CF001AD682 /* Style+MyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Style+MyApp.swift"; sourceTree = "<group>"; };
+		CD397BC92078F5EA00103E5C /* DashboardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardTableViewCell.swift; sourceTree = "<group>"; };
 		CD86E7792041A62D0007F817 /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
+		CDAF4ECC207846EA00392459 /* GeneralHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralHelper.swift; sourceTree = "<group>"; };
 		CDC80A1D2017E61D00AD4B35 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		CDEBB29C2015650E009ED68F /* WalletModel1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WalletModel1.xcdatamodel; sourceTree = "<group>"; };
 		CDEBB2A22017E350009ED68F /* Accounts+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Accounts+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -97,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				CD0246B220768ED900E7C705 /* RecordTableViewCell.swift */,
+				CD397BC92078F5EA00103E5C /* DashboardTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -147,6 +152,7 @@
 			children = (
 				CD31509420531661001AD682 /* Style.swift */,
 				CD315097205316CF001AD682 /* Style+MyApp.swift */,
+				CDAF4ECC207846EA00392459 /* GeneralHelper.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -312,8 +318,10 @@
 				CD0246AE2073FB2600E7C705 /* PersistentModel.swift in Sources */,
 				CD0246B02074F9D100E7C705 /* Facade.swift in Sources */,
 				CDEBB2A82017E350009ED68F /* Accounts+CoreDataClass.swift in Sources */,
+				CDAF4ECD207846EA00392459 /* GeneralHelper.swift in Sources */,
 				CD2E553B2046D3FF00976EAA /* AddCategoryViewController.swift in Sources */,
 				CD0246B320768ED900E7C705 /* RecordTableViewCell.swift in Sources */,
+				CD397BCA2078F5EA00103E5C /* DashboardTableViewCell.swift in Sources */,
 				CD86E77A2041A62D0007F817 /* CategoriesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
