@@ -25,6 +25,7 @@
 		CD397BCA2078F5EA00103E5C /* DashboardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD397BC92078F5EA00103E5C /* DashboardTableViewCell.swift */; };
 		CD397BCE2079837E00103E5C /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD397BCD2079837E00103E5C /* Currency.swift */; };
 		CD397BD0207AC3B400103E5C /* ChooseCurrencyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD397BCF207AC3B400103E5C /* ChooseCurrencyTableViewController.swift */; };
+		CD397BD4207D79CF00103E5C /* PickerBasedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD397BD3207D79CF00103E5C /* PickerBasedTextField.swift */; };
 		CD86E77A2041A62D0007F817 /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD86E7792041A62D0007F817 /* CategoriesViewController.swift */; };
 		CDAF4ECD207846EA00392459 /* GeneralHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDAF4ECC207846EA00392459 /* GeneralHelper.swift */; };
 		CDC80A1E2017E61D00AD4B35 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC80A1D2017E61D00AD4B35 /* MainTabBarViewController.swift */; };
@@ -60,6 +61,7 @@
 		CD397BC92078F5EA00103E5C /* DashboardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardTableViewCell.swift; sourceTree = "<group>"; };
 		CD397BCD2079837E00103E5C /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		CD397BCF207AC3B400103E5C /* ChooseCurrencyTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseCurrencyTableViewController.swift; sourceTree = "<group>"; };
+		CD397BD3207D79CF00103E5C /* PickerBasedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerBasedTextField.swift; sourceTree = "<group>"; };
 		CD86E7792041A62D0007F817 /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
 		CDAF4ECC207846EA00392459 /* GeneralHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralHelper.swift; sourceTree = "<group>"; };
 		CDC80A1D2017E61D00AD4B35 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 		CD0F71182014D379000B2BCD /* SmartWallet */ = {
 			isa = PBXGroup;
 			children = (
+				CD397BD3207D79CF00103E5C /* PickerBasedTextField.swift */,
 				CD0F71192014D379000B2BCD /* AppDelegate.swift */,
 				CD0246AF2074F9D100E7C705 /* Facade.swift */,
 				CDEBB2AE2017E396009ED68F /* Model */,
@@ -314,6 +317,7 @@
 				CD0F712E201521DC000B2BCD /* SettingsViewController.swift in Sources */,
 				CDEBB2AC2017E350009ED68F /* Records+CoreDataClass.swift in Sources */,
 				CDEBB2AA2017E350009ED68F /* Categories+CoreDataClass.swift in Sources */,
+				CD397BD4207D79CF00103E5C /* PickerBasedTextField.swift in Sources */,
 				CD31509520531661001AD682 /* Style.swift in Sources */,
 				CDEBB2AD2017E350009ED68F /* Records+CoreDataProperties.swift in Sources */,
 				CD315098205316CF001AD682 /* Style+MyApp.swift in Sources */,
