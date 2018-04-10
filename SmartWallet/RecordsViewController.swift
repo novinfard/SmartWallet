@@ -103,13 +103,14 @@ class RecordsViewController: UITableViewController, NSFetchedResultsControllerDe
 		let cell = tableView.dequeueReusableCell(withIdentifier: "recordCell", for: indexPath) as! RecordTableViewCell
 		let record = fetchedResultsController.object(at: indexPath)
 		if record.direction > 0 {
-			cell.icon.image = UIImage(named: "IncomeIcon")
+			cell.icon.image = UIImage(named: "UpIcon")
 			cell.amountLabel.textColor = UIColor.myAppGreen
+			cell.amountLabel.text = getRecordString(record.amount, .recordTypeIncome)
 		} else {
-			cell.icon.image = UIImage(named: "ExpenseIcon")
+			cell.icon.image = UIImage(named: "DownIcon")
 			cell.amountLabel.textColor = UIColor.myAppRed
+			cell.amountLabel.text = getRecordString(record.amount, .recordTypeCost)
 		}
-		cell.amountLabel.text = getRecordString(record.amount, .recordTypeAll)
 		cell.titleLabel.text = record.relatedCategory.name
 		
 		return cell

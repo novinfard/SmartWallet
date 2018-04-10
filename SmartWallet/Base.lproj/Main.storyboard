@@ -36,14 +36,14 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hVf-sh-cLo">
-                                            <rect key="frame" x="16" y="5.5" width="32.5" height="32.5"/>
+                                            <rect key="frame" x="16" y="12" width="20" height="20"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="32.5" id="3WE-qn-KbM"/>
-                                                <constraint firstAttribute="width" constant="32.5" id="ech-lt-gVv"/>
+                                                <constraint firstAttribute="height" constant="20" id="3WE-qn-KbM"/>
+                                                <constraint firstAttribute="width" constant="20" id="ech-lt-gVv"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ked-D9-Ei9">
-                                            <rect key="frame" x="63" y="11.5" width="73.5" height="21"/>
+                                            <rect key="frame" x="55" y="11.5" width="73.5" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="J6v-nM-JpP"/>
                                             </constraints>
@@ -53,9 +53,9 @@
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="Ked-D9-Ei9" secondAttribute="trailing" constant="238.5" id="6LF-ne-9Za"/>
+                                        <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="Ked-D9-Ei9" secondAttribute="trailing" constant="246.5" id="6LF-ne-9Za"/>
                                         <constraint firstAttribute="trailing" secondItem="LXk-0S-fls" secondAttribute="trailing" constant="8" id="6ji-Ly-Jvg"/>
-                                        <constraint firstItem="Ked-D9-Ei9" firstAttribute="leading" secondItem="9OL-mb-yaW" secondAttribute="leading" constant="63" id="ITA-G1-M7n"/>
+                                        <constraint firstItem="Ked-D9-Ei9" firstAttribute="leading" secondItem="9OL-mb-yaW" secondAttribute="leading" constant="55" id="ITA-G1-M7n"/>
                                         <constraint firstItem="Ked-D9-Ei9" firstAttribute="centerY" secondItem="9OL-mb-yaW" secondAttribute="centerY" id="JzQ-Re-Vqy"/>
                                         <constraint firstItem="LXk-0S-fls" firstAttribute="leading" relation="lessThanOrEqual" secondItem="9OL-mb-yaW" secondAttribute="leading" constant="367" id="VY4-Pa-ed9"/>
                                         <constraint firstItem="LXk-0S-fls" firstAttribute="centerY" secondItem="9OL-mb-yaW" secondAttribute="centerY" id="gie-Px-nOF"/>
