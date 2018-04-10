@@ -22,7 +22,11 @@ enum recordType {
 	case recordTypeAll
 }
 
-let currencyLabel = "£"
+
+func getCurrencyLabel() -> String {
+	let currencyLabel = UserDefaults.standard.string(forKey: "currencySymbol") ?? ""
+	return currencyLabel
+}
 
 func monthsBetweenDates(startDate: Date?, endDate: Date?, displayType: monthYearArrayType) -> Array<Any> {
 	let dateFormtter = DateFormatter()
@@ -107,7 +111,7 @@ func getRecordString(_ value: Double, _ type: recordType) -> String {
 	}
 	let absValue = abs(value)
 
-	return "\(prefix) \(currencyLabel) \(absValue.format(f: ".2"))"
+	return "\(prefix) \(getCurrencyLabel()) \(absValue.format(f: ".2"))"
 }
 
 

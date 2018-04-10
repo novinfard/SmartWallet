@@ -27,20 +27,11 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LXk-0S-fls">
-                                            <rect key="frame" x="348" y="11.5" width="19" height="21"/>
+                                            <rect key="frame" x="367" y="11.5" width="0.0" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="Kip-9f-KSc"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cfV-CF-rPJ">
-                                            <rect key="frame" x="345.5" y="12" width="0.0" height="21"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="21" id="2gI-2d-nHl"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -66,11 +57,9 @@
                                         <constraint firstAttribute="trailing" secondItem="LXk-0S-fls" secondAttribute="trailing" constant="8" id="6ji-Ly-Jvg"/>
                                         <constraint firstItem="Ked-D9-Ei9" firstAttribute="leading" secondItem="9OL-mb-yaW" secondAttribute="leading" constant="63" id="ITA-G1-M7n"/>
                                         <constraint firstItem="Ked-D9-Ei9" firstAttribute="centerY" secondItem="9OL-mb-yaW" secondAttribute="centerY" id="JzQ-Re-Vqy"/>
-                                        <constraint firstItem="cfV-CF-rPJ" firstAttribute="leading" relation="lessThanOrEqual" secondItem="9OL-mb-yaW" secondAttribute="leading" constant="345.5" id="Mx8-gQ-GDm"/>
-                                        <constraint firstItem="LXk-0S-fls" firstAttribute="leading" secondItem="cfV-CF-rPJ" secondAttribute="trailing" constant="2.5" id="cKA-EE-7mg"/>
+                                        <constraint firstItem="LXk-0S-fls" firstAttribute="leading" relation="lessThanOrEqual" secondItem="9OL-mb-yaW" secondAttribute="leading" constant="367" id="VY4-Pa-ed9"/>
                                         <constraint firstItem="LXk-0S-fls" firstAttribute="centerY" secondItem="9OL-mb-yaW" secondAttribute="centerY" id="gie-Px-nOF"/>
                                         <constraint firstItem="hVf-sh-cLo" firstAttribute="leading" secondItem="9OL-mb-yaW" secondAttribute="leading" constant="16" id="ppu-wo-rpc"/>
-                                        <constraint firstItem="cfV-CF-rPJ" firstAttribute="centerY" secondItem="9OL-mb-yaW" secondAttribute="centerY" id="zmc-cT-t0f"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <constraints>
@@ -78,7 +67,6 @@
                                 </constraints>
                                 <connections>
                                     <outlet property="amountLabel" destination="LXk-0S-fls" id="eEI-gg-Og7"/>
-                                    <outlet property="amoutPrefixLabel" destination="cfV-CF-rPJ" id="8uN-j4-3Pv"/>
                                     <outlet property="icon" destination="hVf-sh-cLo" id="RtT-YT-pT2"/>
                                     <outlet property="titleLabel" destination="Ked-D9-Ei9" id="X9e-0x-kpy"/>
                                 </connections>
@@ -114,7 +102,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2cC-Rh-3TL">
                                 <rect key="frame" x="92" y="296" width="190" height="30"/>
@@ -279,6 +267,9 @@
                                                 </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="sEC-R9-Kee" kind="show" id="5Yt-fv-lvt"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -337,6 +328,50 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vzy-x6-aV9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2014" y="717"/>
+        </scene>
+        <!--Currency-->
+        <scene sceneID="4Di-AG-zFh">
+            <objects>
+                <tableViewController title="Currency" id="sEC-R9-Kee" customClass="ChooseCurrencyTableViewController" customModule="SmartWallet" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="qEr-mu-eHW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="currencyCell" textLabel="feg-bU-WWu" detailTextLabel="zxK-aN-Nhr" style="IBUITableViewCellStyleValue1" id="2iV-1C-Yqv">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2iV-1C-Yqv" id="ihn-xJ-old">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="feg-bU-WWu">
+                                            <rect key="frame" x="16" y="12" width="33.5" height="20.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zxK-aN-Nhr">
+                                            <rect key="frame" x="315" y="12" width="44" height="20.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="sEC-R9-Kee" id="A8B-hx-Op2"/>
+                            <outlet property="delegate" destination="sEC-R9-Kee" id="my9-XG-5ef"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Cti-lB-N45" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2014" y="1486"/>
         </scene>
         <!--Add Category View Controller-->
         <scene sceneID="hKK-1u-DXJ">

@@ -107,6 +107,8 @@ class AddRecordViewController: UIViewController, UIPickerViewDataSource, UIPicke
 		accountTextField.delegate = self
 		accountTextField.text = (accountsList.count > 0) ? accountsList[0].name : ""
 		
+		amountTextField.becomeFirstResponder()
+		
     }
 	
 	func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {

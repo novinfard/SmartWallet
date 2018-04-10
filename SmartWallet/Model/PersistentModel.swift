@@ -67,6 +67,9 @@ class PersistentModel {
 				}
 				
 				saveContext()
+				
+				let currentSymbol = NSLocale.current.currencySymbol ?? ""
+				UserDefaults.standard.set(currentSymbol, forKey: "currencySymbol")
 			}
 		}
 		catch {

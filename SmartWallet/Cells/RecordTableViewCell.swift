@@ -11,7 +11,6 @@ import UIKit
 class RecordTableViewCell: UITableViewCell {
 
 	@IBOutlet weak var amountLabel: UILabel!
-	@IBOutlet weak var amoutPrefixLabel: UILabel!
 	@IBOutlet weak var titleLabel: UILabel!
 	@IBOutlet weak var icon: UIImageView!
 	
