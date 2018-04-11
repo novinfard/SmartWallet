@@ -92,9 +92,20 @@ class RecordsViewController: UITableViewController, NSFetchedResultsControllerDe
 		let sectionInfo = fetchedResultsController.sections![section]
 		let objects = sectionInfo.objects
 		if let topRecord:Records = objects![0] as? Records  {
-			let formatter = DateFormatter()
-			formatter.dateStyle = .medium
-			return formatter.string(from: topRecord.datetime)
+			let calendar = Calendar.current
+			if calendar.isDateInToday(topRecord.datetime) {
+				return "Today"
+			} else if calendar.isDateInYesterday(topRecord.datetime) {
+				return "Yesterday"
+			} else if calendar.isDate(Date(), equalTo: topRecord.datetime, toGranularity: .weekOfYear) {
+				let formatter = DateFormatter()
+				let weekday = calendar.component(.weekday, from: topRecord.datetime)
+				return formatter.weekdaySymbols[weekday]
+			} else {
+				let formatter = DateFormatter()
+				formatter.dateStyle = .medium
+				return formatter.string(from: topRecord.datetime)
+			}
 		} else {
 			return sectionInfo.indexTitle
 		}
