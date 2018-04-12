@@ -60,7 +60,7 @@ class AddRecordViewController: UIViewController, UIPickerViewDataSource, UIPicke
 			record.amount = 0
 		}
 		
-		record.uid = UUID().uuidString
+		record.uid = String(Date().timeIntervalSince1970)
 		
 		saveContext()
 		

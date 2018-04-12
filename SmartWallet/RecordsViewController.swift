@@ -87,7 +87,6 @@ class RecordsViewController: UITableViewController, NSFetchedResultsControllerDe
 		
 	}
 	
-	
 	override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
 		let sectionInfo = fetchedResultsController.sections![section]
 		let objects = sectionInfo.objects
@@ -100,7 +99,7 @@ class RecordsViewController: UITableViewController, NSFetchedResultsControllerDe
 			} else if calendar.isDate(Date(), equalTo: topRecord.datetime, toGranularity: .weekOfYear) {
 				let formatter = DateFormatter()
 				let weekday = calendar.component(.weekday, from: topRecord.datetime)
-				return formatter.weekdaySymbols[weekday]
+				return formatter.weekdaySymbols[weekday-1]
 			} else {
 				let formatter = DateFormatter()
 				formatter.dateStyle = .medium
