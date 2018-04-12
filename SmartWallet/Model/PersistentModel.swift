@@ -28,6 +28,9 @@ class PersistentModel {
 			}
 		}
 		
+		print(NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).last! as String)
+
+		
 		importInitialData()
 	}
 	

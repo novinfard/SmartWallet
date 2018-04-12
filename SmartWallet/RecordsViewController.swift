@@ -110,6 +110,7 @@ class RecordsViewController: UITableViewController, NSFetchedResultsControllerDe
 			return sectionInfo.indexTitle
 		}
 	}
+	
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "recordCell", for: indexPath) as! RecordTableViewCell
 		let record = fetchedResultsController.object(at: indexPath)
@@ -126,6 +127,23 @@ class RecordsViewController: UITableViewController, NSFetchedResultsControllerDe
 		
 		return cell
 	}
+	
+	override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+		if editingStyle == .delete {
+			let record = fetchedResultsController.object(at: indexPath)
+			container.viewContext.delete(record)
+			saveContext()
+			do {
+				try fetchedResultsController.performFetch()
+				tableView.reloadData()
+			} catch {
+				print("Fetch failed")
+			}
+//			tableView.deleteRows(at: [indexPath], with: .fade)
+		}
+	}
+	
+	
 	
 	func loadSavedData() {
 		if fetchedResultsController == nil {
