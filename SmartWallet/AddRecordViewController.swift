@@ -60,7 +60,7 @@ class AddRecordViewController: UIViewController, UIPickerViewDataSource, UIPicke
 			record.amount = 0
 		}
 		
-		record.uid = String(Date().timeIntervalSince1970)
+		record.uid = Facade.share.model.getNewUID()
 		
 		saveContext()
 		

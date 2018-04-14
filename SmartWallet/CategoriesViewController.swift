@@ -206,6 +206,29 @@ extension CategoriesViewController {
 		
 	}
 	
+	override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+		if editingStyle == .delete {
+			let category = fetchedResultsController.object(at: indexPath)
+			print(category.uid)
+			if Facade.share.model.getNumberOfRecordsInCategory(uid: category.uid) == 0 {
+				
+				Facade.share.model.container.viewContext.delete(category)
+				Facade.share.model.saveContext()
+			} else {
+				let alert = UIAlertController(title: "Error", message: "You should remove all records in this category first", preferredStyle:.alert)
+				alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+				present(alert, animated: true, completion: nil)
+			}
+			do {
+				try fetchedResultsController.performFetch()
+				tableView.reloadData()
+			} catch {
+				print("Fetch failed")
+			}
+			//			tableView.deleteRows(at: [indexPath], with: .fade)
+		}
+	}
+	
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "categoryCell", for: indexPath)
 		let category = fetchedResultsController.object(at: indexPath)

@@ -47,7 +47,7 @@ class PersistentModel {
 				account.currency = "£"
 				account.initial = 0
 				account.name = "Default Account"
-				account.uid = UUID().uuidString
+				account.uid = getNewUID()
 				
 				saveContext()
 				
@@ -60,6 +60,8 @@ class PersistentModel {
 					category.direction = -1
 					category.name = categoryName
 					category.parent = ""
+					category.uid = getNewUID()
+
 				}
 				
 				for categoryName in incomeCategoryNames {
@@ -67,6 +69,7 @@ class PersistentModel {
 					category.direction = 1
 					category.name = categoryName
 					category.parent = ""
+					category.uid = getNewUID()
 				}
 				
 				saveContext()
@@ -93,6 +96,19 @@ class PersistentModel {
 		}
 	}
 	
+	func getNumberOfRecordsInCategory(uid: String) -> Int{
+		do {
+			let fetchRequest : NSFetchRequest<Records> = Records.createFetchRequest()
+			fetchRequest.predicate = NSPredicate(format: "relatedCategory.uid = %@", uid)
+			let result: [Records] = try container.viewContext.fetch(fetchRequest)
+			return result.count
+		} catch {
+			print(error.localizedDescription)
+			
+			return 0
+		}
+	}
+	
 	func getTotalMonth(year: Int, month: Int, type: recordType) -> Double {
 		do {
 			let fetchRequest : NSFetchRequest<Records> = Records.createFetchRequest()
@@ -113,6 +129,10 @@ class PersistentModel {
 		}
 		
 		return 0
+	}
+	
+	func getNewUID() -> String {
+		return String(Date().timeIntervalSince1970.format(f: ".5"))
 	}
 	
 	func getMonthlyTotalByCategory(year: Int, month: Int, type: recordType) -> Array<(amount: Double, category: Categories)> {
