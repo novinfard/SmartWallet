@@ -524,7 +524,7 @@
         <!--Dashboard-->
         <scene sceneID="Zny-IS-wIO">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="CA7-YN-SSr" sceneMemberID="viewController">
+                <navigationController title="Dashboard" automaticallyAdjustsScrollViewInsets="NO" id="CA7-YN-SSr" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Dashboard" image="DashboardIcon" id="08q-uh-XJ6"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="p27-ka-fJE">

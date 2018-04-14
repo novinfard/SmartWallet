@@ -18,7 +18,6 @@ class AddRecordViewController: UIViewController, UIPickerViewDataSource, UIPicke
 	@IBOutlet weak var accountTextField: UITextField!
 	@IBOutlet weak var reportingSegmentedControl: UISegmentedControl!
 	@IBOutlet weak var prefixLabel: UILabel!
-
 	
 	var container: NSPersistentContainer!
 	var categoryPicker: UIPickerView!
@@ -27,45 +26,7 @@ class AddRecordViewController: UIViewController, UIPickerViewDataSource, UIPicke
 	var expenseCategoriesList: [Categories] = []
 	var incomeCategoriesList: [Categories] = []
 	
-	@IBAction func addRecordPressed(_ sender: Any) {
-		// validation
-		guard amountTextField.text != "" && amountTextField.text != "0" else {
-			let alert = UIAlertController(title: "Error", message: "You should enter the amount", preferredStyle:.alert)
-			alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-			present(alert, animated: true, completion: nil)
-			return
-		}
-		
-		let record = Records(context: self.container.viewContext)
-		if directionSegmentedControl.selectedSegmentIndex == 0 {
-			record.direction = -1
-			record.relatedCategory = expenseCategoriesList[categoryPicker.selectedRow(inComponent: 0)]
-		} else {
-			record.direction = 1
-			record.relatedCategory = incomeCategoriesList[categoryPicker.selectedRow(inComponent: 0)]
-		}
-		record.relatedAccount = accountsList[accountPicker.selectedRow(inComponent: 0)]
-		record.reported = (reportingSegmentedControl.selectedSegmentIndex == 0) ? true : false
-		
-		let formatter = DateFormatter()
-		formatter.dateStyle = .medium
-		if let date = formatter.date(from: dateTextField.text!) {
-			record.datetime = date
-		}
-		
-		if let amountValue = Double(amountTextField.text!)
-		{
-			record.amount = amountValue
-		} else {
-			record.amount = 0
-		}
-		
-		record.uid = Facade.share.model.getNewUID()
-		
-		saveContext()
-		
-		navigationController?.popViewController(animated: true)
-	}
+
 	
 	override func viewDidLoad() {
         super.viewDidLoad()
@@ -116,11 +77,28 @@ class AddRecordViewController: UIViewController, UIPickerViewDataSource, UIPicke
 		categoryPicker.delegate = self
 		categoryTextField.inputView = categoryPicker
 		categoryTextField.delegate = self
-		categoryTextField.text = (expenseCategoriesList.count > 0) ? expenseCategoriesList[0].name : ""
 		
-		prefixLabel.text = "-" + getCurrencyLabel()
-		prefixLabel.textColor = UIColor.myAppRed
-
+		// directionField config
+		directionSegmentedControl.addTarget(self, action: #selector(directionChanged(_:)), for: .valueChanged)
+		directionSegmentedControl.selectedSegmentIndex = UserDefaults.standard.integer(forKey: "DirectionInAddRecords")
+		
+		if directionSegmentedControl.selectedSegmentIndex == 0 {
+			let defaultExpenseCategory = UserDefaults.standard.integer(forKey: "ExpenseInAddRecords")
+			categoryTextField.text = (expenseCategoriesList.count > 0) ? expenseCategoriesList[defaultExpenseCategory].name : ""
+			if defaultExpenseCategory <= categoryPicker.numberOfRows(inComponent: 0) {
+				categoryPicker.selectRow(defaultExpenseCategory, inComponent: 0, animated: false)
+			}
+			prefixLabel.text = "-" + getCurrencyLabel()
+			prefixLabel.textColor = UIColor.myAppRed
+		} else {
+			let defaultIncomeCategory = UserDefaults.standard.integer(forKey: "IncomeInAddRecords")
+			categoryTextField.text = (incomeCategoriesList.count > 0) ? incomeCategoriesList[defaultIncomeCategory].name : ""
+			if defaultIncomeCategory <= categoryPicker.numberOfRows(inComponent: 0) {
+				categoryPicker.selectRow(defaultIncomeCategory, inComponent: 0, animated: false)
+			}
+			prefixLabel.text = "+" + getCurrencyLabel()
+			prefixLabel.textColor = UIColor.myAppGreen
+		}
 		
 		let toolBar = UIToolbar()
 		toolBar.barStyle = UIBarStyle.default
@@ -133,9 +111,6 @@ class AddRecordViewController: UIViewController, UIPickerViewDataSource, UIPicke
 		toolBar.setItems([spaceButton, spaceButton, doneButton], animated: false)
 		toolBar.isUserInteractionEnabled = true
 		categoryTextField.inputAccessoryView = toolBar
-		
-		// directionField config
-		directionSegmentedControl.addTarget(self, action: #selector(directionChanged(_:)), for: .valueChanged)
 		
 		// accountPicker config
 		setupAuthorList()
@@ -173,6 +148,46 @@ class AddRecordViewController: UIViewController, UIPickerViewDataSource, UIPicke
 
 	}
 	
+	@IBAction func addRecordPressed(_ sender: Any) {
+		// validation
+		guard amountTextField.text != "" && amountTextField.text != "0" else {
+			let alert = UIAlertController(title: "Error", message: "You should enter the amount", preferredStyle:.alert)
+			alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+			present(alert, animated: true, completion: nil)
+			return
+		}
+		
+		let record = Records(context: self.container.viewContext)
+		if directionSegmentedControl.selectedSegmentIndex == 0 {
+			record.direction = -1
+			record.relatedCategory = expenseCategoriesList[categoryPicker.selectedRow(inComponent: 0)]
+		} else {
+			record.direction = 1
+			record.relatedCategory = incomeCategoriesList[categoryPicker.selectedRow(inComponent: 0)]
+		}
+		record.relatedAccount = accountsList[accountPicker.selectedRow(inComponent: 0)]
+		record.reported = (reportingSegmentedControl.selectedSegmentIndex == 0) ? true : false
+		
+		let formatter = DateFormatter()
+		formatter.dateStyle = .medium
+		if let date = formatter.date(from: dateTextField.text!) {
+			record.datetime = date
+		}
+		
+		if let amountValue = Double(amountTextField.text!)
+		{
+			record.amount = amountValue
+		} else {
+			record.amount = 0
+		}
+		
+		record.uid = Facade.share.model.getNewUID()
+		
+		saveContext()
+		
+		navigationController?.popViewController(animated: true)
+	}
+	
 	@objc func donePicker() {
 		amountTextField.becomeFirstResponder()
 	}
@@ -188,6 +203,8 @@ class AddRecordViewController: UIViewController, UIPickerViewDataSource, UIPicke
 			prefixLabel.text = "+" + getCurrencyLabel()
 			prefixLabel.textColor = UIColor.myAppGreen
 		}
+		
+		UserDefaults.standard.set(directionSegmentedControl.selectedSegmentIndex, forKey: "DirectionInAddRecords")
 	}
 	
 	public func setupCategoriesList(){
@@ -249,8 +266,10 @@ class AddRecordViewController: UIViewController, UIPickerViewDataSource, UIPicke
 		if pickerView == categoryPicker {
 			if directionSegmentedControl.selectedSegmentIndex == 0 {
 				categoryTextField.text = expenseCategoriesList[row].name
+				UserDefaults.standard.set(row, forKey: "ExpenseInAddRecords")
 			} else {
 				categoryTextField.text = incomeCategoriesList[row].name
+				UserDefaults.standard.set(row, forKey: "IncomeInAddRecords")
 			}
 		}
 		else if pickerView == accountPicker {
