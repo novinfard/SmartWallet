@@ -92,7 +92,7 @@
         <!--Add Record-->
         <scene sceneID="fSc-fO-32A">
             <objects>
-                <viewController title="Add Record" id="mhR-ed-4MB" customClass="AddRecordViewController" customModule="SmartWallet" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddRecord" title="Add Record" id="mhR-ed-4MB" customClass="AddRecordViewController" customModule="SmartWallet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dMN-jX-yGV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -143,6 +143,18 @@ class RecordsViewController: UITableViewController, NSFetchedResultsControllerDe
 		}
 	}
 	
+	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		let record = fetchedResultsController.object(at: indexPath)
+//		let controller = AddRecordViewController()
+		
+		let storyboard = UIStoryboard(name: "Main", bundle: nil)
+		let controller = storyboard.instantiateViewController(withIdentifier: "AddRecord") as! AddRecordViewController
+
+		controller.currentUid = record.uid
+		navigationController?.pushViewController(controller, animated: true)
+
+	}
+	
 	
 	
 	func loadSavedData() {

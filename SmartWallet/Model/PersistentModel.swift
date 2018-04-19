@@ -109,6 +109,20 @@ class PersistentModel {
 		}
 	}
 	
+	func getOrCreateRecord(uid: String) -> Records{
+		var record: Records?
+		do {
+			let fetchRequest : NSFetchRequest<Records> = Records.createFetchRequest()
+			fetchRequest.predicate = NSPredicate(format: "uid = %@", uid)
+			let result: [Records] = try container.viewContext.fetch(fetchRequest)
+			record = result.first
+		} catch {
+			print(error.localizedDescription)
+		}
+		
+		return record ?? Records(context: container.viewContext)
+	}
+	
 	func getTotalMonth(year: Int, month: Int, type: recordType) -> Double {
 		do {
 			let fetchRequest : NSFetchRequest<Records> = Records.createFetchRequest()

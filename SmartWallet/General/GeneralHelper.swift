@@ -114,6 +114,16 @@ func getRecordString(_ value: Double, _ type: recordType) -> String {
 	return "\(prefix) \(getCurrencyLabel()) \(absValue.format(f: ".2"))"
 }
 
+func getDateOnlyFromDatetime(_ date: Date) -> Date {
+	
+	let dateFormatter = DateFormatter()
+	dateFormatter.timeStyle = DateFormatter.Style.none
+	dateFormatter.dateStyle = DateFormatter.Style.short
+	let dateString = dateFormatter.string(from: date)
+	
+	return dateFormatter.date(from: dateString)!
+}
+
 
 extension Date {
 	func month() -> Int {
