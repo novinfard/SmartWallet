@@ -222,9 +222,12 @@ class AddRecordViewController: UIViewController, UIPickerViewDataSource, UIPicke
 		do {
 			let fetchRequest : NSFetchRequest<Categories> = Categories.createFetchRequest()
 			fetchRequest.predicate = NSPredicate(format: "direction == %d", 1)
+			let sort = NSSortDescriptor(key: "sortId", ascending: false)
+			fetchRequest.sortDescriptors = [sort]
 			incomeCategoriesList = try Facade.share.model.container.viewContext.fetch(fetchRequest)
 			
 			fetchRequest.predicate = NSPredicate(format: "direction == %d", -1)
+			fetchRequest.sortDescriptors = [sort]
 			expenseCategoriesList = try Facade.share.model.container.viewContext.fetch(fetchRequest)
 		}
 		catch {

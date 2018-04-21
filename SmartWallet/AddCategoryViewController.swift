@@ -39,6 +39,8 @@ class AddCategoryViewController: UIViewController {
 			navigationController?.popViewController(animated: true)
 		}
 	}
+	
+	
 	/*
     // MARK: - Navigation
 

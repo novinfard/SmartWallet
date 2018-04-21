@@ -61,6 +61,8 @@ class PersistentModel {
 					category.name = categoryName
 					category.parent = ""
 					category.uid = getNewUID()
+					saveContext()
+					category.sortId = category.getAutoIncremenet()
 
 				}
 				
@@ -70,6 +72,8 @@ class PersistentModel {
 					category.name = categoryName
 					category.parent = ""
 					category.uid = getNewUID()
+					saveContext()
+					category.sortId = category.getAutoIncremenet()
 				}
 				
 				saveContext()

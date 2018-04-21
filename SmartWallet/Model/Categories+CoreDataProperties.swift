@@ -18,10 +18,31 @@ extension Categories {
     }
 
     @NSManaged public var direction: Int16
+	@NSManaged public var sortId: Int64
     @NSManaged public var name: String
     @NSManaged public var parent: String
     @NSManaged public var uid: String
     @NSManaged public var relatedRecords: NSSet
+	
+	public override func willSave() {
+		super.willSave()
+		
+		if self.sortId == 0 {
+			setPrimitiveValue(getAutoIncremenet(), forKey: "sortId")
+		}
+	}
+	
+	func getAutoIncremenet() -> Int64   {
+		let url = self.objectID.uriRepresentation()
+		let urlString = url.absoluteString
+		if let pN = urlString.components(separatedBy: "/").last {
+			let numberPart = pN.replacingOccurrences(of: "p", with: "")
+			if let number = Int64(numberPart) {
+				return number
+			}
+		}
+		return 0
+	}
 
 }
 

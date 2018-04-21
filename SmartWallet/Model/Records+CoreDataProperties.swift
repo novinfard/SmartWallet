@@ -31,13 +31,13 @@ extension Records {
 	public override func willSave() {
 		super.willSave()
 		
-			if self.year != Int64(datetime.year()) {
-				self.year = Int64(datetime.year())
-			}
-			
-			if self.month != Int64(datetime.month()) {
-				self.month = Int16(datetime.month())
-			}
+		if self.year != Int64(datetime.year()) {
+			self.year = Int64(datetime.year())
 		}
+			
+		if self.month != Int64(datetime.month()) {
+			self.month = Int16(datetime.month())
+		}
+	}
 
 }

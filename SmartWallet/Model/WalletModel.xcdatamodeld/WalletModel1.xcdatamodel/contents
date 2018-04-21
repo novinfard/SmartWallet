@@ -16,6 +16,7 @@
         <attribute name="direction" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="parent" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sortId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="uid" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="relatedRecords" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Records" inverseName="relatedCategory" inverseEntity="Records" syncable="YES"/>
         <uniquenessConstraints>
@@ -43,7 +44,7 @@
     </entity>
     <elements>
         <element name="Accounts" positionX="-63" positionY="-18" width="128" height="120"/>
-        <element name="Categories" positionX="-36" positionY="9" width="128" height="120"/>
+        <element name="Categories" positionX="-36" positionY="9" width="128" height="135"/>
         <element name="Records" positionX="-54" positionY="-9" width="128" height="195"/>
     </elements>
 </model>

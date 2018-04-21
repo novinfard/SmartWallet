@@ -17,9 +17,14 @@ class CategoriesViewController: UITableViewController, NSFetchedResultsControlle
 	var topSegments: UISegmentedControl!
 	var filterDirection: Int = -1
 	var segmentioView: Segmentio!
+	@IBOutlet weak var editButton: UIBarButtonItem!
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		
+		// tapRecognizer, placed in viewDidLoad
+		let longPressRecognizer = UILongPressGestureRecognizer(target: self, action:#selector(self.longPress(_:)))
+		self.view.addGestureRecognizer(longPressRecognizer)
 		
 		self.loadSavedData()
 				
@@ -72,6 +77,46 @@ class CategoriesViewController: UITableViewController, NSFetchedResultsControlle
 //		headerView.addSubview(labelView)
 //		tableView.tableHeaderView = headerView
 
+	}
+	
+	override func viewWillDisappear(_ animated: Bool) {
+		super.viewWillDisappear(animated)
+		
+		editingEnd()
+	}
+	
+	@IBAction func editPressed(_ sender: Any) {
+		if self.isEditing {
+			editingEnd()
+		} else {
+			editingBegin()
+		}
+	}
+	
+	@objc func longPress(_ longPressGestureRecognizer: UILongPressGestureRecognizer) {
+		
+		if longPressGestureRecognizer.state == UIGestureRecognizerState.began {
+			
+			let touchPoint = longPressGestureRecognizer.location(in: self.view)
+			if tableView.indexPathForRow(at: touchPoint) != nil {
+				// your code here, get the row for the indexPath or do whatever you want
+				if !self.isEditing {
+					editingBegin()
+				}
+			}
+		}
+	}
+	
+	func editingBegin() {
+		self.isEditing = true
+		self.editButton.style = .done
+		self.editButton.title = "Done"
+	}
+	
+	func editingEnd() {
+		self.isEditing = false
+		self.editButton.style = .plain
+		self.editButton.title = "Edit"
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -131,7 +176,7 @@ class CategoriesViewController: UITableViewController, NSFetchedResultsControlle
 	func loadSavedData() {
 		if fetchedResultsController == nil {
 			let request = Categories.createFetchRequest()
-			let sort = NSSortDescriptor(key: "direction", ascending: false)
+			let sort = NSSortDescriptor(key: "sortId", ascending: false)
 			request.sortDescriptors = [sort]
 			request.fetchBatchSize = 20
 			
@@ -228,6 +273,113 @@ extension CategoriesViewController {
 			//			tableView.deleteRows(at: [indexPath], with: .fade)
 		}
 	}
+	
+	override func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
+		return false
+	}
+	
+	override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+		return .none
+	}
+	
+	override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+		return true
+	}
+	
+	override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+		let context = Facade.share.model.container.newBackgroundContext()
+		/**
+		Switches two existing rows sort key
+		- Parameter sourceIndexPath: First Row
+		- Parameter destinationIndexPath: Second Row
+		*/
+		func switchRows(surceIndexPath: IndexPath, destinationIndexPath: IndexPath) {
+			guard let fetchedSourceObject = fetchedResultsController?.object(at: sourceIndexPath) else { return }
+			guard let fetchedDestinationObject = fetchedResultsController?.object(at: destinationIndexPath) else { return }
+			let storedSourceObject = context.object(with: fetchedSourceObject.objectID) as! Categories
+			let storedDestinationObject = context.object(with: fetchedDestinationObject.objectID) as! Categories
+			let sourceSort = fetchedSourceObject.sortId
+			let destinationSort = fetchedDestinationObject.sortId
+			storedSourceObject.sortId = destinationSort
+			storedDestinationObject.sortId = sourceSort
+		}
+		/**
+		Stores the destination's sort Key into the origin-object
+		- Parameter origin: An Int defining the row of the current row
+		- Parameter destination: An Int defining the row from which the data is loaded
+		*/
+		func incrementSortIndex(forOriginRow origin: Int, destinationRow destination: Int) {
+			let mutableSourceIndex = IndexPath(row: origin, section: destinationIndexPath.section)
+			let mutableDestinationIndex = IndexPath(row: destination, section: destinationIndexPath.section)
+			guard let fetchedSourceObject = fetchedResultsController?.object(at: mutableSourceIndex) else { return }
+			guard let fetchedDestinationObject = fetchedResultsController?.object(at: mutableDestinationIndex) else { return }
+			let storedSourceObject = context.object(with: fetchedSourceObject.objectID) as! Categories
+			let destinationSort = fetchedDestinationObject.sortId
+			storedSourceObject.sortId = destinationSort
+		}
+		/**
+		Save the current BackgroundContext
+		*/
+		func saveContext() {
+			do {
+				if context.hasChanges {
+					try context.save()
+				}
+			} catch {
+				print(error.localizedDescription)
+			}
+		}
+		
+		if sourceIndexPath == destinationIndexPath {
+			// Nothing to do here, drag-and-drop and both rows are the same.
+			return
+		} else if abs(sourceIndexPath.row - destinationIndexPath.row) == 1 {
+			// If the rows were just switched
+			switchRows(surceIndexPath: sourceIndexPath, destinationIndexPath: destinationIndexPath)
+			return
+		} else if sourceIndexPath.row < destinationIndexPath.row {
+			// Move rows upwards
+			guard let fetchedSourceObject = fetchedResultsController?.object(at: sourceIndexPath) else { return }
+			guard let fetchedDestinationObject = fetchedResultsController?.object(at: destinationIndexPath) else { return }
+			
+			// iterate over the unmoved rows, which are pushed downwards
+			for row in sourceIndexPath.row + 1 ..< destinationIndexPath.row {
+				incrementSortIndex(forOriginRow: row, destinationRow: row - 1)
+			}
+			// drag Source-Object upwards
+			guard let storedSourceObject = context.object(with: fetchedSourceObject.objectID) as? Categories else { return }
+			let destinationSort = fetchedDestinationObject.sortId
+			storedSourceObject.sortId = destinationSort
+		} else if sourceIndexPath.row > destinationIndexPath.row {
+			// Move rows downwards
+			guard let fetchedSourceObject = fetchedResultsController?.object(at: sourceIndexPath) else { return }
+			guard let fetchedDestinationObject = fetchedResultsController?.object(at: destinationIndexPath) else { return }
+			
+			// iterate over the unmoved rows, which are pushed upwards
+			for row in destinationIndexPath.row ..< sourceIndexPath.row {
+				incrementSortIndex(forOriginRow: row, destinationRow: row + 1)
+			}
+			// Source-Object is moved downwards
+			guard let storedSourceObject = context.object(with: fetchedSourceObject.objectID) as? Categories else { return }
+			let destinationSort = fetchedDestinationObject.sortId
+			storedSourceObject.sortId = destinationSort
+		}
+		// Save the current Context
+		saveContext()
+	}
+	
+	override func tableView(_ tableView: UITableView, targetIndexPathForMoveFromRowAt sourceIndexPath: IndexPath, toProposedIndexPath proposedDestinationIndexPath: IndexPath) -> IndexPath {
+		if sourceIndexPath.section != proposedDestinationIndexPath.section {
+			var row = 0
+			if sourceIndexPath.section < proposedDestinationIndexPath.section {
+				row = self.tableView(tableView, numberOfRowsInSection: sourceIndexPath.section) - 1
+			}
+			return IndexPath(row: row, section: sourceIndexPath.section)
+		}
+		return proposedDestinationIndexPath
+	}
+	
+	
 	
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "categoryCell", for: indexPath)
