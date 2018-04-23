@@ -137,6 +137,15 @@ class AddRecordViewController: UIViewController, UIPickerViewDataSource, UIPicke
 		
     }
 	
+	override func viewWillDisappear(_ animated: Bool) {
+		super.viewWillDisappear(animated)
+		
+		if record.uid == "" {
+			Facade.share.model.container.viewContext.delete(record)
+			Facade.share.model.saveContext()
+		}
+	}
+	
 	func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
 		return false
 	}

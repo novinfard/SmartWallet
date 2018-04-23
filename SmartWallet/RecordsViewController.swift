@@ -11,7 +11,6 @@ import CoreData
 
 class RecordsViewController: UITableViewController, NSFetchedResultsControllerDelegate {
 	
-	var container: NSPersistentContainer!
 	var commitPredicate: NSPredicate?
 	var fetchedResultsController: NSFetchedResultsController<Records>!
 	
@@ -36,17 +35,6 @@ class RecordsViewController: UITableViewController, NSFetchedResultsControllerDe
 		super.viewDidLoad()
 		
 		applyStyle()
-
-		// initialise core data
-		container = NSPersistentContainer(name: "WalletModel")
-		
-		container.loadPersistentStores { (storeDescription, error) in
-			self.container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
-			
-			if let error = error {
-				print("Unsolved error \(error.localizedDescription)")
-			}
-		}
 		
 		// if there is any need to load data from server #ONLINE
 //		performSelector(inBackground: #selector(fetchRecords), with:nil)
@@ -131,8 +119,8 @@ class RecordsViewController: UITableViewController, NSFetchedResultsControllerDe
 	override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
 		if editingStyle == .delete {
 			let record = fetchedResultsController.object(at: indexPath)
-			container.viewContext.delete(record)
-			saveContext()
+			Facade.share.model.container.viewContext.delete(record)
+			Facade.share.model.saveContext()
 			do {
 				try fetchedResultsController.performFetch()
 				tableView.reloadData()
@@ -166,7 +154,7 @@ class RecordsViewController: UITableViewController, NSFetchedResultsControllerDe
 			request.sortDescriptors = [sort, sort2]
 			request.fetchBatchSize = 20
 			
-			fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: container.viewContext, sectionNameKeyPath: "datetime", cacheName: nil)
+			fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: Facade.share.model.container.viewContext, sectionNameKeyPath: "datetime", cacheName: nil)
 			fetchedResultsController.delegate = self
 		}
 		
@@ -194,26 +182,4 @@ class RecordsViewController: UITableViewController, NSFetchedResultsControllerDe
 		
 	}
 	
-	func addSampleData() {
-		let record = Records(context: self.container.viewContext)
-		record.amount = drand48() * 20;
-		record.datetime = Date()
-		record.direction = drand48() > 0.5 ? 1 : -1
-		record.note = ""
-		record.reported = true
-		record.uid = UUID().uuidString
-		
-		saveContext()
-	}
-	
-	func saveContext() {
-		if container.viewContext.hasChanges {
-			do {
-				try container.viewContext.save()
-			} catch {
-				print("An error occurred while saving: \(error)")
-			}
-		}
-	}
-
 }

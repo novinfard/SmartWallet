@@ -202,6 +202,18 @@ class PersistentModel {
 		return output
 	}
 	
+	func addSampleRecordData() {
+		let record = Records(context: self.container.viewContext)
+		record.amount = drand48() * 20;
+		record.datetime = Date()
+		record.direction = drand48() > 0.5 ? 1 : -1
+		record.note = ""
+		record.reported = true
+		record.uid = UUID().uuidString
+		
+		saveContext()
+	}
+	
 	func saveContext() {
 		if container.viewContext.hasChanges {
 			do {
