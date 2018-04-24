@@ -162,25 +162,32 @@ class RecordsViewController: UITableViewController, NSFetchedResultsControllerDe
 		
 		do {
 			try fetchedResultsController.performFetch()
-			print("Fetch count \(String(describing: fetchedResultsController.fetchedObjects?.count))")
 			if fetchedResultsController.fetchedObjects?.count == 0 {
-				let coverImage = UIImage(named: "AddFirstRecord")!
-				coverImageView.image = coverImage
-				coverImageView.frame = CGRect(x: 20, y: 5, width: tableView.frame.width-20, height: 100)
-				view.addSubview(coverImageView)
 				tableView.separatorStyle = .none
-
 			} else {
-				DispatchQueue.main.async {
-					self.coverImageView.removeFromSuperview()
-					self.tableView.separatorStyle = .singleLine
-				}
+				tableView.separatorStyle = .singleLine
 			}
 			tableView.reloadData()
 		} catch {
 			print("Fetch failed")
 		}
 		
+	}
+	
+	override func viewDidLayoutSubviews() {
+		super.viewDidLayoutSubviews()
+		
+		if fetchedResultsController.fetchedObjects?.count == 0 {
+			let coverImage = UIImage(named: "AddFirstRecord")!
+			coverImageView.image = coverImage
+			coverImageView.frame = CGRect(x: 20, y: 5, width: tableView.frame.width-20, height: 100)
+			view.addSubview(coverImageView)
+			
+		} else {
+			DispatchQueue.main.async {
+				self.coverImageView.removeFromSuperview()
+			}
+		}
 	}
 	
 }
