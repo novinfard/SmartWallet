@@ -114,6 +114,10 @@ class PersistentModel {
 	}
 	
 	func getOrCreateRecord(uid: String) -> Records{
+		guard uid != "" else {
+			return Records(context: container.viewContext)
+		}
+		
 		var record: Records?
 		do {
 			let fetchRequest : NSFetchRequest<Records> = Records.createFetchRequest()
@@ -125,6 +129,24 @@ class PersistentModel {
 		}
 		
 		return record ?? Records(context: container.viewContext)
+	}
+	
+	func getOrCreateCategory(uid: String) -> Categories{
+		guard uid != "" else {
+			return Categories(context: container.viewContext)
+		}
+		
+		var record: Categories?
+		do {
+			let fetchRequest : NSFetchRequest<Categories> = Categories.createFetchRequest()
+			fetchRequest.predicate = NSPredicate(format: "uid = %@", uid)
+			let result: [Categories] = try container.viewContext.fetch(fetchRequest)
+			record = result.first
+		} catch {
+			print(error.localizedDescription)
+		}
+		
+		return record ?? Categories(context: container.viewContext)
 	}
 	
 	func getTotalMonth(year: Int, month: Int, type: recordType) -> Double {
@@ -202,7 +224,7 @@ class PersistentModel {
 		return output
 	}
 	
-	func addSampleRecordData() {
+	func addSampleRecord() {
 		let record = Records(context: self.container.viewContext)
 		record.amount = drand48() * 20;
 		record.datetime = Date()
@@ -210,6 +232,15 @@ class PersistentModel {
 		record.note = ""
 		record.reported = true
 		record.uid = UUID().uuidString
+		
+		saveContext()
+	}
+	
+	func addSampleCategory() {
+		let cateory = Categories(context: Facade.share.model.container.viewContext)
+		cateory.name = "Test " + UUID().uuidString.prefix(5)
+		cateory.direction = drand48() > 0.5 ? 1 : -1
+		cateory.uid = UUID().uuidString
 		
 		saveContext()
 	}

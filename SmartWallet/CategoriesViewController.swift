@@ -196,28 +196,6 @@ class CategoriesViewController: UITableViewController, NSFetchedResultsControlle
 		
 	}
 	
-	func addSampleData() {
-		let cateory = Categories(context: Facade.share.model.container.viewContext)
-		cateory.name = "Test " + UUID().uuidString.prefix(5)
-		cateory.direction = drand48() > 0.5 ? 1 : -1
-		cateory.uid = UUID().uuidString
-		
-		saveContext()
-	}
-	
-	func addCategory(name: String, direction: Int16) -> Bool {
-
-		
-		let category = Categories(context: Facade.share.model.container.viewContext)
-		category.name = name
-		category.direction = direction
-		category.uid = UUID().uuidString
-		
-		saveContext()
-		
-		return true
-	}
-	
 	func saveContext() {
 		Facade.share.model.saveContext()
 	}
@@ -234,6 +212,10 @@ class CategoriesViewController: UITableViewController, NSFetchedResultsControlle
 		}
 		
 		loadSavedData()
+	}
+	
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		UserDefaults.standard.set(segmentioView.selectedSegmentioIndex, forKey: "DirectionInAddCategories")
 	}
 	
 }
@@ -378,9 +360,7 @@ extension CategoriesViewController {
 		}
 		return proposedDestinationIndexPath
 	}
-	
-	
-	
+
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "categoryCell", for: indexPath)
 		let category = fetchedResultsController.object(at: indexPath)
@@ -389,6 +369,16 @@ extension CategoriesViewController {
 		//		cell.detailTextLabel?.text = category.direction > 0 ? "+" : "-"
 		
 		return cell
+	}
+	
+	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		let category = fetchedResultsController.object(at: indexPath)
+		
+		let storyboard = UIStoryboard(name: "Main", bundle: nil)
+		let controller = storyboard.instantiateViewController(withIdentifier: "AddCategory") as! AddCategoryViewController
+		
+		controller.currentUid = category.uid
+		navigationController?.pushViewController(controller, animated: true)
 	}
 	
 }

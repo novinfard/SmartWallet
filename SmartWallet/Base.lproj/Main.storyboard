@@ -400,7 +400,7 @@
         <!--Add Category View Controller-->
         <scene sceneID="hKK-1u-DXJ">
             <objects>
-                <viewController id="i3L-pN-Bl3" customClass="AddCategoryViewController" customModule="SmartWallet" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddCategory" id="i3L-pN-Bl3" customClass="AddCategoryViewController" customModule="SmartWallet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Sjw-fd-Eno">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

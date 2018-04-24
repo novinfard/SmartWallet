@@ -11,44 +11,61 @@ import UIKit
 class AddCategoryViewController: UIViewController {
 
 	@IBOutlet weak var categoryNameInput: UITextField!
-	
 	@IBOutlet weak var categoryTypeInput: UISegmentedControl!
+	
+	var currentUid = ""
+	var category: Categories!
 	
 	override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+		category = Facade.share.model.getOrCreateCategory(uid: currentUid)
+		var defaultDirection = UserDefaults.standard.integer(forKey: "DirectionInAddCategories")
+		if category.uid == "" {
+			// default initialisation for new category
+		} else {
+			// manipulate fields with current object data
+			categoryNameInput.text = category.name
+			if category.direction == 1 {
+				defaultDirection = 1
+			} else {
+				defaultDirection = 0
+			}
+		}
+		categoryTypeInput.selectedSegmentIndex = defaultDirection
+		
     }
 
 	@IBAction func addCategoryPressed(_ sender: Any) {
-		let cvc: CategoriesViewController = CategoriesViewController()
-		let categoryName = categoryNameInput.text!
-		let categoryType: Int16
-		if categoryTypeInput.selectedSegmentIndex == 0 {
-			categoryType = -1
-		} else {
-			categoryType = 1
+		guard categoryNameInput.text != "" else {
+			let alert = UIAlertController(title: "Error", message: "You should enter the name", preferredStyle:.alert)
+			alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+			present(alert, animated: true, completion: nil)
+			return
 		}
 		
-		if(cvc.addCategory(name: categoryName, direction: categoryType)) {
-			navigationController?.popViewController(animated: true)
+		if category.uid == "" {
+			category.uid = Facade.share.model.getNewUID()
 		}
+		
+		if categoryTypeInput.selectedSegmentIndex == 0 {
+			category.direction = -1
+		} else {
+			category.direction = 1
+		}
+		category.name = categoryNameInput.text!
+		
+		Facade.share.model.saveContext()
+		
+		navigationController?.popViewController(animated: true)
 	}
 	
-	
-	/*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+	override func viewWillDisappear(_ animated: Bool) {
+		super.viewWillDisappear(animated)
+		
+		if category.uid == "" {
+			Facade.share.model.container.viewContext.delete(category)
+			Facade.share.model.saveContext()
+		}
+	}
 }

@@ -140,7 +140,6 @@ class RecordsViewController: UITableViewController, NSFetchedResultsControllerDe
 
 		controller.currentUid = record.uid
 		navigationController?.pushViewController(controller, animated: true)
-
 	}
 	
 	
