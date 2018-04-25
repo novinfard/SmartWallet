@@ -230,7 +230,6 @@ extension CategoriesViewController {
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		let sectionInfo = fetchedResultsController.sections![section]
 		return sectionInfo.numberOfObjects
-		
 	}
 	
 	override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {

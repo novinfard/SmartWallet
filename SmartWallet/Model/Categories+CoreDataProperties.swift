@@ -23,6 +23,7 @@ extension Categories {
     @NSManaged public var parent: String
     @NSManaged public var uid: String
     @NSManaged public var relatedRecords: NSSet
+	@NSManaged public var budget: Double
 	
 	public override func willSave() {
 		super.willSave()

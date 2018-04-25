@@ -100,6 +100,21 @@ class PersistentModel {
 		}
 	}
 	
+	func getMaxAmountInBudget() -> Double{
+		var amount: Double?
+		do {
+			let fetchRequest : NSFetchRequest<Categories> = Categories.createFetchRequest()
+			let sort = NSSortDescriptor(key: "budget", ascending: false)
+			fetchRequest.sortDescriptors = [sort]
+			let categoriesList: [Categories] = try container.viewContext.fetch(fetchRequest)
+			amount = categoriesList.first?.budget
+		} catch {
+			print(error.localizedDescription)
+		}
+		
+		return amount ?? 0.0
+	}
+	
 	func getNumberOfRecordsInCategory(uid: String) -> Int{
 		do {
 			let fetchRequest : NSFetchRequest<Records> = Records.createFetchRequest()
@@ -222,6 +237,48 @@ class PersistentModel {
 		}
 		
 		return output
+	}
+	
+	func getTotalBudget() -> Double {
+		
+		var amountTotal : Double = 0
+		
+		// Step 1:
+		// - Create the summing expression on the amount attribute.
+		// - Name the expression result as 'amountTotal'.
+		// - Assign the expression result data type as a Double.
+		
+		let expression = NSExpressionDescription()
+		expression.expression =  NSExpression(forFunction: "sum:", arguments:[NSExpression(forKeyPath: "budget")])
+		expression.name = "amountTotal";
+		expression.expressionResultType = NSAttributeType.doubleAttributeType
+		
+		// Step 2:
+		// - Create the fetch request for the entity.
+		// - Indicate that the fetched properties are those that were
+		//   described in `expression`.
+		// - Indicate that the result type is a dictionary.
+		
+		let fetchRequest = NSFetchRequest<NSDictionary>(entityName:"Categories")
+		fetchRequest.propertiesToFetch = [expression]
+		fetchRequest.resultType = .dictionaryResultType
+		
+		// Step 3:
+		// - Execute the fetch request which returns an array.
+		// - There will only be one result. Get the first array
+		//   element and assign to 'resultMap'.
+		// - The summed amount value is in the dictionary as
+		//   'amountTotal'. This will be summed value.
+		
+		do {
+			let results = try container.viewContext.fetch(fetchRequest)
+			let resultMap = results[0] as! [String:Double]
+			amountTotal = resultMap["amountTotal"]!
+		} catch {
+			print("Error when summing amounts: \(error.localizedDescription)")
+		}
+		
+		return amountTotal
 	}
 	
 	func addSampleRecord() {

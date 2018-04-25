@@ -29,6 +29,8 @@
 		CD86E77A2041A62D0007F817 /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD86E7792041A62D0007F817 /* CategoriesViewController.swift */; };
 		CDAF4ECD207846EA00392459 /* GeneralHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDAF4ECC207846EA00392459 /* GeneralHelper.swift */; };
 		CDC80A1E2017E61D00AD4B35 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC80A1D2017E61D00AD4B35 /* MainTabBarViewController.swift */; };
+		CDD8642D2090E49B00E65E64 /* BudgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD8642C2090E49B00E65E64 /* BudgetViewController.swift */; };
+		CDD8642F2090F59A00E65E64 /* BudgetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD8642E2090F59A00E65E64 /* BudgetTableViewCell.swift */; };
 		CDEBB29D2015650E009ED68F /* WalletModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CDEBB29B2015650E009ED68F /* WalletModel.xcdatamodeld */; };
 		CDEBB2A82017E350009ED68F /* Accounts+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEBB2A22017E350009ED68F /* Accounts+CoreDataClass.swift */; };
 		CDEBB2A92017E350009ED68F /* Accounts+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEBB2A32017E350009ED68F /* Accounts+CoreDataProperties.swift */; };
@@ -65,6 +67,8 @@
 		CD86E7792041A62D0007F817 /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
 		CDAF4ECC207846EA00392459 /* GeneralHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralHelper.swift; sourceTree = "<group>"; };
 		CDC80A1D2017E61D00AD4B35 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
+		CDD8642C2090E49B00E65E64 /* BudgetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetViewController.swift; sourceTree = "<group>"; };
+		CDD8642E2090F59A00E65E64 /* BudgetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetTableViewCell.swift; sourceTree = "<group>"; };
 		CDEBB29C2015650E009ED68F /* WalletModel1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WalletModel1.xcdatamodel; sourceTree = "<group>"; };
 		CDEBB2A22017E350009ED68F /* Accounts+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Accounts+CoreDataClass.swift"; sourceTree = "<group>"; };
 		CDEBB2A32017E350009ED68F /* Accounts+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Accounts+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -108,6 +112,7 @@
 			children = (
 				CD0246B220768ED900E7C705 /* RecordTableViewCell.swift */,
 				CD397BC92078F5EA00103E5C /* DashboardTableViewCell.swift */,
+				CDD8642E2090F59A00E65E64 /* BudgetTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -143,6 +148,7 @@
 				CD0F712F2015221A000B2BCD /* DashboardViewController.swift */,
 				CD0F712B201521C0000B2BCD /* RecordsViewController.swift */,
 				CD2E553C204B0E3800976EAA /* AddRecordViewController.swift */,
+				CDD8642C2090E49B00E65E64 /* BudgetViewController.swift */,
 				CD0F712D201521DC000B2BCD /* SettingsViewController.swift */,
 				CD86E7792041A62D0007F817 /* CategoriesViewController.swift */,
 				CD2E553A2046D3FF00976EAA /* AddCategoryViewController.swift */,
@@ -315,8 +321,10 @@
 				CDEBB2AB2017E350009ED68F /* Categories+CoreDataProperties.swift in Sources */,
 				CD0F712C201521C0000B2BCD /* RecordsViewController.swift in Sources */,
 				CD0F712E201521DC000B2BCD /* SettingsViewController.swift in Sources */,
+				CDD8642D2090E49B00E65E64 /* BudgetViewController.swift in Sources */,
 				CDEBB2AC2017E350009ED68F /* Records+CoreDataClass.swift in Sources */,
 				CDEBB2AA2017E350009ED68F /* Categories+CoreDataClass.swift in Sources */,
+				CDD8642F2090F59A00E65E64 /* BudgetTableViewCell.swift in Sources */,
 				CD397BD4207D79CF00103E5C /* PickerBasedTextField.swift in Sources */,
 				CD31509520531661001AD682 /* Style.swift in Sources */,
 				CDEBB2AD2017E350009ED68F /* Records+CoreDataProperties.swift in Sources */,
