@@ -19,12 +19,14 @@ class BudgetViewController: UITableViewController, NSFetchedResultsControllerDel
 	
 	override func viewDidLoad() {
         super.viewDidLoad()
+		
 		loadData()
-
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
+		
+		loadData()
 	}
 	
 	@IBAction func editPressed(_ sender: Any) {
