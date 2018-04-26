@@ -83,7 +83,7 @@ class BudgetViewController: UITableViewController, NSFetchedResultsControllerDel
 		for cell in tableView.visibleCells as! [BudgetTableViewCell] {
 			let category = fetchedResultsController.object(at: tableView.indexPath(for: cell)!)
 			if let _amount = cell.budgetAmount.text, _amount != "" {
-				category.budget = Double(_amount)!
+				category.budget = getDoubleFromLocalNumber(input: _amount)
 			} else {
 				category.budget = 0.0
 			}

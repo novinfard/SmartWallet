@@ -194,12 +194,8 @@ class AddRecordViewController: UIViewController, UIPickerViewDataSource, UIPicke
 //			record.datetime = date
 //		}
 		
-		if let amountValue = Double(amountTextField.text!)
-		{
-			record.amount = amountValue
-		} else {
-			record.amount = 0
-		}
+
+		record.amount = getDoubleFromLocalNumber(input: amountTextField.text!)
 		
 		Facade.share.model.saveContext()
 		

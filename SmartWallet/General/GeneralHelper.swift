@@ -124,6 +124,16 @@ func getDateOnlyFromDatetime(_ date: Date) -> Date {
 	return dateFormatter.date(from: dateString)!
 }
 
+func getDoubleFromLocalNumber(input: String) -> Double {
+	var value = 0.0
+	let numberFormatter = NumberFormatter()
+	numberFormatter.locale = Locale(identifier: "EN")
+	if let amountValue = numberFormatter.number(from: input) {
+		value = amountValue.doubleValue
+	}
+	return value
+}
+
 
 extension Date {
 	func month() -> Int {
