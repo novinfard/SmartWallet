@@ -76,9 +76,23 @@ class BudgetViewController: UITableViewController, NSFetchedResultsControllerDel
 			maxBudget = Facade.share.model.getMaxAmountInBudget()
 
 			tableView.reloadData()
+			loadFooter()
 		} catch {
 			print("Fetch failed")
 		}
+		
+	}
+	
+	func loadFooter() {
+		let footerView: UIView = UIView.init(frame: CGRect(x:0, y:0, width:tableView.frame.width, height:45));
+		footerView.backgroundColor = UIColor.white
+		
+		let labelView: UILabel = UILabel.init(frame: CGRect(x:0, y:5, width:tableView.frame.width, height:30))
+		labelView.textAlignment = .center
+		labelView.text = "Total: \(getCurrencyLabel())\(totalBudget.clean)"
+		
+		footerView.addSubview(labelView)
+		tableView.tableFooterView = footerView
 	}
 	
 	func saveData() {
