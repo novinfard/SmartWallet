@@ -23,8 +23,9 @@ class CategoriesViewController: UITableViewController, NSFetchedResultsControlle
 		super.viewDidLoad()
 		
 		// tapRecognizer, placed in viewDidLoad
-		let longPressRecognizer = UILongPressGestureRecognizer(target: self, action:#selector(self.longPress(_:)))
-		self.view.addGestureRecognizer(longPressRecognizer)
+		// Disabled becuase of conflict wit
+//		let longPressRecognizer = UILongPressGestureRecognizer(target: self, action:#selector(self.longPress(_:)))
+//		self.view.addGestureRecognizer(longPressRecognizer)
 		
 		self.loadSavedData()
 				
@@ -117,6 +118,7 @@ class CategoriesViewController: UITableViewController, NSFetchedResultsControlle
 		self.isEditing = false
 		self.editButton.style = .plain
 		self.editButton.title = "Edit"
+//		loadSavedData()
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -258,10 +260,10 @@ extension CategoriesViewController {
 	override func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
 		return false
 	}
-	
-	override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
-		return .none
-	}
+
+//	override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+//		return .none
+//	}
 	
 	override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
 		return true
