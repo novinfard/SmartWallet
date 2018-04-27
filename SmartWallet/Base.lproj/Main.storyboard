@@ -448,10 +448,10 @@
             </objects>
             <point key="canvasLocation" x="2805.5999999999999" y="716.49175412293857"/>
         </scene>
-        <!--Dashboard View Controller-->
+        <!--Dashboard-->
         <scene sceneID="diZ-Sl-XJg">
             <objects>
-                <tableViewController id="cXW-z4-hvK" customClass="DashboardViewController" customModule="SmartWallet" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Dashboard" id="cXW-z4-hvK" customClass="DashboardViewController" customModule="SmartWallet" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="Ri2-Eo-wcm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -481,6 +481,50 @@
                                     </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="dashboardCostCell" id="MLR-VB-n0P" customClass="BudgetTableViewCell" customModule="SmartWallet" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="99.5" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="MLR-VB-n0P" id="ETF-lb-lGJ">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b6q-TM-qGb">
+                                            <rect key="frame" x="16" y="12" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xq7-RC-eCC">
+                                            <rect key="frame" x="300" y="6" width="61" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="30" id="nuq-lM-JLK"/>
+                                            </constraints>
+                                            <nil key="textColor"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                        </textField>
+                                        <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Va7-nO-X3X">
+                                            <rect key="frame" x="0.0" y="42.5" width="375" height="2"/>
+                                        </progressView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="b6q-TM-qGb" firstAttribute="leading" secondItem="ETF-lb-lGJ" secondAttribute="leading" constant="16" id="4m6-bq-5zg"/>
+                                        <constraint firstItem="xq7-RC-eCC" firstAttribute="leading" relation="lessThanOrEqual" secondItem="ETF-lb-lGJ" secondAttribute="leading" constant="300" id="Fwg-ph-TCP"/>
+                                        <constraint firstAttribute="trailing" secondItem="Va7-nO-X3X" secondAttribute="trailing" id="HW7-MG-el2"/>
+                                        <constraint firstItem="Va7-nO-X3X" firstAttribute="top" secondItem="ETF-lb-lGJ" secondAttribute="top" constant="43" id="Lv1-3B-h8o"/>
+                                        <constraint firstItem="b6q-TM-qGb" firstAttribute="centerY" secondItem="ETF-lb-lGJ" secondAttribute="centerY" id="MdL-A0-ABZ"/>
+                                        <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="b6q-TM-qGb" secondAttribute="trailing" constant="317" id="ZwY-4G-Oox"/>
+                                        <constraint firstItem="Va7-nO-X3X" firstAttribute="leading" secondItem="ETF-lb-lGJ" secondAttribute="leading" id="cRE-Mw-q6t"/>
+                                        <constraint firstItem="xq7-RC-eCC" firstAttribute="centerY" secondItem="ETF-lb-lGJ" secondAttribute="centerY" id="fg5-1a-Wea"/>
+                                        <constraint firstAttribute="trailing" secondItem="xq7-RC-eCC" secondAttribute="trailing" constant="14" id="oFk-dH-Cb5"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="budgetAmount" destination="xq7-RC-eCC" id="n0W-kr-iol"/>
+                                    <outlet property="budgetPercentage" destination="Va7-nO-X3X" id="ach-Zd-B0b"/>
+                                    <outlet property="categoryLabel" destination="b6q-TM-qGb" id="cOP-Em-mCw"/>
+                                </connections>
+                            </tableViewCell>
                         </prototypes>
                         <sections/>
                         <connections>
@@ -488,7 +532,7 @@
                             <outlet property="delegate" destination="cXW-z4-hvK" id="kR1-6q-TFc"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="5FZ-mo-i2S"/>
+                    <navigationItem key="navigationItem" title="Dashboard" id="5FZ-mo-i2S"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CtZ-LN-PWF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -536,7 +580,7 @@
         <!--Dashboard-->
         <scene sceneID="Zny-IS-wIO">
             <objects>
-                <navigationController title="Dashboard" automaticallyAdjustsScrollViewInsets="NO" id="CA7-YN-SSr" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="CA7-YN-SSr" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Dashboard" image="DashboardIcon" id="08q-uh-XJ6"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="p27-ka-fJE">

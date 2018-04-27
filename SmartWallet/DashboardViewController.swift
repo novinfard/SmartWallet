@@ -18,8 +18,10 @@ class DashboardViewController: UITableViewController {
 	var currentMonth: Int = Date().month()
 	var overalInfo = [(label: String, value:String)]()
 	var costInfo = [(label: String, value:String)]()
+	var budgetInfo = [(amount:Double, budget:Double)]()
 	var incomeInfo = [(label: String, value:String)]()
 	let currencyLabel = "£"
+	let totalBudget = Facade.share.model.getTotalBudget()
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -36,6 +38,7 @@ class DashboardViewController: UITableViewController {
 		calculateCostInfo()
 		calculateIncomeInfo()
 		
+		tableView.reloadData()
 	}
 	
 	func configureSegmentedView() {
@@ -85,6 +88,11 @@ class DashboardViewController: UITableViewController {
 		overalInfo.append(("Total", getRecordString(monthlyTotal, .recordTypeAll)))
 		overalInfo.append(("Total Cost", getRecordString(monthlyTotalCost, .recordTypeCost)))
 		overalInfo.append(("Total Income", getRecordString(monthlyTotalIncome, .recordTypeIncome)))
+		
+		if totalBudget > 0 {
+			let monthlyTotalSave = totalBudget + monthlyTotal
+			overalInfo.append(("Total Save (based on budget)", getRecordString(monthlyTotalSave, .recordTypeAll)))
+		}
 
 		overalInfo.append((" ", " "))
 
@@ -111,9 +119,11 @@ class DashboardViewController: UITableViewController {
 	
 	func calculateCostInfo() {
 		costInfo.removeAll()
+		budgetInfo.removeAll()
 		let catWithCost = Facade.share.model.getMonthlyTotalByCategory(year: currentYear, month: currentMonth, type: .recordTypeCost)
 		for result in catWithCost {
 			costInfo.append((label: result.category.name, value: getRecordString(result.amount, .recordTypeCost)))
+			budgetInfo.append((amount: result.amount, budget: result.category.budget))
 		}
 	}
 	
@@ -163,21 +173,55 @@ class DashboardViewController: UITableViewController {
 	}
 	
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCell(withIdentifier: "dashboardCell", for: indexPath)
-		
 		if(indexPath.section == 0) {
+			let cell = tableView.dequeueReusableCell(withIdentifier: "dashboardCell", for: indexPath)
 			cell.textLabel?.text = overalInfo[indexPath.row].label
 			cell.detailTextLabel?.text = overalInfo[indexPath.row].value
+			
+			return cell
 		} else if(indexPath.section == 1) {
-			cell.textLabel?.text = costInfo[indexPath.row].label
-			cell.detailTextLabel?.text = costInfo[indexPath.row].value
+			let cell = tableView.dequeueReusableCell(withIdentifier: "dashboardCostCell", for: indexPath) as! BudgetTableViewCell
+			let calc = budgetInfo[indexPath.row]
+			
+			cell.categoryLabel.text = costInfo[indexPath.row].label
+			if costInfo[indexPath.row].value != "" {
+				if(calc.budget != 0) {
+					cell.budgetAmount.text = "\(costInfo[indexPath.row].value) / \(calc.budget.clean)"
+				} else {
+					cell.budgetAmount.text = "\(costInfo[indexPath.row].value)"
+				}
+			} else {
+				cell.budgetAmount.text = ""
+				cell.budgetPercentage.progress = 0
+			}
+			
+			if calc.amount != 0 && calc.budget != 0 {
+				let share = calc.amount / calc.budget
+				if share > 1 {
+					cell.budgetPercentage.progress = Float(1 / share)
+					cell.budgetPercentage.progressTintColor = UIColor.blue
+					cell.budgetPercentage.trackTintColor = UIColor.red
+				} else {
+					cell.budgetPercentage.progress = Float(share)
+					cell.budgetPercentage.progressTintColor = UIColor.blue
+					cell.budgetPercentage.trackTintColor = UIColor.lightGray
+				}
+			} else {
+				cell.budgetPercentage.progress = 0
+			}
+			
+			cell.budgetAmount.isEnabled = false
+			
+			return cell
 		} else if(indexPath.section == 2) {
+			let cell = tableView.dequeueReusableCell(withIdentifier: "dashboardCell", for: indexPath)
 			cell.textLabel?.text = incomeInfo[indexPath.row].label
 			cell.detailTextLabel?.text = incomeInfo[indexPath.row].value
+			return cell
+		} else { // guard
+			let cell = tableView.dequeueReusableCell(withIdentifier: "dashboardCell", for: indexPath)
+			return cell
 		}
-		
-		return cell
-		
 	}
 	
 	private func segmentioContent() -> [SegmentioItem] {
