@@ -57,6 +57,10 @@ class AddCategoryViewController: UIViewController {
 		
 		Facade.share.model.saveContext()
 		
+		category.sortId = category.getAutoIncremenet()
+		Facade.share.model.saveContext()
+
+		
 		navigationController?.popViewController(animated: true)
 	}
 	
