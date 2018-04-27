@@ -113,7 +113,7 @@ extension BudgetViewController {
 		cell.categoryLabel.text = category.name
 		
 		if category.budget != 0 {
-			cell.budgetAmount.text = "\(category.budget.format(f: ".2"))"
+			cell.budgetAmount.text = "\(category.budget.clean)"
 		} else {
 			cell.budgetAmount.text = ""
 			cell.budgetPercentage.progress = 0
