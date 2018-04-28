@@ -179,7 +179,8 @@ class RecordsViewController: UITableViewController, NSFetchedResultsControllerDe
 		if fetchedResultsController.fetchedObjects?.count == 0 {
 			let coverImage = UIImage(named: "AddFirstRecord")!
 			coverImageView.image = coverImage
-			coverImageView.frame = CGRect(x: 20, y: 5, width: tableView.frame.width-20, height: 100)
+			coverImageView.contentMode = .scaleAspectFit
+			coverImageView.frame = CGRect(x: 20, y: 5, width: tableView.frame.width-20, height: 300)
 			view.addSubview(coverImageView)
 			
 		} else {
