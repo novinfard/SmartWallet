@@ -26,7 +26,15 @@ class MainTabBarViewController: UITabBarController {
 			self.selectedIndex = 1 // second tab
 		}
 	}
+	
+	override func viewDidLayoutSubviews() {
+		if !UserDefaults.standard.bool(forKey: "introduced") {
+			let storyboard = UIStoryboard(name: "Main", bundle: nil)
+			let splashVC = storyboard.instantiateViewController(withIdentifier: "splashController") as! SplashViewController
 
+			present(splashVC, animated: false)
+		}
+	}
 		
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

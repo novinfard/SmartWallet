@@ -31,6 +31,8 @@
 		CDC80A1E2017E61D00AD4B35 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC80A1D2017E61D00AD4B35 /* MainTabBarViewController.swift */; };
 		CDD8642D2090E49B00E65E64 /* BudgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD8642C2090E49B00E65E64 /* BudgetViewController.swift */; };
 		CDD8642F2090F59A00E65E64 /* BudgetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD8642E2090F59A00E65E64 /* BudgetTableViewCell.swift */; };
+		CDD960192093F10600254F9F /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD960182093F10600254F9F /* SplashViewController.swift */; };
+		CDD9601A2093F62000254F9F /* intro.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = CDD864302093F02700E65E64 /* intro.mp4 */; };
 		CDEBB29D2015650E009ED68F /* WalletModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CDEBB29B2015650E009ED68F /* WalletModel.xcdatamodeld */; };
 		CDEBB2A82017E350009ED68F /* Accounts+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEBB2A22017E350009ED68F /* Accounts+CoreDataClass.swift */; };
 		CDEBB2A92017E350009ED68F /* Accounts+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEBB2A32017E350009ED68F /* Accounts+CoreDataProperties.swift */; };
@@ -69,6 +71,8 @@
 		CDC80A1D2017E61D00AD4B35 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		CDD8642C2090E49B00E65E64 /* BudgetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetViewController.swift; sourceTree = "<group>"; };
 		CDD8642E2090F59A00E65E64 /* BudgetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetTableViewCell.swift; sourceTree = "<group>"; };
+		CDD864302093F02700E65E64 /* intro.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = intro.mp4; sourceTree = "<group>"; };
+		CDD960182093F10600254F9F /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		CDEBB29C2015650E009ED68F /* WalletModel1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WalletModel1.xcdatamodel; sourceTree = "<group>"; };
 		CDEBB2A22017E350009ED68F /* Accounts+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Accounts+CoreDataClass.swift"; sourceTree = "<group>"; };
 		CDEBB2A32017E350009ED68F /* Accounts+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Accounts+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -138,6 +142,7 @@
 		CD0F71182014D379000B2BCD /* SmartWallet */ = {
 			isa = PBXGroup;
 			children = (
+				CDD960182093F10600254F9F /* SplashViewController.swift */,
 				CD397BD3207D79CF00103E5C /* PickerBasedTextField.swift */,
 				CD0F71192014D379000B2BCD /* AppDelegate.swift */,
 				CD0246AF2074F9D100E7C705 /* Facade.swift */,
@@ -156,6 +161,7 @@
 				CD0F711D2014D379000B2BCD /* Main.storyboard */,
 				CD0F71202014D379000B2BCD /* Assets.xcassets */,
 				CD0F71222014D379000B2BCD /* LaunchScreen.storyboard */,
+				CDD864312093F03200E65E64 /* videos */,
 				CD0F71252014D379000B2BCD /* Info.plist */,
 			);
 			path = SmartWallet;
@@ -170,6 +176,14 @@
 				CD397BCD2079837E00103E5C /* Currency.swift */,
 			);
 			path = General;
+			sourceTree = "<group>";
+		};
+		CDD864312093F03200E65E64 /* videos */ = {
+			isa = PBXGroup;
+			children = (
+				CDD864302093F02700E65E64 /* intro.mp4 */,
+			);
+			path = videos;
 			sourceTree = "<group>";
 		};
 		CDEBB2AE2017E396009ED68F /* Model */ = {
@@ -249,6 +263,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CDD9601A2093F62000254F9F /* intro.mp4 in Resources */,
 				CD0F71242014D379000B2BCD /* LaunchScreen.storyboard in Resources */,
 				CD0F71212014D379000B2BCD /* Assets.xcassets in Resources */,
 				CD0F711F2014D379000B2BCD /* Main.storyboard in Resources */,
@@ -335,6 +350,7 @@
 				CDEBB2A92017E350009ED68F /* Accounts+CoreDataProperties.swift in Sources */,
 				CD397BCE2079837E00103E5C /* Currency.swift in Sources */,
 				CD0246AE2073FB2600E7C705 /* PersistentModel.swift in Sources */,
+				CDD960192093F10600254F9F /* SplashViewController.swift in Sources */,
 				CD0246B02074F9D100E7C705 /* Facade.swift in Sources */,
 				CD397BD0207AC3B400103E5C /* ChooseCurrencyTableViewController.swift in Sources */,
 				CDEBB2A82017E350009ED68F /* Accounts+CoreDataClass.swift in Sources */,

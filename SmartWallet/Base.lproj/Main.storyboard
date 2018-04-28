@@ -807,6 +807,94 @@
             </objects>
             <point key="canvasLocation" x="303" y="2194"/>
         </scene>
+        <!--Splash View Controller-->
+        <scene sceneID="IeM-QS-bCp">
+            <objects>
+                <viewController storyboardIdentifier="splashController" id="0z2-N1-YVp" customClass="SplashViewController" customModule="SmartWallet" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GgH-h7-GZ9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qgR-m5-bF8">
+                                <rect key="frame" x="0.0" y="428" width="375" height="199"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="07h-az-zti">
+                                        <rect key="frame" x="24" y="28.5" width="327" height="142.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="327" id="t23-ok-fBe"/>
+                                        </constraints>
+                                        <string key="text">⚪ Easily manage your costs and incomes
+
+⚪ Find your average daily cost
+
+⚪ Predict your monthly cost
+
+⚪ Define your budget and trace it</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="07h-az-zti" firstAttribute="centerX" secondItem="qgR-m5-bF8" secondAttribute="centerX" id="Auc-DK-G34"/>
+                                    <constraint firstItem="07h-az-zti" firstAttribute="centerY" secondItem="qgR-m5-bF8" secondAttribute="centerY" id="Wwt-di-xsx"/>
+                                    <constraint firstAttribute="height" constant="199" id="Yqz-Ef-Yef"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lop-kA-9aE">
+                                <rect key="frame" x="0.0" y="627" width="375" height="40"/>
+                                <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="0.35004194630872482" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="5EN-xD-4ZR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <state key="normal" title="Start Now!">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="startPressed:" destination="0z2-N1-YVp" eventType="touchUpInside" id="5VY-Bq-NWf"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Smart Wallet" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NCf-8u-Lxo">
+                                <rect key="frame" x="89.5" y="310" width="196" height="67"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="67" id="fqO-jr-YJw"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <size key="shadowOffset" width="2" height="-1"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Welcome" translatesAutoresizingMaskIntoConstraints="NO" id="dof-gy-A6T">
+                                <rect key="frame" x="240" y="300" width="135" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="OPw-9S-ND8"/>
+                                    <constraint firstAttribute="width" constant="135" id="xBL-lD-mZq"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="OFj-Z2-has" firstAttribute="trailing" secondItem="dof-gy-A6T" secondAttribute="trailing" id="2WQ-XG-gAf"/>
+                            <constraint firstItem="OFj-Z2-has" firstAttribute="bottom" secondItem="lop-kA-9aE" secondAttribute="bottom" id="8Py-DD-UNE"/>
+                            <constraint firstItem="OFj-Z2-has" firstAttribute="trailing" secondItem="qgR-m5-bF8" secondAttribute="trailing" id="AOg-tB-MYP"/>
+                            <constraint firstItem="NCf-8u-Lxo" firstAttribute="centerY" secondItem="OFj-Z2-has" secondAttribute="centerY" id="BsB-AQ-3fc"/>
+                            <constraint firstItem="OFj-Z2-has" firstAttribute="trailing" secondItem="lop-kA-9aE" secondAttribute="trailing" id="FCg-jU-gcd"/>
+                            <constraint firstItem="qgR-m5-bF8" firstAttribute="top" secondItem="dof-gy-A6T" secondAttribute="bottom" id="PCl-QE-lCn"/>
+                            <constraint firstItem="lop-kA-9aE" firstAttribute="top" secondItem="qgR-m5-bF8" secondAttribute="bottom" id="Zg6-bg-st3"/>
+                            <constraint firstItem="NCf-8u-Lxo" firstAttribute="centerX" secondItem="OFj-Z2-has" secondAttribute="centerX" id="g0N-2P-V5X"/>
+                            <constraint firstItem="qgR-m5-bF8" firstAttribute="leading" secondItem="OFj-Z2-has" secondAttribute="leading" id="jiV-2S-ZrG"/>
+                            <constraint firstItem="lop-kA-9aE" firstAttribute="leading" secondItem="OFj-Z2-has" secondAttribute="leading" id="qf1-PP-r6x"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="OFj-Z2-has"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GWB-aO-Zys" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1180" y="2193.5532233883059"/>
+        </scene>
     </scenes>
     <resources>
         <image name="AccountIcon" width="170" height="170"/>
@@ -816,5 +904,6 @@
         <image name="DashboardIcon" width="25" height="25"/>
         <image name="RecordsIcon" width="25" height="25"/>
         <image name="SettingsIcon" width="25" height="25"/>
+        <image name="Welcome" width="98" height="106"/>
     </resources>
 </document>

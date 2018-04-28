@@ -91,7 +91,7 @@ class DashboardViewController: UITableViewController {
 		
 		if totalBudget > 0 {
 			let monthlyTotalSave = totalBudget + monthlyTotal
-			overalInfo.append(("Total Save (based on budget)", getRecordString(monthlyTotalSave, .recordTypeAll)))
+			overalInfo.append(("Total Save", getRecordString(monthlyTotalSave, .recordTypeAll)))
 		}
 
 		overalInfo.append((" ", " "))
