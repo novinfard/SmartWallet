@@ -20,8 +20,8 @@ class DashboardViewController: UITableViewController {
 	var costInfo = [(label: String, value:String)]()
 	var budgetInfo = [(amount:Double, budget:Double)]()
 	var incomeInfo = [(label: String, value:String)]()
-	let currencyLabel = "£"
-	let totalBudget = Facade.share.model.getTotalBudget()
+	var currencyLabel = ""
+	var totalBudget = 0.0
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -33,6 +33,9 @@ class DashboardViewController: UITableViewController {
 		super.viewWillAppear(animated)
 
 		configureSegmentedView()
+		
+		totalBudget = Facade.share.model.getTotalBudget()
+		currencyLabel = getCurrencyLabel()
 		
 		calculateOveralInfo()
 		calculateCostInfo()
@@ -57,6 +60,9 @@ class DashboardViewController: UITableViewController {
 		segmentioView.valueDidChange = { [weak self] _, segmentIndex in
 			self?.currentYear = (self?.monthYearList[segmentIndex].year)!
 			self?.currentMonth = (self?.monthYearList[segmentIndex].month)!
+			
+			self?.totalBudget = Facade.share.model.getTotalBudget()
+			self?.currencyLabel = getCurrencyLabel()
 			
 			self?.calculateOveralInfo()
 			self?.calculateCostInfo()
@@ -90,7 +96,7 @@ class DashboardViewController: UITableViewController {
 		overalInfo.append(("Total Income", getRecordString(monthlyTotalIncome, .recordTypeIncome)))
 		
 		if totalBudget > 0 {
-			let monthlyTotalSave = totalBudget + monthlyTotal
+			let monthlyTotalSave = totalBudget - monthlyTotalCost
 			overalInfo.append(("Total Save", getRecordString(monthlyTotalSave, .recordTypeAll)))
 		}
 
