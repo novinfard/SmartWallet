@@ -1,12 +1,19 @@
 PODS:
+  - Crashlytics (3.10.0):
+    - Fabric (~> 1.7.3)
+  - Fabric (1.7.3)
   - Segmentio (3.0)
 
 DEPENDENCIES:
+  - Crashlytics
+  - Fabric
   - Segmentio (~> 3.0)
 
 SPEC CHECKSUMS:
+  Crashlytics: a989ef242b66605577a425733797f810bd2725eb
+  Fabric: bb495bb9a7a7677c6d03a1f8b83d95bc49b47e41
   Segmentio: 1607fba3b42230f5f91e997d1a3f337f1176674c
 
-PODFILE CHECKSUM: 67630c758d1e52da3e01935e2849f9da3992064e
+PODFILE CHECKSUM: b29cc4349c838a84e039a9678f5c1fef1f5fa6a3
 
 COCOAPODS: 1.4.0

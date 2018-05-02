@@ -142,9 +142,9 @@
 		CD0F71182014D379000B2BCD /* SmartWallet */ = {
 			isa = PBXGroup;
 			children = (
+				CD0F71192014D379000B2BCD /* AppDelegate.swift */,
 				CDD960182093F10600254F9F /* SplashViewController.swift */,
 				CD397BD3207D79CF00103E5C /* PickerBasedTextField.swift */,
-				CD0F71192014D379000B2BCD /* AppDelegate.swift */,
 				CD0246AF2074F9D100E7C705 /* Facade.swift */,
 				CDEBB2AE2017E396009ED68F /* Model */,
 				CD31509620531669001AD682 /* General */,
@@ -214,6 +214,7 @@
 				CD0F71142014D379000B2BCD /* Resources */,
 				91C14419AAFFAD9C856DBDC5 /* [CP] Embed Pods Frameworks */,
 				8D38211EB677D2368DA55147 /* [CP] Copy Pods Resources */,
+				CDD272052099D55D00ADA080 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -323,6 +324,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SmartWallet/Pods-SmartWallet-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		CDD272052099D55D00ADA080 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 25f3d0d3b645f5fb814ad56683376c724e40b9c2 8d71a9a96ef74dd043bb5ecfd3f9caec9bc80650419d921dc9acde4a44521982";
 		};
 /* End PBXShellScriptBuildPhase section */
 
