@@ -19,6 +19,7 @@ class Currency {
 	func loadEveryCountryWithCurrency() -> [Currency] {
 		var result:[Currency]=[]
 		let currencies = Locale.commonISOCurrencyCodes
+//		var allSeparators = Set<String>()
 		for currencyCode in currencies {
 			
 			let currency = Currency()
@@ -26,6 +27,11 @@ class Currency {
 			
 			
 			let currencyLocale = Locale(identifier: currencyCode)
+			
+//			if let decimal = currencyLocale.decimalSeparator {
+//				allSeparators.insert(decimal)
+//			}
+			
 			currency.currencyName = (currencyLocale as NSLocale).displayName(forKey:NSLocale.Key.currencyCode, value: currencyCode)
 			let index = currencyCode.index(currencyCode.startIndex, offsetBy: 2)
 			currency.countryCode = String(currencyCode[..<index])
@@ -41,6 +47,7 @@ class Currency {
 			}
 			
 		}
+//		print(allSeparators)
 		return result
 	}
 }

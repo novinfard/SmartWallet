@@ -17,8 +17,8 @@ class PickerBasedTextField: UITextField, UITextFieldDelegate {
 	let border = CALayer()
 	let width = CGFloat(2.0)
 	
-	required init?(coder aDecoder: (NSCoder!)) {
-		super.init(coder: aDecoder)
+	required init?(coder aDecoder: (NSCoder?)) {
+		super.init(coder: aDecoder!)
 		self.delegate=self;
 		border.borderColor = UIColor.black.cgColor
 		

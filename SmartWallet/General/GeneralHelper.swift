@@ -127,8 +127,9 @@ func getDateOnlyFromDatetime(_ date: Date) -> Date {
 func getDoubleFromLocalNumber(input: String) -> Double {
 	var value = 0.0
 	let numberFormatter = NumberFormatter()
+	let decimalFiltered = input.replacingOccurrences(of: "٫|,", with: ".", options: .regularExpression)
 	numberFormatter.locale = Locale(identifier: "EN")
-	if let amountValue = numberFormatter.number(from: input) {
+	if let amountValue = numberFormatter.number(from: decimalFiltered) {
 		value = amountValue.doubleValue
 	}
 	return value
