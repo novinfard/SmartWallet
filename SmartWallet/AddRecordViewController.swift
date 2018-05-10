@@ -34,7 +34,36 @@ class AddRecordViewController: UIViewController, UIPickerViewDataSource, UIPicke
 		setupCategoriesList()
 		setupAuthorList()
 		
+		guard expenseCategoriesList.count > 0 else {
+			let alert = UIAlertController(title: "Error", message: "You should have at least one expense category. Go to Settings > Categories and add an 'Expense' category.", preferredStyle:.alert)
+
+			alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { (action:UIAlertAction!) in
+				self.navigationController?.popViewController(animated: true)
+			})
+			present(alert, animated: true, completion: nil)
+
+			return
+		}
 		
+		guard incomeCategoriesList.count > 0 else {
+			let alert = UIAlertController(title: "Error", message: "You should have at least one income category. Go to Settings > Categories and add an 'Income' category.", preferredStyle:.alert)
+			
+			alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { (action:UIAlertAction!) in
+				self.navigationController?.popViewController(animated: true)
+			})
+			present(alert, animated: true, completion: nil)
+			
+			return
+		}
+		
+		if UserDefaults.standard.integer(forKey: "IncomeInAddRecords") >= incomeCategoriesList.count {
+			UserDefaults.standard.set(0, forKey: "IncomeInAddRecords")
+		}
+		
+		if UserDefaults.standard.integer(forKey: "ExpenseInAddRecords") >= expenseCategoriesList.count {
+			UserDefaults.standard.set(0, forKey: "ExpenseInAddRecords")
+		}
+
 		record = Facade.share.model.getOrCreateRecord(uid: currentUid)
 		var defaultDirection = UserDefaults.standard.integer(forKey: "DirectionInAddRecords")
 		if record.uid == "" {
@@ -140,6 +169,7 @@ class AddRecordViewController: UIViewController, UIPickerViewDataSource, UIPicke
 	override func viewWillDisappear(_ animated: Bool) {
 		super.viewWillDisappear(animated)
 		
+		guard record != nil else {return}
 		if record.uid == "" {
 			Facade.share.model.container.viewContext.delete(record)
 			Facade.share.model.saveContext()
