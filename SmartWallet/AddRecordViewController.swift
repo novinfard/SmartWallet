@@ -236,18 +236,21 @@ class AddRecordViewController: UIViewController, UIPickerViewDataSource, UIPicke
 	}
 	
 	@objc func directionChanged(_ sender: UISegmentedControl) {
-		categoryPicker.reloadAllComponents()
 		if directionSegmentedControl.selectedSegmentIndex == 0 {
-			record.relatedCategory = expenseCategoriesList[categoryPicker.selectedRow(inComponent: 0)]
+			record.relatedCategory = expenseCategoriesList[UserDefaults.standard.integer(forKey: "ExpenseInAddRecords")]
 			categoryTextField.text = record.relatedCategory.name
 			prefixLabel.text = "-" + getCurrencyLabel()
 			prefixLabel.textColor = UIColor.myAppRed
+			categoryPicker.selectRow(UserDefaults.standard.integer(forKey: "ExpenseInAddRecords"), inComponent: 0, animated: false)
 		} else {
-			record.relatedCategory = incomeCategoriesList[categoryPicker.selectedRow(inComponent: 0)]
+			record.relatedCategory = incomeCategoriesList[UserDefaults.standard.integer(forKey: "IncomeInAddRecords")]
 			categoryTextField.text = record.relatedCategory.name
 			prefixLabel.text = "+" + getCurrencyLabel()
 			prefixLabel.textColor = UIColor.myAppGreen
+			categoryPicker.selectRow(UserDefaults.standard.integer(forKey: "IncomeInAddRecords"), inComponent: 0, animated: false)
+
 		}
+		categoryPicker.reloadAllComponents()
 		
 		UserDefaults.standard.set(directionSegmentedControl.selectedSegmentIndex, forKey: "DirectionInAddRecords")
 	}

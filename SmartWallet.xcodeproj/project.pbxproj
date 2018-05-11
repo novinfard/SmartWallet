@@ -143,8 +143,6 @@
 			isa = PBXGroup;
 			children = (
 				CD0F71192014D379000B2BCD /* AppDelegate.swift */,
-				CDD960182093F10600254F9F /* SplashViewController.swift */,
-				CD397BD3207D79CF00103E5C /* PickerBasedTextField.swift */,
 				CD0246AF2074F9D100E7C705 /* Facade.swift */,
 				CDEBB2AE2017E396009ED68F /* Model */,
 				CD31509620531669001AD682 /* General */,
@@ -158,6 +156,8 @@
 				CD86E7792041A62D0007F817 /* CategoriesViewController.swift */,
 				CD2E553A2046D3FF00976EAA /* AddCategoryViewController.swift */,
 				CD397BCF207AC3B400103E5C /* ChooseCurrencyTableViewController.swift */,
+				CDD960182093F10600254F9F /* SplashViewController.swift */,
+				CD397BD3207D79CF00103E5C /* PickerBasedTextField.swift */,
 				CD0F711D2014D379000B2BCD /* Main.storyboard */,
 				CD0F71202014D379000B2BCD /* Assets.xcassets */,
 				CD0F71222014D379000B2BCD /* LaunchScreen.storyboard */,

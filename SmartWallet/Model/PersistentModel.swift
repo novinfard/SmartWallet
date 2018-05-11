@@ -52,10 +52,11 @@ class PersistentModel {
 				saveContext()
 				
 				// pre-defined cateogories import
-				let expenseCategoryNames = ["Foods & Drinks", "Shopping", "Housing", "Transportation", "Financial Expenses", "Entertainment", "Others"]
-				let incomeCategoryNames = ["Investments", "Gifts", "Copuns", "Rental Income", "Sale", "Interests"]
+				let expenseCategoryNames = ["Foods & Drinks", "Groceries", "Transport", "Shopping", "Bills", "Financial Expenses", "Entertainment", "Holidays", "Personal Care", "Family", "Lending", "Housing", "Accommodation", "General"]
+				let incomeCategoryNames = ["Salary", "Supports", "Investments", "Gifts", "Copuns", "Rental Income", "Sales", "Interests", "Refunding Debt", "General"]
 				
-				for categoryName in expenseCategoryNames {
+				
+				for categoryName in expenseCategoryNames.reversed() {
 					let category = Categories(context: self.container.viewContext)
 					category.direction = -1
 					category.name = categoryName
@@ -63,10 +64,10 @@ class PersistentModel {
 					category.uid = getNewUID()
 					saveContext()
 					category.sortId = category.getAutoIncremenet()
-
+					saveContext()
 				}
 				
-				for categoryName in incomeCategoryNames {
+				for categoryName in incomeCategoryNames.reversed() {
 					let category = Categories(context: self.container.viewContext)
 					category.direction = 1
 					category.name = categoryName
@@ -74,6 +75,7 @@ class PersistentModel {
 					category.uid = getNewUID()
 					saveContext()
 					category.sortId = category.getAutoIncremenet()
+					saveContext()
 				}
 				
 				saveContext()
