@@ -25,11 +25,16 @@ class AddRecordViewController: UIViewController, UIPickerViewDataSource, UIPicke
 	var accountsList: [Accounts] = []
 	var expenseCategoriesList: [Categories] = []
 	var incomeCategoriesList: [Categories] = []
-	var record: Records!
 	var currentUid = ""
+	var model: AddRecordModel = Facade.share.model.addRecordModel
+	var record: Records!
 	
 	override func viewDidLoad() {
         super.viewDidLoad()
+		
+//		Facade.share.model.addRecordModel = AddRecordModel()
+		model.amount = 0
+		model.datetime = Date()
 		
 		setupCategoriesList()
 		setupAuthorList()
@@ -56,41 +61,49 @@ class AddRecordViewController: UIViewController, UIPickerViewDataSource, UIPicke
 			return
 		}
 		
-		if UserDefaults.standard.integer(forKey: "IncomeInAddRecords") >= incomeCategoriesList.count {
-			UserDefaults.standard.set(0, forKey: "IncomeInAddRecords")
+		if model.incomeIndex >= incomeCategoriesList.count {
+			model.incomeIndex = 0
 		}
 		
-		if UserDefaults.standard.integer(forKey: "ExpenseInAddRecords") >= expenseCategoriesList.count {
-			UserDefaults.standard.set(0, forKey: "ExpenseInAddRecords")
+		if model.expenseIndex >= expenseCategoriesList.count {
+			model.expenseIndex = 0
 		}
 
-		record = Facade.share.model.getOrCreateRecord(uid: currentUid)
-		var defaultDirection = UserDefaults.standard.integer(forKey: "DirectionInAddRecords")
-		if record.uid == "" {
-			if defaultDirection == 0 {
-				record.relatedCategory = expenseCategoriesList[UserDefaults.standard.integer(forKey: "ExpenseInAddRecords")]
-			} else {
-				record.relatedCategory = incomeCategoriesList[UserDefaults.standard.integer(forKey: "IncomeInAddRecords")]
-			}
-			record.datetime = getDateOnlyFromDatetime(Date())
-			
-			record.relatedAccount = accountsList[UserDefaults.standard.integer(forKey: "AccountInAddRecords")]
-		} else {
+		if let record = Facade.share.model.getRecord(uid: currentUid) {
+			self.record = record
 			amountTextField.text = String("\(record.amount.format(f: ".2"))")
 			if record.direction == 1 {
-				defaultDirection = 1
+				model.direction = 1
+				
+				for (index, cat) in incomeCategoriesList.enumerated() {
+					if cat.uid == record.relatedCategory.uid {
+						model.incomeIndex = index
+						break
+					}
+				}
 			} else {
-				defaultDirection = 0
+				model.direction = 0
+				
+				for (index, cat) in expenseCategoriesList.enumerated() {
+					if cat.uid == record.relatedCategory.uid {
+						model.expenseIndex = index
+						break
+					}
+				}
 			}
+			model.datetime = record.datetime
+		} else {
+			
 		}
 		
 		// datePicker
 		let formatter = DateFormatter()
 		formatter.dateStyle = .medium
-		dateTextField.text = formatter.string(from: record.datetime) 
+		dateTextField.text = formatter.string(from: model.datetime)
 		
 		let datePicker: UIDatePicker = UIDatePicker()
 		datePicker.datePickerMode = .date
+		datePicker.date = model.datetime
 		datePicker.backgroundColor = UIColor.white
 		dateTextField.inputView = datePicker
 		datePicker.addTarget(self, action: #selector(datePickerValueChanged(sender:)), for: .valueChanged)
@@ -121,22 +134,20 @@ class AddRecordViewController: UIViewController, UIPickerViewDataSource, UIPicke
 		
 		// directionField config
 		directionSegmentedControl.addTarget(self, action: #selector(directionChanged(_:)), for: .valueChanged)
-		directionSegmentedControl.selectedSegmentIndex = defaultDirection
+		directionSegmentedControl.selectedSegmentIndex = model.direction
 		
 		if directionSegmentedControl.selectedSegmentIndex == 0 {
-			let defaultExpenseCategory = UserDefaults.standard.integer(forKey: "ExpenseInAddRecords")
-			categoryTextField.text = (expenseCategoriesList.count > 0) ? record.relatedCategory.name : ""
-			if defaultExpenseCategory <= categoryPicker.numberOfRows(inComponent: 0) {
-				categoryPicker.selectRow(defaultExpenseCategory, inComponent: 0, animated: false)
-			}
+			categoryTextField.text = (expenseCategoriesList.count > 0) ? expenseCategoriesList[model.expenseIndex].name : ""
+//			if model.expenseIndex <= categoryPicker.numberOfRows(inComponent: 0) {
+			categoryPicker.selectRow(model.expenseIndex, inComponent: 0, animated: false)
+//			}
 			prefixLabel.text = "-" + getCurrencyLabel()
 			prefixLabel.textColor = UIColor.myAppRed
 		} else {
-			let defaultIncomeCategory = UserDefaults.standard.integer(forKey: "IncomeInAddRecords")
-			categoryTextField.text = (incomeCategoriesList.count > 0) ? incomeCategoriesList[defaultIncomeCategory].name : ""
-			if defaultIncomeCategory <= categoryPicker.numberOfRows(inComponent: 0) {
-				categoryPicker.selectRow(defaultIncomeCategory, inComponent: 0, animated: false)
-			}
+			categoryTextField.text = (incomeCategoriesList.count > 0) ? incomeCategoriesList[model.incomeIndex].name : ""
+//			if model.incomeIndex <= categoryPicker.numberOfRows(inComponent: 0) {
+				categoryPicker.selectRow(model.incomeIndex, inComponent: 0, animated: false)
+//			}
 			prefixLabel.text = "+" + getCurrencyLabel()
 			prefixLabel.textColor = UIColor.myAppGreen
 		}
@@ -168,12 +179,6 @@ class AddRecordViewController: UIViewController, UIPickerViewDataSource, UIPicke
 	
 	override func viewWillDisappear(_ animated: Bool) {
 		super.viewWillDisappear(animated)
-		
-		guard record != nil else {return}
-		if record.uid == "" {
-			Facade.share.model.container.viewContext.delete(record)
-			Facade.share.model.saveContext()
-		}
 	}
 	
 	func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -186,7 +191,6 @@ class AddRecordViewController: UIViewController, UIPickerViewDataSource, UIPicke
 			textField2.border.borderColor = UIColor.myAppBlue.cgColor
 			textField2.textColor = UIColor.myAppBlue
 		}
-		
 	}
 	
 	func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
@@ -206,25 +210,35 @@ class AddRecordViewController: UIViewController, UIPickerViewDataSource, UIPicke
 			present(alert, animated: true, completion: nil)
 			return
 		}
+		model.amount = getDoubleFromLocalNumber(input: amountTextField.text!)
 		
-		if record.uid == "" {
+		let formatter = DateFormatter()
+		formatter.dateStyle = .medium
+		if let date = formatter.date(from: dateTextField.text!) {
+			model.datetime = date
+		}
+
+
+		if model.uid == "" || model.uid == nil {
+			// new record
+			record = Records(context: Facade.share.model.container.viewContext)
 			record.uid = Facade.share.model.getNewUID()
 		}
-		
-		if directionSegmentedControl.selectedSegmentIndex == 0 {
+
+		if model.direction == 0 {
+			record.relatedCategory = expenseCategoriesList[model.expenseIndex]
 			record.direction = -1
 		} else {
+			record.relatedCategory = incomeCategoriesList[model.incomeIndex]
 			record.direction = 1
 		}
+		record.relatedAccount = accountsList[model.accountIndex]
+
 		record.reported = (reportingSegmentedControl.selectedSegmentIndex == 0) ? true : false
 		
-//		let formatter = DateFormatter()
-//		formatter.dateStyle = .medium
-//		if let date = formatter.date(from: dateTextField.text!) {
-//			record.datetime = date
-//		}
-		
 		record.amount = getDoubleFromLocalNumber(input: amountTextField.text!)
+		
+		record.datetime = model.datetime
 		
 		Facade.share.model.saveContext()
 		
@@ -236,23 +250,23 @@ class AddRecordViewController: UIViewController, UIPickerViewDataSource, UIPicke
 	}
 	
 	@objc func directionChanged(_ sender: UISegmentedControl) {
-		if directionSegmentedControl.selectedSegmentIndex == 0 {
-			record.relatedCategory = expenseCategoriesList[UserDefaults.standard.integer(forKey: "ExpenseInAddRecords")]
-			categoryTextField.text = record.relatedCategory.name
-			prefixLabel.text = "-" + getCurrencyLabel()
-			prefixLabel.textColor = UIColor.myAppRed
-			categoryPicker.selectRow(UserDefaults.standard.integer(forKey: "ExpenseInAddRecords"), inComponent: 0, animated: false)
-		} else {
-			record.relatedCategory = incomeCategoriesList[UserDefaults.standard.integer(forKey: "IncomeInAddRecords")]
-			categoryTextField.text = record.relatedCategory.name
-			prefixLabel.text = "+" + getCurrencyLabel()
-			prefixLabel.textColor = UIColor.myAppGreen
-			categoryPicker.selectRow(UserDefaults.standard.integer(forKey: "IncomeInAddRecords"), inComponent: 0, animated: false)
-
-		}
+		model.direction = directionSegmentedControl.selectedSegmentIndex
 		categoryPicker.reloadAllComponents()
 		
-		UserDefaults.standard.set(directionSegmentedControl.selectedSegmentIndex, forKey: "DirectionInAddRecords")
+		if directionSegmentedControl.selectedSegmentIndex == 0 {
+			categoryTextField.text = expenseCategoriesList[model.expenseIndex].name
+			prefixLabel.text = "-" + getCurrencyLabel()
+			prefixLabel.textColor = UIColor.myAppRed
+			
+			categoryPicker.selectRow(model.expenseIndex, inComponent: 0, animated: false)
+		} else {
+			categoryTextField.text = incomeCategoriesList[model.incomeIndex].name
+			prefixLabel.text = "+" + getCurrencyLabel()
+			prefixLabel.textColor = UIColor.myAppGreen
+			
+			categoryPicker.selectRow(model.incomeIndex, inComponent: 0, animated: false)
+		}
+		
 	}
 	
 	public func setupCategoriesList(){
@@ -315,19 +329,18 @@ class AddRecordViewController: UIViewController, UIPickerViewDataSource, UIPicke
 	
 	func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
 		if pickerView == categoryPicker {
-			record.direction = Int16(directionSegmentedControl.selectedSegmentIndex)
-			if record.direction == 0 {
-				record.relatedCategory = expenseCategoriesList[row]
-				UserDefaults.standard.set(row, forKey: "ExpenseInAddRecords")
+			model.direction = directionSegmentedControl.selectedSegmentIndex
+			if model.direction == 0 {
+				model.expenseIndex = row
+				categoryTextField.text = expenseCategoriesList[row].name
 			} else {
-				record.relatedCategory = incomeCategoriesList[row]
-				UserDefaults.standard.set(row, forKey: "IncomeInAddRecords")
+				model.incomeIndex = row
+				categoryTextField.text = incomeCategoriesList[row].name
 			}
-			categoryTextField.text = record.relatedCategory.name
 		}
 		else if pickerView == accountPicker {
-			record.relatedAccount = accountsList[row]
-			accountTextField.text = record.relatedAccount.name
+			model.accountIndex = row
+			accountTextField.text = accountsList[row].name
 		}
 	}
 	
@@ -336,35 +349,9 @@ class AddRecordViewController: UIViewController, UIPickerViewDataSource, UIPicke
 		let dateFormatter: DateFormatter = DateFormatter()
 		dateFormatter.dateStyle = DateFormatter.Style.medium
 		dateFormatter.timeStyle = DateFormatter.Style.none
-		record.datetime = getDateOnlyFromDatetime(sender.date)
+		model.datetime = getDateOnlyFromDatetime(sender.date)
 		
-		
-		dateTextField.text = dateFormatter.string(from: record.datetime)
+		dateTextField.text = dateFormatter.string(from: model.datetime)
 	}
-	
-	override func didReceiveMemoryWarning() {
-		super.didReceiveMemoryWarning()
-		// Dispose of any resources that can be recreated.
-	}
-	
-	func saveContext() {
-		if container.viewContext.hasChanges {
-			do {
-				try container.viewContext.save()
-			} catch {
-				print("An error occurred while saving: \(error)")
-			}
-		}
-	}
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

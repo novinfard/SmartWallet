@@ -14,9 +14,12 @@ class PersistentModel {
 	
 	var container: NSPersistentContainer!
 	var resultController: NSFetchRequestResult!
+	var addRecordModel: AddRecordModel
 	
 	init() {
 //		print("PersistentModel - init")
+		addRecordModel = AddRecordModel()
+		
 		// initialise core data
 		container = NSPersistentContainer(name: "WalletModel")
 		
@@ -30,7 +33,6 @@ class PersistentModel {
 		
 		print(NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).last! as String)
 
-		
 		importInitialData()
 	}
 	
@@ -146,6 +148,24 @@ class PersistentModel {
 		}
 		
 		return record ?? Records(context: container.viewContext)
+	}
+	
+	func getRecord(uid: String) -> Records?{
+		guard uid != "" else {
+			return nil
+		}
+		
+		do {
+			let fetchRequest : NSFetchRequest<Records> = Records.createFetchRequest()
+			fetchRequest.predicate = NSPredicate(format: "uid = %@", uid)
+			let result: [Records] = try container.viewContext.fetch(fetchRequest)
+			if result.count > 0 {
+				return result.first
+			}
+		} catch {
+			print(error.localizedDescription)
+		}
+		return nil
 	}
 	
 	func getOrCreateCategory(uid: String) -> Categories{
@@ -312,5 +332,17 @@ class PersistentModel {
 				print("An error occurred while saving: \(error)")
 			}
 		}
+	}
+}
+
+extension NSManagedObject {
+	func shallowCopy() -> NSManagedObject? {
+		guard let context = managedObjectContext, let entityName = entity.name else { return nil }
+		let copy = NSEntityDescription.insertNewObject(forEntityName: entityName, into: context)
+		let attributes = entity.attributesByName
+		for (attrKey, _) in attributes {
+			copy.setValue(value(forKey: attrKey), forKey: attrKey)
+		}
+		return copy
 	}
 }
