@@ -35,6 +35,7 @@ class AddRecordViewController: UIViewController, UIPickerViewDataSource, UIPicke
 //		Facade.share.model.addRecordModel = AddRecordModel()
 		model.amount = 0
 		model.datetime = Date()
+		model.uid = nil
 		
 		setupCategoriesList()
 		setupAuthorList()
@@ -92,6 +93,7 @@ class AddRecordViewController: UIViewController, UIPickerViewDataSource, UIPicke
 				}
 			}
 			model.datetime = record.datetime
+			model.uid = record.uid
 		} else {
 			
 		}
