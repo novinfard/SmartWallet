@@ -22,6 +22,12 @@ enum recordType {
 	case recordTypeAll
 }
 
+enum categoryType {
+	case categoryTypeCost
+	case categoryTypeIncome
+	case categoryTypeAll
+}
+
 
 func getCurrencyLabel() -> String {
 	let currencyLabel = UserDefaults.standard.string(forKey: "currencySymbol") ?? ""

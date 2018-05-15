@@ -186,6 +186,57 @@ class PersistentModel {
 		return record ?? Categories(context: container.viewContext)
 	}
 	
+	func changeCategoryOrdering(_ category: Categories, newSortId: Int64) {
+		guard newSortId != category.sortId else {
+			return
+		}
+		let previousSortId = category.sortId
+		
+		print("previousSort \(previousSortId), newSort \(newSortId)")
+		
+		var plusOperaion = true
+		if newSortId >= category.sortId {
+			plusOperaion = false
+		}
+		
+		category.sortId = newSortId
+		saveContext()
+		
+		do {
+			let fetchRequest : NSFetchRequest<Categories> = Categories.createFetchRequest()
+			if plusOperaion {
+				fetchRequest.predicate = NSPredicate(format: "sortId >= %d and sortId < %d and direction = %d and uid != %@", newSortId, previousSortId, category.direction, category.uid, category.uid)
+				print("sortId >= %d and sortId < %d and direction = %d and uid != %@", newSortId, previousSortId, category.direction, category.uid, category.uid)
+			} else {
+				fetchRequest.predicate = NSPredicate(format: "sortId <= %d and sortId > %d and direction = %d and uid != %@", newSortId, previousSortId, category.direction, category.uid)
+				print("sortId <= %d and sortId > %d and direction = %d and uid != %@", newSortId, previousSortId, category.direction, category.uid)
+			}
+			let sort = NSSortDescriptor(key: "sortId", ascending: true)
+			fetchRequest.sortDescriptors = [sort]
+			let results: [Categories] = try container.viewContext.fetch(fetchRequest)
+			
+			if plusOperaion {
+				for cat in results {
+//					print("\(cat.name) was \(cat.sortId)")
+					cat.sortId +=  1
+//					print("\(cat.name) is \(cat.sortId) now +")
+//					print("")
+				}
+			} else {
+				for cat in results {
+//					print("\(cat.name) was \(cat.sortId)")
+					cat.sortId -=  1
+//					print("\(cat.name) is \(cat.sortId) now -")
+//					print("")
+				}
+			}
+		} catch {
+			print(error.localizedDescription)
+		}
+		
+		saveContext()
+	}
+	
 	func getTotalMonth(year: Int, month: Int, type: recordType) -> Double {
 		do {
 			let fetchRequest : NSFetchRequest<Records> = Records.createFetchRequest()
