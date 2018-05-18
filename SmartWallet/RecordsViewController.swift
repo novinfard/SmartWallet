@@ -101,6 +101,7 @@ class RecordsViewController: UITableViewController, NSFetchedResultsControllerDe
 	
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "recordCell", for: indexPath) as! RecordTableViewCell
+		
 		let record = fetchedResultsController.object(at: indexPath)
 		if record.direction > 0 {
 			cell.icon.image = UIImage(named: "UpIcon")

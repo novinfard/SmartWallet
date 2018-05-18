@@ -17,6 +17,10 @@ class RecordTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+		if UIScreen.main.nativeBounds.height == 1136 {
+			amountLabel.font = amountLabel.font.withSize(17) // for others 20
+			titleLabel.font = titleLabel.font.withSize(14) // for others 17
+		}
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
