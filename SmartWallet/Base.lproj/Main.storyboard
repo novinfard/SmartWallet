@@ -405,31 +405,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zWU-gW-adD">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zWU-gW-adD">
                                 <rect key="frame" x="16" y="187" width="343" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fcd-JQ-uUT">
-                                <rect key="frame" x="163" y="318" width="49" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Submit"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fcd-JQ-uUT">
+                                <rect key="frame" x="16" y="326" width="343" height="30"/>
+                                <color key="backgroundColor" red="0.55686274509803924" green="0.9137254901960784" blue="0.88627450980392153" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Submit">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="addCategoryPressed:" destination="i3L-pN-Bl3" eventType="touchUpInside" id="3md-BC-YRH"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OBt-jS-5j5">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OBt-jS-5j5">
                                 <rect key="frame" x="165" y="158" width="45" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="8W8-g3-3qZ">
-                                <rect key="frame" x="16" y="243" width="343" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="8W8-g3-3qZ">
+                                <rect key="frame" x="16" y="238" width="343" height="29"/>
                                 <segments>
                                     <segment title="Expense"/>
                                     <segment title="Income"/>
@@ -437,6 +436,19 @@
                             </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Fcd-JQ-uUT" firstAttribute="centerX" secondItem="Nhf-9m-Uc6" secondAttribute="centerX" id="8FR-1v-5W3"/>
+                            <constraint firstItem="zWU-gW-adD" firstAttribute="centerX" secondItem="Nhf-9m-Uc6" secondAttribute="centerX" id="DXt-Iu-8aa"/>
+                            <constraint firstItem="8W8-g3-3qZ" firstAttribute="leading" secondItem="Nhf-9m-Uc6" secondAttribute="leading" constant="16" id="FjL-Vm-tVa"/>
+                            <constraint firstItem="Fcd-JQ-uUT" firstAttribute="leading" secondItem="Nhf-9m-Uc6" secondAttribute="leading" constant="16" id="I8P-H3-5ta"/>
+                            <constraint firstItem="OBt-jS-5j5" firstAttribute="centerX" secondItem="Nhf-9m-Uc6" secondAttribute="centerX" id="W6Y-dx-h2V"/>
+                            <constraint firstItem="8W8-g3-3qZ" firstAttribute="top" secondItem="Nhf-9m-Uc6" secondAttribute="top" constant="174" id="csc-2t-M8l"/>
+                            <constraint firstItem="zWU-gW-adD" firstAttribute="top" secondItem="OBt-jS-5j5" secondAttribute="bottom" constant="8" id="cv3-3K-uoI"/>
+                            <constraint firstItem="OBt-jS-5j5" firstAttribute="top" secondItem="Nhf-9m-Uc6" secondAttribute="top" constant="94" id="d06-4W-l9L"/>
+                            <constraint firstItem="8W8-g3-3qZ" firstAttribute="centerX" secondItem="Nhf-9m-Uc6" secondAttribute="centerX" id="g6o-bh-RN4"/>
+                            <constraint firstItem="zWU-gW-adD" firstAttribute="leading" secondItem="Nhf-9m-Uc6" secondAttribute="leading" constant="16" id="ixb-ba-0pg"/>
+                            <constraint firstItem="Fcd-JQ-uUT" firstAttribute="centerY" secondItem="Nhf-9m-Uc6" secondAttribute="centerY" id="si3-HW-Nw0"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Nhf-9m-Uc6"/>
                     </view>
                     <connections>
@@ -816,7 +828,7 @@
                                 <rect key="frame" x="0.0" y="428" width="375" height="199"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="07h-az-zti">
-                                        <rect key="frame" x="24" y="28.5" width="327" height="142.5"/>
+                                        <rect key="frame" x="24.5" y="28.5" width="327" height="142.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="327" id="t23-ok-fBe"/>
                                         </constraints>
