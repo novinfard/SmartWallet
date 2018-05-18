@@ -72,7 +72,12 @@ class AddRecordViewController: UIViewController, UIPickerViewDataSource, UIPicke
 
 		if let record = Facade.share.model.getRecord(uid: currentUid) {
 			self.record = record
-			amountTextField.text = String("\(record.amount.format(f: ".2"))")
+			
+			let formatter = NumberFormatter()
+			formatter.minimumFractionDigits = 0
+			formatter.maximumFractionDigits = 2
+			
+			amountTextField.text = String("\(formatter.string(from: NSNumber(value: record.amount))!)")
 			if record.direction == 1 {
 				model.direction = 1
 				

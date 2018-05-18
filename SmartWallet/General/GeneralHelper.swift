@@ -117,10 +117,16 @@ func getRecordString(_ value: Double, _ type: recordType, preciseDecimal: Int = 
 	}
 	let absValue = abs(value)
 	
+	let formatter = NumberFormatter()
+	formatter.minimumFractionDigits = 0
+	formatter.maximumFractionDigits = 2
+	
 	if(formatting) {
 		return "\(prefix) \(getCurrencyLabel()) \(absValue.format(f: ".\(preciseDecimal)"))"
 	} else {
-		return String(format:"\(prefix) \(getCurrencyLabel()) %g", absValue)
+		
+//		return String(format:"\(prefix) \(getCurrencyLabel()) %g", absValue)
+		return "\(prefix) \(getCurrencyLabel()) \(formatter.string(from: NSNumber(value: absValue))!)"
 	}
 
 }

@@ -125,6 +125,7 @@ extension BudgetViewController {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "budgetCell", for: indexPath) as! BudgetTableViewCell
 		let category = fetchedResultsController.object(at: indexPath)
 		cell.categoryLabel.text = category.name
+		cell.amountLabel.text = getCurrencyLabel()
 		
 		if category.budget != 0 {
 			cell.budgetAmount.text = "\(category.budget.clean)"
