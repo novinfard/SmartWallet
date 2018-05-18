@@ -101,7 +101,7 @@ func getMonthDuration(year: Int, month: Int, considerCurrent: Bool) -> Int {
 	return numDays
 }
 
-func getRecordString(_ value: Double, _ type: recordType) -> String {
+func getRecordString(_ value: Double, _ type: recordType, preciseDecimal: Int = 2, formatting: Bool = true) -> String {
 	var prefix = ""
 	if type == .recordTypeAll {
 		if(value >= 0) {
@@ -116,8 +116,13 @@ func getRecordString(_ value: Double, _ type: recordType) -> String {
 		prefix = "-"
 	}
 	let absValue = abs(value)
+	
+	if(formatting) {
+		return "\(prefix) \(getCurrencyLabel()) \(absValue.format(f: ".\(preciseDecimal)"))"
+	} else {
+		return String(format:"\(prefix) \(getCurrencyLabel()) %g", absValue)
+	}
 
-	return "\(prefix) \(getCurrencyLabel()) \(absValue.format(f: ".2"))"
 }
 
 func getDateOnlyFromDatetime(_ date: Date) -> Date {
