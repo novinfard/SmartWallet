@@ -11,5 +11,6 @@ target 'SmartWallet' do
   pod 'Segmentio', '~> 3.0'
   pod 'Fabric'
   pod 'Crashlytics'
+  pod 'SwiftLint'
 
 end
