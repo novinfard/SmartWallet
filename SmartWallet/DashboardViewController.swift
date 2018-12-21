@@ -242,7 +242,7 @@ class DashboardViewController: UITableViewController {
 	}
 	
 	private static func segmentioOptions(segmentioStyle: SegmentioStyle, segmentioPosition: SegmentioPosition = .fixed(maxVisibleItems: 3)) -> SegmentioOptions {
-		var imageContentMode = UIViewContentMode.center
+		var imageContentMode = UIView.ContentMode.center
 		switch segmentioStyle {
 		case .imageBeforeLabel, .imageAfterLabel:
 			imageContentMode = .scaleAspectFit

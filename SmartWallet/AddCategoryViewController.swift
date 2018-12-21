@@ -39,7 +39,7 @@ class AddCategoryViewController: UIViewController {
 	@IBAction func addCategoryPressed(_ sender: Any) {
 		guard categoryNameInput.text != "" else {
 			let alert = UIAlertController(title: "Error", message: "You should enter the name", preferredStyle:.alert)
-			alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+			alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
 			present(alert, animated: true, completion: nil)
 			return
 		}

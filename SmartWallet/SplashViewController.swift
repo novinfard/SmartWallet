@@ -41,13 +41,13 @@ class SplashViewController: UIViewController {
 											   object: avPlayer.currentItem)
 		
 		// set observer for UIApplicationWillEnterForeground
-		NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground), name: .UIApplicationWillEnterForeground, object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
 
 	}
 	
 	@objc func playerItemDidReachEnd(notification: Notification) {
 		let p: AVPlayerItem = notification.object as! AVPlayerItem
-		p.seek(to: kCMTimeZero)
+		p.seek(to: CMTime.zero)
 	}
 	
 	override func viewDidAppear(_ animated: Bool) {

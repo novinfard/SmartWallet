@@ -96,7 +96,7 @@ class CategoriesViewController: UITableViewController, NSFetchedResultsControlle
 	
 	@objc func longPress(_ longPressGestureRecognizer: UILongPressGestureRecognizer) {
 		
-		if longPressGestureRecognizer.state == UIGestureRecognizerState.began {
+		if longPressGestureRecognizer.state == UIGestureRecognizer.State.began {
 			
 			let touchPoint = longPressGestureRecognizer.location(in: self.view)
 			if tableView.indexPathForRow(at: touchPoint) != nil {
@@ -141,7 +141,7 @@ class CategoriesViewController: UITableViewController, NSFetchedResultsControlle
 	}
 	
 	private static func segmentioOptions(segmentioStyle: SegmentioStyle, segmentioPosition: SegmentioPosition = .fixed(maxVisibleItems: 3)) -> SegmentioOptions {
-		var imageContentMode = UIViewContentMode.center
+		var imageContentMode = UIView.ContentMode.center
 		switch segmentioStyle {
 		case .imageBeforeLabel, .imageAfterLabel:
 			imageContentMode = .scaleAspectFit
@@ -234,7 +234,7 @@ extension CategoriesViewController {
 		return sectionInfo.numberOfObjects
 	}
 	
-	override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+	override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
 		if editingStyle == .delete {
 			let category = fetchedResultsController.object(at: indexPath)
 //			print(category.uid)
@@ -244,7 +244,7 @@ extension CategoriesViewController {
 				Facade.share.model.saveContext()
 			} else {
 				let alert = UIAlertController(title: "Error", message: "You should remove all records in this category first", preferredStyle:.alert)
-				alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+				alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
 				present(alert, animated: true, completion: nil)
 			}
 			do {

@@ -43,7 +43,7 @@ class AddRecordViewController: UIViewController, UIPickerViewDataSource, UIPicke
 		guard expenseCategoriesList.count > 0 else {
 			let alert = UIAlertController(title: "Error", message: "You should have at least one expense category. Go to Settings > Categories and add an 'Expense' category.", preferredStyle:.alert)
 
-			alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { (action:UIAlertAction!) in
+			alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default) { (action:UIAlertAction!) in
 				self.navigationController?.popViewController(animated: true)
 			})
 			present(alert, animated: true, completion: nil)
@@ -54,7 +54,7 @@ class AddRecordViewController: UIViewController, UIPickerViewDataSource, UIPicke
 		guard incomeCategoriesList.count > 0 else {
 			let alert = UIAlertController(title: "Error", message: "You should have at least one income category. Go to Settings > Categories and add an 'Income' category.", preferredStyle:.alert)
 			
-			alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { (action:UIAlertAction!) in
+			alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default) { (action:UIAlertAction!) in
 				self.navigationController?.popViewController(animated: true)
 			})
 			present(alert, animated: true, completion: nil)
@@ -122,8 +122,8 @@ class AddRecordViewController: UIViewController, UIPickerViewDataSource, UIPicke
 		toolBar2.tintColor = UIColor.black
 		toolBar2.sizeToFit()
 		
-		let doneButton2 = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.plain, target: self, action: #selector(AddRecordViewController.donePicker))
-		let spaceButton2 = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
+		let doneButton2 = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.plain, target: self, action: #selector(AddRecordViewController.donePicker))
+		let spaceButton2 = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
 		toolBar2.setItems([spaceButton2, spaceButton2, doneButton2], animated: false)
 		toolBar2.isUserInteractionEnabled = true
 		dateTextField.inputAccessoryView = toolBar2
@@ -165,8 +165,8 @@ class AddRecordViewController: UIViewController, UIPickerViewDataSource, UIPicke
 		toolBar.tintColor = UIColor.black
 		toolBar.sizeToFit()
 		
-		let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.plain, target: self, action: #selector(AddRecordViewController.donePicker))
-		let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
+		let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.plain, target: self, action: #selector(AddRecordViewController.donePicker))
+		let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
 		toolBar.setItems([spaceButton, spaceButton, doneButton], animated: false)
 		toolBar.isUserInteractionEnabled = true
 		categoryTextField.inputAccessoryView = toolBar
@@ -200,7 +200,7 @@ class AddRecordViewController: UIViewController, UIPickerViewDataSource, UIPicke
 		}
 	}
 	
-	func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
+	func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
 		if textField is PickerBasedTextField {
 			let textField2 = textField as! PickerBasedTextField
 			textField2.border.borderColor = UIColor.black.cgColor
@@ -213,7 +213,7 @@ class AddRecordViewController: UIViewController, UIPickerViewDataSource, UIPicke
 		// validation
 		guard amountTextField.text != "" && amountTextField.text != "0" else {
 			let alert = UIAlertController(title: "Error", message: "You should enter the amount", preferredStyle:.alert)
-			alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+			alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
 			present(alert, animated: true, completion: nil)
 			return
 		}
