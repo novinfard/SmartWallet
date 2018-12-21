@@ -11,9 +11,9 @@ import Segmentio
 import CoreData
 
 class DashboardViewController: UITableViewController {
-	
+
 	var segmentioView: Segmentio!
-	var monthYearList = Array<(year: Int, month:Int, title: String)> ()
+	var monthYearList = Array<(year: Int, month: Int, title: String)> ()
 	var currentYear: Int = Date().year()
 	var currentMonth: Int = Date().month()
 	var overalInfo = [(label: String, value:String)]()
@@ -22,28 +22,28 @@ class DashboardViewController: UITableViewController {
 	var incomeInfo = [(label: String, value:String)]()
 	var currencyLabel = ""
 	var totalBudget = 0.0
-	
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		// Do any additional setup after loading the view.
-		
+
 	}
-	
+
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 
 		configureSegmentedView()
-		
+
 		totalBudget = Facade.share.model.getTotalBudget()
 		currencyLabel = getCurrencyLabel()
-		
+
 		calculateOveralInfo()
 		calculateCostInfo()
 		calculateIncomeInfo()
-		
+
 		tableView.reloadData()
 	}
-	
+
 	func configureSegmentedView() {
 		let frame = tableView.frame
 		let segmentioViewRect = CGRect(x: frame.minX, y: frame.minY, width: UIScreen.main.bounds.width, height: 50)
@@ -56,45 +56,44 @@ class DashboardViewController: UITableViewController {
 		segmentioView.selectedSegmentioIndex = segmentioView.segmentioItems.count-1
 		currentYear = monthYearList.last!.year
 		currentMonth = monthYearList.last!.month
-		
+
 		segmentioView.valueDidChange = { [weak self] _, segmentIndex in
 			self?.currentYear = (self?.monthYearList[segmentIndex].year)!
 			self?.currentMonth = (self?.monthYearList[segmentIndex].month)!
-			
+
 			self?.totalBudget = Facade.share.model.getTotalBudget()
 			self?.currencyLabel = getCurrencyLabel()
-			
+
 			self?.calculateOveralInfo()
 			self?.calculateCostInfo()
 			self?.calculateIncomeInfo()
-			
+
 			self?.tableView.reloadData()
 		}
-		
+
 		tableView.tableHeaderView = segmentioView
-		
+
 	}
-	
+
 	func calculateOveralInfo() {
 		overalInfo.removeAll()
-		
+
 		let numDays = getMonthDuration(year: currentYear, month: currentMonth, considerCurrent: true)
 		let numDaysAll = getMonthDuration(year: currentYear, month: currentMonth, considerCurrent: false)
 
-
 		let monthlyTotalCost = Facade.share.model.getTotalMonth(year: currentYear, month: currentMonth, type: .recordTypeCost)
 		let dailyAverageCost = monthlyTotalCost / Double(numDays)
-		
+
 		let monthlyTotalIncome = Facade.share.model.getTotalMonth(year: currentYear, month: currentMonth, type: .recordTypeIncome)
 		let dailyAverageIncome = monthlyTotalIncome / Double(numDays)
-		
+
 		let monthlyTotal = monthlyTotalIncome - monthlyTotalCost
 		let dailyAverage = dailyAverageIncome - dailyAverageCost
-		
+
 		overalInfo.append(("Total", getRecordString(monthlyTotal, .recordTypeAll)))
 		overalInfo.append(("Total Cost", getRecordString(monthlyTotalCost, .recordTypeCost)))
 		overalInfo.append(("Total Income", getRecordString(monthlyTotalIncome, .recordTypeIncome)))
-		
+
 		if totalBudget > 0 {
 			let monthlyTotalSave = totalBudget - monthlyTotalCost
 			overalInfo.append(("Total Save", getRecordString(monthlyTotalSave, .recordTypeAll)))
@@ -105,7 +104,7 @@ class DashboardViewController: UITableViewController {
 		overalInfo.append(("Daily Average", getRecordString(dailyAverage, .recordTypeAll)))
 		overalInfo.append(("Daily Average Cost", getRecordString(dailyAverageCost, .recordTypeCost)))
 		overalInfo.append(("Daily Average Income", getRecordString(dailyAverageIncome, .recordTypeIncome)))
-		
+
 		if Date().year() == currentYear && Date().month() == currentMonth {
 			overalInfo.append((" ", " "))
 
@@ -114,15 +113,13 @@ class DashboardViewController: UITableViewController {
 
 			let monthlyForecastCost = dailyAverageCost * Double(numDaysAll)
 			overalInfo.append(("Monthly Forecast Cost", getRecordString(monthlyForecastCost, .recordTypeCost)))
-		
 
 			let monthlyForecastIncome = dailyAverageIncome * Double(numDaysAll)
 			overalInfo.append(("Monthly Forecast Income", getRecordString(monthlyForecastIncome, .recordTypeIncome)))
 		}
 
-		
 	}
-	
+
 	func calculateCostInfo() {
 		costInfo.removeAll()
 		budgetInfo.removeAll()
@@ -132,7 +129,7 @@ class DashboardViewController: UITableViewController {
 			budgetInfo.append((amount: result.amount, budget: result.category.budget))
 		}
 	}
-	
+
 	func calculateIncomeInfo() {
 		incomeInfo.removeAll()
 		let catWithCost = Facade.share.model.getMonthlyTotalByCategory(year: currentYear, month: currentMonth, type: .recordTypeIncome)
@@ -140,11 +137,11 @@ class DashboardViewController: UITableViewController {
 			incomeInfo.append((label: result.category.name, value: getRecordString(result.amount, .recordTypeIncome)))
 		}
 	}
-	
+
 	override func numberOfSections(in tableView: UITableView) -> Int {
 		return 3
 	}
-	
+
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		switch(section) {
 		case 0:
@@ -157,7 +154,7 @@ class DashboardViewController: UITableViewController {
 			return 0
 		}
 	}
-	
+
 	override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
 		switch(section) {
 		case 0:
@@ -177,18 +174,18 @@ class DashboardViewController: UITableViewController {
 		}
 		return nil
 	}
-	
+
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		if(indexPath.section == 0) {
 			let cell = tableView.dequeueReusableCell(withIdentifier: "dashboardCell", for: indexPath)
 			cell.textLabel?.text = overalInfo[indexPath.row].label
 			cell.detailTextLabel?.text = overalInfo[indexPath.row].value
-			
+
 			return cell
 		} else if(indexPath.section == 1) {
 			let cell = tableView.dequeueReusableCell(withIdentifier: "dashboardCostCell", for: indexPath) as! BudgetTableViewCell
 			let calc = budgetInfo[indexPath.row]
-			
+
 			cell.categoryLabel.text = costInfo[indexPath.row].label
 			if costInfo[indexPath.row].value != "" {
 				if(calc.budget != 0) {
@@ -200,7 +197,7 @@ class DashboardViewController: UITableViewController {
 				cell.budgetAmount.text = ""
 				cell.budgetPercentage.progress = 0
 			}
-			
+
 			if calc.amount != 0 && calc.budget != 0 {
 				let share = calc.amount / calc.budget
 				if share > 1 {
@@ -215,9 +212,9 @@ class DashboardViewController: UITableViewController {
 			} else {
 				cell.budgetPercentage.progress = 0
 			}
-			
+
 			cell.budgetAmount.isEnabled = false
-			
+
 			return cell
 		} else if(indexPath.section == 2) {
 			let cell = tableView.dequeueReusableCell(withIdentifier: "dashboardCell", for: indexPath)
@@ -229,28 +226,28 @@ class DashboardViewController: UITableViewController {
 			return cell
 		}
 	}
-	
+
 	private func segmentioContent() -> [SegmentioItem] {
 		let (minDate, maxDate) = Facade.share.model.getMinMaxDateInRecords()
-		monthYearList = monthsBetweenDates(startDate: minDate, endDate: maxDate, displayType: .monthsWithyearExceptCurrentTuple) as! [(year: Int, month:Int, title: String)]
-		
+		monthYearList = monthsBetweenDates(startDate: minDate, endDate: maxDate, displayType: .monthsWithyearExceptCurrentTuple) as! [(year: Int, month: Int, title: String)]
+
 		var items = Array<SegmentioItem>()
 		for case let monthYear in monthYearList {
 			items.append(SegmentioItem(title: monthYear.title, image: nil))
 		}
 		return items
 	}
-	
+
 	private static func segmentioOptions(segmentioStyle: SegmentioStyle, segmentioPosition: SegmentioPosition = .fixed(maxVisibleItems: 3)) -> SegmentioOptions {
 		var imageContentMode = UIView.ContentMode.center
 		switch segmentioStyle {
 		case .imageBeforeLabel, .imageAfterLabel:
 			imageContentMode = .scaleAspectFit
-			
+
 		default:
 			break
 		}
-		
+
 		return SegmentioOptions(
 			backgroundColor: UIColor.white,
 			segmentPosition: segmentioPosition,
@@ -272,5 +269,5 @@ class DashboardViewController: UITableViewController {
 			animationDuration: 0.3
 		)
 	}
-	
+
 }

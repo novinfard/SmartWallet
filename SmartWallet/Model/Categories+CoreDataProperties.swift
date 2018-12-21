@@ -10,7 +10,6 @@
 import Foundation
 import CoreData
 
-
 extension Categories {
 
     @nonobjc public class func createFetchRequest() -> NSFetchRequest<Categories> {
@@ -24,16 +23,16 @@ extension Categories {
     @NSManaged public var uid: String
     @NSManaged public var relatedRecords: NSSet
 	@NSManaged public var budget: Double
-	
+
 	public override func willSave() {
 		super.willSave()
-		
+
 		if self.sortId == 0 {
 			setPrimitiveValue(getAutoIncremenet(), forKey: "sortId")
 		}
 	}
-	
-	func getAutoIncremenet() -> Int64   {
+
+	func getAutoIncremenet() -> Int64 {
 		let url = self.objectID.uriRepresentation()
 		let urlString = url.absoluteString
 		if let pN = urlString.components(separatedBy: "/").last {

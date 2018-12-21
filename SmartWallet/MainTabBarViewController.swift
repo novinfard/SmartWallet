@@ -9,7 +9,7 @@
 import UIKit
 
 class MainTabBarViewController: UITabBarController {
-	
+
 	var freshLaunch = true
 
     override func viewDidLoad() {
@@ -17,16 +17,16 @@ class MainTabBarViewController: UITabBarController {
 
         // Do any additional setup after loading the view.
     }
-	
+
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
-		
+
 		if freshLaunch == true {
 			freshLaunch = false
 			self.selectedIndex = 1 // second tab
 		}
 	}
-	
+
 	override func viewDidLayoutSubviews() {
 		if !UserDefaults.standard.bool(forKey: "introduced") {
 			let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -35,12 +35,11 @@ class MainTabBarViewController: UITabBarController {
 			present(splashVC, animated: false)
 		}
 	}
-		
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
     /*
     // MARK: - Navigation

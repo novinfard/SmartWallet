@@ -13,7 +13,7 @@ class RecordTableViewCell: UITableViewCell {
 	@IBOutlet weak var amountLabel: UILabel!
 	@IBOutlet weak var titleLabel: UILabel!
 	@IBOutlet weak var icon: UIImageView!
-	
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -14,33 +14,33 @@ class BudgetTableViewCell: UITableViewCell, UITextFieldDelegate {
 	@IBOutlet weak var budgetAmount: UITextField!
 	@IBOutlet weak var amountLabel: UILabel!
 	@IBOutlet weak var budgetPercentage: UIProgressView!
-	
+
 	override func awakeFromNib() {
         super.awakeFromNib()
 		if let _ = amountLabel {
 			amountLabel.text = getCurrencyLabel()
 		}
 		budgetAmount.delegate = self
-		
+
 		let bgColorView = UIView()
 		bgColorView.backgroundColor = UIColor.myAppLightGreen
 		self.selectedBackgroundView = bgColorView
     }
-	
+
 	func textFieldDidBeginEditing(_ textField: UITextField) {
 		setSelected(true, animated: true)
 	}
-	
+
 	func textFieldDidEndEditing(_ textField: UITextField) {
 		setSelected(false, animated: true)
 	}
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-		
+
         // Configure the view for the selected state
     }
-	
+
 	func makeFirstResponder() {
 		budgetAmount.becomeFirstResponder()
 	}
