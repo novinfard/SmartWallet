@@ -98,8 +98,8 @@ class BudgetViewController: UITableViewController, NSFetchedResultsControllerDel
 	func saveData() {
 		for cell in tableView.visibleCells as! [BudgetTableViewCell] {
 			let category = fetchedResultsController.object(at: tableView.indexPath(for: cell)!)
-			if let _amount = cell.budgetAmount.text, _amount != "" {
-				category.budget = getDoubleFromLocalNumber(input: _amount)
+			if let amount = cell.budgetAmount.text, amount != "" {
+				category.budget = getDoubleFromLocalNumber(input: amount)
 			} else {
 				category.budget = 0.0
 			}
@@ -152,7 +152,7 @@ extension BudgetViewController {
 	}
 
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		if(editingMode) {
+		if editingMode {
 			let cell = tableView.dequeueReusableCell(withIdentifier: "budgetCell", for: indexPath) as! BudgetTableViewCell
 			cell.makeFirstResponder()
 		}

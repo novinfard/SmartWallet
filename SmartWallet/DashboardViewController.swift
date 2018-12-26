@@ -84,7 +84,9 @@ class DashboardViewController: UITableViewController {
 		let monthlyTotalCost = Facade.share.model.getTotalMonth(year: currentYear, month: currentMonth, type: .recordTypeCost)
 		let dailyAverageCost = monthlyTotalCost / Double(numDays)
 
-		let monthlyTotalIncome = Facade.share.model.getTotalMonth(year: currentYear, month: currentMonth, type: .recordTypeIncome)
+		let monthlyTotalIncome = Facade.share.model.getTotalMonth(year: currentYear,
+																  month: currentMonth,
+																  type: .recordTypeIncome)
 		let dailyAverageIncome = monthlyTotalIncome / Double(numDays)
 
 		let monthlyTotal = monthlyTotalIncome - monthlyTotalCost
@@ -123,7 +125,9 @@ class DashboardViewController: UITableViewController {
 	func calculateCostInfo() {
 		costInfo.removeAll()
 		budgetInfo.removeAll()
-		let catWithCost = Facade.share.model.getMonthlyTotalByCategory(year: currentYear, month: currentMonth, type: .recordTypeCost)
+		let catWithCost = Facade.share.model.getMonthlyTotalByCategory(year: currentYear,
+																	   month: currentMonth,
+																	   type: .recordTypeCost)
 		for result in catWithCost {
 			costInfo.append((label: result.category.name, value: getRecordString(result.amount, .recordTypeCost)))
 			budgetInfo.append((amount: result.amount, budget: result.category.budget))
@@ -132,7 +136,9 @@ class DashboardViewController: UITableViewController {
 
 	func calculateIncomeInfo() {
 		incomeInfo.removeAll()
-		let catWithCost = Facade.share.model.getMonthlyTotalByCategory(year: currentYear, month: currentMonth, type: .recordTypeIncome)
+		let catWithCost = Facade.share.model.getMonthlyTotalByCategory(year: currentYear,
+																	   month: currentMonth,
+																	   type: .recordTypeIncome)
 		for result in catWithCost {
 			incomeInfo.append((label: result.category.name, value: getRecordString(result.amount, .recordTypeIncome)))
 		}
@@ -143,7 +149,7 @@ class DashboardViewController: UITableViewController {
 	}
 
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		switch(section) {
+		switch section {
 		case 0:
 			return overalInfo.count
 		case 1:
@@ -156,7 +162,7 @@ class DashboardViewController: UITableViewController {
 	}
 
 	override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-		switch(section) {
+		switch section {
 		case 0:
 			if self.tableView(tableView, numberOfRowsInSection: 0) > 0 {
 				return "General Info"
@@ -176,19 +182,19 @@ class DashboardViewController: UITableViewController {
 	}
 
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		if(indexPath.section == 0) {
+		if indexPath.section == 0 {
 			let cell = tableView.dequeueReusableCell(withIdentifier: "dashboardCell", for: indexPath)
 			cell.textLabel?.text = overalInfo[indexPath.row].label
 			cell.detailTextLabel?.text = overalInfo[indexPath.row].value
 
 			return cell
-		} else if(indexPath.section == 1) {
+		} else if indexPath.section == 1 {
 			let cell = tableView.dequeueReusableCell(withIdentifier: "dashboardCostCell", for: indexPath) as! BudgetTableViewCell
 			let calc = budgetInfo[indexPath.row]
 
 			cell.categoryLabel.text = costInfo[indexPath.row].label
 			if costInfo[indexPath.row].value != "" {
-				if(calc.budget != 0) {
+				if calc.budget != 0 {
 					cell.budgetAmount.text = "\(costInfo[indexPath.row].value) / \(calc.budget.clean)"
 				} else {
 					cell.budgetAmount.text = "\(costInfo[indexPath.row].value)"
@@ -216,7 +222,7 @@ class DashboardViewController: UITableViewController {
 			cell.budgetAmount.isEnabled = false
 
 			return cell
-		} else if(indexPath.section == 2) {
+		} else if indexPath.section == 2 {
 			let cell = tableView.dequeueReusableCell(withIdentifier: "dashboardCell", for: indexPath)
 			cell.textLabel?.text = incomeInfo[indexPath.row].label
 			cell.detailTextLabel?.text = incomeInfo[indexPath.row].value

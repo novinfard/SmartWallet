@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum monthYearArrayType {
+enum MonthYearArrayType {
 	case monthsStringArray
 	case monthsIntArray
 	case monthsWithyear
@@ -16,13 +16,13 @@ enum monthYearArrayType {
 	case monthsWithyearExceptCurrentTuple
 }
 
-enum recordType {
+enum RecordType {
 	case recordTypeCost
 	case recordTypeIncome
 	case recordTypeAll
 }
 
-enum categoryType {
+enum CategoryType {
 	case categoryTypeCost
 	case categoryTypeIncome
 	case categoryTypeAll
@@ -33,7 +33,7 @@ func getCurrencyLabel() -> String {
 	return currencyLabel
 }
 
-func monthsBetweenDates(startDate: Date?, endDate: Date?, displayType: monthYearArrayType) -> Array<Any> {
+func monthsBetweenDates(startDate: Date?, endDate: Date?, displayType: MonthYearArrayType) -> Array<Any> {
 	let dateFormtter = DateFormatter()
 
 	var monthsStringArray = [String]()
@@ -46,23 +46,23 @@ func monthsBetweenDates(startDate: Date?, endDate: Date?, displayType: monthYear
 	if let startYear: Int = startDate?.year(), let endYear = endDate?.year() {
 
 		if let startMonth: Int = startDate?.month(), let endMonth: Int = endDate?.month() {
-			for i in startYear...endYear {
-				for j in (i == startYear ? startMonth : 1)...(i < endYear ? 12 : endMonth) {
-					let monthTitle = dateFormtter.monthSymbols[j - 1]
+			for year in startYear...endYear {
+				for month in (year == startYear ? startMonth : 1)...(year < endYear ? 12 : endMonth) {
+					let monthTitle = dateFormtter.monthSymbols[month - 1]
 					monthsStringArray.append(monthTitle)
-					monthsIntArray.append(j)
+					monthsIntArray.append(month)
 
-					let monthWithYear = "\(monthTitle) \(i)"
+					let monthWithYear = "\(monthTitle) \(year)"
 					monthsWithyear.append(monthWithYear)
 
 					let exceptCurrent: String
-					if(i == Date().year()) {
+					if year == Date().year() {
 						exceptCurrent = monthTitle
 					} else {
 						exceptCurrent = monthWithYear
 					}
 					monthsWithyearExceptCurrent.append(exceptCurrent)
-					monthsWithyearExceptCurrentTuple.append((i, j, exceptCurrent))
+					monthsWithyearExceptCurrentTuple.append((year, month, exceptCurrent))
 				}
 			}
 		}
@@ -91,7 +91,7 @@ func getMonthDuration(year: Int, month: Int, considerCurrent: Bool) -> Int {
 	let range = calendar.range(of: .day, in: .month, for: date)!
 	var numDays = range.count
 
-	if(considerCurrent) {
+	if considerCurrent {
 		if year == Date().year() && month == Date().month() {
 			numDays = Date().day()
 		}
@@ -100,10 +100,10 @@ func getMonthDuration(year: Int, month: Int, considerCurrent: Bool) -> Int {
 	return numDays
 }
 
-func getRecordString(_ value: Double, _ type: recordType, preciseDecimal: Int = 2, formatting: Bool = true) -> String {
+func getRecordString(_ value: Double, _ type: RecordType, preciseDecimal: Int = 2, formatting: Bool = true) -> String {
 	var prefix = ""
 	if type == .recordTypeAll {
-		if(value >= 0) {
+		if value >= 0 {
 			prefix = "+"
 		} else {
 			prefix = "-"
@@ -119,8 +119,8 @@ func getRecordString(_ value: Double, _ type: recordType, preciseDecimal: Int = 
 	formatter.minimumFractionDigits = 0
 	formatter.maximumFractionDigits = 2
 
-	if(formatting) {
-		return "\(prefix) \(getCurrencyLabel()) \(absValue.format(f: ".\(preciseDecimal)"))"
+	if formatting {
+		return "\(prefix) \(getCurrencyLabel()) \(absValue.format(formatString: ".\(preciseDecimal)"))"
 	} else {
 
 //		return String(format:"\(prefix) \(getCurrencyLabel()) %g", absValue)
@@ -167,7 +167,8 @@ extension Date {
 	}
 
 	func startOfMonth() -> Date {
-		return Calendar.current.date(from: Calendar.current.dateComponents([.year, .month], from: Calendar.current.startOfDay(for: self)))!
+		let day = Calendar.current.startOfDay(for: self)
+		return Calendar.current.date(from: Calendar.current.dateComponents([.year, .month],from: day))!
 	}
 
 	func endOfMonth() -> Date {
@@ -176,14 +177,14 @@ extension Date {
 }
 
 extension Int {
-	func format(f: String) -> String {
-		return String(format: "%\(f)d", self)
+	func format(formatString: String) -> String {
+		return String(format: "%\(formatString)d", self)
 	}
 }
 
 extension Double {
-	func format(f: String) -> String {
-		return String(format: "%\(f)f", self)
+	func format(formatString: String) -> String {
+		return String(format: "%\(formatString)f", self)
 	}
 	var clean: String {
 		return self.truncatingRemainder(dividingBy: 1) == 0 ? String(format: "%.0f", self) : String(self)

@@ -54,8 +54,30 @@ class PersistentModel {
 				saveContext()
 
 				// pre-defined cateogories import
-				let expenseCategoryNames = ["Foods & Drinks", "Groceries", "Transport", "Shopping", "Bills", "Financial Expenses", "Entertainment", "Holidays", "Personal Care", "Family", "Lending", "Housing", "Accommodation", "General"]
-				let incomeCategoryNames = ["Salary", "Supports", "Investments", "Gifts", "Copuns", "Rental Income", "Sales", "Interests", "Refunding Debt", "General"]
+				let expenseCategoryNames = ["Foods & Drinks",
+											"Groceries",
+											"Transport",
+											"Shopping",
+											"Bills",
+											"Financial Expenses",
+											"Entertainment",
+											"Holidays",
+											"Personal Care",
+											"Family",
+											"Lending",
+											"Housing",
+											"Accommodation",
+											"General"]
+				let incomeCategoryNames = ["Salary",
+										   "Supports",
+										   "Investments",
+										   "Gifts",
+										   "Copuns",
+										   "Rental Income",
+										   "Sales",
+										   "Interests",
+										   "Refunding Debt",
+										   "General"]
 
 				for categoryName in expenseCategoryNames.reversed() {
 					let category = Categories(context: self.container.viewContext)
@@ -235,12 +257,12 @@ class PersistentModel {
 		saveContext()
 	}
 
-	func getTotalMonth(year: Int, month: Int, type: recordType) -> Double {
+	func getTotalMonth(year: Int, month: Int, type: RecordType) -> Double {
 		do {
 			let fetchRequest: NSFetchRequest<Records> = Records.createFetchRequest()
 
 			var direction: Int
-			if(type == .recordTypeCost) {
+			if type == .recordTypeCost {
 				direction = -1
 			} else {
 				direction = 1
@@ -258,16 +280,16 @@ class PersistentModel {
 	}
 
 	func getNewUID() -> String {
-		return String(Date().timeIntervalSince1970.format(f: ".5"))
+		return String(Date().timeIntervalSince1970.format(formatString: ".5"))
 	}
 
-	func getMonthlyTotalByCategory(year: Int, month: Int, type: recordType) -> Array<(amount: Double, category: Categories)> {
+	func getMonthlyTotalByCategory(year: Int, month: Int, type: RecordType) -> Array<(amount: Double, category: Categories)> {
 		var output = Array<(amount: Double, category: Categories)>()
 		do {
 			let fetchRequest = NSFetchRequest<NSDictionary>(entityName: "Records")
 
 			var direction: Int
-			if(type == .recordTypeCost) {
+			if type == .recordTypeCost {
 				direction = -1
 			} else {
 				direction = 1

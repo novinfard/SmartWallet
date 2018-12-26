@@ -258,15 +258,13 @@ extension CategoriesViewController {
 		return false
 	}
 
-//	override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
-//		return .none
-//	}
-
 	override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
 		return true
 	}
 
-	override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+	override func tableView(_ tableView: UITableView,
+							moveRowAt sourceIndexPath: IndexPath,
+							to destinationIndexPath: IndexPath) {
 		let category = fetchedResultsController.object(at: sourceIndexPath)
 		let newSortId = fetchedResultsController.object(at: destinationIndexPath).sortId
 

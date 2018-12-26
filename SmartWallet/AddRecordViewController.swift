@@ -29,10 +29,11 @@ class AddRecordViewController: UIViewController, UIPickerViewDataSource, UIPicke
 	var model: AddRecordModel = Facade.share.model.addRecordModel
 	var record: Records!
 
+	// swiftlint:disable function_body_length
+	// TODO: should be splitted into smaller functions
 	override func viewDidLoad() {
         super.viewDidLoad()
 
-//		Facade.share.model.addRecordModel = AddRecordModel()
 		model.amount = 0
 		model.datetime = Date()
 		model.uid = nil
@@ -41,7 +42,13 @@ class AddRecordViewController: UIViewController, UIPickerViewDataSource, UIPicke
 		setupAuthorList()
 
 		guard expenseCategoriesList.count > 0 else {
-			let alert = UIAlertController(title: "Error", message: "You should have at least one expense category. Go to Settings > Categories and add an 'Expense' category.", preferredStyle: .alert)
+			let errorDesc = """
+You should have at least one expense category.
+Go to Settings > Categories and add an 'Expense' category.
+"""
+			let alert = UIAlertController(title: "Error",
+										  message: errorDesc,
+										  preferredStyle: .alert)
 
 			alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default) { (_: UIAlertAction!) in
 				self.navigationController?.popViewController(animated: true)
@@ -52,7 +59,13 @@ class AddRecordViewController: UIViewController, UIPickerViewDataSource, UIPicke
 		}
 
 		guard incomeCategoriesList.count > 0 else {
-			let alert = UIAlertController(title: "Error", message: "You should have at least one income category. Go to Settings > Categories and add an 'Income' category.", preferredStyle: .alert)
+			let errorDesc = """
+You should have at least one income category.
+Go to Settings > Categories and add an 'Income' category.
+"""
+			let alert = UIAlertController(title: "Error",
+										  message: errorDesc,
+										  preferredStyle: .alert)
 
 			alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default) { (_: UIAlertAction!) in
 				self.navigationController?.popViewController(animated: true)
@@ -81,20 +94,18 @@ class AddRecordViewController: UIViewController, UIPickerViewDataSource, UIPicke
 			if record.direction == 1 {
 				model.direction = 1
 
-				for (index, cat) in incomeCategoriesList.enumerated() {
-					if cat.uid == record.relatedCategory.uid {
+				for (index, cat) in incomeCategoriesList.enumerated()
+					where cat.uid == record.relatedCategory.uid {
 						model.incomeIndex = index
 						break
-					}
 				}
 			} else {
 				model.direction = 0
 
-				for (index, cat) in expenseCategoriesList.enumerated() {
-					if cat.uid == record.relatedCategory.uid {
+				for (index, cat) in expenseCategoriesList.enumerated()
+					where cat.uid == record.relatedCategory.uid {
 						model.expenseIndex = index
 						break
-					}
 				}
 			}
 			model.datetime = record.datetime
@@ -122,8 +133,13 @@ class AddRecordViewController: UIViewController, UIPickerViewDataSource, UIPicke
 		toolBar2.tintColor = UIColor.black
 		toolBar2.sizeToFit()
 
-		let doneButton2 = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.plain, target: self, action: #selector(AddRecordViewController.donePicker))
-		let spaceButton2 = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+		let doneButton2 = UIBarButtonItem(title: "Done",
+										  style: UIBarButtonItem.Style.plain,
+										  target: self,
+										  action: #selector(AddRecordViewController.donePicker))
+		let spaceButton2 = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace,
+										   target: nil,
+										   action: nil)
 		toolBar2.setItems([spaceButton2, spaceButton2, doneButton2], animated: false)
 		toolBar2.isUserInteractionEnabled = true
 		dateTextField.inputAccessoryView = toolBar2
@@ -181,14 +197,16 @@ class AddRecordViewController: UIViewController, UIPickerViewDataSource, UIPicke
 		accountTextField.text = (accountsList.count > 0) ? accountsList[0].name : ""
 
 		amountTextField.becomeFirstResponder()
-
     }
+	// swiftlint:enable function_body_length
 
 	override func viewWillDisappear(_ animated: Bool) {
 		super.viewWillDisappear(animated)
 	}
 
-	func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+	func textField(_ textField: UITextField,
+				   shouldChangeCharactersIn range: NSRange,
+				   replacementString string: String) -> Bool {
 		return false
 	}
 

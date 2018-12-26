@@ -32,7 +32,7 @@ class ChooseCurrencyTableViewController: UITableViewController {
 
 		cell.detailTextLabel?.text = currencyItem.currencySymbol!
 
-		if(currencyCurrencySymbol == currencyItem.currencySymbol) {
+		if currencyCurrencySymbol == currencyItem.currencySymbol {
 			cell.textLabel?.text = currencyItem.currencyName! + " ✓"
 
 			cell.backgroundColor = UIColor.myAppLightGreen

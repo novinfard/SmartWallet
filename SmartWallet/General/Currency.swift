@@ -31,13 +31,19 @@ class Currency {
 //				allSeparators.insert(decimal)
 //			}
 
-			currency.currencyName = (currencyLocale as NSLocale).displayName(forKey: NSLocale.Key.currencyCode, value: currencyCode)
+			currency.currencyName = (currencyLocale as NSLocale).displayName(
+				forKey: NSLocale.Key.currencyCode,
+				value: currencyCode)
 			let index = currencyCode.index(currencyCode.startIndex, offsetBy: 2)
 			currency.countryCode = String(currencyCode[..<index])
-			currency.currencySymbol = (currencyLocale as NSLocale).displayName(forKey: NSLocale.Key.currencySymbol, value: currencyCode)
+			currency.currencySymbol = (currencyLocale as NSLocale).displayName(
+				forKey: NSLocale.Key.currencySymbol,
+				value: currencyCode)
 
 			let countryLocale  = NSLocale.current
-			currency.countryName = (countryLocale as NSLocale).displayName(forKey: NSLocale.Key.countryCode, value: currency.countryCode!)
+			currency.countryName = (countryLocale as NSLocale).displayName(
+				forKey: NSLocale.Key.countryCode,
+				value: currency.countryCode!)
 
 			if currency.countryName != nil {
 				result.append(currency)

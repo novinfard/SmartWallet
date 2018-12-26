@@ -1,22 +1,25 @@
 PODS:
-  - Crashlytics (3.10.0):
-    - Fabric (~> 1.7.3)
-  - Fabric (1.7.3)
-  - Segmentio (3.0)
-  - SwiftLint (0.27.0)
+  - Crashlytics (3.12.0):
+    - Fabric (~> 1.9.0)
+  - Fabric (1.9.0)
+  - Segmentio (3.2)
 
 DEPENDENCIES:
   - Crashlytics
   - Fabric
   - Segmentio (~> 3.0)
-  - SwiftLint
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Crashlytics
+    - Fabric
+    - Segmentio
 
 SPEC CHECKSUMS:
-  Crashlytics: a989ef242b66605577a425733797f810bd2725eb
-  Fabric: bb495bb9a7a7677c6d03a1f8b83d95bc49b47e41
-  Segmentio: 1607fba3b42230f5f91e997d1a3f337f1176674c
-  SwiftLint: 3207c1faa2240bf8973b191820a116113cd11073
+  Crashlytics: 07fb167b1694128c1c9a5a5cc319b0e9c3ca0933
+  Fabric: f988e33c97f08930a413e08123064d2e5f68d655
+  Segmentio: 4e63f9f7c22a58fba9e589e50f8803fd0a1b18c3
 
-PODFILE CHECKSUM: 4ac1d7202d724d9508bd1448301e2ba340807ab7
+PODFILE CHECKSUM: b29cc4349c838a84e039a9678f5c1fef1f5fa6a3
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.5.3

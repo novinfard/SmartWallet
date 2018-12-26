@@ -17,7 +17,7 @@ class BudgetTableViewCell: UITableViewCell, UITextFieldDelegate {
 
 	override func awakeFromNib() {
         super.awakeFromNib()
-		if let _ = amountLabel {
+		if amountLabel != nil {
 			amountLabel.text = getCurrencyLabel()
 		}
 		budgetAmount.delegate = self
