@@ -33,7 +33,7 @@ func getCurrencyLabel() -> String {
 	return currencyLabel
 }
 
-func monthsBetweenDates(startDate: Date?, endDate: Date?, displayType: MonthYearArrayType) -> Array<Any> {
+func monthsBetweenDates(startDate: Date?, endDate: Date?, displayType: MonthYearArrayType) -> [Any] {
 	let dateFormtter = DateFormatter()
 
 	var monthsStringArray = [String]()
@@ -168,7 +168,8 @@ extension Date {
 
 	func startOfMonth() -> Date {
 		let day = Calendar.current.startOfDay(for: self)
-		return Calendar.current.date(from: Calendar.current.dateComponents([.year, .month],from: day))!
+		return Calendar.current.date(
+			from: Calendar.current.dateComponents([.year, .month], from: day))!
 	}
 
 	func endOfMonth() -> Date {

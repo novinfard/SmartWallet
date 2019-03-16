@@ -9,6 +9,8 @@
 import Foundation
 import CoreData
 
+// swiftlint:disable type_body_length
+// swiftlint:disable file_length
 class PersistentModel {
 	static let sharedInstance = PersistentModel()
 
@@ -225,11 +227,19 @@ class PersistentModel {
 		do {
 			let fetchRequest: NSFetchRequest<Categories> = Categories.createFetchRequest()
 			if plusOperaion {
-				fetchRequest.predicate = NSPredicate(format: "sortId >= %d and sortId < %d and direction = %d and uid != %@", newSortId, previousSortId, category.direction, category.uid, category.uid)
-				print("sortId >= %d and sortId < %d and direction = %d and uid != %@", newSortId, previousSortId, category.direction, category.uid, category.uid)
+				fetchRequest.predicate = NSPredicate(
+					format: "sortId >= %d and sortId < %d and direction = %d and uid != %@",
+					newSortId, previousSortId,
+					category.direction,
+					category.uid,
+					category.uid)
 			} else {
-				fetchRequest.predicate = NSPredicate(format: "sortId <= %d and sortId > %d and direction = %d and uid != %@", newSortId, previousSortId, category.direction, category.uid)
-				print("sortId <= %d and sortId > %d and direction = %d and uid != %@", newSortId, previousSortId, category.direction, category.uid)
+				fetchRequest.predicate = NSPredicate(
+					format: "sortId <= %d and sortId > %d and direction = %d and uid != %@",
+					newSortId,
+					previousSortId,
+					category.direction,
+					category.uid)
 			}
 			let sort = NSSortDescriptor(key: "sortId", ascending: true)
 			fetchRequest.sortDescriptors = [sort]
@@ -283,8 +293,8 @@ class PersistentModel {
 		return String(Date().timeIntervalSince1970.format(formatString: ".5"))
 	}
 
-	func getMonthlyTotalByCategory(year: Int, month: Int, type: RecordType) -> Array<(amount: Double, category: Categories)> {
-		var output = Array<(amount: Double, category: Categories)>()
+	func getMonthlyTotalByCategory(year: Int, month: Int, type: RecordType) -> [(amount: Double, category: Categories)] {
+		var output = [(amount: Double, category: Categories)]()
 		do {
 			let fetchRequest = NSFetchRequest<NSDictionary>(entityName: "Records")
 

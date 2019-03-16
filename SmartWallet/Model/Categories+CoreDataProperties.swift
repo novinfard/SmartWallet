@@ -35,8 +35,8 @@ extension Categories {
 	func getAutoIncremenet() -> Int64 {
 		let url = self.objectID.uriRepresentation()
 		let urlString = url.absoluteString
-		if let pN = urlString.components(separatedBy: "/").last {
-			let numberPart = pN.replacingOccurrences(of: "p", with: "")
+		if let partialNumber = urlString.components(separatedBy: "/").last {
+			let numberPart = partialNumber.replacingOccurrences(of: "p", with: "")
 			if let number = Int64(numberPart) {
 				return number
 			}

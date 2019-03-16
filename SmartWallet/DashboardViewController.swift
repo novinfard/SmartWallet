@@ -13,7 +13,7 @@ import CoreData
 class DashboardViewController: UITableViewController {
 
 	var segmentioView: Segmentio!
-	var monthYearList = Array<(year: Int, month: Int, title: String)> ()
+	var monthYearList = [(year: Int, month: Int, title: String)] ()
 	var currentYear: Int = Date().year()
 	var currentMonth: Int = Date().month()
 	var overalInfo = [(label: String, value:String)]()
@@ -227,7 +227,7 @@ class DashboardViewController: UITableViewController {
 			cell.textLabel?.text = incomeInfo[indexPath.row].label
 			cell.detailTextLabel?.text = incomeInfo[indexPath.row].value
 			return cell
-		} else { // guard
+		} else {
 			let cell = tableView.dequeueReusableCell(withIdentifier: "dashboardCell", for: indexPath)
 			return cell
 		}
@@ -235,16 +235,22 @@ class DashboardViewController: UITableViewController {
 
 	private func segmentioContent() -> [SegmentioItem] {
 		let (minDate, maxDate) = Facade.share.model.getMinMaxDateInRecords()
-		monthYearList = monthsBetweenDates(startDate: minDate, endDate: maxDate, displayType: .monthsWithyearExceptCurrentTuple) as! [(year: Int, month: Int, title: String)]
+		monthYearList = monthsBetweenDates(
+			startDate: minDate,
+			endDate: maxDate,
+			displayType: .monthsWithyearExceptCurrentTuple) as! [(year: Int, month: Int, title: String)]
 
-		var items = Array<SegmentioItem>()
+		var items = [SegmentioItem]()
 		for case let monthYear in monthYearList {
 			items.append(SegmentioItem(title: monthYear.title, image: nil))
 		}
 		return items
 	}
 
-	private static func segmentioOptions(segmentioStyle: SegmentioStyle, segmentioPosition: SegmentioPosition = .fixed(maxVisibleItems: 3)) -> SegmentioOptions {
+	private static func segmentioOptions(
+		segmentioStyle: SegmentioStyle,
+		segmentioPosition: SegmentioPosition = .fixed(maxVisibleItems: 3))
+		-> SegmentioOptions {
 		var imageContentMode = UIView.ContentMode.center
 		switch segmentioStyle {
 		case .imageBeforeLabel, .imageAfterLabel:

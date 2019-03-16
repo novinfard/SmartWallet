@@ -61,7 +61,11 @@ class BudgetViewController: UITableViewController, NSFetchedResultsControllerDel
 			request.sortDescriptors = [sort]
 			request.fetchBatchSize = 20
 
-			fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: Facade.share.model.container.viewContext, sectionNameKeyPath: "direction", cacheName: nil)
+			fetchedResultsController = NSFetchedResultsController(
+				fetchRequest: request,
+				managedObjectContext: Facade.share.model.container.viewContext,
+				sectionNameKeyPath: "direction",
+				cacheName: nil)
 			fetchedResultsController.delegate = self
 		}
 

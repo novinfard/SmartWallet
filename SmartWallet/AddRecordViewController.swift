@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 
+// swiftlint:disable type_body_length
 class AddRecordViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate {
 
 	@IBOutlet weak var directionSegmentedControl: UISegmentedControl!
@@ -30,7 +31,7 @@ class AddRecordViewController: UIViewController, UIPickerViewDataSource, UIPicke
 	var record: Records!
 
 	// swiftlint:disable function_body_length
-	// TODO: should be splitted into smaller functions
+	// should be splitted into smaller functions
 	override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -181,8 +182,15 @@ Go to Settings > Categories and add an 'Income' category.
 		toolBar.tintColor = UIColor.black
 		toolBar.sizeToFit()
 
-		let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.plain, target: self, action: #selector(AddRecordViewController.donePicker))
-		let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+		let doneButton = UIBarButtonItem(
+			title: "Done",
+			style: UIBarButtonItem.Style.plain,
+			target: self,
+			action: #selector(AddRecordViewController.donePicker))
+		let spaceButton = UIBarButtonItem(
+			barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace,
+			target: nil,
+			action: nil)
 		toolBar.setItems([spaceButton, spaceButton, doneButton], animated: false)
 		toolBar.isUserInteractionEnabled = true
 		categoryTextField.inputAccessoryView = toolBar

@@ -137,7 +137,9 @@ class CategoriesViewController: UITableViewController, NSFetchedResultsControlle
 		]
 	}
 
-	private static func segmentioOptions(segmentioStyle: SegmentioStyle, segmentioPosition: SegmentioPosition = .fixed(maxVisibleItems: 3)) -> SegmentioOptions {
+	private static func segmentioOptions(
+		segmentioStyle: SegmentioStyle,
+		segmentioPosition: SegmentioPosition = .fixed(maxVisibleItems: 3)) -> SegmentioOptions {
 		var imageContentMode = UIView.ContentMode.center
 		switch segmentioStyle {
 		case .imageBeforeLabel, .imageAfterLabel:
@@ -179,7 +181,11 @@ class CategoriesViewController: UITableViewController, NSFetchedResultsControlle
 			request.sortDescriptors = [sort]
 			request.fetchBatchSize = 20
 
-			fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: Facade.share.model.container.viewContext, sectionNameKeyPath: "direction", cacheName: nil)
+			fetchedResultsController = NSFetchedResultsController(
+				fetchRequest: request,
+				managedObjectContext: Facade.share.model.container.viewContext,
+				sectionNameKeyPath: "direction",
+				cacheName: nil)
 			fetchedResultsController.delegate = self
 		}
 
@@ -231,7 +237,10 @@ extension CategoriesViewController {
 		return sectionInfo.numberOfObjects
 	}
 
-	override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+	override func tableView(
+		_ tableView: UITableView,
+		commit editingStyle: UITableViewCell.EditingStyle,
+		forRowAt indexPath: IndexPath) {
 		if editingStyle == .delete {
 			let category = fetchedResultsController.object(at: indexPath)
 //			print(category.uid)
@@ -240,7 +249,10 @@ extension CategoriesViewController {
 				Facade.share.model.container.viewContext.delete(category)
 				Facade.share.model.saveContext()
 			} else {
-				let alert = UIAlertController(title: "Error", message: "You should remove all records in this category first", preferredStyle: .alert)
+				let alert = UIAlertController(
+					title: "Error",
+					message: "You should remove all records in this category first",
+					preferredStyle: .alert)
 				alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
 				present(alert, animated: true, completion: nil)
 			}
@@ -279,7 +291,9 @@ extension CategoriesViewController {
 
 	}
 
-	override func tableView(_ tableView: UITableView, targetIndexPathForMoveFromRowAt sourceIndexPath: IndexPath, toProposedIndexPath proposedDestinationIndexPath: IndexPath) -> IndexPath {
+	override func tableView(_ tableView: UITableView,
+							targetIndexPathForMoveFromRowAt sourceIndexPath: IndexPath,
+							toProposedIndexPath proposedDestinationIndexPath: IndexPath) -> IndexPath {
 		if sourceIndexPath.section != proposedDestinationIndexPath.section {
 			var row = 0
 			if sourceIndexPath.section < proposedDestinationIndexPath.section {

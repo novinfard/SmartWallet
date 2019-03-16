@@ -116,7 +116,10 @@ class RecordsViewController: UITableViewController, NSFetchedResultsControllerDe
 		return cell
 	}
 
-	override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+	override func tableView(
+		_ tableView: UITableView,
+		commit editingStyle: UITableViewCell.EditingStyle,
+		forRowAt indexPath: IndexPath) {
 		if editingStyle == .delete {
 			let record = fetchedResultsController.object(at: indexPath)
 			Facade.share.model.container.viewContext.delete(record)
@@ -151,7 +154,11 @@ class RecordsViewController: UITableViewController, NSFetchedResultsControllerDe
 			request.sortDescriptors = [sort, sort2]
 			request.fetchBatchSize = 20
 
-			fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: Facade.share.model.container.viewContext, sectionNameKeyPath: "datetime", cacheName: nil)
+			fetchedResultsController = NSFetchedResultsController(
+				fetchRequest: request,
+				managedObjectContext: Facade.share.model.container.viewContext,
+				sectionNameKeyPath: "datetime",
+				cacheName: nil)
 			fetchedResultsController.delegate = self
 		}
 
