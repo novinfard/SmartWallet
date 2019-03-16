@@ -1,5 +1,10 @@
 disabled_rules:
     - force_cast
+    - vertical_parameter_alignment
 excluded:
     - Pods
     - Carthage
+
+function_body_length:
+  warning: 70
+  error: 120
