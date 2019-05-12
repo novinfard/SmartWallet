@@ -17,15 +17,6 @@ class RecordsViewController: UITableViewController, NSFetchedResultsControllerDe
 	let style: Style = Style.myApp
 	var coverImageView = UIImageView()
 
-//	init(style: Style) {
-//		self.style = style
-//		super.init(nibName: nil, bundle: nil)
-//	}
-//
-//	required init?(coder aDecoder: NSCoder) {
-//		super.init(coder: aDecoder)
-//	}
-
 	override var preferredStatusBarStyle: UIStatusBarStyle {
 		return style.preferredStatusBarStyle
 	}
@@ -46,10 +37,6 @@ class RecordsViewController: UITableViewController, NSFetchedResultsControllerDe
 
 		self.loadSavedData()
 	}
-
-//	func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-//		self.loadSavedData()
-//	}
 
 	func applyStyle() {
 //		view.backgroundColor = style.backgroundColor
@@ -130,13 +117,11 @@ class RecordsViewController: UITableViewController, NSFetchedResultsControllerDe
 			} catch {
 				print("Fetch failed")
 			}
-//			tableView.deleteRows(at: [indexPath], with: .fade)
 		}
 	}
 
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		let record = fetchedResultsController.object(at: indexPath)
-//		let controller = AddRecordViewController()
 
 		let storyboard = UIStoryboard(name: "Main", bundle: nil)
 		let controller = storyboard.instantiateViewController(withIdentifier: "AddRecord") as! AddRecordViewController
