@@ -124,7 +124,7 @@ class RecordsViewController: UITableViewController, NSFetchedResultsControllerDe
 		let record = fetchedResultsController.object(at: indexPath)
 
 		let storyboard = UIStoryboard(name: "Main", bundle: nil)
-		let controller = storyboard.instantiateViewController(withIdentifier: "AddRecord") as! AddRecordViewController
+		let controller = storyboard.instantiateViewController(withIdentifier: "DisplayRecord") as! DisplayRecordViewController
 
 		controller.currentUid = record.uid
 		navigationController?.pushViewController(controller, animated: true)
