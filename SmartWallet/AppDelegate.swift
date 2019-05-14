@@ -20,6 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 		_ = Facade.share
 		Fabric.with([Crashlytics.self])
+		
+		StoreReviewHelper.incrementAppOpenedCount()
 
 		return true
 	}

@@ -26,6 +26,7 @@
 		CD397BCE2079837E00103E5C /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD397BCD2079837E00103E5C /* Currency.swift */; };
 		CD397BD0207AC3B400103E5C /* ChooseCurrencyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD397BCF207AC3B400103E5C /* ChooseCurrencyTableViewController.swift */; };
 		CD397BD4207D79CF00103E5C /* PickerBasedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD397BD3207D79CF00103E5C /* PickerBasedTextField.swift */; };
+		CD43CD502288D66A0020EEC0 /* StoreReviewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD43CD4F2288D66A0020EEC0 /* StoreReviewHelper.swift */; };
 		CD51D99520A7A618003791E1 /* AddModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD51D99420A7A618003791E1 /* AddModel.swift */; };
 		CD86E77A2041A62D0007F817 /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD86E7792041A62D0007F817 /* CategoriesViewController.swift */; };
 		CDAF4ECD207846EA00392459 /* GeneralHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDAF4ECC207846EA00392459 /* GeneralHelper.swift */; };
@@ -67,6 +68,7 @@
 		CD397BCD2079837E00103E5C /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		CD397BCF207AC3B400103E5C /* ChooseCurrencyTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseCurrencyTableViewController.swift; sourceTree = "<group>"; };
 		CD397BD3207D79CF00103E5C /* PickerBasedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerBasedTextField.swift; sourceTree = "<group>"; };
+		CD43CD4F2288D66A0020EEC0 /* StoreReviewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreReviewHelper.swift; sourceTree = "<group>"; };
 		CD51D99420A7A618003791E1 /* AddModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddModel.swift; sourceTree = "<group>"; };
 		CD86E7792041A62D0007F817 /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
 		CDAF4ECC207846EA00392459 /* GeneralHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralHelper.swift; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 				CD315097205316CF001AD682 /* Style+MyApp.swift */,
 				CDAF4ECC207846EA00392459 /* GeneralHelper.swift */,
 				CD397BCD2079837E00103E5C /* Currency.swift */,
+				CD43CD4F2288D66A0020EEC0 /* StoreReviewHelper.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -355,6 +358,7 @@
 				CDEBB29D2015650E009ED68F /* WalletModel.xcdatamodeld in Sources */,
 				CD0F71302015221A000B2BCD /* DashboardViewController.swift in Sources */,
 				CDC80A1E2017E61D00AD4B35 /* MainTabBarViewController.swift in Sources */,
+				CD43CD502288D66A0020EEC0 /* StoreReviewHelper.swift in Sources */,
 				CDEBB2A92017E350009ED68F /* Accounts+CoreDataProperties.swift in Sources */,
 				CD397BCE2079837E00103E5C /* Currency.swift in Sources */,
 				CD0246AE2073FB2600E7C705 /* PersistentModel.swift in Sources */,
