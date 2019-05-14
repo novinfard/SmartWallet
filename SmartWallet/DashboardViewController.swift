@@ -33,6 +33,7 @@ class DashboardViewController: UITableViewController {
 		super.viewWillAppear(animated)
 
 		configureSegmentedView()
+		StoreReviewHelper.checkAndAskForReview()
 
 		totalBudget = Facade.share.model.getTotalBudget()
 		currencyLabel = getCurrencyLabel()
