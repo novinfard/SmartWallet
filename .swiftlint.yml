@@ -1,6 +1,7 @@
 disabled_rules:
     - force_cast
     - vertical_parameter_alignment
+    - trailing_whitespace
 excluded:
     - Pods
     - Carthage
