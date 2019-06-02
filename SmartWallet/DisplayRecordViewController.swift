@@ -11,15 +11,16 @@ import CoreData
 
 class DisplayRecordViewController: UIViewController {
 	
-	@IBOutlet weak var dateTextField: PickerBasedTextField!
-	@IBOutlet weak var categoryTextField: PickerBasedTextField!
-	@IBOutlet weak var prefixLabel: UILabel!
-	@IBOutlet weak var amountLabel: UILabel!
-	
+	@IBOutlet private var prefixLabel: UILabel!
+	@IBOutlet private var amountLabel: UILabel!
+	@IBOutlet private var dateLabel: UILabel!
+	@IBOutlet private var categoryLabel: UILabel!
+	@IBOutlet private var editButton: UIButton!
+
 	var container: NSPersistentContainer!
-	var accountsList: [Accounts] = []
-	var expenseCategoriesList: [Categories] = []
-	var incomeCategoriesList: [Categories] = []
+	var accountsList = [Accounts]()
+	var expenseCategoriesList = [Categories]()
+	var incomeCategoriesList = [Categories]()
 	var currentUid = ""
 	var model: AddRecordModel = Facade.share.model.addRecordModel
 	var record: Records!
@@ -27,7 +28,6 @@ class DisplayRecordViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		setupNavigation()
 		setupCategoriesList()
 	}
 	
@@ -71,14 +71,14 @@ class DisplayRecordViewController: UIViewController {
 		// datePicker
 		let formatter = DateFormatter()
 		formatter.dateStyle = .medium
-		dateTextField.text = formatter.string(from: model.datetime)
+		self.dateLabel.text = formatter.string(from: model.datetime)
 		
 		if model.direction == 0 {
-			categoryTextField.text = (expenseCategoriesList.count > 0) ? expenseCategoriesList[model.expenseIndex].name : ""
+			self.categoryLabel.text = (expenseCategoriesList.count > 0) ? expenseCategoriesList[model.expenseIndex].name : ""
 			prefixLabel.text = "-" + getCurrencyLabel()
 			prefixLabel.textColor = UIColor.myAppRed
 		} else {
-			categoryTextField.text = (incomeCategoriesList.count > 0) ? incomeCategoriesList[model.incomeIndex].name : ""
+			self.categoryLabel.text = (incomeCategoriesList.count > 0) ? incomeCategoriesList[model.incomeIndex].name : ""
 			prefixLabel.text = "+" + getCurrencyLabel()
 			prefixLabel.textColor = UIColor.myAppGreen
 		}
@@ -100,17 +100,13 @@ class DisplayRecordViewController: UIViewController {
 			print ("fetch task failed", error)
 		}
 	}
-	
-	private func setupNavigation() {
-		let editButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editRecord))
-		self.navigationItem.rightBarButtonItem = editButton
-	}
-	
-	@objc func editRecord() {
+
+	@IBAction func editPressed(_ sender: Any) {
 		let storyboard = UIStoryboard(name: "Main", bundle: nil)
-		let controller = storyboard.instantiateViewController(withIdentifier: "AddRecord") as! AddRecordViewController
-		
-		controller.currentUid = record.uid
-		navigationController?.pushViewController(controller, animated: true)
+		if let controller = storyboard.instantiateViewController(withIdentifier: "AddRecord") as? AddRecordViewController {
+			controller.currentUid = record.uid
+			navigationController?.pushViewController(controller, animated: true)
+		}
 	}
+
 }
