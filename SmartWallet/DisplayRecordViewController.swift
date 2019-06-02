@@ -29,6 +29,7 @@ class DisplayRecordViewController: UIViewController {
 		super.viewDidLoad()
 		
 		setupCategoriesList()
+		setupUI()
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -83,6 +84,20 @@ class DisplayRecordViewController: UIViewController {
 			prefixLabel.textColor = UIColor.myAppGreen
 		}
 
+	}
+
+	private func setupUI() {
+		self.dateLabel.textColor = .gray
+		self.dateLabel.font = UIFont.systemFont(ofSize: 10, weight: .light)
+
+		self.categoryLabel.font = UIFont.systemFont(ofSize: 18, weight: .bold)
+
+		self.editButton.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+		self.editButton.setTitleColor(.white, for: .normal)
+		self.editButton.backgroundColor = UIColor(red: 27 / 255.0,
+												  green: 163 / 255.0,
+												  blue: 216 / 255.0,
+												  alpha: 1)
 	}
 	
 	public func setupCategoriesList() {
