@@ -89,6 +89,7 @@
 		CD49222722A47B72003DB2EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CD49222D22A47CF0003DB2EE /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
 		CD49223222AC5DCF003DB2EE /* Date+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+extensions.swift"; sourceTree = "<group>"; };
+		CD49223422AC61C1003DB2EE /* UICollection+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollection+Extensions.swift"; sourceTree = "<group>"; };
 		CD51D99420A7A618003791E1 /* AddModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddModel.swift; sourceTree = "<group>"; };
 		CD86E7792041A62D0007F817 /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
 		CDAF4ECC207846EA00392459 /* GeneralHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralHelper.swift; sourceTree = "<group>"; };
@@ -212,6 +213,7 @@
 				CD397BCD2079837E00103E5C /* Currency.swift */,
 				CD43CD4F2288D66A0020EEC0 /* StoreReviewHelper.swift */,
 				CD49223222AC5DCF003DB2EE /* Date+extensions.swift */,
+				CD49223422AC61C1003DB2EE /* UICollection+Extensions.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -440,6 +442,7 @@
 				CDD960192093F10600254F9F /* SplashViewController.swift in Sources */,
 				CD0246B02074F9D100E7C705 /* Facade.swift in Sources */,
 				CD397BD0207AC3B400103E5C /* ChooseCurrencyTableViewController.swift in Sources */,
+				CD49223522AC61C1003DB2EE /* UICollection+Extensions.swift in Sources */,
 				CDEBB2A82017E350009ED68F /* Accounts+CoreDataClass.swift in Sources */,
 				CDAF4ECD207846EA00392459 /* GeneralHelper.swift in Sources */,
 				CD2E553B2046D3FF00976EAA /* AddCategoryViewController.swift in Sources */,
