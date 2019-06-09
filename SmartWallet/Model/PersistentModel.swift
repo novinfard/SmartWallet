@@ -19,7 +19,6 @@ class PersistentModel {
 	var addRecordModel: AddRecordModel
 
 	init() {
-//		print("PersistentModel - init")
 		addRecordModel = AddRecordModel()
 
 		// initialise core data
@@ -41,7 +40,6 @@ class PersistentModel {
 	func importInitialData() {
 		do {
 			let fetchRequest: NSFetchRequest<Accounts> = Accounts.createFetchRequest()
-			//			fetchRequest.predicate = NSPredicate(format: "uniqueId == %@", contactIdentifier)
 			let result = try container.viewContext.fetch(fetchRequest)
 
 			// luncdhing data initialisation
@@ -247,17 +245,11 @@ class PersistentModel {
 
 			if plusOperaion {
 				for cat in results {
-//					print("\(cat.name) was \(cat.sortId)")
 					cat.sortId +=  1
-//					print("\(cat.name) is \(cat.sortId) now +")
-//					print("")
 				}
 			} else {
 				for cat in results {
-//					print("\(cat.name) was \(cat.sortId)")
 					cat.sortId -=  1
-//					print("\(cat.name) is \(cat.sortId) now -")
-//					print("")
 				}
 			}
 		} catch {
@@ -384,11 +376,45 @@ class PersistentModel {
 		return amountTotal
 	}
 
+	func addSampleData(quantity: Int = 100) {
+		// fetch categories
+		let categoryRequest: NSFetchRequest<Categories> = Categories.createFetchRequest()
+		guard let categories: [Categories] = try? container.viewContext.fetch(categoryRequest) else {
+			return
+		}
+
+		// setup budget of cateogries
+		categories.forEach {
+			guard $0.direction == -1 else { return }
+			let random = Int.random(in: 20 ... 200)
+			let budget = round(Double(random / 10)) * 10
+			$0.budget = budget
+		}
+		saveContext()
+
+		// add records
+		for _ in 0 ... quantity {
+			guard let cat = categories.randomElement() else {
+				return
+			}
+
+			let record = Records(context: self.container.viewContext)
+			record.amount = drand48() * 20
+			record.datetime = Date.randomDate(range: 60)
+			record.direction = cat.direction
+			record.note = ""
+			record.reported = true
+			record.uid = UUID().uuidString
+			record.relatedCategory = cat
+		}
+		saveContext()
+	}
+
 	func addSampleRecord() {
 		let record = Records(context: self.container.viewContext)
 		record.amount = drand48() * 20
 		record.datetime = Date()
-		record.direction = drand48() > 0.5 ? 1 : -1
+		record.direction = Bool.random() ? 1 : -1
 		record.note = ""
 		record.reported = true
 		record.uid = UUID().uuidString
@@ -399,7 +425,7 @@ class PersistentModel {
 	func addSampleCategory() {
 		let cateory = Categories(context: Facade.share.model.container.viewContext)
 		cateory.name = "Test " + UUID().uuidString.prefix(5)
-		cateory.direction = drand48() > 0.5 ? 1 : -1
+		cateory.direction = Bool.random() ? 1 : -1
 		cateory.uid = UUID().uuidString
 
 		saveContext()
@@ -412,6 +438,29 @@ class PersistentModel {
 			} catch {
 				print("An error occurred while saving: \(error)")
 			}
+		}
+	}
+
+	func purgeAllData() {
+		let uniqueNames = container.managedObjectModel.entities.compactMap({ $0.name })
+
+		uniqueNames.forEach { (name) in
+			let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: name)
+			let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+			do {
+				try container.viewContext.execute(batchDeleteRequest)
+			} catch {
+				let nserror = error as NSError
+				fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+			}
+		}
+	}
+
+	func resetDefaults() {
+		let defaults = UserDefaults.standard
+		let dictionary = defaults.dictionaryRepresentation()
+		dictionary.keys.forEach { key in
+			defaults.removeObject(forKey: key)
 		}
 	}
 }
@@ -427,3 +476,5 @@ extension NSManagedObject {
 		return copy
 	}
 }
+// swiftlint:enable type_body_length
+// swiftlint:enable file_length
