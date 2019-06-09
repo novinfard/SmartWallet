@@ -27,6 +27,10 @@
 		CD397BD0207AC3B400103E5C /* ChooseCurrencyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD397BCF207AC3B400103E5C /* ChooseCurrencyTableViewController.swift */; };
 		CD397BD4207D79CF00103E5C /* PickerBasedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD397BD3207D79CF00103E5C /* PickerBasedTextField.swift */; };
 		CD43CD502288D66A0020EEC0 /* StoreReviewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD43CD4F2288D66A0020EEC0 /* StoreReviewHelper.swift */; };
+		CD49222622A47B72003DB2EE /* SmartWalletUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD49222522A47B72003DB2EE /* SmartWalletUITests.swift */; };
+		CD49222E22A47CF0003DB2EE /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD49222D22A47CF0003DB2EE /* SnapshotHelper.swift */; };
+		CD49223322AC5DCF003DB2EE /* Date+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD49223222AC5DCF003DB2EE /* Date+extensions.swift */; };
+		CD49223522AC61C1003DB2EE /* UICollection+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD49223422AC61C1003DB2EE /* UICollection+Extensions.swift */; };
 		CD51D99520A7A618003791E1 /* AddModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD51D99420A7A618003791E1 /* AddModel.swift */; };
 		CD86E77A2041A62D0007F817 /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD86E7792041A62D0007F817 /* CategoriesViewController.swift */; };
 		CDAF4ECD207846EA00392459 /* GeneralHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDAF4ECC207846EA00392459 /* GeneralHelper.swift */; };
@@ -44,6 +48,16 @@
 		CDEBB2AC2017E350009ED68F /* Records+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEBB2A62017E350009ED68F /* Records+CoreDataClass.swift */; };
 		CDEBB2AD2017E350009ED68F /* Records+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEBB2A72017E350009ED68F /* Records+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CD49222822A47B72003DB2EE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CD0F710E2014D378000B2BCD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CD0F71152014D379000B2BCD;
+			remoteInfo = SmartWallet;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		8989CB5E46A29FD42343368F /* Pods_SmartWallet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmartWallet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -70,6 +84,12 @@
 		CD397BCF207AC3B400103E5C /* ChooseCurrencyTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseCurrencyTableViewController.swift; sourceTree = "<group>"; };
 		CD397BD3207D79CF00103E5C /* PickerBasedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerBasedTextField.swift; sourceTree = "<group>"; };
 		CD43CD4F2288D66A0020EEC0 /* StoreReviewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreReviewHelper.swift; sourceTree = "<group>"; };
+		CD49222322A47B72003DB2EE /* SmartWalletUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SmartWalletUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD49222522A47B72003DB2EE /* SmartWalletUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartWalletUITests.swift; sourceTree = "<group>"; };
+		CD49222722A47B72003DB2EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CD49222D22A47CF0003DB2EE /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
+		CD49223222AC5DCF003DB2EE /* Date+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+extensions.swift"; sourceTree = "<group>"; };
+		CD49223422AC61C1003DB2EE /* UICollection+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollection+Extensions.swift"; sourceTree = "<group>"; };
 		CD51D99420A7A618003791E1 /* AddModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddModel.swift; sourceTree = "<group>"; };
 		CD86E7792041A62D0007F817 /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
 		CDAF4ECC207846EA00392459 /* GeneralHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralHelper.swift; sourceTree = "<group>"; };
@@ -94,6 +114,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A9C529B4CE63FD813D87F6E /* Pods_SmartWallet.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CD49222022A47B72003DB2EE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -131,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				CD0F71182014D379000B2BCD /* SmartWallet */,
+				CD49222422A47B72003DB2EE /* SmartWalletUITests */,
 				CD0F71172014D379000B2BCD /* Products */,
 				7EC3A255DBEA693AB71050F0 /* Pods */,
 				AE14384B79712DF0803CF419 /* Frameworks */,
@@ -141,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				CD0F71162014D379000B2BCD /* SmartWallet.app */,
+				CD49222322A47B72003DB2EE /* SmartWalletUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -183,8 +212,20 @@
 				CDAF4ECC207846EA00392459 /* GeneralHelper.swift */,
 				CD397BCD2079837E00103E5C /* Currency.swift */,
 				CD43CD4F2288D66A0020EEC0 /* StoreReviewHelper.swift */,
+				CD49223222AC5DCF003DB2EE /* Date+extensions.swift */,
+				CD49223422AC61C1003DB2EE /* UICollection+Extensions.swift */,
 			);
 			path = General;
+			sourceTree = "<group>";
+		};
+		CD49222422A47B72003DB2EE /* SmartWalletUITests */ = {
+			isa = PBXGroup;
+			children = (
+				CD49222D22A47CF0003DB2EE /* SnapshotHelper.swift */,
+				CD49222522A47B72003DB2EE /* SmartWalletUITests.swift */,
+				CD49222722A47B72003DB2EE /* Info.plist */,
+			);
+			path = SmartWalletUITests;
 			sourceTree = "<group>";
 		};
 		CDD864312093F03200E65E64 /* videos */ = {
@@ -233,13 +274,31 @@
 			productReference = CD0F71162014D379000B2BCD /* SmartWallet.app */;
 			productType = "com.apple.product-type.application";
 		};
+		CD49222222A47B72003DB2EE /* SmartWalletUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CD49222C22A47B72003DB2EE /* Build configuration list for PBXNativeTarget "SmartWalletUITests" */;
+			buildPhases = (
+				CD49221F22A47B72003DB2EE /* Sources */,
+				CD49222022A47B72003DB2EE /* Frameworks */,
+				CD49222122A47B72003DB2EE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CD49222922A47B72003DB2EE /* PBXTargetDependency */,
+			);
+			name = SmartWalletUITests;
+			productName = SmartWalletUITests;
+			productReference = CD49222322A47B72003DB2EE /* SmartWalletUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		CD0F710E2014D378000B2BCD /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0920;
+				LastSwiftUpdateCheck = 1010;
 				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Soheil Novinfard";
 				TargetAttributes = {
@@ -247,6 +306,11 @@
 						CreatedOnToolsVersion = 9.2;
 						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
+					};
+					CD49222222A47B72003DB2EE = {
+						CreatedOnToolsVersion = 10.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = CD0F71152014D379000B2BCD;
 					};
 				};
 			};
@@ -264,6 +328,7 @@
 			projectRoot = "";
 			targets = (
 				CD0F71152014D379000B2BCD /* SmartWallet */,
+				CD49222222A47B72003DB2EE /* SmartWalletUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -277,6 +342,13 @@
 				CD0F71242014D379000B2BCD /* LaunchScreen.storyboard in Resources */,
 				CD0F71212014D379000B2BCD /* Assets.xcassets in Resources */,
 				CD0F711F2014D379000B2BCD /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CD49222122A47B72003DB2EE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -353,6 +425,7 @@
 				CD0F712E201521DC000B2BCD /* SettingsViewController.swift in Sources */,
 				CDD8642D2090E49B00E65E64 /* BudgetViewController.swift in Sources */,
 				CDEBB2AC2017E350009ED68F /* Records+CoreDataClass.swift in Sources */,
+				CD49223322AC5DCF003DB2EE /* Date+extensions.swift in Sources */,
 				CDEBB2AA2017E350009ED68F /* Categories+CoreDataClass.swift in Sources */,
 				CDD8642F2090F59A00E65E64 /* BudgetTableViewCell.swift in Sources */,
 				CD397BD4207D79CF00103E5C /* PickerBasedTextField.swift in Sources */,
@@ -369,6 +442,7 @@
 				CDD960192093F10600254F9F /* SplashViewController.swift in Sources */,
 				CD0246B02074F9D100E7C705 /* Facade.swift in Sources */,
 				CD397BD0207AC3B400103E5C /* ChooseCurrencyTableViewController.swift in Sources */,
+				CD49223522AC61C1003DB2EE /* UICollection+Extensions.swift in Sources */,
 				CDEBB2A82017E350009ED68F /* Accounts+CoreDataClass.swift in Sources */,
 				CDAF4ECD207846EA00392459 /* GeneralHelper.swift in Sources */,
 				CD2E553B2046D3FF00976EAA /* AddCategoryViewController.swift in Sources */,
@@ -378,7 +452,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CD49221F22A47B72003DB2EE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD49222622A47B72003DB2EE /* SmartWalletUITests.swift in Sources */,
+				CD49222E22A47CF0003DB2EE /* SnapshotHelper.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CD49222922A47B72003DB2EE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CD0F71152014D379000B2BCD /* SmartWallet */;
+			targetProxy = CD49222822A47B72003DB2EE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		CD0F711D2014D379000B2BCD /* Main.storyboard */ = {
@@ -545,6 +636,44 @@
 			};
 			name = Release;
 		};
+		CD49222A22A47B72003DB2EE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = VQ3DDEUQ7K;
+				INFOPLIST_FILE = SmartWalletUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.novinfard.SmartWalletUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = SmartWallet;
+			};
+			name = Debug;
+		};
+		CD49222B22A47B72003DB2EE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = VQ3DDEUQ7K;
+				INFOPLIST_FILE = SmartWalletUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.novinfard.SmartWalletUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = SmartWallet;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -562,6 +691,15 @@
 			buildConfigurations = (
 				CD0F71292014D379000B2BCD /* Debug */,
 				CD0F712A2014D379000B2BCD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CD49222C22A47B72003DB2EE /* Build configuration list for PBXNativeTarget "SmartWalletUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CD49222A22A47B72003DB2EE /* Debug */,
+				CD49222B22A47B72003DB2EE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
