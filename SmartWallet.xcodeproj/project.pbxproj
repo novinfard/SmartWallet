@@ -29,6 +29,8 @@
 		CD43CD502288D66A0020EEC0 /* StoreReviewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD43CD4F2288D66A0020EEC0 /* StoreReviewHelper.swift */; };
 		CD49222622A47B72003DB2EE /* SmartWalletUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD49222522A47B72003DB2EE /* SmartWalletUITests.swift */; };
 		CD49222E22A47CF0003DB2EE /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD49222D22A47CF0003DB2EE /* SnapshotHelper.swift */; };
+		CD49223322AC5DCF003DB2EE /* Date+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD49223222AC5DCF003DB2EE /* Date+extensions.swift */; };
+		CD49223522AC61C1003DB2EE /* UICollection+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD49223422AC61C1003DB2EE /* UICollection+Extensions.swift */; };
 		CD51D99520A7A618003791E1 /* AddModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD51D99420A7A618003791E1 /* AddModel.swift */; };
 		CD86E77A2041A62D0007F817 /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD86E7792041A62D0007F817 /* CategoriesViewController.swift */; };
 		CDAF4ECD207846EA00392459 /* GeneralHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDAF4ECC207846EA00392459 /* GeneralHelper.swift */; };
@@ -86,6 +88,7 @@
 		CD49222522A47B72003DB2EE /* SmartWalletUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartWalletUITests.swift; sourceTree = "<group>"; };
 		CD49222722A47B72003DB2EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CD49222D22A47CF0003DB2EE /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
+		CD49223222AC5DCF003DB2EE /* Date+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+extensions.swift"; sourceTree = "<group>"; };
 		CD51D99420A7A618003791E1 /* AddModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddModel.swift; sourceTree = "<group>"; };
 		CD86E7792041A62D0007F817 /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
 		CDAF4ECC207846EA00392459 /* GeneralHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralHelper.swift; sourceTree = "<group>"; };
@@ -208,6 +211,7 @@
 				CDAF4ECC207846EA00392459 /* GeneralHelper.swift */,
 				CD397BCD2079837E00103E5C /* Currency.swift */,
 				CD43CD4F2288D66A0020EEC0 /* StoreReviewHelper.swift */,
+				CD49223222AC5DCF003DB2EE /* Date+extensions.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -419,6 +423,7 @@
 				CD0F712E201521DC000B2BCD /* SettingsViewController.swift in Sources */,
 				CDD8642D2090E49B00E65E64 /* BudgetViewController.swift in Sources */,
 				CDEBB2AC2017E350009ED68F /* Records+CoreDataClass.swift in Sources */,
+				CD49223322AC5DCF003DB2EE /* Date+extensions.swift in Sources */,
 				CDEBB2AA2017E350009ED68F /* Categories+CoreDataClass.swift in Sources */,
 				CDD8642F2090F59A00E65E64 /* BudgetTableViewCell.swift in Sources */,
 				CD397BD4207D79CF00103E5C /* PickerBasedTextField.swift in Sources */,
