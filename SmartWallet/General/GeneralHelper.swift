@@ -91,10 +91,8 @@ func getMonthDuration(year: Int, month: Int, considerCurrent: Bool) -> Int {
 	let range = calendar.range(of: .day, in: .month, for: date)!
 	var numDays = range.count
 
-	if considerCurrent {
-		if year == Date().year() && month == Date().month() {
-			numDays = Date().day()
-		}
+	if considerCurrent, year == Date().year() && month == Date().month() {
+		numDays = Date().day()
 	}
 
 	return numDays
@@ -122,8 +120,6 @@ func getRecordString(_ value: Double, _ type: RecordType, preciseDecimal: Int = 
 	if formatting {
 		return "\(prefix) \(getCurrencyLabel()) \(absValue.format(formatString: ".\(preciseDecimal)"))"
 	} else {
-
-//		return String(format:"\(prefix) \(getCurrencyLabel()) %g", absValue)
 		return "\(prefix) \(getCurrencyLabel()) \(formatter.string(from: NSNumber(value: absValue))!)"
 	}
 
