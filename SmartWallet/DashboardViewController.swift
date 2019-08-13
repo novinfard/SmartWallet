@@ -93,9 +93,9 @@ class DashboardViewController: UITableViewController {
 		let monthlyTotal = monthlyTotalIncome - monthlyTotalCost
 		let dailyAverage = dailyAverageIncome - dailyAverageCost
 
-		overalInfo.append(("Total", getRecordString(monthlyTotal, .recordTypeAll)))
 		overalInfo.append(("Total Cost", getRecordString(monthlyTotalCost, .recordTypeCost)))
 		overalInfo.append(("Total Income", getRecordString(monthlyTotalIncome, .recordTypeIncome)))
+		overalInfo.append(("Total", getRecordString(monthlyTotal, .recordTypeAll)))
 
 		if totalBudget > 0 {
 			let monthlyTotalSave = totalBudget - monthlyTotalCost
@@ -185,12 +185,16 @@ class DashboardViewController: UITableViewController {
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		if indexPath.section == 0 {
 			let cell = tableView.dequeueReusableCell(withIdentifier: "dashboardCell", for: indexPath)
+			cell.selectionStyle = .none
+
 			cell.textLabel?.text = overalInfo[indexPath.row].label
 			cell.detailTextLabel?.text = overalInfo[indexPath.row].value
 
 			return cell
 		} else if indexPath.section == 1 {
 			let cell = tableView.dequeueReusableCell(withIdentifier: "dashboardCostCell", for: indexPath) as! BudgetTableViewCell
+			cell.selectionStyle = .none
+
 			let calc = budgetInfo[indexPath.row]
 
 			cell.categoryLabel.text = costInfo[indexPath.row].label
@@ -225,11 +229,14 @@ class DashboardViewController: UITableViewController {
 			return cell
 		} else if indexPath.section == 2 {
 			let cell = tableView.dequeueReusableCell(withIdentifier: "dashboardCell", for: indexPath)
+			cell.selectionStyle = .none
+
 			cell.textLabel?.text = incomeInfo[indexPath.row].label
 			cell.detailTextLabel?.text = incomeInfo[indexPath.row].value
 			return cell
 		} else {
 			let cell = tableView.dequeueReusableCell(withIdentifier: "dashboardCell", for: indexPath)
+			cell.selectionStyle = .none
 			return cell
 		}
 	}
