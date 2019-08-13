@@ -166,7 +166,7 @@ Go to Settings > Categories and add an 'Income' category.
 			categoryPicker.selectRow(model.expenseIndex, inComponent: 0, animated: false)
 //			}
 			prefixLabel.text = "-" + getCurrencyLabel()
-			prefixLabel.textColor = UIColor.myAppRed
+			prefixLabel.textColor = UIColor.myAppBlack
 		} else {
 			categoryTextField.text = (incomeCategoriesList.count > 0) ? incomeCategoriesList[model.incomeIndex].name : ""
 //			if model.incomeIndex <= categoryPicker.numberOfRows(inComponent: 0) {
@@ -288,7 +288,7 @@ Go to Settings > Categories and add an 'Income' category.
 		if directionSegmentedControl.selectedSegmentIndex == 0 {
 			categoryTextField.text = expenseCategoriesList[model.expenseIndex].name
 			prefixLabel.text = "-" + getCurrencyLabel()
-			prefixLabel.textColor = UIColor.myAppRed
+			prefixLabel.textColor = UIColor.myAppBlack
 
 			categoryPicker.selectRow(model.expenseIndex, inComponent: 0, animated: false)
 		} else {

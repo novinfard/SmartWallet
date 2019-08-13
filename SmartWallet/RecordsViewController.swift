@@ -76,7 +76,7 @@ class RecordsViewController: UITableViewController, NSFetchedResultsControllerDe
 			cell.amountLabel.text = getRecordString(record.amount, .recordTypeIncome, formatting: false)
 		} else {
 			cell.icon.image = UIImage(named: "DownIcon")
-			cell.amountLabel.textColor = UIColor.myAppRed
+			cell.amountLabel.textColor = UIColor.myAppBlack
 			cell.amountLabel.text = getRecordString(record.amount, .recordTypeCost, formatting: false)
 		}
 		cell.titleLabel.text = record.relatedCategory.name

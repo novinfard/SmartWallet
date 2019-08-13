@@ -30,7 +30,7 @@ private extension Style.TextStyle {
 		case .body:
 			return Style.TextAttributes(font: .myAppBody, color: .black, backgroundColor: .white)
 		case .button:
-			return Style.TextAttributes(font: .myAppSubtitle, color: .white, backgroundColor: .myAppRed)
+			return Style.TextAttributes(font: .myAppSubtitle, color: .white, backgroundColor: .myAppBlack)
 		}
 	}
 }
@@ -50,6 +50,10 @@ extension UIColor {
 	}
 	static var myAppLightOrange: UIColor {
 		return UIColor(red: 1.000, green: 0.924, blue: 0.804, alpha: 1.0)
+	}
+
+	static var myAppBlack: UIColor {
+		return .black
 	}
 }
 
