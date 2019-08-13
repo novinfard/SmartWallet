@@ -24,11 +24,6 @@ class RecordsViewController: UITableViewController, NSFetchedResultsControllerDe
     override func viewDidLoad() {
 		super.viewDidLoad()
 
-		applyStyle()
-
-		// if there is any need to load data from server #ONLINE
-//		performSelector(inBackground: #selector(fetchRecords), with:nil)
-
 		self.loadSavedData()
     }
 
@@ -38,21 +33,7 @@ class RecordsViewController: UITableViewController, NSFetchedResultsControllerDe
 		self.loadSavedData()
 	}
 
-	func applyStyle() {
-//		view.backgroundColor = style.backgroundColor
-
-//		style.apply(textStyle: .title, to: tableView.visibleCells)
-//		style.apply(textStyle: .subtitle, to: subtitleLabel)
-//		style.apply(textStyle: .body, to: bodyLabel)
-//		style.apply(to: actionButton)
-
-//		if let navBar = navigationController?.navigationBar {
-//			style.apply(to: navBar)
-//		}
-	}
-
 	override func numberOfSections(in tableView: UITableView) -> Int {
-//		print(fetchedResultsController.sections?.count ?? 1100)
 		return fetchedResultsController.sections?.count ?? 0
 	}
 
