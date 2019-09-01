@@ -27,4 +27,33 @@ extension Date {
 
 		return Date(timeIntervalSince1970: newInterval)
 	}
+
+	static func monthsBetweenDates(
+		startDate: Date?,
+		endDate: Date?,
+		currentDate: Date = Date()) -> [SWMonthDescription] {
+
+		var mothYearData = [SWMonthDescription]()
+
+		guard let startDate = startDate, let endDate = endDate else { return mothYearData }
+
+		for year in startDate.year() ... endDate.year() {
+			let monthStartIndex = year == startDate.year() ? startDate.month() : 1
+			let monthEndIndex = year < endDate.year() ? 12 : endDate.month()
+
+			for month in monthStartIndex ... monthEndIndex {
+				let monthTitle = DateFormatter.monthFormatter.monthSymbols[month - 1]
+				mothYearData.append(
+					SWMonthDescription(
+						year: year,
+						month: month,
+						title: monthTitle,
+						currentYear: year == currentDate.year()
+					)
+				)
+			}
+		}
+
+		return mothYearData
+	}
 }
