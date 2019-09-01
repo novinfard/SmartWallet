@@ -15,4 +15,11 @@ extension DateFormatter {
 
 		return dateFormtter
 	}()
+
+	static let fullDateFormatter: DateFormatter = {
+		var formatter = DateFormatter()
+		formatter.dateFormat = "y-MM-dd"
+
+		return formatter
+	}()
 }
