@@ -32,7 +32,9 @@ class MainTabBarViewController: UITabBarController {
 				return
 		}
 		let storyboard = UIStoryboard(name: "Main", bundle: nil)
-		guard let splashVC = storyboard.instantiateViewController(withIdentifier: "splashController") as? SplashViewController else {
+		guard let splashVC = storyboard.instantiateViewController(
+			withIdentifier: "splashController"
+			) as? SplashViewController else {
 			return
 		}
 		if UserDefaults.standard.bool(forKey: "FASTLANE_SNAPSHOT") == true {

@@ -33,56 +33,6 @@ func getCurrencyLabel() -> String {
 	return currencyLabel
 }
 
-func monthsBetweenDates(startDate: Date?, endDate: Date?, displayType: MonthYearArrayType) -> [Any] {
-	let dateFormtter = DateFormatter()
-
-	var monthsStringArray = [String]()
-	var monthsIntArray = [Int]()
-	var monthsWithyear = [String]()
-	var monthsWithyearExceptCurrent = [String]()
-	var monthsWithyearExceptCurrentTuple = [(year: Int, month: Int, title: String)]()
-	dateFormtter.dateFormat = "MM"
-
-	if let startYear: Int = startDate?.year(), let endYear = endDate?.year() {
-
-		if let startMonth: Int = startDate?.month(), let endMonth: Int = endDate?.month() {
-			for year in startYear...endYear {
-				for month in (year == startYear ? startMonth : 1)...(year < endYear ? 12 : endMonth) {
-					let monthTitle = dateFormtter.monthSymbols[month - 1]
-					monthsStringArray.append(monthTitle)
-					monthsIntArray.append(month)
-
-					let monthWithYear = "\(monthTitle) \(year)"
-					monthsWithyear.append(monthWithYear)
-
-					let exceptCurrent: String
-					if year == Date().year() {
-						exceptCurrent = monthTitle
-					} else {
-						exceptCurrent = monthWithYear
-					}
-					monthsWithyearExceptCurrent.append(exceptCurrent)
-					monthsWithyearExceptCurrentTuple.append((year, month, exceptCurrent))
-				}
-			}
-		}
-
-	}
-
-	switch displayType {
-	case .monthsWithyear:
-		return monthsWithyear
-	case .monthsWithyearExceptCurrent:
-		return monthsWithyearExceptCurrent
-	case .monthsStringArray:
-		return monthsStringArray
-	case .monthsIntArray:
-		return monthsIntArray
-	case .monthsWithyearExceptCurrentTuple:
-		return monthsWithyearExceptCurrentTuple
-	}
-}
-
 func getMonthDuration(year: Int, month: Int, considerCurrent: Bool) -> Int {
 	let dateComponents = DateComponents(year: year, month: month)
 	let calendar = Calendar.current

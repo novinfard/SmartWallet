@@ -13,7 +13,7 @@ import CoreData
 class DashboardViewController: UITableViewController {
 
 	var segmentioView: Segmentio!
-	var monthYearList = [(year: Int, month: Int, title: String)] ()
+	var monthYearList = [SWMonthDescription] ()
 	var currentYear: Int = Date().year()
 	var currentMonth: Int = Date().month()
 	var overalInfo = [(label: String, value:String)]()
@@ -243,16 +243,13 @@ class DashboardViewController: UITableViewController {
 
 	private func segmentioContent() -> [SegmentioItem] {
 		let (minDate, maxDate) = Facade.share.model.getMinMaxDateInRecords()
-		monthYearList = monthsBetweenDates(
+		self.monthYearList = Date.monthsBetweenDates(
 			startDate: minDate,
-			endDate: maxDate,
-			displayType: .monthsWithyearExceptCurrentTuple) as! [(year: Int, month: Int, title: String)]
+			endDate: maxDate)
 
-		var items = [SegmentioItem]()
-		for case let monthYear in monthYearList {
-			items.append(SegmentioItem(title: monthYear.title, image: nil))
+		return self.monthYearList.compactMap {
+			return SegmentioItem(title: $0.titleWithCurrentYear, image: nil)
 		}
-		return items
 	}
 
 	private static func segmentioOptions(
@@ -272,7 +269,6 @@ class DashboardViewController: UITableViewController {
 			backgroundColor: UIColor.white,
 			segmentPosition: segmentioPosition,
 			scrollEnabled: true,
-			//			indicatorOptions: segmentioIndicatorOptions(),
 			horizontalSeparatorOptions: SegmentioHorizontalSeparatorOptions(
 				type: SegmentioHorizontalSeparatorType.bottom, // Top, Bottom, TopAndBottom
 				height: 1,
