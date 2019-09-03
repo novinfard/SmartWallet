@@ -264,7 +264,7 @@ class PersistentModel {
 			let fetchRequest: NSFetchRequest<Records> = Records.createFetchRequest()
 
 			var direction: Int
-			if type == .recordTypeCost {
+			if type == .cost {
 				direction = -1
 			} else {
 				direction = 1
@@ -291,7 +291,7 @@ class PersistentModel {
 			let fetchRequest = NSFetchRequest<NSDictionary>(entityName: "Records")
 
 			var direction: Int
-			if type == .recordTypeCost {
+			if type == .cost {
 				direction = -1
 			} else {
 				direction = 1
@@ -476,5 +476,12 @@ extension NSManagedObject {
 		return copy
 	}
 }
+
+enum RecordType {
+	case cost
+	case income
+	case all
+}
+
 // swiftlint:enable type_body_length
 // swiftlint:enable file_length

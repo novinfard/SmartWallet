@@ -8,6 +8,12 @@
 
 import UIKit
 
+enum CategoryType {
+	case categoryTypeCost
+	case categoryTypeIncome
+	case categoryTypeAll
+}
+
 class AddCategoryViewController: UIViewController {
 
 	@IBOutlet weak var categoryNameInput: UITextField!

@@ -56,4 +56,56 @@ extension Date {
 
 		return mothYearData
 	}
+
+	func month() -> Int {
+		let month = Calendar.current.component(.month, from: self)
+		return month
+	}
+
+	func year() -> Int {
+		let year = Calendar.current.component(.year, from: self)
+		return year
+	}
+
+	func day() -> Int {
+		let day = Calendar.current.component(.day, from: self)
+		return day
+	}
+
+	func startOfMonth() -> Date {
+		let day = Calendar.current.startOfDay(for: self)
+		return Calendar.current.date(
+			from: Calendar.current.dateComponents([.year, .month], from: day))!
+	}
+
+	func endOfMonth() -> Date {
+		return Calendar.current.date(byAdding: DateComponents(month: 1, day: -1), to: self.startOfMonth())!
+	}
+
+	func dateOnly() -> Date {
+		let dateFormatter = DateFormatter()
+		dateFormatter.timeStyle = DateFormatter.Style.none
+		dateFormatter.dateStyle = DateFormatter.Style.short
+		let dateString = dateFormatter.string(from: self)
+
+		return dateFormatter.date(from: dateString)!
+	}
+
+	static func getMonthDuration(year: Int,
+						  month: Int,
+						  considerCurrent: Bool,
+						  currentDate: Date = Date()) -> Int {
+
+		guard !(considerCurrent && year == currentDate.year() && month == currentDate.month()) else {
+			return currentDate.day()
+		}
+
+		let dateComponents = DateComponents(year: year, month: month)
+		let calendar = Calendar.current
+		let date = calendar.date(from: dateComponents)!
+
+		let range = calendar.range(of: .day, in: .month, for: date)!
+		return range.count
+	}
+
 }

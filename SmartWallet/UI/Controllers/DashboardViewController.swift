@@ -10,6 +10,7 @@ import UIKit
 import Segmentio
 import CoreData
 
+// swiftlint:disable:next type_body_length
 class DashboardViewController: UITableViewController {
 
 	var segmentioView: Segmentio!
@@ -23,12 +24,6 @@ class DashboardViewController: UITableViewController {
 	var currencyLabel = ""
 	var totalBudget = 0.0
 
-	override func viewDidLoad() {
-		super.viewDidLoad()
-		// Do any additional setup after loading the view.
-
-	}
-
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 
@@ -36,7 +31,7 @@ class DashboardViewController: UITableViewController {
 		StoreReviewHelper.checkAndAskForReview()
 
 		totalBudget = Facade.share.model.getTotalBudget()
-		currencyLabel = getCurrencyLabel()
+		currencyLabel = NSLocale.defaultCurrency
 
 		calculateOveralInfo()
 		calculateCostInfo()
@@ -63,7 +58,7 @@ class DashboardViewController: UITableViewController {
 			self?.currentMonth = (self?.monthYearList[segmentIndex].month)!
 
 			self?.totalBudget = Facade.share.model.getTotalBudget()
-			self?.currencyLabel = getCurrencyLabel()
+			self?.currencyLabel = NSLocale.defaultCurrency
 
 			self?.calculateOveralInfo()
 			self?.calculateCostInfo()
@@ -79,46 +74,76 @@ class DashboardViewController: UITableViewController {
 	func calculateOveralInfo() {
 		overalInfo.removeAll()
 
-		let numDays = getMonthDuration(year: currentYear, month: currentMonth, considerCurrent: true)
-		let numDaysAll = getMonthDuration(year: currentYear, month: currentMonth, considerCurrent: false)
+		let numDays = Date.getMonthDuration(year: currentYear, month: currentMonth, considerCurrent: true)
+		let numDaysAll =  Date.getMonthDuration(year: currentYear, month: currentMonth, considerCurrent: false)
 
-		let monthlyTotalCost = Facade.share.model.getTotalMonth(year: currentYear, month: currentMonth, type: .recordTypeCost)
+		let monthlyTotalCost = Facade.share.model.getTotalMonth(year: currentYear, month: currentMonth, type: .cost)
 		let dailyAverageCost = monthlyTotalCost / Double(numDays)
 
 		let monthlyTotalIncome = Facade.share.model.getTotalMonth(year: currentYear,
 																  month: currentMonth,
-																  type: .recordTypeIncome)
+																  type: .income)
 		let dailyAverageIncome = monthlyTotalIncome / Double(numDays)
 
 		let monthlyTotal = monthlyTotalIncome - monthlyTotalCost
 		let dailyAverage = dailyAverageIncome - dailyAverageCost
 
-		overalInfo.append(("Total Cost", getRecordString(monthlyTotalCost, .recordTypeCost)))
-		overalInfo.append(("Total Income", getRecordString(monthlyTotalIncome, .recordTypeIncome)))
-		overalInfo.append(("Total", getRecordString(monthlyTotal, .recordTypeAll)))
+		overalInfo.append((
+			"Total Cost",
+			monthlyTotalCost.recordPresenter(for: .cost)
+		))
+		overalInfo.append((
+			"Total Income",
+			monthlyTotalIncome.recordPresenter(for: .income)
+		))
+		overalInfo.append((
+			"Total",
+			monthlyTotal.recordPresenter(for: .all)
+		))
 
 		if totalBudget > 0 {
 			let monthlyTotalSave = totalBudget - monthlyTotalCost
-			overalInfo.append(("Total Save", getRecordString(monthlyTotalSave, .recordTypeAll)))
+			overalInfo.append((
+				"Total Save",
+				monthlyTotalSave.recordPresenter(for: .all)
+			))
 		}
 
 		overalInfo.append((" ", " "))
 
-		overalInfo.append(("Daily Average", getRecordString(dailyAverage, .recordTypeAll)))
-		overalInfo.append(("Daily Average Cost", getRecordString(dailyAverageCost, .recordTypeCost)))
-		overalInfo.append(("Daily Average Income", getRecordString(dailyAverageIncome, .recordTypeIncome)))
+		overalInfo.append((
+			"Daily Average",
+			dailyAverage.recordPresenter(for: .all)
+		))
+		overalInfo.append((
+			"Daily Average Cost",
+			dailyAverageCost.recordPresenter(for: .cost)
+		))
+		overalInfo.append((
+			"Daily Average Income",
+			dailyAverageIncome.recordPresenter(for: .income)
+		))
 
 		if Date().year() == currentYear && Date().month() == currentMonth {
 			overalInfo.append((" ", " "))
 
 			let monthlyForecast = dailyAverage * Double(numDaysAll)
-			overalInfo.append(("Monthly Forecast", getRecordString(monthlyForecast, .recordTypeAll)))
+			overalInfo.append((
+				"Monthly Forecast",
+				monthlyForecast.recordPresenter(for: .all)
+			))
 
 			let monthlyForecastCost = dailyAverageCost * Double(numDaysAll)
-			overalInfo.append(("Monthly Forecast Cost", getRecordString(monthlyForecastCost, .recordTypeCost)))
+			overalInfo.append((
+				"Monthly Forecast Cost",
+				monthlyForecastCost.recordPresenter(for: .cost)
+			))
 
 			let monthlyForecastIncome = dailyAverageIncome * Double(numDaysAll)
-			overalInfo.append(("Monthly Forecast Income", getRecordString(monthlyForecastIncome, .recordTypeIncome)))
+			overalInfo.append((
+				"Monthly Forecast Income",
+				monthlyForecastIncome.recordPresenter(for: .income)
+			))
 		}
 
 	}
@@ -128,9 +153,12 @@ class DashboardViewController: UITableViewController {
 		budgetInfo.removeAll()
 		let catWithCost = Facade.share.model.getMonthlyTotalByCategory(year: currentYear,
 																	   month: currentMonth,
-																	   type: .recordTypeCost)
+																	   type: .cost)
 		for result in catWithCost {
-			costInfo.append((label: result.category.name, value: getRecordString(result.amount, .recordTypeCost)))
+			costInfo.append((
+				label: result.category.name,
+				value: result.amount.recordPresenter(for: .cost)
+			))
 			budgetInfo.append((amount: result.amount, budget: result.category.budget))
 		}
 	}
@@ -139,9 +167,12 @@ class DashboardViewController: UITableViewController {
 		incomeInfo.removeAll()
 		let catWithCost = Facade.share.model.getMonthlyTotalByCategory(year: currentYear,
 																	   month: currentMonth,
-																	   type: .recordTypeIncome)
+																	   type: .income)
 		for result in catWithCost {
-			incomeInfo.append((label: result.category.name, value: getRecordString(result.amount, .recordTypeIncome)))
+			incomeInfo.append((
+				label: result.category.name,
+				value: result.amount.recordPresenter(for: .income)
+			))
 		}
 	}
 

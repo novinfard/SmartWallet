@@ -73,11 +73,11 @@ class RecordsViewController: UITableViewController, NSFetchedResultsControllerDe
 		if record.direction > 0 {
 			cell.icon.image = UIImage(named: "UpIcon")
 			cell.amountLabel.textColor = UIColor.myAppGreen
-			cell.amountLabel.text = getRecordString(record.amount, .recordTypeIncome, formatting: false)
+			cell.amountLabel.text = record.amount.recordPresenter(for: .income, formatting: false)
 		} else {
 			cell.icon.image = UIImage(named: "DownIcon")
 			cell.amountLabel.textColor = UIColor.myAppBlack
-			cell.amountLabel.text = getRecordString(record.amount, .recordTypeCost, formatting: false)
+			cell.amountLabel.text = record.amount.recordPresenter(for: .cost, formatting: false)
 		}
 		cell.titleLabel.text = record.relatedCategory.name
 

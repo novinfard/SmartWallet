@@ -93,7 +93,7 @@ class BudgetViewController: UITableViewController, NSFetchedResultsControllerDel
 
 		let labelView: UILabel = UILabel.init(frame: CGRect(x: 0, y: 5, width: tableView.frame.width, height: 30))
 		labelView.textAlignment = .center
-		labelView.text = "Total: \(getCurrencyLabel())\(totalBudget.clean)"
+		labelView.text = "Total: \(NSLocale.defaultCurrency)\(totalBudget.clean)"
 
 		footerView.addSubview(labelView)
 		tableView.tableFooterView = footerView
@@ -103,7 +103,7 @@ class BudgetViewController: UITableViewController, NSFetchedResultsControllerDel
 		for cell in tableView.visibleCells as! [BudgetTableViewCell] {
 			let category = fetchedResultsController.object(at: tableView.indexPath(for: cell)!)
 			if let amount = cell.budgetAmount.text, amount != "" {
-				category.budget = getDoubleFromLocalNumber(input: amount)
+				category.budget = amount.getDoubleFromLocal()
 			} else {
 				category.budget = 0.0
 			}
@@ -129,7 +129,7 @@ extension BudgetViewController {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "budgetCell", for: indexPath) as! BudgetTableViewCell
 		let category = fetchedResultsController.object(at: indexPath)
 		cell.categoryLabel.text = category.name
-		cell.amountLabel.text = getCurrencyLabel()
+		cell.amountLabel.text = NSLocale.defaultCurrency
 
 		if category.budget != 0 {
 			cell.budgetAmount.text = "\(category.budget.clean)"
