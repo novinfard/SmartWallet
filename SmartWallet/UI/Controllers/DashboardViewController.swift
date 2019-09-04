@@ -14,7 +14,7 @@ import CoreData
 class DashboardViewController: UITableViewController {
 
 	var segmentioView: Segmentio!
-	var monthYearList = [SWMonthDescription] ()
+	var monthYearList = [SWMonth] ()
 	var currentYear: Int = Date().year()
 	var currentMonth: Int = Date().month()
 	var overalInfo = [(label: String, value:String)]()

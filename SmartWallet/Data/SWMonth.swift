@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct SWMonthDescription {
+struct SWMonth {
 	let year: Int
 	let month: Int
 	let title: String

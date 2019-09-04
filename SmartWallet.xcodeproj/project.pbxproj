@@ -19,7 +19,7 @@
 		CD0F712E201521DC000B2BCD /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0F712D201521DC000B2BCD /* SettingsViewController.swift */; };
 		CD0F71302015221A000B2BCD /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0F712F2015221A000B2BCD /* DashboardViewController.swift */; };
 		CD152F80231C3EB90042A6E8 /* DateFormatter+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD152F7F231C3EB90042A6E8 /* DateFormatter+Extensions.swift */; };
-		CD152F82231C433E0042A6E8 /* SWMonthDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD152F81231C433E0042A6E8 /* SWMonthDescription.swift */; };
+		CD152F82231C433E0042A6E8 /* SWMonth.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD152F81231C433E0042A6E8 /* SWMonth.swift */; };
 		CD152F8E231C4A660042A6E8 /* SmartWalletTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD152F8D231C4A660042A6E8 /* SmartWalletTests.swift */; };
 		CD152F96231C4AC10042A6E8 /* DateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD152F95231C4AC10042A6E8 /* DateTests.swift */; };
 		CD152F9C231F0C040042A6E8 /* Number+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD152F9B231F0C040042A6E8 /* Number+Extensions.swift */; };
@@ -53,6 +53,7 @@
 		CDEBB2AD2017E350009ED68F /* Records+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEBB2A72017E350009ED68F /* Records+CoreDataProperties.swift */; };
 		CDF8D787231F0D9900B2AAC0 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF8D786231F0D9900B2AAC0 /* String+Extensions.swift */; };
 		CDF8D789231F0FDE00B2AAC0 /* NSLocale+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF8D788231F0FDE00B2AAC0 /* NSLocale+Extensions.swift */; };
+		CDF8D78B2320575000B2AAC0 /* ReportModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF8D78A2320575000B2AAC0 /* ReportModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,7 +90,7 @@
 		CD0F712D201521DC000B2BCD /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		CD0F712F2015221A000B2BCD /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		CD152F7F231C3EB90042A6E8 /* DateFormatter+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Extensions.swift"; sourceTree = "<group>"; };
-		CD152F81231C433E0042A6E8 /* SWMonthDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWMonthDescription.swift; sourceTree = "<group>"; };
+		CD152F81231C433E0042A6E8 /* SWMonth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWMonth.swift; sourceTree = "<group>"; };
 		CD152F8B231C4A660042A6E8 /* SmartWalletTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SmartWalletTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD152F8D231C4A660042A6E8 /* SmartWalletTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartWalletTests.swift; sourceTree = "<group>"; };
 		CD152F8F231C4A660042A6E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -127,6 +128,7 @@
 		CDEBB2A72017E350009ED68F /* Records+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Records+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		CDF8D786231F0D9900B2AAC0 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		CDF8D788231F0FDE00B2AAC0 /* NSLocale+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSLocale+Extensions.swift"; sourceTree = "<group>"; };
+		CDF8D78A2320575000B2AAC0 /* ReportModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ReportModel.swift; path = SmartWallet/Data/ReportModel.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -212,6 +214,7 @@
 				CD152F97231F09780042A6E8 /* UI */,
 				CD31509420531661001AD682 /* Style.swift */,
 				CD315097205316CF001AD682 /* Style+MyApp.swift */,
+				CD397BD3207D79CF00103E5C /* PickerBasedTextField.swift */,
 				CD152F7D231C3E910042A6E8 /* Data */,
 				CD152F9A231F0B5F0042A6E8 /* Resources */,
 				CD0F71202014D379000B2BCD /* Assets.xcassets */,
@@ -226,7 +229,8 @@
 			children = (
 				CDEBB2AE2017E396009ED68F /* Model */,
 				CD152F7E231C3EA70042A6E8 /* Extensions */,
-				CD152F81231C433E0042A6E8 /* SWMonthDescription.swift */,
+				CDF8D78A2320575000B2AAC0 /* ReportModel.swift */,
+				CD152F81231C433E0042A6E8 /* SWMonth.swift */,
 				CD43CD4F2288D66A0020EEC0 /* StoreReviewHelper.swift */,
 				CD397BCD2079837E00103E5C /* Currency.swift */,
 				CD51D99420A7A618003791E1 /* AddModel.swift */,
@@ -280,7 +284,6 @@
 				CD2E553A2046D3FF00976EAA /* AddCategoryViewController.swift */,
 				CD397BCF207AC3B400103E5C /* ChooseCurrencyTableViewController.swift */,
 				CDD960182093F10600254F9F /* SplashViewController.swift */,
-				CD397BD3207D79CF00103E5C /* PickerBasedTextField.swift */,
 				CD0F711D2014D379000B2BCD /* Main.storyboard */,
 			);
 			path = Controllers;
@@ -551,7 +554,7 @@
 				CD397BD4207D79CF00103E5C /* PickerBasedTextField.swift in Sources */,
 				CD31509520531661001AD682 /* Style.swift in Sources */,
 				CDEBB2AD2017E350009ED68F /* Records+CoreDataProperties.swift in Sources */,
-				CD152F82231C433E0042A6E8 /* SWMonthDescription.swift in Sources */,
+				CD152F82231C433E0042A6E8 /* SWMonth.swift in Sources */,
 				CD315098205316CF001AD682 /* Style+MyApp.swift in Sources */,
 				CD152F80231C3EB90042A6E8 /* DateFormatter+Extensions.swift in Sources */,
 				CDEBB29D2015650E009ED68F /* WalletModel.xcdatamodeld in Sources */,
@@ -564,6 +567,7 @@
 				CD0246AE2073FB2600E7C705 /* PersistentModel.swift in Sources */,
 				CDD960192093F10600254F9F /* SplashViewController.swift in Sources */,
 				CD0246B02074F9D100E7C705 /* Facade.swift in Sources */,
+				CDF8D78B2320575000B2AAC0 /* ReportModel.swift in Sources */,
 				CD397BD0207AC3B400103E5C /* ChooseCurrencyTableViewController.swift in Sources */,
 				CD49223522AC61C1003DB2EE /* UICollection+Extensions.swift in Sources */,
 				CDEBB2A82017E350009ED68F /* Accounts+CoreDataClass.swift in Sources */,

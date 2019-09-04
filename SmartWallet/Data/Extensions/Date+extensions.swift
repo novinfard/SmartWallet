@@ -31,9 +31,9 @@ extension Date {
 	static func monthsBetweenDates(
 		startDate: Date?,
 		endDate: Date?,
-		currentDate: Date = Date()) -> [SWMonthDescription] {
+		currentDate: Date = Date()) -> [SWMonth] {
 
-		var mothYearData = [SWMonthDescription]()
+		var mothYearData = [SWMonth]()
 
 		guard let startDate = startDate, let endDate = endDate else { return mothYearData }
 
@@ -44,7 +44,7 @@ extension Date {
 			for month in monthStartIndex ... monthEndIndex {
 				let monthTitle = DateFormatter.monthFormatter.monthSymbols[month - 1]
 				mothYearData.append(
-					SWMonthDescription(
+					SWMonth(
 						year: year,
 						month: month,
 						title: monthTitle,
