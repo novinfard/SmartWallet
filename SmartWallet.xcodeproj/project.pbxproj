@@ -212,9 +212,6 @@
 				CD0F71192014D379000B2BCD /* AppDelegate.swift */,
 				CD0246AF2074F9D100E7C705 /* Facade.swift */,
 				CD152F97231F09780042A6E8 /* UI */,
-				CD31509420531661001AD682 /* Style.swift */,
-				CD315097205316CF001AD682 /* Style+MyApp.swift */,
-				CD397BD3207D79CF00103E5C /* PickerBasedTextField.swift */,
 				CD152F7D231C3E910042A6E8 /* Data */,
 				CD152F9A231F0B5F0042A6E8 /* Resources */,
 				CD0F71202014D379000B2BCD /* Assets.xcassets */,
@@ -266,6 +263,9 @@
 				CD152F98231F09EA0042A6E8 /* Controllers */,
 				CD152F99231F0A090042A6E8 /* Extensions */,
 				CD0246B52076975700E7C705 /* Cells */,
+				CD52CDF22337D2E8008A1498 /* Views */,
+				CD31509420531661001AD682 /* Style.swift */,
+				CD315097205316CF001AD682 /* Style+MyApp.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -313,6 +313,14 @@
 				CD49222722A47B72003DB2EE /* Info.plist */,
 			);
 			path = SmartWalletUITests;
+			sourceTree = "<group>";
+		};
+		CD52CDF22337D2E8008A1498 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CD397BD3207D79CF00103E5C /* PickerBasedTextField.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		CDD864312093F03200E65E64 /* videos */ = {
