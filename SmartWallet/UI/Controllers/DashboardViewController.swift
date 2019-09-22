@@ -9,66 +9,133 @@
 import UIKit
 import Segmentio
 import CoreData
+import Charts
 
 // swiftlint:disable:next type_body_length
 class DashboardViewController: UITableViewController {
+	private var lineChartView: LineChartView?
+	private var segmentioView: Segmentio?
+	private var dashboardHeaderView: UIView?
 
-	var segmentioView: Segmentio!
-	var monthYearList = [SWMonth] ()
-	var currentYear: Int = Date().year()
-	var currentMonth: Int = Date().month()
-	var overalInfo = [(label: String, value:String)]()
-	var costInfo = [(label: String, value:String)]()
-	var budgetInfo = [(amount:Double, budget:Double)]()
-	var incomeInfo = [(label: String, value:String)]()
-	var currencyLabel = ""
-	var totalBudget = 0.0
+	private var monthYearList = [SWMonth] ()
+	private var currentYear: Int = Date().year()
+	private var currentMonth: Int = Date().month()
+	private var overalInfo = [(label: String, value:String)]()
+	private var costInfo = [(label: String, value:String)]()
+	private var budgetInfo = [(amount:Double, budget:Double)]()
+	private var incomeInfo = [(label: String, value:String)]()
+	private var currencyLabel = NSLocale.defaultCurrency
+	private var totalBudget = 0.0
+	private let monthData = ReportModel.monthlyOveralInfo()
 
-	override func viewWillAppear(_ animated: Bool) {
-		super.viewWillAppear(animated)
+	override func viewDidLoad() {
+		super.viewDidLoad()
+
+		dashboardHeaderView = UIView(
+			frame: CGRect(
+				x: 0,
+				y: 0,
+				width: self.view.frame.width,
+				height: 260
+			)
+		)
 
 		configureSegmentedView()
-		StoreReviewHelper.checkAndAskForReview()
-
 		totalBudget = Facade.share.model.getTotalBudget()
-		currencyLabel = NSLocale.defaultCurrency
 
 		calculateOveralInfo()
 		calculateCostInfo()
 		calculateIncomeInfo()
 
+		configureChart()
+		tableView.tableHeaderView = dashboardHeaderView
+	}
+
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+
+		StoreReviewHelper.checkAndAskForReview()
 		tableView.reloadData()
+	}
+
+	private func configureChart() {
+		// Do any additional setup after loading the view.
+		self.lineChartView = LineChartView(frame: CGRect(x: 0, y: 60, width: self.view.frame.width, height: 200))
+
+		lineChartView?.delegate = self
+
+		lineChartView?.chartDescription?.enabled = false
+		lineChartView?.dragEnabled = true
+		lineChartView?.setScaleEnabled(true)
+		lineChartView?.pinchZoomEnabled = true
+		lineChartView?.rightAxis.enabled = false
+
+		lineChartView?.xAxis.valueFormatter = self
+		lineChartView?.xAxis.granularity = (monthData.count > 6) ? 3.0 : 1.0
+
+		lineChartView?.legend.form = .line
+
+		lineChartView?.animate(xAxisDuration: 2.5)
+
+		if let lineChartView = lineChartView {
+			dashboardHeaderView?.addSubview(lineChartView)
+		}
+		self.setDataCount(45, range: UInt32(2.5))
+
+	}
+
+	func setDataCount(_ count: Int, range: UInt32) {
+		let totalCosts = monthData.compactMap({$0.items.first(where: {$0.type == .totalCost})})
+
+		var index: Double = -1
+		let values: [ChartDataEntry] = totalCosts.compactMap({
+			index += 1
+			return ChartDataEntry(x: index, y: $0.value)
+		})
+
+		let set1 = LineChartDataSet(values: values, label: "Cost")
+		set1.drawIconsEnabled = false
+
+		set1.setColor(.black)
+		set1.setCircleColor(.black)
+		set1.lineWidth = 1
+		set1.circleRadius = 3
+		set1.drawCircleHoleEnabled = true
+		set1.valueFont = .systemFont(ofSize: 9)
+
+		let gradientColors = [ChartColorTemplates.colorFromString("#00ff0000").cgColor,
+			ChartColorTemplates.colorFromString("#ffff0000").cgColor]
+		let gradient = CGGradient(colorsSpace: nil, colors: gradientColors as CFArray, locations: nil)!
+
+		set1.fillAlpha = 1
+		set1.fill = Fill(linearGradient: gradient, angle: 90)
+		set1.drawFilledEnabled = true
+
+		let data = LineChartData(dataSet: set1)
+
+		lineChartView?.data = data
 	}
 
 	func configureSegmentedView() {
 		let frame = tableView.frame
 		let segmentioViewRect = CGRect(x: frame.minX, y: frame.minY, width: UIScreen.main.bounds.width, height: 50)
 		segmentioView = Segmentio(frame: segmentioViewRect)
-		segmentioView.setup(
+		segmentioView?.setup(
 			content: segmentioContent(),
 			style: .onlyLabel,
 			options: DashboardViewController.segmentioOptions(segmentioStyle: .imageBeforeLabel)
 		)
-		segmentioView.selectedSegmentioIndex = segmentioView.segmentioItems.count-1
+		segmentioView?.selectedSegmentioIndex = segmentioView?.segmentioItems.count ?? 0 - 1
 		currentYear = monthYearList.last!.year
 		currentMonth = monthYearList.last!.month
 
-		segmentioView.valueDidChange = { [weak self] _, segmentIndex in
-			self?.currentYear = (self?.monthYearList[segmentIndex].year)!
-			self?.currentMonth = (self?.monthYearList[segmentIndex].month)!
-
-			self?.totalBudget = Facade.share.model.getTotalBudget()
-			self?.currencyLabel = NSLocale.defaultCurrency
-
-			self?.calculateOveralInfo()
-			self?.calculateCostInfo()
-			self?.calculateIncomeInfo()
-
-			self?.tableView.reloadData()
+		segmentioView?.valueDidChange = { [weak self] _, segmentIndex in
+			self?.updateDataAt(index: segmentIndex)
 		}
 
-		tableView.tableHeaderView = segmentioView
-
+		if let segmentioView = segmentioView {
+			dashboardHeaderView?.addSubview(segmentioView)
+		}
 	}
 
 	func calculateOveralInfo() {
@@ -317,4 +384,41 @@ class DashboardViewController: UITableViewController {
 		)
 	}
 
+	private func updateDataAt(index: Int) {
+		guard let currentYear = self.monthYearList[safe: index]?.year,
+			let currentMonth = self.monthYearList[safe: index]?.month else {
+				assertionFailure("No data for selected index")
+				return
+		}
+		self.currentYear = currentYear
+		self.currentMonth = currentMonth
+
+		self.totalBudget = Facade.share.model.getTotalBudget()
+		self.currencyLabel = NSLocale.defaultCurrency
+
+		self.calculateOveralInfo()
+		self.calculateCostInfo()
+		self.calculateIncomeInfo()
+
+		self.tableView.reloadData()
+	}
+
+}
+
+extension DashboardViewController: ChartViewDelegate {
+	func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
+		let index = Int(entry.x)
+		self.updateDataAt(index: index)
+	}
+
+}
+
+extension DashboardViewController: IAxisValueFormatter {
+	func stringForValue( _ value: Double, axis _: AxisBase?) -> String {
+		let yearMonth = monthData[safe: Int(value)]?.month
+		if let month = yearMonth?.month {
+			return "\(month)"
+		}
+		return ""
+	}
 }
