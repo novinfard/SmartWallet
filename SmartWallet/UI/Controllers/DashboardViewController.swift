@@ -11,6 +11,7 @@ import Segmentio
 import CoreData
 import Charts
 
+// swiftlint:disable file_length
 // swiftlint:disable:next type_body_length
 class DashboardViewController: UITableViewController {
 	private var lineChartView: LineChartView?
