@@ -130,8 +130,9 @@ class DashboardViewController: UITableViewController {
 		currentYear = monthYearList.last!.year
 		currentMonth = monthYearList.last!.month
 
-		segmentioView?.valueDidChange = { [weak self] _, segmentIndex in
-			self?.updateDataAt(index: segmentIndex)
+		segmentioView?.valueDidChange = { [weak self] _, index in
+			self?.updateDataAt(index: index)
+			self?.lineChartView?.highlightValue(x: Double(index), dataSetIndex: -1)
 		}
 
 		if let segmentioView = segmentioView {
@@ -410,6 +411,7 @@ extension DashboardViewController: ChartViewDelegate {
 	func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
 		let index = Int(entry.x)
 		self.updateDataAt(index: index)
+		segmentioView?.selectedSegmentioIndex = index
 	}
 
 }
