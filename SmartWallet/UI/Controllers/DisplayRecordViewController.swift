@@ -76,11 +76,11 @@ class DisplayRecordViewController: UIViewController {
 		
 		if model.direction == 0 {
 			self.categoryLabel.text = (expenseCategoriesList.count > 0) ? expenseCategoriesList[model.expenseIndex].name : ""
-			prefixLabel.text = "-" + getCurrencyLabel()
+			prefixLabel.text = "-" + NSLocale.defaultCurrency
 			prefixLabel.textColor = UIColor.myAppBlack
 		} else {
 			self.categoryLabel.text = (incomeCategoriesList.count > 0) ? incomeCategoriesList[model.incomeIndex].name : ""
-			prefixLabel.text = "+" + getCurrencyLabel()
+			prefixLabel.text = "+" + NSLocale.defaultCurrency
 			prefixLabel.textColor = UIColor.myAppGreen
 		}
 

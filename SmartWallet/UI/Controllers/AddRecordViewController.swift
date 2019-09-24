@@ -165,14 +165,14 @@ Go to Settings > Categories and add an 'Income' category.
 //			if model.expenseIndex <= categoryPicker.numberOfRows(inComponent: 0) {
 			categoryPicker.selectRow(model.expenseIndex, inComponent: 0, animated: false)
 //			}
-			prefixLabel.text = "-" + getCurrencyLabel()
+			prefixLabel.text = "-" + NSLocale.defaultCurrency
 			prefixLabel.textColor = UIColor.myAppBlack
 		} else {
 			categoryTextField.text = (incomeCategoriesList.count > 0) ? incomeCategoriesList[model.incomeIndex].name : ""
 //			if model.incomeIndex <= categoryPicker.numberOfRows(inComponent: 0) {
 				categoryPicker.selectRow(model.incomeIndex, inComponent: 0, animated: false)
 //			}
-			prefixLabel.text = "+" + getCurrencyLabel()
+			prefixLabel.text = "+" + NSLocale.defaultCurrency
 			prefixLabel.textColor = UIColor.myAppGreen
 		}
 
@@ -243,8 +243,7 @@ Go to Settings > Categories and add an 'Income' category.
 			present(alert, animated: true, completion: nil)
 			return
 		}
-		model.amount = getDoubleFromLocalNumber(input: amountTextField.text!)
-
+		model.amount = amountTextField.text!.getDoubleFromLocal()
 		let formatter = DateFormatter()
 		formatter.dateStyle = .medium
 		if let date = formatter.date(from: dateTextField.text!) {
@@ -268,7 +267,7 @@ Go to Settings > Categories and add an 'Income' category.
 
 		record.reported = (reportingSegmentedControl.selectedSegmentIndex == 0) ? true : false
 
-		record.amount = getDoubleFromLocalNumber(input: amountTextField.text!)
+		record.amount = amountTextField.text!.getDoubleFromLocal()
 
 		record.datetime = model.datetime
 
@@ -287,13 +286,13 @@ Go to Settings > Categories and add an 'Income' category.
 
 		if directionSegmentedControl.selectedSegmentIndex == 0 {
 			categoryTextField.text = expenseCategoriesList[model.expenseIndex].name
-			prefixLabel.text = "-" + getCurrencyLabel()
+			prefixLabel.text = "-" + NSLocale.defaultCurrency
 			prefixLabel.textColor = UIColor.myAppBlack
 
 			categoryPicker.selectRow(model.expenseIndex, inComponent: 0, animated: false)
 		} else {
 			categoryTextField.text = incomeCategoriesList[model.incomeIndex].name
-			prefixLabel.text = "+" + getCurrencyLabel()
+			prefixLabel.text = "+" + NSLocale.defaultCurrency
 			prefixLabel.textColor = UIColor.myAppGreen
 
 			categoryPicker.selectRow(model.incomeIndex, inComponent: 0, animated: false)
@@ -378,7 +377,7 @@ Go to Settings > Categories and add an 'Income' category.
 		let dateFormatter: DateFormatter = DateFormatter()
 		dateFormatter.dateStyle = DateFormatter.Style.medium
 		dateFormatter.timeStyle = DateFormatter.Style.none
-		model.datetime = getDateOnlyFromDatetime(sender.date)
+		model.datetime = sender.date.dateOnly()
 
 		dateTextField.text = dateFormatter.string(from: model.datetime)
 	}

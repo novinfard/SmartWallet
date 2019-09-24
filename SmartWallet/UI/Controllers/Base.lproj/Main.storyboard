@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wue-qL-8JE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wue-qL-8JE">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -243,18 +243,27 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Categories" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ilW-zH-z7f">
-                                                    <rect key="frame" x="64" y="5" width="104" height="34"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Categories" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ilW-zH-z7f">
+                                                    <rect key="frame" x="64" y="11.5" width="83.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="CategoryIcon" translatesAutoresizingMaskIntoConstraints="NO" id="XP0-g9-Qaj">
-                                                    <rect key="frame" x="16" y="3" width="36" height="36"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CategoryIcon" translatesAutoresizingMaskIntoConstraints="NO" id="XP0-g9-Qaj">
+                                                    <rect key="frame" x="16" y="4" width="36" height="36"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="36" id="FdM-un-Egm"/>
+                                                        <constraint firstAttribute="height" constant="36" id="hN5-lA-uZE"/>
+                                                    </constraints>
                                                 </imageView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="XP0-g9-Qaj" firstAttribute="leading" secondItem="BEF-8p-gxN" secondAttribute="leading" constant="16" id="7y7-Zn-fvI"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ilW-zH-z7f" secondAttribute="trailing" constant="10" id="A98-us-Wxz"/>
+                                                <constraint firstItem="XP0-g9-Qaj" firstAttribute="centerY" secondItem="BEF-8p-gxN" secondAttribute="centerY" id="F1M-ZY-6zw"/>
+                                                <constraint firstItem="ilW-zH-z7f" firstAttribute="centerY" secondItem="BEF-8p-gxN" secondAttribute="centerY" id="ZHe-Cw-QRT"/>
+                                                <constraint firstItem="ilW-zH-z7f" firstAttribute="leading" secondItem="XP0-g9-Qaj" secondAttribute="trailing" constant="12" id="vzO-1G-2KA"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <segue destination="Gcm-GR-U5t" kind="show" id="IR2-f6-Dqx"/>
@@ -267,18 +276,27 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Currency" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GUo-aJ-Y9b">
-                                                    <rect key="frame" x="64" y="5" width="104" height="34"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Currency" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GUo-aJ-Y9b">
+                                                    <rect key="frame" x="64" y="11.5" width="70.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="CurrencyIcon" translatesAutoresizingMaskIntoConstraints="NO" id="7j1-RB-bZi">
-                                                    <rect key="frame" x="16" y="3" width="36" height="36"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CurrencyIcon" translatesAutoresizingMaskIntoConstraints="NO" id="7j1-RB-bZi">
+                                                    <rect key="frame" x="16" y="4" width="36" height="36"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="36" id="Nxe-ev-NKI"/>
+                                                        <constraint firstAttribute="width" constant="36" id="YW2-hc-uOQ"/>
+                                                    </constraints>
                                                 </imageView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="7j1-RB-bZi" firstAttribute="leading" secondItem="HHu-h2-C6y" secondAttribute="leading" constant="16" id="9xX-KS-uj9"/>
+                                                <constraint firstItem="GUo-aJ-Y9b" firstAttribute="centerY" secondItem="HHu-h2-C6y" secondAttribute="centerY" id="Ba1-rW-Mu4"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="GUo-aJ-Y9b" secondAttribute="trailing" constant="10" id="GQl-Sf-ckH"/>
+                                                <constraint firstItem="GUo-aJ-Y9b" firstAttribute="leading" secondItem="7j1-RB-bZi" secondAttribute="trailing" constant="12" id="VsI-X7-BHL"/>
+                                                <constraint firstItem="7j1-RB-bZi" firstAttribute="centerY" secondItem="HHu-h2-C6y" secondAttribute="centerY" id="iT8-3e-asM"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <segue destination="sEC-R9-Kee" kind="show" id="5Yt-fv-lvt"/>
@@ -547,7 +565,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CtZ-LN-PWF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1180" y="-653"/>
+            <point key="canvasLocation" x="1179.375" y="-653.87323943661977"/>
         </scene>
         <!--Main Tab Bar View Controller-->
         <scene sceneID="ksx-VX-nBx">
@@ -745,18 +763,27 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Categories" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fWx-AN-pBX">
-                                                    <rect key="frame" x="64" y="5" width="104" height="34"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Categories" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fWx-AN-pBX">
+                                                    <rect key="frame" x="64" y="11.5" width="83.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="CategoryIcon" translatesAutoresizingMaskIntoConstraints="NO" id="rZh-Eh-r5d">
-                                                    <rect key="frame" x="16" y="3" width="36" height="36"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CategoryIcon" translatesAutoresizingMaskIntoConstraints="NO" id="rZh-Eh-r5d">
+                                                    <rect key="frame" x="16" y="4" width="36" height="36"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="36" id="Bpm-gF-6az"/>
+                                                        <constraint firstAttribute="height" constant="36" id="Trg-Hv-btC"/>
+                                                    </constraints>
                                                 </imageView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="fWx-AN-pBX" firstAttribute="centerY" secondItem="CCG-l6-0fr" secondAttribute="centerY" id="RAg-So-LV1"/>
+                                                <constraint firstItem="rZh-Eh-r5d" firstAttribute="centerY" secondItem="CCG-l6-0fr" secondAttribute="centerY" id="RNC-2p-Cwa"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="fWx-AN-pBX" secondAttribute="trailing" constant="10" id="Wm0-1d-qeu"/>
+                                                <constraint firstItem="rZh-Eh-r5d" firstAttribute="leading" secondItem="CCG-l6-0fr" secondAttribute="leading" constant="16" id="bFh-73-zJi"/>
+                                                <constraint firstItem="fWx-AN-pBX" firstAttribute="leading" secondItem="rZh-Eh-r5d" secondAttribute="trailing" constant="12" id="ks9-eD-3CP"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CurrencyStaticCell" id="IR0-dp-cUU">
@@ -766,18 +793,27 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Currency" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GCh-7Q-eaG">
-                                                    <rect key="frame" x="64" y="5" width="104" height="34"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Currency" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GCh-7Q-eaG">
+                                                    <rect key="frame" x="64" y="11.5" width="70.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="CurrencyIcon" translatesAutoresizingMaskIntoConstraints="NO" id="fHg-8S-q3V">
-                                                    <rect key="frame" x="16" y="3" width="36" height="36"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CurrencyIcon" translatesAutoresizingMaskIntoConstraints="NO" id="fHg-8S-q3V">
+                                                    <rect key="frame" x="16" y="4" width="36" height="36"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="36" id="KTY-Cm-zuu"/>
+                                                        <constraint firstAttribute="width" constant="36" id="bTc-Zx-ct4"/>
+                                                    </constraints>
                                                 </imageView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="GCh-7Q-eaG" firstAttribute="centerY" secondItem="vmg-RG-GQF" secondAttribute="centerY" id="5PH-92-ru2"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="GCh-7Q-eaG" secondAttribute="trailing" constant="10" id="7FU-Us-TpX"/>
+                                                <constraint firstItem="fHg-8S-q3V" firstAttribute="centerY" secondItem="vmg-RG-GQF" secondAttribute="centerY" id="93C-gi-bzh"/>
+                                                <constraint firstItem="fHg-8S-q3V" firstAttribute="leading" secondItem="vmg-RG-GQF" secondAttribute="leading" constant="16" id="Va6-kx-Puf"/>
+                                                <constraint firstItem="GCh-7Q-eaG" firstAttribute="leading" secondItem="fHg-8S-q3V" secondAttribute="trailing" constant="12" id="jmE-9V-f2E"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AccountStaticCell" id="cPv-Kp-leU">
@@ -787,18 +823,27 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Accounts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GFv-WY-6V9">
-                                                    <rect key="frame" x="64" y="5" width="104" height="34"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Accounts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GFv-WY-6V9">
+                                                    <rect key="frame" x="64" y="11.5" width="72" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="AccountIcon" translatesAutoresizingMaskIntoConstraints="NO" id="rxe-yP-58l">
-                                                    <rect key="frame" x="16" y="3" width="36" height="36"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AccountIcon" translatesAutoresizingMaskIntoConstraints="NO" id="rxe-yP-58l">
+                                                    <rect key="frame" x="16" y="4" width="36" height="36"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="36" id="PRt-GT-Siy"/>
+                                                        <constraint firstAttribute="width" constant="36" id="kw2-rx-RrN"/>
+                                                    </constraints>
                                                 </imageView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="rxe-yP-58l" firstAttribute="leading" secondItem="oBC-Cc-X48" secondAttribute="leading" constant="16" id="JCh-r3-Usq"/>
+                                                <constraint firstItem="GFv-WY-6V9" firstAttribute="leading" secondItem="rxe-yP-58l" secondAttribute="trailing" constant="12" id="fjC-OZ-dzA"/>
+                                                <constraint firstItem="GFv-WY-6V9" firstAttribute="centerY" secondItem="oBC-Cc-X48" secondAttribute="centerY" id="khS-Q8-NVG"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="GFv-WY-6V9" secondAttribute="trailing" constant="10" id="sNx-gc-ewj"/>
+                                                <constraint firstItem="rxe-yP-58l" firstAttribute="centerY" secondItem="oBC-Cc-X48" secondAttribute="centerY" id="spz-is-hM8"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -1008,13 +1053,13 @@
         </scene>
     </scenes>
     <resources>
-        <image name="AccountIcon" width="512" height="512"/>
-        <image name="BudgetIcon" width="100" height="100"/>
-        <image name="CategoryIcon" width="512" height="512"/>
-        <image name="CurrencyIcon" width="256" height="256"/>
+        <image name="AccountIcon" width="170.66667175292969" height="170.66667175292969"/>
+        <image name="BudgetIcon" width="33.333332061767578" height="33.333332061767578"/>
+        <image name="CategoryIcon" width="170.66667175292969" height="170.66667175292969"/>
+        <image name="CurrencyIcon" width="85.333335876464844" height="85.333335876464844"/>
         <image name="DashboardIcon" width="25" height="25"/>
         <image name="RecordsIcon" width="25" height="25"/>
         <image name="SettingsIcon" width="25" height="25"/>
-        <image name="Welcome" width="295" height="319"/>
+        <image name="Welcome" width="98.333335876464844" height="106.33333587646484"/>
     </resources>
 </document>

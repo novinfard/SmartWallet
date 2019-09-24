@@ -4,6 +4,7 @@ disabled_rules:
     - trailing_whitespace
 excluded:
     - Pods
+    - fastlane
     - Carthage
 
 function_body_length:
