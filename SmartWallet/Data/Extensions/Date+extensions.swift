@@ -43,11 +43,15 @@ extension Date {
 
 			for month in monthStartIndex ... monthEndIndex {
 				let monthTitle = DateFormatter.monthFormatter.monthSymbols[month - 1]
+				let shortMonthTitle = DateFormatter.monthFormatter.shortMonthSymbols[month - 1]
+				let shortYear = String(String(year).suffix(2))
 				mothYearData.append(
 					SWMonth(
 						year: year,
+						shortYear: Int(shortYear) ?? 0,
 						month: month,
 						title: monthTitle,
+						shortTitle: shortMonthTitle,
 						currentYear: year == currentDate.year()
 					)
 				)

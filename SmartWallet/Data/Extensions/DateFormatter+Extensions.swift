@@ -16,6 +16,20 @@ extension DateFormatter {
 		return dateFormtter
 	}()
 
+	static let shortMonthFormatter: DateFormatter = {
+		let dateFormtter = DateFormatter()
+		dateFormtter.dateFormat = "MMM"
+
+		return dateFormtter
+	}()
+
+	static let shortYearFormatter: DateFormatter = {
+		let dateFormtter = DateFormatter()
+		dateFormtter.dateFormat = "yy"
+
+		return dateFormtter
+	}()
+
 	static let fullDateFormatter: DateFormatter = {
 		var formatter = DateFormatter()
 		formatter.dateFormat = "y-MM-dd"

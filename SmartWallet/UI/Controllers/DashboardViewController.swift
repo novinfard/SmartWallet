@@ -437,8 +437,8 @@ extension DashboardViewController: ChartViewDelegate {
 extension DashboardViewController: IAxisValueFormatter {
 	func stringForValue( _ value: Double, axis _: AxisBase?) -> String {
 		let yearMonth = monthData[safe: Int(value)]?.month
-		if let month = yearMonth?.month {
-			return "\(month)"
+		if let month = yearMonth?.shortTitleWithCurrentYear {
+			return month
 		}
 		return ""
 	}
