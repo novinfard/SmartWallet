@@ -40,6 +40,13 @@ class DashboardViewController: UITableViewController {
 				height: 260
 			)
 		)
+		tableView.tableHeaderView = dashboardHeaderView
+	}
+
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+
+		StoreReviewHelper.checkAndAskForReview()
 
 		configureSegmentedView()
 		totalBudget = Facade.share.model.getTotalBudget()
@@ -49,18 +56,11 @@ class DashboardViewController: UITableViewController {
 		calculateIncomeInfo()
 
 		configureChart()
-		tableView.tableHeaderView = dashboardHeaderView
-	}
 
-	override func viewWillAppear(_ animated: Bool) {
-		super.viewWillAppear(animated)
-
-		StoreReviewHelper.checkAndAskForReview()
 		tableView.reloadData()
 	}
 
 	private func configureChart() {
-		// Do any additional setup after loading the view.
 		self.lineChartView = LineChartView(frame: CGRect(x: 0, y: 60, width: self.view.frame.width, height: 200))
 
 		lineChartView?.delegate = self
@@ -81,12 +81,30 @@ class DashboardViewController: UITableViewController {
 		if let lineChartView = lineChartView {
 			dashboardHeaderView?.addSubview(lineChartView)
 		}
-		self.setDataCount(45, range: UInt32(2.5))
-
+		self.setupLineChartData()
 	}
 
-	func setDataCount(_ count: Int, range: UInt32) {
-		let totalCosts = monthData.compactMap({$0.items.first(where: {$0.type == .totalCost})})
+	func setupLineChartData() {
+		let costSet = self.provideLineData(type: .totalCost)
+		let incomeSet = self.provideLineData(type: .totalIncome)
+
+		let lineChartData = LineChartData(dataSets: [incomeSet, costSet])
+		lineChartView?.data = lineChartData
+	}
+
+	private func provideLineData(type: SWMonthlyOverallType) -> LineChartDataSet {
+		var mainColor: UIColor = .black
+		var gradientFirstColor: UIColor = .red
+		var gradientSecondColor: UIColor = .yellow
+		if type == .totalIncome {
+			mainColor = .white
+			gradientFirstColor = .blue
+			gradientSecondColor = .green
+		}
+
+		let totalCosts = monthData.compactMap({
+			$0.items.first(where: {$0.type == type})
+		})
 
 		var index: Double = -1
 		let values: [ChartDataEntry] = totalCosts.compactMap({
@@ -94,27 +112,27 @@ class DashboardViewController: UITableViewController {
 			return ChartDataEntry(x: index, y: $0.value)
 		})
 
-		let set1 = LineChartDataSet(values: values, label: "Cost")
-		set1.drawIconsEnabled = false
+		let chartDataSet = LineChartDataSet(values: values, label: type.rawValue)
+		chartDataSet.drawIconsEnabled = false
 
-		set1.setColor(.black)
-		set1.setCircleColor(.black)
-		set1.lineWidth = 1
-		set1.circleRadius = 3
-		set1.drawCircleHoleEnabled = true
-		set1.valueFont = .systemFont(ofSize: 9)
+		chartDataSet.setColor(mainColor)
+		chartDataSet.setCircleColor(mainColor)
+		chartDataSet.lineWidth = 1
+		chartDataSet.circleRadius = 3
+		chartDataSet.drawCircleHoleEnabled = true
+		chartDataSet.valueFont = .systemFont(ofSize: 9)
 
-		let gradientColors = [ChartColorTemplates.colorFromString("#00ff0000").cgColor,
-			ChartColorTemplates.colorFromString("#ffff0000").cgColor]
-		let gradient = CGGradient(colorsSpace: nil, colors: gradientColors as CFArray, locations: nil)!
+		let gradientColors = [gradientFirstColor.cgColor,
+							  gradientSecondColor.cgColor]
+		let gradient = CGGradient(colorsSpace: nil, colors: gradientColors as CFArray, locations: nil)
 
-		set1.fillAlpha = 1
-		set1.fill = Fill(linearGradient: gradient, angle: 90)
-		set1.drawFilledEnabled = true
+		chartDataSet.fillAlpha = 1
+		if let gradient = gradient {
+			chartDataSet.fill = Fill(linearGradient: gradient, angle: 90)
+		}
+		chartDataSet.drawFilledEnabled = true
 
-		let data = LineChartData(dataSet: set1)
-
-		lineChartView?.data = data
+		return chartDataSet
 	}
 
 	func configureSegmentedView() {
