@@ -27,7 +27,7 @@ class DashboardViewController: UITableViewController {
 	private var incomeInfo = [(label: String, value:String)]()
 	private var currencyLabel = NSLocale.defaultCurrency
 	private var totalBudget = 0.0
-	private let monthData = ReportModel.monthlyOveralInfo()
+	private var monthData = ReportModel.monthlyOveralInfo()
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -54,52 +54,57 @@ class DashboardViewController: UITableViewController {
 		calculateOveralInfo()
 		calculateCostInfo()
 		calculateIncomeInfo()
-
 		configureChart()
 
 		tableView.reloadData()
 	}
 
 	private func configureChart() {
-		self.lineChartView = LineChartView(frame: CGRect(x: 0, y: 60, width: self.view.frame.width, height: 200))
+		lineChartView = LineChartView(frame: CGRect(x: 0, y: 60, width: self.view.frame.width, height: 200))
 
 		lineChartView?.delegate = self
 
 		lineChartView?.chartDescription?.enabled = false
 		lineChartView?.dragEnabled = true
-		lineChartView?.setScaleEnabled(true)
-		lineChartView?.pinchZoomEnabled = true
+		lineChartView?.setScaleEnabled(false)
+		lineChartView?.pinchZoomEnabled = false
 		lineChartView?.rightAxis.enabled = false
 
 		lineChartView?.xAxis.valueFormatter = self
-		lineChartView?.xAxis.granularity = (monthData.count > 6) ? 3.0 : 1.0
+		lineChartView?.xAxis.granularity = 1
 
 		lineChartView?.legend.form = .line
 
-		lineChartView?.animate(xAxisDuration: 2.5)
+		lineChartView?.animate(yAxisDuration: 0.3)
 
 		if let lineChartView = lineChartView {
+			dashboardHeaderView?.subviews.filter({ $0 is LineChartView }).forEach {
+				$0.removeFromSuperview()
+			}
 			dashboardHeaderView?.addSubview(lineChartView)
 		}
-		self.setupLineChartData()
+		setupLineChartData()
 	}
 
 	func setupLineChartData() {
+		monthData = ReportModel.monthlyOveralInfo()
 		let costSet = self.provideLineData(type: .totalCost)
 		let incomeSet = self.provideLineData(type: .totalIncome)
 
 		let lineChartData = LineChartData(dataSets: [incomeSet, costSet])
 		lineChartView?.data = lineChartData
+		lineChartView?.setVisibleXRangeMaximum(5)
+		lineChartView?.moveViewToX(lineChartView?.chartXMax ?? 0)
 	}
 
 	private func provideLineData(type: SWMonthlyOverallType) -> LineChartDataSet {
 		var mainColor: UIColor = .black
-		var gradientFirstColor: UIColor = .red
-		var gradientSecondColor: UIColor = .yellow
+		var gradientFirstColor: UIColor = .clear
+		var gradientSecondColor: UIColor = .black
 		if type == .totalIncome {
-			mainColor = .white
-			gradientFirstColor = .blue
-			gradientSecondColor = .green
+			mainColor = .myAppGreen
+			gradientFirstColor = .clear
+			gradientSecondColor = .myAppGreen
 		}
 
 		let totalCosts = monthData.compactMap({
@@ -113,6 +118,7 @@ class DashboardViewController: UITableViewController {
 		})
 
 		let chartDataSet = LineChartDataSet(values: values, label: type.rawValue)
+		chartDataSet.resetColors()
 		chartDataSet.drawIconsEnabled = false
 
 		chartDataSet.setColor(mainColor)
@@ -126,7 +132,7 @@ class DashboardViewController: UITableViewController {
 							  gradientSecondColor.cgColor]
 		let gradient = CGGradient(colorsSpace: nil, colors: gradientColors as CFArray, locations: nil)
 
-		chartDataSet.fillAlpha = 1
+		chartDataSet.fillAlpha = 0.5
 		if let gradient = gradient {
 			chartDataSet.fill = Fill(linearGradient: gradient, angle: 90)
 		}
@@ -151,6 +157,7 @@ class DashboardViewController: UITableViewController {
 		segmentioView?.valueDidChange = { [weak self] _, index in
 			self?.updateDataAt(index: index)
 			self?.lineChartView?.highlightValue(x: Double(index), dataSetIndex: -1)
+			self?.lineChartView?.centerViewToAnimated(xValue: Double(index), yValue: 0, axis: .left, duration: 0.3)
 		}
 
 		if let segmentioView = segmentioView {
