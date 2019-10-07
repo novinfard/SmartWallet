@@ -157,6 +157,7 @@ class DashboardViewController: UITableViewController {
 		segmentioView?.valueDidChange = { [weak self] _, index in
 			self?.updateDataAt(index: index)
 			self?.lineChartView?.highlightValue(x: Double(index), dataSetIndex: -1)
+			self?.lineChartView?.centerViewToAnimated(xValue: Double(index), yValue: 0, axis: .left, duration: 0.3)
 		}
 
 		if let segmentioView = segmentioView {
