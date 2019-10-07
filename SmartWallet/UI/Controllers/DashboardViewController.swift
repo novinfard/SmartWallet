@@ -66,8 +66,8 @@ class DashboardViewController: UITableViewController {
 
 		lineChartView?.chartDescription?.enabled = false
 		lineChartView?.dragEnabled = true
-		lineChartView?.setScaleEnabled(true)
-		lineChartView?.pinchZoomEnabled = true
+		lineChartView?.setScaleEnabled(false)
+		lineChartView?.pinchZoomEnabled = false
 		lineChartView?.rightAxis.enabled = false
 
 		lineChartView?.xAxis.valueFormatter = self
