@@ -8,12 +8,17 @@
 
 import UIKit
 
+protocol BudgetFieldDelegate: AnyObject {
+	func didEndEditing(cell: BudgetTableViewCell)
+}
+
 class BudgetTableViewCell: UITableViewCell, UITextFieldDelegate {
 
 	@IBOutlet weak var categoryLabel: UILabel!
 	@IBOutlet weak var budgetAmount: UITextField!
 	@IBOutlet weak var amountLabel: UILabel!
 	@IBOutlet weak var budgetPercentage: UIProgressView!
+	weak var budgetDelegate: BudgetFieldDelegate?
 
 	override func awakeFromNib() {
         super.awakeFromNib()
@@ -33,6 +38,7 @@ class BudgetTableViewCell: UITableViewCell, UITextFieldDelegate {
 
 	func textFieldDidEndEditing(_ textField: UITextField) {
 		setSelected(false, animated: true)
+		self.budgetDelegate?.didEndEditing(cell: self)
 	}
 
     override func setSelected(_ selected: Bool, animated: Bool) {
