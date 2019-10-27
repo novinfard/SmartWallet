@@ -264,6 +264,7 @@
 				CD152F99231F0A090042A6E8 /* Extensions */,
 				CD0246B52076975700E7C705 /* Cells */,
 				CD52CDF22337D2E8008A1498 /* Views */,
+				CD0F711D2014D379000B2BCD /* Main.storyboard */,
 				CD31509420531661001AD682 /* Style.swift */,
 				CD315097205316CF001AD682 /* Style+MyApp.swift */,
 			);
@@ -284,7 +285,6 @@
 				CD2E553A2046D3FF00976EAA /* AddCategoryViewController.swift */,
 				CD397BCF207AC3B400103E5C /* ChooseCurrencyTableViewController.swift */,
 				CDD960182093F10600254F9F /* SplashViewController.swift */,
-				CD0F711D2014D379000B2BCD /* Main.storyboard */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";

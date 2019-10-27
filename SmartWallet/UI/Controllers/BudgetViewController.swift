@@ -30,10 +30,8 @@ class BudgetViewController: UITableViewController, NSFetchedResultsControllerDel
 	}
 
 	@IBAction func editPressed(_ sender: Any) {
-
 		if editingMode == true {
-			// save the data
-			saveData()
+			loadData()
 			editingEnd()
 		} else {
 			editingBegin()
@@ -55,19 +53,17 @@ class BudgetViewController: UITableViewController, NSFetchedResultsControllerDel
 
 	func loadData() {
 		// prepare result controller
-		if fetchedResultsController == nil {
-			let request = Categories.createFetchRequest()
-			let sort = NSSortDescriptor(key: "sortId", ascending: false)
-			request.sortDescriptors = [sort]
-			request.fetchBatchSize = 20
+		let request = Categories.createFetchRequest()
+		let sort = NSSortDescriptor(key: "sortId", ascending: false)
+		request.sortDescriptors = [sort]
+		request.fetchBatchSize = 20
 
-			fetchedResultsController = NSFetchedResultsController(
-				fetchRequest: request,
-				managedObjectContext: Facade.share.model.container.viewContext,
-				sectionNameKeyPath: "direction",
-				cacheName: nil)
-			fetchedResultsController.delegate = self
-		}
+		fetchedResultsController = NSFetchedResultsController(
+			fetchRequest: request,
+			managedObjectContext: Facade.share.model.container.viewContext,
+			sectionNameKeyPath: "direction",
+			cacheName: nil)
+		fetchedResultsController.delegate = self
 
 		let predicate = NSPredicate(format: "direction = %d", -1)
 		fetchedResultsController.fetchRequest.predicate = predicate
@@ -84,34 +80,18 @@ class BudgetViewController: UITableViewController, NSFetchedResultsControllerDel
 		} catch {
 			print("Fetch failed")
 		}
-
 	}
 
 	func loadFooter() {
-		let footerView: UIView = UIView.init(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 45))
+		let footerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 45))
 		footerView.backgroundColor = UIColor.white
 
-		let labelView: UILabel = UILabel.init(frame: CGRect(x: 0, y: 5, width: tableView.frame.width, height: 30))
+		let labelView = UILabel(frame: CGRect(x: 0, y: 5, width: tableView.frame.width, height: 30))
 		labelView.textAlignment = .center
 		labelView.text = "Total: \(NSLocale.defaultCurrency)\(totalBudget.clean)"
 
 		footerView.addSubview(labelView)
 		tableView.tableFooterView = footerView
-	}
-
-	func saveData() {
-		for cell in tableView.visibleCells as! [BudgetTableViewCell] {
-			let category = fetchedResultsController.object(at: tableView.indexPath(for: cell)!)
-			if let amount = cell.budgetAmount.text, amount != "" {
-				category.budget = amount.getDoubleFromLocal()
-			} else {
-				category.budget = 0.0
-			}
-		}
-
-		Facade.share.model.saveContext()
-
-		loadData()
 	}
 }
 
@@ -127,6 +107,7 @@ extension BudgetViewController {
 
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "budgetCell", for: indexPath) as! BudgetTableViewCell
+		cell.budgetDelegate = self
 		let category = fetchedResultsController.object(at: indexPath)
 		cell.categoryLabel.text = category.name
 		cell.amountLabel.text = NSLocale.defaultCurrency
@@ -146,19 +127,26 @@ extension BudgetViewController {
 			cell.budgetPercentage.progress = 0
 		}
 
-		if editingMode {
-			cell.budgetAmount.isEnabled = true
-		} else {
-			cell.budgetAmount.isEnabled = false
-		}
+		cell.budgetAmount.isEnabled = editingMode
 
 		return cell
 	}
 
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		if editingMode {
-			let cell = tableView.dequeueReusableCell(withIdentifier: "budgetCell", for: indexPath) as! BudgetTableViewCell
-			cell.makeFirstResponder()
-		}
+		guard editingMode else { return }
+		let cell = tableView.dequeueReusableCell(withIdentifier: "budgetCell", for: indexPath) as? BudgetTableViewCell
+		cell?.makeFirstResponder()
+	}
+}
+
+extension BudgetViewController: BudgetFieldDelegate {
+	func didEndEditing(cell: BudgetTableViewCell) {
+		guard let indexPath = tableView.indexPath(for: cell) else { return }
+
+		let category = fetchedResultsController.object(at: indexPath)
+		category.budget = cell.budgetAmount.text?.getDoubleFromLocal() ?? 0
+		Facade.share.model.saveContext()
+
+		self.loadData()
 	}
 }
