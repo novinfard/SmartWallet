@@ -10,3 +10,5 @@ excluded:
 function_body_length:
   warning: 70
   error: 120
+
+line_length: 130
