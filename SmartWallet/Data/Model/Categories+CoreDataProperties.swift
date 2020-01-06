@@ -19,6 +19,8 @@ extension Categories {
     @NSManaged public var direction: Int16
 	@NSManaged public var sortId: Int64
     @NSManaged public var name: String
+    @NSManaged public var icon: String
+    @NSManaged public var generalId: String
     @NSManaged public var parent: String
     @NSManaged public var uid: String
     @NSManaged public var relatedRecords: NSSet

@@ -22,8 +22,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		Fabric.with([Crashlytics.self])
 		
 		StoreReviewHelper.incrementAppOpenedCount()
+		self.afterUpdateProcess()
 
 		return true
+	}
+
+	private func afterUpdateProcess() {
+		switch SWAppUpdate.status {
+		case .updated(_, let current):
+			if current.isVersion(lessThanOrEqualTo: "1.1") {
+				PersistentModel.sharedInstance.updateGeneralCategoriesIfNeeded()
+			}
+		default:
+			break
+		}
 	}
 
 }
