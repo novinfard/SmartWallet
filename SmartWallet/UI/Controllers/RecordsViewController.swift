@@ -67,18 +67,20 @@ class RecordsViewController: UITableViewController, NSFetchedResultsControllerDe
 	}
 
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCell(withIdentifier: "recordCell", for: indexPath) as! RecordTableViewCell
+		guard let cell = tableView.dequeueReusableCell(withIdentifier: "recordCell", for: indexPath) as? RecordTableViewCell else {
+			assertionFailure("Cell not found: RecordTableViewCell")
+			return UITableViewCell()
+		}
 
 		let record = fetchedResultsController.object(at: indexPath)
 		if record.direction > 0 {
-			cell.icon.image = UIImage(named: "UpIcon")
 			cell.amountLabel.textColor = UIColor.myAppGreen
 			cell.amountLabel.text = record.amount.recordPresenter(for: .income, formatting: false)
 		} else {
-			cell.icon.image = UIImage(named: "DownIcon")
 			cell.amountLabel.textColor = UIColor.myAppBlack
 			cell.amountLabel.text = record.amount.recordPresenter(for: .cost, formatting: false)
 		}
+		cell.icon.image = record.relatedCategory.iconImage
 		cell.titleLabel.text = record.relatedCategory.name
 
 		return cell

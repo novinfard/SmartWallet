@@ -53,36 +53,12 @@ class PersistentModel {
 
 				saveContext()
 
-				// pre-defined cateogories import
-				let expenseCategoryNames = ["Foods & Drinks",
-											"Groceries",
-											"Transport",
-											"Shopping",
-											"Bills",
-											"Financial Expenses",
-											"Entertainment",
-											"Holidays",
-											"Personal Care",
-											"Family",
-											"Lending",
-											"Housing",
-											"Accommodation",
-											"General"]
-				let incomeCategoryNames = ["Salary",
-										   "Supports",
-										   "Investments",
-										   "Gifts",
-										   "Copuns",
-										   "Rental Income",
-										   "Sales",
-										   "Interests",
-										   "Refunding Debt",
-										   "General"]
-
-				for categoryName in expenseCategoryNames.reversed() {
+				for categoryDic in self.defaultExpenseCategoryList().reversed() {
 					let category = Categories(context: self.container.viewContext)
 					category.direction = -1
-					category.name = categoryName
+					category.name = categoryDic.value
+					category.generalId = categoryDic.key
+					category.icon = categoryDic.key
 					category.parent = ""
 					category.uid = getNewUID()
 					saveContext()
@@ -90,10 +66,11 @@ class PersistentModel {
 					saveContext()
 				}
 
-				for categoryName in incomeCategoryNames.reversed() {
+				for categoryDic in self.defaultIncomeCategoryList().reversed() {
 					let category = Categories(context: self.container.viewContext)
 					category.direction = 1
-					category.name = categoryName
+					category.name = categoryDic.value
+					category.icon = categoryDic.key
 					category.parent = ""
 					category.uid = getNewUID()
 					saveContext()
@@ -110,6 +87,45 @@ class PersistentModel {
 			print ("fetch task failed", error)
 		}
 
+	}
+
+	func defaultExpenseCategoryList() -> [String: String] {
+		return [
+			"cat_foods": "Foods & Drinks",
+			"cat_groceries": "Groceries",
+			"cat_transport": "Transport",
+			"cat_shopping": "Shopping",
+			"cat_bills": "Bills",
+			"cat_entertainment": "Entertainment",
+			"cat_holidays": "Holidays",
+			"cat_care": "Personal Care",
+			"cat_family": "Family",
+			"cat_lending": "Lending",
+			"cat_housing": "Housing",
+			"cat_accommodation": "Accommodation",
+			"cat_general": "General"
+		]
+	}
+
+	func defaultIncomeCategoryList() -> [String: String] {
+		return [
+			"cat_salary": "Salary",
+			"cat_supports": "Supports",
+			"cat_investments": "Investments",
+			"cat_gifts": "Gifts",
+			"cat_copuns": "Copuns",
+			"cat_rental": "Rental Income",
+			"cat_sales": "Sales",
+			"cat_interests": "Interests",
+			"cat_refunding": "Refunding Debt",
+			"cat_general": "General"
+		]
+	}
+
+	func allDefaultCategoryList() -> [String: String] {
+		var allDefaultCats = self.defaultExpenseCategoryList()
+		allDefaultCats.merge(self.defaultIncomeCategoryList()) { (_, new) in new }
+		return allDefaultCats
 	}
 
 	func getMinMaxDateInRecords() -> (min: Date, max: Date) {
@@ -431,6 +447,22 @@ class PersistentModel {
 		saveContext()
 	}
 
+	func updateGeneralCategoriesIfNeeded() {
+		let fetchRequest: NSFetchRequest<Categories> = Categories.createFetchRequest()
+		fetchRequest.predicate = NSPredicate(format: "icon = nil OR icon = ''")
+		if let results: [Categories] = try? container.viewContext.fetch(fetchRequest) {
+			for category in results {
+				let allDefaultCats = self.allDefaultCategoryList()
+				if let relatedCat = allDefaultCats.first(where: { $0.value == category.name }) {
+					category.generalId = relatedCat.key
+					category.icon = relatedCat.key
+				}
+			}
+			saveContext()
+		}
+
+	}
+
 	func saveContext() {
 		if container.viewContext.hasChanges {
 			do {
@@ -482,6 +514,3 @@ enum RecordType {
 	case income
 	case all
 }
-
-// swiftlint:enable type_body_length
-// swiftlint:enable file_length
