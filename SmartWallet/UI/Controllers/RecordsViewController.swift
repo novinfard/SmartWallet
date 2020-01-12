@@ -44,23 +44,13 @@ class RecordsViewController: UITableViewController, NSFetchedResultsControllerDe
 	}
 
 	override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-		let sectionInfo = fetchedResultsController.sections![section]
+		guard let sectionInfo = fetchedResultsController.sections?[section] else {
+			return nil
+		}
+
 		let objects = sectionInfo.objects
-		if let topRecord: Records = objects![0] as? Records {
-			let calendar = Calendar.current
-			if calendar.isDateInToday(topRecord.datetime) {
-				return "Today"
-			} else if calendar.isDateInYesterday(topRecord.datetime) {
-				return "Yesterday"
-			} else if calendar.isDate(Date(), equalTo: topRecord.datetime, toGranularity: .weekOfYear) {
-				let formatter = DateFormatter()
-				let weekday = calendar.component(.weekday, from: topRecord.datetime)
-				return formatter.weekdaySymbols[weekday-1]
-			} else {
-				let formatter = DateFormatter()
-				formatter.dateStyle = .medium
-				return formatter.string(from: topRecord.datetime)
-			}
+		if let topRecord: Records = objects?[0] as? Records {
+			return topRecord.datetime.dayRepresentation()
 		} else {
 			return sectionInfo.indexTitle
 		}
