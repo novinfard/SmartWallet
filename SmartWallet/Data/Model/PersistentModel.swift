@@ -22,7 +22,12 @@ class PersistentModel {
 		addRecordModel = AddRecordModel()
 
 		// initialise core data
-		container = NSPersistentContainer(name: "WalletModel")
+		if #available(iOS 13.0, *) {
+			container = NSPersistentCloudKitContainer(name: "WalletModel")
+		} else {
+			// Fallback on earlier versions
+			container = NSPersistentContainer(name: "WalletModel")
+		}
 
 		container.loadPersistentStores { (_, error) in
 			self.container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy

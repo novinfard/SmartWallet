@@ -20,7 +20,6 @@ class AddRecordViewController: UIViewController, UIPickerViewDataSource, UIPicke
 	@IBOutlet weak var reportingSegmentedControl: UISegmentedControl!
 	@IBOutlet weak var prefixLabel: UILabel!
 
-	var container: NSPersistentContainer!
 	var categoryPicker: UIPickerView!
 	var accountPicker: UIPickerView!
 	var accountsList: [Accounts] = []

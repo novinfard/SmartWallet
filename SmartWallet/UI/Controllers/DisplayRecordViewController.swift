@@ -17,7 +17,6 @@ class DisplayRecordViewController: UIViewController {
 	@IBOutlet private var categoryLabel: UILabel!
 	@IBOutlet private var editButton: UIButton!
 
-	var container: NSPersistentContainer!
 	var accountsList = [Accounts]()
 	var expenseCategoriesList = [Categories]()
 	var incomeCategoriesList = [Categories]()

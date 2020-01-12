@@ -23,6 +23,7 @@
 		CD152F8E231C4A660042A6E8 /* SmartWalletTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD152F8D231C4A660042A6E8 /* SmartWalletTests.swift */; };
 		CD152F96231C4AC10042A6E8 /* DateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD152F95231C4AC10042A6E8 /* DateTests.swift */; };
 		CD152F9C231F0C040042A6E8 /* Number+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD152F9B231F0C040042A6E8 /* Number+Extensions.swift */; };
+		CD1C2BF823C408B500FFB542 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD1C2BF723C408B500FFB542 /* CloudKit.framework */; };
 		CD2E553B2046D3FF00976EAA /* AddCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2E553A2046D3FF00976EAA /* AddCategoryViewController.swift */; };
 		CD2E553D204B0E3800976EAA /* AddRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2E553C204B0E3800976EAA /* AddRecordViewController.swift */; };
 		CD31509520531661001AD682 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD31509420531661001AD682 /* Style.swift */; };
@@ -98,6 +99,8 @@
 		CD152F8F231C4A660042A6E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CD152F95231C4AC10042A6E8 /* DateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTests.swift; sourceTree = "<group>"; };
 		CD152F9B231F0C040042A6E8 /* Number+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Number+Extensions.swift"; sourceTree = "<group>"; };
+		CD1C2BF623C408AA00FFB542 /* SmartWallet.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SmartWallet.entitlements; sourceTree = "<group>"; };
+		CD1C2BF723C408B500FFB542 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		CD2E553A2046D3FF00976EAA /* AddCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoryViewController.swift; sourceTree = "<group>"; };
 		CD2E553C204B0E3800976EAA /* AddRecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecordViewController.swift; sourceTree = "<group>"; };
 		CD31509420531661001AD682 /* Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
@@ -142,6 +145,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A9C529B4CE63FD813D87F6E /* Pods_SmartWallet.framework in Frameworks */,
+				CD1C2BF823C408B500FFB542 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -174,6 +178,7 @@
 		AE14384B79712DF0803CF419 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CD1C2BF723C408B500FFB542 /* CloudKit.framework */,
 				8989CB5E46A29FD42343368F /* Pods_SmartWallet.framework */,
 			);
 			name = Frameworks;
@@ -214,6 +219,7 @@
 		CD0F71182014D379000B2BCD /* SmartWallet */ = {
 			isa = PBXGroup;
 			children = (
+				CD1C2BF623C408AA00FFB542 /* SmartWallet.entitlements */,
 				CD0F71192014D379000B2BCD /* AppDelegate.swift */,
 				CD0246AF2074F9D100E7C705 /* Facade.swift */,
 				CD152F97231F09780042A6E8 /* UI */,
@@ -764,6 +770,7 @@
 			baseConfigurationReference = A430F933AB393EA4260F5817 /* Pods-SmartWallet.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SmartWallet/SmartWallet.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VQ3DDEUQ7K;
 				INFOPLIST_FILE = SmartWallet/Info.plist;
@@ -781,6 +788,7 @@
 			baseConfigurationReference = 9FE1EC0EBB3B261BDFCA12B7 /* Pods-SmartWallet.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SmartWallet/SmartWallet.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VQ3DDEUQ7K;
 				INFOPLIST_FILE = SmartWallet/Info.plist;
