@@ -50,21 +50,21 @@ class ReportModel {
 			let monthlyTotal = monthlyTotalIncome - monthlyTotalCost
 			let dailyAverage = dailyAverageIncome - dailyAverageCost
 
-			var items = [SWMonthlyItem]()
+			var items = [SWRecordRepresentation]()
 
-			items.append(SWMonthlyItem(
+			items.append(SWRecordRepresentation(
 				type: .totalCost,
 				value: monthlyTotalCost,
 				recordType: .cost
 			))
 
-			items.append(SWMonthlyItem(
+			items.append(SWRecordRepresentation(
 				type: .totalIncome,
 				value: monthlyTotalIncome,
 				recordType: .income
 			))
 
-			items.append(SWMonthlyItem(
+			items.append(SWRecordRepresentation(
 				type: .total,
 				value: monthlyTotal,
 				recordType: .all
@@ -72,47 +72,47 @@ class ReportModel {
 
 			if totalBudget > 0 {
 				let monthlyTotalSave = totalBudget - monthlyTotalCost
-				items.append(SWMonthlyItem(
+				items.append(SWRecordRepresentation(
 					type: .totalSave,
 					value: monthlyTotalSave,
 					recordType: .all
 				))
 			}
 
-			items.append(SWMonthlyItem(
+			items.append(SWRecordRepresentation(
 				type: .dailyAverage,
 				value: dailyAverage,
 				recordType: .all
 			))
 
-			items.append(SWMonthlyItem(
+			items.append(SWRecordRepresentation(
 				type: .dailyAverageCost,
 				value: dailyAverageCost,
 				recordType: .cost
 			))
 
-			items.append(SWMonthlyItem(
+			items.append(SWRecordRepresentation(
 				type: .dailyAverageIncome,
 				value: dailyAverageIncome,
 				recordType: .income
 			))
 
 			let monthlyForecast = dailyAverage * Double(numDaysAll)
-			items.append(SWMonthlyItem(
+			items.append(SWRecordRepresentation(
 				type: .forcast,
 				value: monthlyForecast,
 				recordType: .all
 			))
 
 			let monthlyForecastCost = dailyAverageCost * Double(numDaysAll)
-			items.append(SWMonthlyItem(
+			items.append(SWRecordRepresentation(
 				type: .forcastCost,
 				value: monthlyForecastCost,
 				recordType: .cost
 			))
 
 			let monthlyForecastIncome = dailyAverageIncome * Double(numDaysAll)
-			items.append(SWMonthlyItem(
+			items.append(SWRecordRepresentation(
 				type: .forcastIncome,
 				value: monthlyForecastIncome,
 				recordType: .income
@@ -125,11 +125,11 @@ class ReportModel {
 
 struct SWMonthlyOverall {
 	let month: SWMonth
-	var items: [SWMonthlyItem]
+	var items: [SWRecordRepresentation]
 }
 
-struct SWMonthlyItem {
-	let type: SWMonthlyOverallType
+struct SWRecordRepresentation {
+	let type: SWRepresentationType
 	let value: Double
 	let recordType: RecordType
 
@@ -138,7 +138,7 @@ struct SWMonthlyItem {
 	}
 }
 
-enum SWMonthlyOverallType: String {
+enum SWRepresentationType: String {
 	case totalCost = "Total Cost"
 	case totalIncome = "Total Income"
 	case total = "Total"

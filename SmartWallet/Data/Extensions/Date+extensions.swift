@@ -112,4 +112,21 @@ extension Date {
 		return range.count
 	}
 
+	func dayRepresentation() -> String {
+		let calendar = Calendar.current
+		if calendar.isDateInToday(self) {
+			return "Today"
+		} else if calendar.isDateInYesterday(self) {
+			return "Yesterday"
+		} else if calendar.isDate(Date(), equalTo: self, toGranularity: .weekOfYear) {
+			let formatter = DateFormatter()
+			let weekday = calendar.component(.weekday, from: self)
+			return formatter.weekdaySymbols[weekday-1]
+		} else {
+			let formatter = DateFormatter()
+			formatter.dateStyle = .medium
+			return formatter.string(from: self)
+		}
+	}
+
 }

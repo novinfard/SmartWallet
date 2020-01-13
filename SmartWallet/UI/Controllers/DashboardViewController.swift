@@ -97,7 +97,7 @@ class DashboardViewController: UITableViewController {
 		lineChartView?.moveViewToX(lineChartView?.chartXMax ?? 0)
 	}
 
-	private func provideLineData(type: SWMonthlyOverallType) -> LineChartDataSet {
+	private func provideLineData(type: SWRepresentationType) -> LineChartDataSet {
 		var mainColor: UIColor = .black
 		var gradientFirstColor: UIColor = .clear
 		var gradientSecondColor: UIColor = .black

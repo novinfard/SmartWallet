@@ -44,26 +44,41 @@ class RecordsViewController: UITableViewController, NSFetchedResultsControllerDe
 	}
 
 	override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-		let sectionInfo = fetchedResultsController.sections![section]
+		guard let sectionInfo = fetchedResultsController.sections?[section] else {
+			return nil
+		}
+
 		let objects = sectionInfo.objects
-		if let topRecord: Records = objects![0] as? Records {
-			let calendar = Calendar.current
-			if calendar.isDateInToday(topRecord.datetime) {
-				return "Today"
-			} else if calendar.isDateInYesterday(topRecord.datetime) {
-				return "Yesterday"
-			} else if calendar.isDate(Date(), equalTo: topRecord.datetime, toGranularity: .weekOfYear) {
-				let formatter = DateFormatter()
-				let weekday = calendar.component(.weekday, from: topRecord.datetime)
-				return formatter.weekdaySymbols[weekday-1]
-			} else {
-				let formatter = DateFormatter()
-				formatter.dateStyle = .medium
-				return formatter.string(from: topRecord.datetime)
-			}
+		if let topRecord: Records = objects?[0] as? Records {
+			return topRecord.datetime.dayRepresentation()
 		} else {
 			return sectionInfo.indexTitle
 		}
+	}
+
+	override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+		return 60
+	}
+
+	override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+
+		guard let sectionInfo = fetchedResultsController.sections?[section] else {
+			return nil
+		}
+
+		guard let records = sectionInfo.objects as? [Records],
+			let topRecord = records.first else {
+			return nil
+		}
+		
+		let headerView = SWRecordHeaderView()
+		headerView.setup(with: SWRecordHeaderViewModel(
+			title: topRecord.datetime.dayRepresentation(),
+			spending: records.sum().value.recordPresenter(
+				for: .all,
+				formatting: false
+		)))
+		return headerView
 	}
 
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
