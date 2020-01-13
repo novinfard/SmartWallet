@@ -8,7 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		8A9C529B4CE63FD813D87F6E /* Pods_SmartWallet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8989CB5E46A29FD42343368F /* Pods_SmartWallet.framework */; };
+		CD003DD923CBA19F00C48083 /* SWRecordHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD003DD823CBA19F00C48083 /* SWRecordHeaderView.swift */; };
+		CD003DDB23CBBE4F00C48083 /* SWRecordHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD003DDA23CBBE4F00C48083 /* SWRecordHeaderView.xib */; };
 		CD003DDD23CBDBB300C48083 /* Records+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD003DDC23CBDBB300C48083 /* Records+Extensions.swift */; };
+		CD003DDF23CBF54700C48083 /* SWCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD003DDE23CBF54700C48083 /* SWCustomView.swift */; };
 		CD0246AE2073FB2600E7C705 /* PersistentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0246AD2073FB2600E7C705 /* PersistentModel.swift */; };
 		CD0246B02074F9D100E7C705 /* Facade.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0246AF2074F9D100E7C705 /* Facade.swift */; };
 		CD0246B320768ED900E7C705 /* RecordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0246B220768ED900E7C705 /* RecordTableViewCell.swift */; };
@@ -80,7 +83,10 @@
 		8989CB5E46A29FD42343368F /* Pods_SmartWallet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmartWallet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FE1EC0EBB3B261BDFCA12B7 /* Pods-SmartWallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartWallet.release.xcconfig"; path = "Pods/Target Support Files/Pods-SmartWallet/Pods-SmartWallet.release.xcconfig"; sourceTree = "<group>"; };
 		A430F933AB393EA4260F5817 /* Pods-SmartWallet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartWallet.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SmartWallet/Pods-SmartWallet.debug.xcconfig"; sourceTree = "<group>"; };
+		CD003DD823CBA19F00C48083 /* SWRecordHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWRecordHeaderView.swift; sourceTree = "<group>"; };
+		CD003DDA23CBBE4F00C48083 /* SWRecordHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SWRecordHeaderView.xib; sourceTree = "<group>"; };
 		CD003DDC23CBDBB300C48083 /* Records+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Records+Extensions.swift"; sourceTree = "<group>"; };
+		CD003DDE23CBF54700C48083 /* SWCustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWCustomView.swift; sourceTree = "<group>"; };
 		CD0246AD2073FB2600E7C705 /* PersistentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PersistentModel.swift; path = SmartWallet/Data/Model/PersistentModel.swift; sourceTree = SOURCE_ROOT; };
 		CD0246AF2074F9D100E7C705 /* Facade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Facade.swift; sourceTree = "<group>"; };
 		CD0246B220768ED900E7C705 /* RecordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTableViewCell.swift; sourceTree = "<group>"; };
@@ -179,6 +185,15 @@
 				8989CB5E46A29FD42343368F /* Pods_SmartWallet.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CD003DD723CBA13C00C48083 /* Record Header */ = {
+			isa = PBXGroup;
+			children = (
+				CD003DD823CBA19F00C48083 /* SWRecordHeaderView.swift */,
+				CD003DDA23CBBE4F00C48083 /* SWRecordHeaderView.xib */,
+			);
+			path = "Record Header";
 			sourceTree = "<group>";
 		};
 		CD0246B52076975700E7C705 /* Cells */ = {
@@ -326,7 +341,9 @@
 		CD52CDF22337D2E8008A1498 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				CD003DD723CBA13C00C48083 /* Record Header */,
 				CD397BD3207D79CF00103E5C /* PickerBasedTextField.swift */,
+				CD003DDE23CBF54700C48083 /* SWCustomView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -472,6 +489,7 @@
 				CD0F71242014D379000B2BCD /* LaunchScreen.storyboard in Resources */,
 				CD0F71212014D379000B2BCD /* Assets.xcassets in Resources */,
 				CD0F711F2014D379000B2BCD /* Main.storyboard in Resources */,
+				CD003DDB23CBBE4F00C48083 /* SWRecordHeaderView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -571,6 +589,7 @@
 				CDD8642F2090F59A00E65E64 /* BudgetTableViewCell.swift in Sources */,
 				CDF8D787231F0D9900B2AAC0 /* String+Extensions.swift in Sources */,
 				CD397BD4207D79CF00103E5C /* PickerBasedTextField.swift in Sources */,
+				CD003DDF23CBF54700C48083 /* SWCustomView.swift in Sources */,
 				CD31509520531661001AD682 /* Style.swift in Sources */,
 				CD003DDD23CBDBB300C48083 /* Records+Extensions.swift in Sources */,
 				CDEBB2AD2017E350009ED68F /* Records+CoreDataProperties.swift in Sources */,
@@ -589,6 +608,7 @@
 				CD0246B02074F9D100E7C705 /* Facade.swift in Sources */,
 				CDF8D78B2320575000B2AAC0 /* ReportModel.swift in Sources */,
 				CD397BD0207AC3B400103E5C /* ChooseCurrencyTableViewController.swift in Sources */,
+				CD003DD923CBA19F00C48083 /* SWRecordHeaderView.swift in Sources */,
 				CD49223522AC61C1003DB2EE /* UICollection+Extensions.swift in Sources */,
 				CDEBB2A82017E350009ED68F /* Accounts+CoreDataClass.swift in Sources */,
 				CDB1401423C2632F00EFD2CE /* SWAppStatus.swift in Sources */,

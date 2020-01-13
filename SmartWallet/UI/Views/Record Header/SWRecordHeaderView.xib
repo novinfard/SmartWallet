@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SWRecordHeaderView" customModule="SmartWallet" customModuleProvider="target">
+            <connections>
+                <outlet property="spendingLabel" destination="JCo-Wy-6Ef" id="NVE-TE-MmM"/>
+                <outlet property="titleLabel" destination="iHO-mp-j9o" id="eHj-4a-MJs"/>
+                <outlet property="view" destination="iN0-l3-epB" id="csm-L0-O3r"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="vpR-wF-pb1">
+                    <rect key="frame" x="15" y="10" width="389" height="50"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iHO-mp-j9o">
+                            <rect key="frame" x="0.0" y="0.0" width="327" height="50"/>
+                            <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JCo-Wy-6Ef">
+                            <rect key="frame" x="347" y="0.0" width="42" height="50"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                </stackView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9yL-ew-cLi">
+                    <rect key="frame" x="0.0" y="57" width="414" height="3"/>
+                    <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="3" id="p9q-7Y-1pQ"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="vpR-wF-pb1" secondAttribute="bottom" id="2si-gk-YGU"/>
+                <constraint firstAttribute="trailing" secondItem="vpR-wF-pb1" secondAttribute="trailing" constant="10" id="YrV-eG-KKS"/>
+                <constraint firstItem="vpR-wF-pb1" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="ghQ-Mf-KCY"/>
+                <constraint firstAttribute="trailing" secondItem="9yL-ew-cLi" secondAttribute="trailing" id="jlT-PG-Zar"/>
+                <constraint firstItem="vpR-wF-pb1" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="uTa-Rs-bVW"/>
+                <constraint firstItem="9yL-ew-cLi" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="wuX-MQ-oTO"/>
+                <constraint firstAttribute="bottom" secondItem="9yL-ew-cLi" secondAttribute="bottom" id="zDK-0m-Fej"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="137.68115942028987" y="-162.72321428571428"/>
+        </view>
+    </objects>
+</document>

@@ -56,6 +56,31 @@ class RecordsViewController: UITableViewController, NSFetchedResultsControllerDe
 		}
 	}
 
+	override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+		return 60
+	}
+
+	override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+
+		guard let sectionInfo = fetchedResultsController.sections?[section] else {
+			return nil
+		}
+
+		guard let records = sectionInfo.objects as? [Records],
+			let topRecord = records.first else {
+			return nil
+		}
+		
+		let headerView = SWRecordHeaderView()
+		headerView.setup(with: SWRecordHeaderViewModel(
+			title: topRecord.datetime.dayRepresentation(),
+			spending: records.sum().value.recordPresenter(
+				for: .all,
+				formatting: false
+		)))
+		return headerView
+	}
+
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		guard let cell = tableView.dequeueReusableCell(withIdentifier: "recordCell", for: indexPath) as? RecordTableViewCell else {
 			assertionFailure("Cell not found: RecordTableViewCell")
