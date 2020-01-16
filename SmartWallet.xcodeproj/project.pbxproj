@@ -12,6 +12,7 @@
 		CD003DDB23CBBE4F00C48083 /* SWRecordHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD003DDA23CBBE4F00C48083 /* SWRecordHeaderView.xib */; };
 		CD003DDD23CBDBB300C48083 /* Records+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD003DDC23CBDBB300C48083 /* Records+Extensions.swift */; };
 		CD003DDF23CBF54700C48083 /* SWCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD003DDE23CBF54700C48083 /* SWCustomView.swift */; };
+		CD003DE323CFEB0500C48083 /* SWCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD003DE223CFEB0500C48083 /* SWCategoryTableViewCell.swift */; };
 		CD0246AE2073FB2600E7C705 /* PersistentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0246AD2073FB2600E7C705 /* PersistentModel.swift */; };
 		CD0246B02074F9D100E7C705 /* Facade.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0246AF2074F9D100E7C705 /* Facade.swift */; };
 		CD0246B320768ED900E7C705 /* RecordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0246B220768ED900E7C705 /* RecordTableViewCell.swift */; };
@@ -87,6 +88,7 @@
 		CD003DDA23CBBE4F00C48083 /* SWRecordHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SWRecordHeaderView.xib; sourceTree = "<group>"; };
 		CD003DDC23CBDBB300C48083 /* Records+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Records+Extensions.swift"; sourceTree = "<group>"; };
 		CD003DDE23CBF54700C48083 /* SWCustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWCustomView.swift; sourceTree = "<group>"; };
+		CD003DE223CFEB0500C48083 /* SWCategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWCategoryTableViewCell.swift; sourceTree = "<group>"; };
 		CD0246AD2073FB2600E7C705 /* PersistentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PersistentModel.swift; path = SmartWallet/Data/Model/PersistentModel.swift; sourceTree = SOURCE_ROOT; };
 		CD0246AF2074F9D100E7C705 /* Facade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Facade.swift; sourceTree = "<group>"; };
 		CD0246B220768ED900E7C705 /* RecordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTableViewCell.swift; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 				CD0246B220768ED900E7C705 /* RecordTableViewCell.swift */,
 				CD397BC92078F5EA00103E5C /* DashboardTableViewCell.swift */,
 				CDD8642E2090F59A00E65E64 /* BudgetTableViewCell.swift */,
+				CD003DE223CFEB0500C48083 /* SWCategoryTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -604,6 +607,7 @@
 				CDEBB2A92017E350009ED68F /* Accounts+CoreDataProperties.swift in Sources */,
 				CD397BCE2079837E00103E5C /* Currency.swift in Sources */,
 				CD0246AE2073FB2600E7C705 /* PersistentModel.swift in Sources */,
+				CD003DE323CFEB0500C48083 /* SWCategoryTableViewCell.swift in Sources */,
 				CDD960192093F10600254F9F /* SplashViewController.swift in Sources */,
 				CD0246B02074F9D100E7C705 /* Facade.swift in Sources */,
 				CDF8D78B2320575000B2AAC0 /* ReportModel.swift in Sources */,
