@@ -13,11 +13,11 @@ protocol BudgetFieldDelegate: AnyObject {
 }
 
 class BudgetTableViewCell: UITableViewCell, UITextFieldDelegate {
-
-	@IBOutlet weak var categoryLabel: UILabel!
-	@IBOutlet weak var budgetAmount: UITextField!
-	@IBOutlet weak var amountLabel: UILabel!
-	@IBOutlet weak var budgetPercentage: UIProgressView!
+	@IBOutlet var iconView: UIImageView!
+	@IBOutlet var categoryLabel: UILabel!
+	@IBOutlet var budgetAmount: UITextField!
+	@IBOutlet var amountLabel: UILabel!
+	@IBOutlet var budgetPercentage: UIProgressView!
 	weak var budgetDelegate: BudgetFieldDelegate?
 
 	override func awakeFromNib() {
