@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 48;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -41,6 +41,10 @@
 		CD49222E22A47CF0003DB2EE /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD49222D22A47CF0003DB2EE /* SnapshotHelper.swift */; };
 		CD49223322AC5DCF003DB2EE /* Date+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD49223222AC5DCF003DB2EE /* Date+extensions.swift */; };
 		CD49223522AC61C1003DB2EE /* UICollection+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD49223422AC61C1003DB2EE /* UICollection+Extensions.swift */; };
+		CD4F9752242D3C45009839C6 /* FontAwesome in Frameworks */ = {isa = PBXBuildFile; productRef = CD4F9751242D3C45009839C6 /* FontAwesome */; };
+		CD4F9756242D8D23009839C6 /* Font Awesome 5 Brands-Regular-400.otf in Resources */ = {isa = PBXBuildFile; fileRef = CD4F9753242D8D23009839C6 /* Font Awesome 5 Brands-Regular-400.otf */; };
+		CD4F9757242D8D23009839C6 /* Font Awesome 5 Free-Solid-900.otf in Resources */ = {isa = PBXBuildFile; fileRef = CD4F9754242D8D23009839C6 /* Font Awesome 5 Free-Solid-900.otf */; };
+		CD4F9758242D8D23009839C6 /* Font Awesome 5 Free-Regular-400.otf in Resources */ = {isa = PBXBuildFile; fileRef = CD4F9755242D8D23009839C6 /* Font Awesome 5 Free-Regular-400.otf */; };
 		CD51D99520A7A618003791E1 /* AddModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD51D99420A7A618003791E1 /* AddModel.swift */; };
 		CD86E77A2041A62D0007F817 /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD86E7792041A62D0007F817 /* CategoriesViewController.swift */; };
 		CDB1401223C2440B00EFD2CE /* Categories+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB1401123C2440A00EFD2CE /* Categories+Extensions.swift */; };
@@ -123,6 +127,9 @@
 		CD49222D22A47CF0003DB2EE /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
 		CD49223222AC5DCF003DB2EE /* Date+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+extensions.swift"; sourceTree = "<group>"; };
 		CD49223422AC61C1003DB2EE /* UICollection+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollection+Extensions.swift"; sourceTree = "<group>"; };
+		CD4F9753242D8D23009839C6 /* Font Awesome 5 Brands-Regular-400.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Font Awesome 5 Brands-Regular-400.otf"; sourceTree = "<group>"; };
+		CD4F9754242D8D23009839C6 /* Font Awesome 5 Free-Solid-900.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Font Awesome 5 Free-Solid-900.otf"; sourceTree = "<group>"; };
+		CD4F9755242D8D23009839C6 /* Font Awesome 5 Free-Regular-400.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Font Awesome 5 Free-Regular-400.otf"; sourceTree = "<group>"; };
 		CD51D99420A7A618003791E1 /* AddModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddModel.swift; sourceTree = "<group>"; };
 		CD86E7792041A62D0007F817 /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
 		CD92804B23A63DA1006100B1 /* WalletModel2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WalletModel2.xcdatamodel; sourceTree = "<group>"; };
@@ -152,6 +159,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A9C529B4CE63FD813D87F6E /* Pods_SmartWallet.framework in Frameworks */,
+				CD4F9752242D3C45009839C6 /* FontAwesome in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -326,6 +334,7 @@
 		CD152F9A231F0B5F0042A6E8 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CD4F9759242D8D2D009839C6 /* Fonts */,
 				CDD864312093F03200E65E64 /* videos */,
 			);
 			path = Resources;
@@ -339,6 +348,16 @@
 				CD49222722A47B72003DB2EE /* Info.plist */,
 			);
 			path = SmartWalletUITests;
+			sourceTree = "<group>";
+		};
+		CD4F9759242D8D2D009839C6 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				CD4F9753242D8D23009839C6 /* Font Awesome 5 Brands-Regular-400.otf */,
+				CD4F9755242D8D23009839C6 /* Font Awesome 5 Free-Regular-400.otf */,
+				CD4F9754242D8D23009839C6 /* Font Awesome 5 Free-Solid-900.otf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		CD52CDF22337D2E8008A1498 /* Views */ = {
@@ -395,6 +414,9 @@
 			dependencies = (
 			);
 			name = SmartWallet;
+			packageProductDependencies = (
+				CD4F9751242D3C45009839C6 /* FontAwesome */,
+			);
 			productName = SmartWallet;
 			productReference = CD0F71162014D379000B2BCD /* SmartWallet.app */;
 			productType = "com.apple.product-type.application";
@@ -472,6 +494,9 @@
 				Base,
 			);
 			mainGroup = CD0F710D2014D378000B2BCD;
+			packageReferences = (
+				CD4F9750242D3C45009839C6 /* XCRemoteSwiftPackageReference "FontAwesome.swift" */,
+			);
 			productRefGroup = CD0F71172014D379000B2BCD /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -489,10 +514,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				CDD9601A2093F62000254F9F /* intro.mp4 in Resources */,
+				CD4F9758242D8D23009839C6 /* Font Awesome 5 Free-Regular-400.otf in Resources */,
+				CD4F9756242D8D23009839C6 /* Font Awesome 5 Brands-Regular-400.otf in Resources */,
 				CD0F71242014D379000B2BCD /* LaunchScreen.storyboard in Resources */,
 				CD0F71212014D379000B2BCD /* Assets.xcassets in Resources */,
 				CD0F711F2014D379000B2BCD /* Main.storyboard in Resources */,
 				CD003DDB23CBBE4F00C48083 /* SWRecordHeaderView.xib in Resources */,
+				CD4F9757242D8D23009839C6 /* Font Awesome 5 Free-Solid-900.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -782,7 +810,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -796,7 +825,10 @@
 				DEVELOPMENT_TEAM = VQ3DDEUQ7K;
 				INFOPLIST_FILE = SmartWallet/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.novinfard.SmartWallet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -813,7 +845,10 @@
 				DEVELOPMENT_TEAM = VQ3DDEUQ7K;
 				INFOPLIST_FILE = SmartWallet/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.novinfard.SmartWallet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -831,7 +866,11 @@
 				DEVELOPMENT_TEAM = VQ3DDEUQ7K;
 				INFOPLIST_FILE = SmartWalletTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.novinfard.SmartWalletTests;
@@ -851,7 +890,11 @@
 				DEVELOPMENT_TEAM = VQ3DDEUQ7K;
 				INFOPLIST_FILE = SmartWalletTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.novinfard.SmartWalletTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -870,7 +913,11 @@
 				DEVELOPMENT_TEAM = VQ3DDEUQ7K;
 				INFOPLIST_FILE = SmartWalletUITests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.novinfard.SmartWalletUITests;
@@ -889,7 +936,11 @@
 				DEVELOPMENT_TEAM = VQ3DDEUQ7K;
 				INFOPLIST_FILE = SmartWalletUITests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.novinfard.SmartWalletUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -939,6 +990,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CD4F9750242D3C45009839C6 /* XCRemoteSwiftPackageReference "FontAwesome.swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/thii/FontAwesome.swift.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CD4F9751242D3C45009839C6 /* FontAwesome */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CD4F9750242D3C45009839C6 /* XCRemoteSwiftPackageReference "FontAwesome.swift" */;
+			productName = FontAwesome;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		CDEBB29B2015650E009ED68F /* WalletModel.xcdatamodeld */ = {
