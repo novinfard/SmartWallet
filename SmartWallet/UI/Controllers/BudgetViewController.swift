@@ -128,7 +128,7 @@ extension BudgetViewController {
 		}
 
 		cell.budgetAmount.isEnabled = editingMode
-		cell.iconView.image = category.iconImage
+		cell.iconView.image = category.iconImage()
 
 		return cell
 	}

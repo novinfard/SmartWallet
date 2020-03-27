@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import Segmentio
+import FontAwesome
 
 class CategoriesViewController: UITableViewController, NSFetchedResultsControllerDelegate {
 
@@ -306,7 +307,7 @@ extension CategoriesViewController {
 
 		cell.setup(model: SWCategoryTableViewCellModel(
 			title: category.name,
-			icon: category.iconImage
+			icon: category.iconImage()
 		))
 
 		return cell

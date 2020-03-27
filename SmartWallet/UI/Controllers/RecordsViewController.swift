@@ -95,7 +95,7 @@ class RecordsViewController: UITableViewController, NSFetchedResultsControllerDe
 			cell.amountLabel.textColor = UIColor.myAppBlack
 			cell.amountLabel.text = record.amount.recordPresenter(for: .cost, formatting: false)
 		}
-		cell.icon.image = record.relatedCategory.iconImage
+		cell.icon.image = record.relatedCategory.iconImage()
 		cell.titleLabel.text = record.relatedCategory.name
 
 		return cell
