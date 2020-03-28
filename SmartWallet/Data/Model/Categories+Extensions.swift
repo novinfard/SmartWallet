@@ -13,7 +13,21 @@ import FontAwesome
 enum SWIconConfig {
 	static let style: FontAwesomeStyle = .solid
 	static let color: UIColor = .black
-	static let defaultSize = CGSize(width: 512, height: 512)
+	static let defaultSize = CGSize(width: 256, height: 256)
+}
+
+extension UIImage {
+	static func SWFontIcon(
+		name: FontAwesome,
+		size: CGSize = SWIconConfig.defaultSize) -> UIImage {
+
+		return UIImage.fontAwesomeIcon(
+			name: name,
+			style: SWIconConfig.style,
+			textColor: SWIconConfig.color,
+			size: size
+		)
+	}
 }
 
 extension Categories {
@@ -24,10 +38,8 @@ extension Categories {
 			return UIImage(named: defaultIcon)
 		}
 
-		return UIImage.fontAwesomeIcon(
+		return UIImage.SWFontIcon(
 			name: font,
-			style: SWIconConfig.style,
-			textColor: SWIconConfig.color,
 			size: size
 		)
 	}

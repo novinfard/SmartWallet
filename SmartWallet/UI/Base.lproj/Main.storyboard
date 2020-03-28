@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wue-qL-8JE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wue-qL-8JE">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -449,7 +449,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zWU-gW-adD">
-                                <rect key="frame" x="16" y="167" width="288" height="34"/>
+                                <rect key="frame" x="16" y="167" width="204" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -464,7 +464,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OBt-jS-5j5">
-                                <rect key="frame" x="137.5" y="138" width="45" height="21"/>
+                                <rect key="frame" x="16" y="138" width="45" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -476,31 +476,55 @@
                                     <segment title="Income"/>
                                 </segments>
                             </segmentedControl>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5EE-gM-rF2">
+                                <rect key="frame" x="244" y="141" width="60" height="60"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fSA-LH-Bv4">
+                                        <rect key="frame" x="7.5" y="7.5" width="45" height="45"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="45" id="DL4-gF-Vcd"/>
+                                            <constraint firstAttribute="height" constant="45" id="I6R-a9-pCU"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="fSA-LH-Bv4" firstAttribute="centerX" secondItem="5EE-gM-rF2" secondAttribute="centerX" id="6cd-2N-XSa"/>
+                                    <constraint firstItem="fSA-LH-Bv4" firstAttribute="centerY" secondItem="5EE-gM-rF2" secondAttribute="centerY" id="Ebe-kf-CpL"/>
+                                    <constraint firstAttribute="height" constant="60" id="IEJ-xn-2J1"/>
+                                    <constraint firstAttribute="width" constant="60" id="a8o-4j-OG7"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="Nhf-9m-Uc6" firstAttribute="trailing" secondItem="5EE-gM-rF2" secondAttribute="trailing" constant="16" id="4Te-Xh-h86"/>
                             <constraint firstItem="Fcd-JQ-uUT" firstAttribute="centerX" secondItem="Nhf-9m-Uc6" secondAttribute="centerX" id="8FR-1v-5W3"/>
-                            <constraint firstItem="zWU-gW-adD" firstAttribute="centerX" secondItem="Nhf-9m-Uc6" secondAttribute="centerX" id="DXt-Iu-8aa"/>
+                            <constraint firstItem="OBt-jS-5j5" firstAttribute="leading" secondItem="Nhf-9m-Uc6" secondAttribute="leading" constant="16" id="8kE-g5-8Pe"/>
                             <constraint firstItem="8W8-g3-3qZ" firstAttribute="leading" secondItem="Nhf-9m-Uc6" secondAttribute="leading" constant="16" id="FjL-Vm-tVa"/>
                             <constraint firstItem="Fcd-JQ-uUT" firstAttribute="leading" secondItem="Nhf-9m-Uc6" secondAttribute="leading" constant="16" id="I8P-H3-5ta"/>
-                            <constraint firstItem="OBt-jS-5j5" firstAttribute="centerX" secondItem="Nhf-9m-Uc6" secondAttribute="centerX" id="W6Y-dx-h2V"/>
                             <constraint firstItem="8W8-g3-3qZ" firstAttribute="top" secondItem="Nhf-9m-Uc6" secondAttribute="top" constant="174" id="csc-2t-M8l"/>
                             <constraint firstItem="zWU-gW-adD" firstAttribute="top" secondItem="OBt-jS-5j5" secondAttribute="bottom" constant="8" id="cv3-3K-uoI"/>
                             <constraint firstItem="OBt-jS-5j5" firstAttribute="top" secondItem="Nhf-9m-Uc6" secondAttribute="top" constant="94" id="d06-4W-l9L"/>
                             <constraint firstItem="8W8-g3-3qZ" firstAttribute="centerX" secondItem="Nhf-9m-Uc6" secondAttribute="centerX" id="g6o-bh-RN4"/>
                             <constraint firstItem="zWU-gW-adD" firstAttribute="leading" secondItem="Nhf-9m-Uc6" secondAttribute="leading" constant="16" id="ixb-ba-0pg"/>
+                            <constraint firstItem="Nhf-9m-Uc6" firstAttribute="trailing" secondItem="zWU-gW-adD" secondAttribute="trailing" constant="100" id="sHC-0t-OfZ"/>
                             <constraint firstItem="Fcd-JQ-uUT" firstAttribute="centerY" secondItem="Nhf-9m-Uc6" secondAttribute="centerY" id="si3-HW-Nw0"/>
+                            <constraint firstItem="5EE-gM-rF2" firstAttribute="bottom" secondItem="zWU-gW-adD" secondAttribute="bottom" id="vqJ-ba-h4q"/>
+                            <constraint firstItem="Nhf-9m-Uc6" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="OBt-jS-5j5" secondAttribute="trailing" constant="10" id="vs0-QB-pEy"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Nhf-9m-Uc6"/>
                     </view>
                     <connections>
                         <outlet property="categoryNameInput" destination="zWU-gW-adD" id="fdE-fM-sl8"/>
                         <outlet property="categoryTypeInput" destination="8W8-g3-3qZ" id="Hvw-58-56x"/>
+                        <outlet property="iconCoverView" destination="5EE-gM-rF2" id="7F8-I9-o62"/>
+                        <outlet property="iconView" destination="fSA-LH-Bv4" id="VKU-yu-7ho"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="puH-0W-u8o" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2805.5999999999999" y="716.49175412293857"/>
+            <point key="canvasLocation" x="2805" y="716.19718309859161"/>
         </scene>
         <!--Dashboard-->
         <scene sceneID="diZ-Sl-XJg">
