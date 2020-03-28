@@ -51,6 +51,7 @@
 		CDB1401223C2440B00EFD2CE /* Categories+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB1401123C2440A00EFD2CE /* Categories+Extensions.swift */; };
 		CDB1401423C2632F00EFD2CE /* SWAppStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB1401323C2632F00EFD2CE /* SWAppStatus.swift */; };
 		CDC80A1E2017E61D00AD4B35 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC80A1D2017E61D00AD4B35 /* MainTabBarViewController.swift */; };
+		CDD094E3242F864E00F5435A /* UserDefaults+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD094E2242F864E00F5435A /* UserDefaults+Extensions.swift */; };
 		CDD8642D2090E49B00E65E64 /* BudgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD8642C2090E49B00E65E64 /* BudgetViewController.swift */; };
 		CDD8642F2090F59A00E65E64 /* BudgetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD8642E2090F59A00E65E64 /* BudgetTableViewCell.swift */; };
 		CDD9510B223DC13600178C99 /* DisplayRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD9510A223DC13600178C99 /* DisplayRecordViewController.swift */; };
@@ -138,6 +139,7 @@
 		CDB1401123C2440A00EFD2CE /* Categories+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Categories+Extensions.swift"; sourceTree = "<group>"; };
 		CDB1401323C2632F00EFD2CE /* SWAppStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWAppStatus.swift; sourceTree = "<group>"; };
 		CDC80A1D2017E61D00AD4B35 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
+		CDD094E2242F864E00F5435A /* UserDefaults+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extensions.swift"; sourceTree = "<group>"; };
 		CDD8642C2090E49B00E65E64 /* BudgetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetViewController.swift; sourceTree = "<group>"; };
 		CDD8642E2090F59A00E65E64 /* BudgetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetTableViewCell.swift; sourceTree = "<group>"; };
 		CDD864302093F02700E65E64 /* intro.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = intro.mp4; sourceTree = "<group>"; };
@@ -280,6 +282,7 @@
 				CD152F9B231F0C040042A6E8 /* Number+Extensions.swift */,
 				CDF8D786231F0D9900B2AAC0 /* String+Extensions.swift */,
 				CDF8D788231F0FDE00B2AAC0 /* NSLocale+Extensions.swift */,
+				CDD094E2242F864E00F5435A /* UserDefaults+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -637,6 +640,7 @@
 				CD152F9C231F0C040042A6E8 /* Number+Extensions.swift in Sources */,
 				CD4F975B242EC401009839C6 /* SWCategoryData.swift in Sources */,
 				CDEBB2A92017E350009ED68F /* Accounts+CoreDataProperties.swift in Sources */,
+				CDD094E3242F864E00F5435A /* UserDefaults+Extensions.swift in Sources */,
 				CD397BCE2079837E00103E5C /* Currency.swift in Sources */,
 				CD0246AE2073FB2600E7C705 /* PersistentModel.swift in Sources */,
 				CD003DE323CFEB0500C48083 /* SWCategoryTableViewCell.swift in Sources */,

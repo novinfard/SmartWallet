@@ -68,13 +68,23 @@ class PersistentModel {
 
 				saveContext()
 
-				let currentSymbol = NSLocale.current.currencySymbol ?? ""
-				UserDefaults.standard.set(currentSymbol, forKey: "currencySymbol")
+				self.setupDefaultCurrency()
 			}
 		} catch {
 			print ("fetch task failed", error)
 		}
 
+	}
+
+	private func setupDefaultCurrency() {
+		let currencyList = Currency().loadEveryCountryWithCurrency()
+		let systemSymbol = NSLocale.current.currencySymbol ?? ""
+
+		var symbol = "£"
+		if currencyList.contains(where: { $0.currencySymbol == systemSymbol }) {
+			symbol = systemSymbol
+		}
+		NSLocale.setupDefaultCurrency(symbol: symbol)
 	}
 
 	func getMinMaxDateInRecords() -> (min: Date, max: Date) {
