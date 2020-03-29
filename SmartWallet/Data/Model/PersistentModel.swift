@@ -53,24 +53,12 @@ class PersistentModel {
 
 				saveContext()
 
-				for categoryDic in self.defaultExpenseCategoryList().reversed() {
+				for item in SWCategoryData.list {
 					let category = Categories(context: self.container.viewContext)
-					category.direction = -1
-					category.name = categoryDic.value
-					category.generalId = categoryDic.key
-					category.icon = categoryDic.key
-					category.parent = ""
-					category.uid = getNewUID()
-					saveContext()
-					category.sortId = category.getAutoIncremenet()
-					saveContext()
-				}
-
-				for categoryDic in self.defaultIncomeCategoryList().reversed() {
-					let category = Categories(context: self.container.viewContext)
-					category.direction = 1
-					category.name = categoryDic.value
-					category.icon = categoryDic.key
+					category.direction = Int16(item.type.direction)
+					category.name = item.title
+					category.generalId = item.identifier
+					category.icon = item.icon
 					category.parent = ""
 					category.uid = getNewUID()
 					saveContext()
@@ -80,8 +68,7 @@ class PersistentModel {
 
 				saveContext()
 
-				let currentSymbol = NSLocale.current.currencySymbol ?? ""
-				UserDefaults.standard.set(currentSymbol, forKey: "currencySymbol")
+				self.setupDefaultCurrency()
 			}
 		} catch {
 			print ("fetch task failed", error)
@@ -89,43 +76,15 @@ class PersistentModel {
 
 	}
 
-	func defaultExpenseCategoryList() -> [String: String] {
-		return [
-			"cat_foods": "Foods & Drinks",
-			"cat_groceries": "Groceries",
-			"cat_transport": "Transport",
-			"cat_shopping": "Shopping",
-			"cat_bills": "Bills",
-			"cat_entertainment": "Entertainment",
-			"cat_holidays": "Holidays",
-			"cat_care": "Personal Care",
-			"cat_family": "Family",
-			"cat_lending": "Lending",
-			"cat_housing": "Housing",
-			"cat_accommodation": "Accommodation",
-			"cat_general": "General"
-		]
-	}
+	private func setupDefaultCurrency() {
+		let currencyList = Currency().loadEveryCountryWithCurrency()
+		let systemSymbol = NSLocale.current.currencySymbol ?? ""
 
-	func defaultIncomeCategoryList() -> [String: String] {
-		return [
-			"cat_salary": "Salary",
-			"cat_supports": "Supports",
-			"cat_investments": "Investments",
-			"cat_gifts": "Gifts",
-			"cat_copuns": "Copuns",
-			"cat_rental": "Rental Income",
-			"cat_sales": "Sales",
-			"cat_interests": "Interests",
-			"cat_refunding": "Refunding Debt",
-			"cat_general": "General"
-		]
-	}
-
-	func allDefaultCategoryList() -> [String: String] {
-		var allDefaultCats = self.defaultExpenseCategoryList()
-		allDefaultCats.merge(self.defaultIncomeCategoryList()) { (_, new) in new }
-		return allDefaultCats
+		var symbol = "£"
+		if currencyList.contains(where: { $0.currencySymbol == systemSymbol }) {
+			symbol = systemSymbol
+		}
+		NSLocale.setupDefaultCurrency(symbol: symbol)
 	}
 
 	func getMinMaxDateInRecords() -> (min: Date, max: Date) {
@@ -451,11 +410,11 @@ class PersistentModel {
 		let fetchRequest: NSFetchRequest<Categories> = Categories.createFetchRequest()
 		fetchRequest.predicate = NSPredicate(format: "icon = nil OR icon = ''")
 		if let results: [Categories] = try? container.viewContext.fetch(fetchRequest) {
+			let allDefaultCats = SWCategoryData.list
 			for category in results {
-				let allDefaultCats = self.allDefaultCategoryList()
-				if let relatedCat = allDefaultCats.first(where: { $0.value == category.name }) {
-					category.generalId = relatedCat.key
-					category.icon = relatedCat.key
+				if let relatedCat = allDefaultCats.first(where: { $0.title == category.name }) {
+					category.generalId = relatedCat.identifier
+					category.icon = relatedCat.icon
 				}
 			}
 			saveContext()

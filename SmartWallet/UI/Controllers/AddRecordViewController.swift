@@ -304,7 +304,7 @@ Go to Settings > Categories and add an 'Income' category.
 		do {
 			let fetchRequest: NSFetchRequest<Categories> = Categories.createFetchRequest()
 			fetchRequest.predicate = NSPredicate(format: "direction == %d", 1)
-			let sort = NSSortDescriptor(key: "sortId", ascending: false)
+			let sort = NSSortDescriptor(key: "sortId", ascending: true)
 			fetchRequest.sortDescriptors = [sort]
 			incomeCategoriesList = try Facade.share.model.container.viewContext.fetch(fetchRequest)
 

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 48;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,6 +12,7 @@
 		CD003DDB23CBBE4F00C48083 /* SWRecordHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD003DDA23CBBE4F00C48083 /* SWRecordHeaderView.xib */; };
 		CD003DDD23CBDBB300C48083 /* Records+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD003DDC23CBDBB300C48083 /* Records+Extensions.swift */; };
 		CD003DDF23CBF54700C48083 /* SWCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD003DDE23CBF54700C48083 /* SWCustomView.swift */; };
+		CD003DE323CFEB0500C48083 /* SWCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD003DE223CFEB0500C48083 /* SWCategoryTableViewCell.swift */; };
 		CD0246AE2073FB2600E7C705 /* PersistentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0246AD2073FB2600E7C705 /* PersistentModel.swift */; };
 		CD0246B02074F9D100E7C705 /* Facade.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0246AF2074F9D100E7C705 /* Facade.swift */; };
 		CD0246B320768ED900E7C705 /* RecordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0246B220768ED900E7C705 /* RecordTableViewCell.swift */; };
@@ -40,11 +41,19 @@
 		CD49222E22A47CF0003DB2EE /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD49222D22A47CF0003DB2EE /* SnapshotHelper.swift */; };
 		CD49223322AC5DCF003DB2EE /* Date+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD49223222AC5DCF003DB2EE /* Date+extensions.swift */; };
 		CD49223522AC61C1003DB2EE /* UICollection+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD49223422AC61C1003DB2EE /* UICollection+Extensions.swift */; };
+		CD4F9752242D3C45009839C6 /* FontAwesome in Frameworks */ = {isa = PBXBuildFile; productRef = CD4F9751242D3C45009839C6 /* FontAwesome */; };
+		CD4F9756242D8D23009839C6 /* Font Awesome 5 Brands-Regular-400.otf in Resources */ = {isa = PBXBuildFile; fileRef = CD4F9753242D8D23009839C6 /* Font Awesome 5 Brands-Regular-400.otf */; };
+		CD4F9757242D8D23009839C6 /* Font Awesome 5 Free-Solid-900.otf in Resources */ = {isa = PBXBuildFile; fileRef = CD4F9754242D8D23009839C6 /* Font Awesome 5 Free-Solid-900.otf */; };
+		CD4F9758242D8D23009839C6 /* Font Awesome 5 Free-Regular-400.otf in Resources */ = {isa = PBXBuildFile; fileRef = CD4F9755242D8D23009839C6 /* Font Awesome 5 Free-Regular-400.otf */; };
+		CD4F975B242EC401009839C6 /* SWCategoryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4F975A242EC401009839C6 /* SWCategoryData.swift */; };
 		CD51D99520A7A618003791E1 /* AddModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD51D99420A7A618003791E1 /* AddModel.swift */; };
 		CD86E77A2041A62D0007F817 /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD86E7792041A62D0007F817 /* CategoriesViewController.swift */; };
 		CDB1401223C2440B00EFD2CE /* Categories+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB1401123C2440A00EFD2CE /* Categories+Extensions.swift */; };
 		CDB1401423C2632F00EFD2CE /* SWAppStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB1401323C2632F00EFD2CE /* SWAppStatus.swift */; };
 		CDC80A1E2017E61D00AD4B35 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC80A1D2017E61D00AD4B35 /* MainTabBarViewController.swift */; };
+		CDD094E3242F864E00F5435A /* UserDefaults+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD094E2242F864E00F5435A /* UserDefaults+Extensions.swift */; };
+		CDD094E5242FD4C900F5435A /* SWIconSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD094E4242FD4C900F5435A /* SWIconSelectorViewController.swift */; };
+		CDD094E7242FD56600F5435A /* SWIconCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD094E6242FD56600F5435A /* SWIconCollectionCell.swift */; };
 		CDD8642D2090E49B00E65E64 /* BudgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD8642C2090E49B00E65E64 /* BudgetViewController.swift */; };
 		CDD8642F2090F59A00E65E64 /* BudgetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD8642E2090F59A00E65E64 /* BudgetTableViewCell.swift */; };
 		CDD9510B223DC13600178C99 /* DisplayRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD9510A223DC13600178C99 /* DisplayRecordViewController.swift */; };
@@ -87,6 +96,7 @@
 		CD003DDA23CBBE4F00C48083 /* SWRecordHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SWRecordHeaderView.xib; sourceTree = "<group>"; };
 		CD003DDC23CBDBB300C48083 /* Records+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Records+Extensions.swift"; sourceTree = "<group>"; };
 		CD003DDE23CBF54700C48083 /* SWCustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWCustomView.swift; sourceTree = "<group>"; };
+		CD003DE223CFEB0500C48083 /* SWCategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWCategoryTableViewCell.swift; sourceTree = "<group>"; };
 		CD0246AD2073FB2600E7C705 /* PersistentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PersistentModel.swift; path = SmartWallet/Data/Model/PersistentModel.swift; sourceTree = SOURCE_ROOT; };
 		CD0246AF2074F9D100E7C705 /* Facade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Facade.swift; sourceTree = "<group>"; };
 		CD0246B220768ED900E7C705 /* RecordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTableViewCell.swift; sourceTree = "<group>"; };
@@ -121,12 +131,19 @@
 		CD49222D22A47CF0003DB2EE /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
 		CD49223222AC5DCF003DB2EE /* Date+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+extensions.swift"; sourceTree = "<group>"; };
 		CD49223422AC61C1003DB2EE /* UICollection+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollection+Extensions.swift"; sourceTree = "<group>"; };
+		CD4F9753242D8D23009839C6 /* Font Awesome 5 Brands-Regular-400.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Font Awesome 5 Brands-Regular-400.otf"; sourceTree = "<group>"; };
+		CD4F9754242D8D23009839C6 /* Font Awesome 5 Free-Solid-900.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Font Awesome 5 Free-Solid-900.otf"; sourceTree = "<group>"; };
+		CD4F9755242D8D23009839C6 /* Font Awesome 5 Free-Regular-400.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Font Awesome 5 Free-Regular-400.otf"; sourceTree = "<group>"; };
+		CD4F975A242EC401009839C6 /* SWCategoryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWCategoryData.swift; sourceTree = "<group>"; };
 		CD51D99420A7A618003791E1 /* AddModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddModel.swift; sourceTree = "<group>"; };
 		CD86E7792041A62D0007F817 /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
 		CD92804B23A63DA1006100B1 /* WalletModel2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WalletModel2.xcdatamodel; sourceTree = "<group>"; };
 		CDB1401123C2440A00EFD2CE /* Categories+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Categories+Extensions.swift"; sourceTree = "<group>"; };
 		CDB1401323C2632F00EFD2CE /* SWAppStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWAppStatus.swift; sourceTree = "<group>"; };
 		CDC80A1D2017E61D00AD4B35 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
+		CDD094E2242F864E00F5435A /* UserDefaults+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extensions.swift"; sourceTree = "<group>"; };
+		CDD094E4242FD4C900F5435A /* SWIconSelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIconSelectorViewController.swift; sourceTree = "<group>"; };
+		CDD094E6242FD56600F5435A /* SWIconCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIconCollectionCell.swift; sourceTree = "<group>"; };
 		CDD8642C2090E49B00E65E64 /* BudgetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetViewController.swift; sourceTree = "<group>"; };
 		CDD8642E2090F59A00E65E64 /* BudgetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetTableViewCell.swift; sourceTree = "<group>"; };
 		CDD864302093F02700E65E64 /* intro.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = intro.mp4; sourceTree = "<group>"; };
@@ -150,6 +167,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A9C529B4CE63FD813D87F6E /* Pods_SmartWallet.framework in Frameworks */,
+				CD4F9752242D3C45009839C6 /* FontAwesome in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -202,6 +220,8 @@
 				CD0246B220768ED900E7C705 /* RecordTableViewCell.swift */,
 				CD397BC92078F5EA00103E5C /* DashboardTableViewCell.swift */,
 				CDD8642E2090F59A00E65E64 /* BudgetTableViewCell.swift */,
+				CD003DE223CFEB0500C48083 /* SWCategoryTableViewCell.swift */,
+				CDD094E6242FD56600F5435A /* SWIconCollectionCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -254,6 +274,7 @@
 				CD397BCD2079837E00103E5C /* Currency.swift */,
 				CD51D99420A7A618003791E1 /* AddModel.swift */,
 				CDB1401323C2632F00EFD2CE /* SWAppStatus.swift */,
+				CD4F975A242EC401009839C6 /* SWCategoryData.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -266,6 +287,7 @@
 				CD152F9B231F0C040042A6E8 /* Number+Extensions.swift */,
 				CDF8D786231F0D9900B2AAC0 /* String+Extensions.swift */,
 				CDF8D788231F0FDE00B2AAC0 /* NSLocale+Extensions.swift */,
+				CDD094E2242F864E00F5435A /* UserDefaults+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -308,6 +330,7 @@
 				CD2E553A2046D3FF00976EAA /* AddCategoryViewController.swift */,
 				CD397BCF207AC3B400103E5C /* ChooseCurrencyTableViewController.swift */,
 				CDD960182093F10600254F9F /* SplashViewController.swift */,
+				CDD094E4242FD4C900F5435A /* SWIconSelectorViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -323,6 +346,7 @@
 		CD152F9A231F0B5F0042A6E8 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CD4F9759242D8D2D009839C6 /* Fonts */,
 				CDD864312093F03200E65E64 /* videos */,
 			);
 			path = Resources;
@@ -336,6 +360,16 @@
 				CD49222722A47B72003DB2EE /* Info.plist */,
 			);
 			path = SmartWalletUITests;
+			sourceTree = "<group>";
+		};
+		CD4F9759242D8D2D009839C6 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				CD4F9753242D8D23009839C6 /* Font Awesome 5 Brands-Regular-400.otf */,
+				CD4F9755242D8D23009839C6 /* Font Awesome 5 Free-Regular-400.otf */,
+				CD4F9754242D8D23009839C6 /* Font Awesome 5 Free-Solid-900.otf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		CD52CDF22337D2E8008A1498 /* Views */ = {
@@ -392,6 +426,9 @@
 			dependencies = (
 			);
 			name = SmartWallet;
+			packageProductDependencies = (
+				CD4F9751242D3C45009839C6 /* FontAwesome */,
+			);
 			productName = SmartWallet;
 			productReference = CD0F71162014D379000B2BCD /* SmartWallet.app */;
 			productType = "com.apple.product-type.application";
@@ -469,6 +506,9 @@
 				Base,
 			);
 			mainGroup = CD0F710D2014D378000B2BCD;
+			packageReferences = (
+				CD4F9750242D3C45009839C6 /* XCRemoteSwiftPackageReference "FontAwesome.swift" */,
+			);
 			productRefGroup = CD0F71172014D379000B2BCD /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -486,10 +526,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				CDD9601A2093F62000254F9F /* intro.mp4 in Resources */,
+				CD4F9758242D8D23009839C6 /* Font Awesome 5 Free-Regular-400.otf in Resources */,
+				CD4F9756242D8D23009839C6 /* Font Awesome 5 Brands-Regular-400.otf in Resources */,
 				CD0F71242014D379000B2BCD /* LaunchScreen.storyboard in Resources */,
 				CD0F71212014D379000B2BCD /* Assets.xcassets in Resources */,
 				CD0F711F2014D379000B2BCD /* Main.storyboard in Resources */,
 				CD003DDB23CBBE4F00C48083 /* SWRecordHeaderView.xib in Resources */,
+				CD4F9757242D8D23009839C6 /* Font Awesome 5 Free-Solid-900.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -577,6 +620,7 @@
 				CDB1401223C2440B00EFD2CE /* Categories+Extensions.swift in Sources */,
 				CD2E553D204B0E3800976EAA /* AddRecordViewController.swift in Sources */,
 				CD0F711A2014D379000B2BCD /* AppDelegate.swift in Sources */,
+				CDD094E7242FD56600F5435A /* SWIconCollectionCell.swift in Sources */,
 				CDEBB2AB2017E350009ED68F /* Categories+CoreDataProperties.swift in Sources */,
 				CDF8D789231F0FDE00B2AAC0 /* NSLocale+Extensions.swift in Sources */,
 				CDD9510B223DC13600178C99 /* DisplayRecordViewController.swift in Sources */,
@@ -593,6 +637,7 @@
 				CD31509520531661001AD682 /* Style.swift in Sources */,
 				CD003DDD23CBDBB300C48083 /* Records+Extensions.swift in Sources */,
 				CDEBB2AD2017E350009ED68F /* Records+CoreDataProperties.swift in Sources */,
+				CDD094E5242FD4C900F5435A /* SWIconSelectorViewController.swift in Sources */,
 				CD152F82231C433E0042A6E8 /* SWMonth.swift in Sources */,
 				CD315098205316CF001AD682 /* Style+MyApp.swift in Sources */,
 				CD152F80231C3EB90042A6E8 /* DateFormatter+Extensions.swift in Sources */,
@@ -601,9 +646,12 @@
 				CDC80A1E2017E61D00AD4B35 /* MainTabBarViewController.swift in Sources */,
 				CD43CD502288D66A0020EEC0 /* StoreReviewHelper.swift in Sources */,
 				CD152F9C231F0C040042A6E8 /* Number+Extensions.swift in Sources */,
+				CD4F975B242EC401009839C6 /* SWCategoryData.swift in Sources */,
 				CDEBB2A92017E350009ED68F /* Accounts+CoreDataProperties.swift in Sources */,
+				CDD094E3242F864E00F5435A /* UserDefaults+Extensions.swift in Sources */,
 				CD397BCE2079837E00103E5C /* Currency.swift in Sources */,
 				CD0246AE2073FB2600E7C705 /* PersistentModel.swift in Sources */,
+				CD003DE323CFEB0500C48083 /* SWCategoryTableViewCell.swift in Sources */,
 				CDD960192093F10600254F9F /* SplashViewController.swift in Sources */,
 				CD0246B02074F9D100E7C705 /* Facade.swift in Sources */,
 				CDF8D78B2320575000B2AAC0 /* ReportModel.swift in Sources */,
@@ -778,7 +826,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -792,7 +841,10 @@
 				DEVELOPMENT_TEAM = VQ3DDEUQ7K;
 				INFOPLIST_FILE = SmartWallet/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.novinfard.SmartWallet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -809,7 +861,10 @@
 				DEVELOPMENT_TEAM = VQ3DDEUQ7K;
 				INFOPLIST_FILE = SmartWallet/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.novinfard.SmartWallet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -827,7 +882,11 @@
 				DEVELOPMENT_TEAM = VQ3DDEUQ7K;
 				INFOPLIST_FILE = SmartWalletTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.novinfard.SmartWalletTests;
@@ -847,7 +906,11 @@
 				DEVELOPMENT_TEAM = VQ3DDEUQ7K;
 				INFOPLIST_FILE = SmartWalletTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.novinfard.SmartWalletTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -866,7 +929,11 @@
 				DEVELOPMENT_TEAM = VQ3DDEUQ7K;
 				INFOPLIST_FILE = SmartWalletUITests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.novinfard.SmartWalletUITests;
@@ -885,7 +952,11 @@
 				DEVELOPMENT_TEAM = VQ3DDEUQ7K;
 				INFOPLIST_FILE = SmartWalletUITests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.novinfard.SmartWalletUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -935,6 +1006,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CD4F9750242D3C45009839C6 /* XCRemoteSwiftPackageReference "FontAwesome.swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/thii/FontAwesome.swift.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CD4F9751242D3C45009839C6 /* FontAwesome */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CD4F9750242D3C45009839C6 /* XCRemoteSwiftPackageReference "FontAwesome.swift" */;
+			productName = FontAwesome;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		CDEBB29B2015650E009ED68F /* WalletModel.xcdatamodeld */ = {

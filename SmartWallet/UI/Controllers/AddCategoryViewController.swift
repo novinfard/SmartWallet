@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FontAwesome
 
 enum CategoryType {
 	case categoryTypeCost
@@ -19,6 +20,23 @@ class AddCategoryViewController: UIViewController {
 	@IBOutlet weak var categoryNameInput: UITextField!
 	@IBOutlet weak var categoryTypeInput: UISegmentedControl!
 
+	@IBOutlet private var iconCoverView: UIView? {
+		didSet {
+			self.iconCoverView?.backgroundColor = UIColor.gray.withAlphaComponent(0.1)
+			self.iconCoverView?.layer.borderColor = UIColor.gray.cgColor
+			self.iconCoverView?.layer.borderWidth = 2
+		}
+	}
+
+	@IBOutlet private var iconView: UIImageView?
+
+	var currentIcon: FontAwesome? {
+		didSet {
+			guard let currentIcon = currentIcon else { return }
+			self.iconView?.image = UIImage.SWFontIcon(name: currentIcon)
+		}
+	}
+
 	var currentUid = ""
 	var category: Categories!
 
@@ -29,8 +47,10 @@ class AddCategoryViewController: UIViewController {
 		var defaultDirection = UserDefaults.standard.integer(forKey: "DirectionInAddCategories")
 		if category.uid == "" {
 			// default initialisation for new category
+			self.currentIcon = FontAwesome.stream
 		} else {
 			// manipulate fields with current object data
+			self.currentIcon = FontAwesome(rawValue: category.icon)
 			categoryNameInput.text = category.name
 			if category.direction == 1 {
 				defaultDirection = 1
@@ -39,7 +59,6 @@ class AddCategoryViewController: UIViewController {
 			}
 		}
 		categoryTypeInput.selectedSegmentIndex = defaultDirection
-
     }
 
 	@IBAction func addCategoryPressed(_ sender: Any) {
@@ -60,6 +79,7 @@ class AddCategoryViewController: UIViewController {
 			category.direction = 1
 		}
 		category.name = categoryNameInput.text!
+		category.icon = currentIcon?.rawValue ?? ""
 
 		Facade.share.model.saveContext()
 
@@ -76,5 +96,17 @@ class AddCategoryViewController: UIViewController {
 			Facade.share.model.container.viewContext.delete(category)
 			Facade.share.model.saveContext()
 		}
+	}
+
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		guard let iconSelectorVC = segue.destination as? SWIconSelectorViewController else { return }
+		iconSelectorVC.delegate = self
+		iconSelectorVC.selectedFont = currentIcon
+	}
+}
+
+extension AddCategoryViewController: IconSelectorDelegate {
+	func iconSelected(icon: FontAwesome?) {
+		self.currentIcon = icon
 	}
 }

@@ -11,7 +11,7 @@ import UIKit
 class ChooseCurrencyTableViewController: UITableViewController {
 
 	var currencyList = [Currency]()
-	let currencyCurrencySymbol = UserDefaults.standard.string(forKey: "currencySymbol")
+	let currencyCurrencySymbol = NSLocale.defaultCurrency
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -44,7 +44,10 @@ class ChooseCurrencyTableViewController: UITableViewController {
 
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		let currencyItem = currencyList[indexPath.row]
-		UserDefaults.standard.set(currencyItem.currencySymbol, forKey: "currencySymbol")
+
+		if let symbol = currencyItem.currencySymbol {
+			NSLocale.setupDefaultCurrency(symbol: symbol)
+		}
 
 		navigationController?.popViewController(animated: true)
 	}

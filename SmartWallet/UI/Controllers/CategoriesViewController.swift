@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import Segmentio
+import FontAwesome
 
 class CategoriesViewController: UITableViewController, NSFetchedResultsControllerDelegate {
 
@@ -170,10 +171,6 @@ class CategoriesViewController: UITableViewController, NSFetchedResultsControlle
 		)
 	}
 
-//	override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//		return fetchedResultsController.sections![section].name
-//	}
-
 	func loadSavedData() {
 		if fetchedResultsController == nil {
 			let request = Categories.createFetchRequest()
@@ -243,7 +240,7 @@ extension CategoriesViewController {
 		forRowAt indexPath: IndexPath) {
 		if editingStyle == .delete {
 			let category = fetchedResultsController.object(at: indexPath)
-//			print(category.uid)
+
 			if Facade.share.model.getNumberOfRecordsInCategory(uid: category.uid) == 0 {
 
 				Facade.share.model.container.viewContext.delete(category)
@@ -262,7 +259,6 @@ extension CategoriesViewController {
 			} catch {
 				print("Fetch failed")
 			}
-			//			tableView.deleteRows(at: [indexPath], with: .fade)
 		}
 	}
 
@@ -305,13 +301,20 @@ extension CategoriesViewController {
 	}
 
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCell(withIdentifier: "categoryCell", for: indexPath)
+		let cell = tableView.dequeueReusableCell(withIdentifier: "categoryCell", for: indexPath) as! SWCategoryTableViewCell
+
 		let category = fetchedResultsController.object(at: indexPath)
 
-		cell.textLabel?.text = category.name
-		//		cell.detailTextLabel?.text = category.direction > 0 ? "+" : "-"
+		cell.setup(model: SWCategoryTableViewCellModel(
+			title: category.name,
+			icon: category.iconImage()
+		))
 
 		return cell
+	}
+
+	override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+		return 50
 	}
 
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -322,6 +325,6 @@ extension CategoriesViewController {
 
 		controller.currentUid = category.uid
 		navigationController?.pushViewController(controller, animated: true)
-	}
+	}	
 
 }

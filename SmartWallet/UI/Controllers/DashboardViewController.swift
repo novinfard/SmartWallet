@@ -117,7 +117,7 @@ class DashboardViewController: UITableViewController {
 			return ChartDataEntry(x: index, y: $0.value)
 		})
 
-		let chartDataSet = LineChartDataSet(values: values, label: type.rawValue)
+		let chartDataSet = LineChartDataSet(entries: values, label: type.rawValue)
 		chartDataSet.resetColors()
 		chartDataSet.drawIconsEnabled = false
 
