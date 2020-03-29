@@ -5,6 +5,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -488,12 +489,16 @@
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstItem="fSA-LH-Bv4" firstAttribute="centerX" secondItem="5EE-gM-rF2" secondAttribute="centerX" id="6cd-2N-XSa"/>
                                     <constraint firstItem="fSA-LH-Bv4" firstAttribute="centerY" secondItem="5EE-gM-rF2" secondAttribute="centerY" id="Ebe-kf-CpL"/>
                                     <constraint firstAttribute="height" constant="60" id="IEJ-xn-2J1"/>
                                     <constraint firstAttribute="width" constant="60" id="a8o-4j-OG7"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="Wke-5b-rTx" appends="YES" id="7vi-uf-eSY"/>
+                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -523,6 +528,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="puH-0W-u8o" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Wke-5b-rTx">
+                    <connections>
+                        <segue destination="01D-1n-AIx" kind="presentation" id="T4F-rI-1Vr"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2805" y="716.19718309859161"/>
         </scene>
@@ -1105,6 +1115,82 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n6G-lw-GjC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2805" y="31.690140845070424"/>
+        </scene>
+        <!--Icon Selector View Controller-->
+        <scene sceneID="OZO-7e-PXp">
+            <objects>
+                <viewController storyboardIdentifier="iconSelectorBoard" id="01D-1n-AIx" customClass="SWIconSelectorViewController" customModule="SmartWallet" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="lrv-AW-bq4"/>
+                        <viewControllerLayoutGuide type="bottom" id="5T2-je-vDO"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ugf-ek-8yY">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="DMB-Hn-tib">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="L8l-nF-C9r">
+                                    <size key="itemSize" width="70" height="70"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="gallery" id="QqE-Ek-y8t" customClass="SWIconCollectionCell" customModule="SmartWallet" customModuleProvider="target">
+                                        <rect key="frame" x="10" y="10" width="70" height="70"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="THa-ov-n2M">
+                                            <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="W0p-du-PQG">
+                                                    <rect key="frame" x="17.5" y="3" width="35" height="35"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="35" id="NXL-LI-fAC"/>
+                                                        <constraint firstAttribute="height" constant="35" id="dpP-O8-LGr"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="W0p-du-PQG" firstAttribute="top" secondItem="THa-ov-n2M" secondAttribute="top" constant="3" id="Sdl-0D-qYl"/>
+                                                <constraint firstItem="W0p-du-PQG" firstAttribute="centerX" secondItem="THa-ov-n2M" secondAttribute="centerX" id="vB8-cJ-zgN"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <size key="customSize" width="70" height="70"/>
+                                        <connections>
+                                            <outlet property="iconView" destination="W0p-du-PQG" id="HDR-B1-JtN"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="DMB-Hn-tib" secondAttribute="trailing" id="1PL-Qt-0QD"/>
+                            <constraint firstItem="DMB-Hn-tib" firstAttribute="leading" secondItem="Ugf-ek-8yY" secondAttribute="leading" id="AAS-eC-DQg"/>
+                            <constraint firstItem="5T2-je-vDO" firstAttribute="top" secondItem="DMB-Hn-tib" secondAttribute="bottom" id="ek4-sl-jSf"/>
+                            <constraint firstItem="DMB-Hn-tib" firstAttribute="top" secondItem="lrv-AW-bq4" secondAttribute="bottom" id="enp-GA-AsJ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ir3-sx-V5V"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" id="tDW-fm-HN9" customClass="FontAwesomeTabBarItem" customModule="FontAwesome">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="iconName" value="fa-images"/>
+                            <userDefinedRuntimeAttribute type="string" keyPath="selectedIconName" value="fa-images"/>
+                            <userDefinedRuntimeAttribute type="string" keyPath="styleName" value="solid"/>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
+                    <navigationItem key="navigationItem" id="rEn-Lk-t6r"/>
+                    <connections>
+                        <outlet property="iconCollectionView" destination="DMB-Hn-tib" id="e12-hY-vMf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="etg-ed-90R" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3545.625" y="716.19718309859161"/>
         </scene>
     </scenes>
     <resources>

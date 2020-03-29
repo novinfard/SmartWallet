@@ -59,17 +59,7 @@ class AddCategoryViewController: UIViewController {
 			}
 		}
 		categoryTypeInput.selectedSegmentIndex = defaultDirection
-
-		let tapGesture = UITapGestureRecognizer.init(
-			target: self,
-			action: #selector(iconPressed(_:))
-		)
-		iconCoverView?.addGestureRecognizer(tapGesture)
     }
-
-	@objc func iconPressed(_ tapGesture: UITapGestureRecognizer) {
-		// TODO: Move to icon selector scene
-	}
 
 	@IBAction func addCategoryPressed(_ sender: Any) {
 		guard categoryNameInput.text != "" else {
@@ -89,6 +79,7 @@ class AddCategoryViewController: UIViewController {
 			category.direction = 1
 		}
 		category.name = categoryNameInput.text!
+		category.icon = currentIcon?.rawValue ?? ""
 
 		Facade.share.model.saveContext()
 
@@ -105,5 +96,17 @@ class AddCategoryViewController: UIViewController {
 			Facade.share.model.container.viewContext.delete(category)
 			Facade.share.model.saveContext()
 		}
+	}
+
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		guard let iconSelectorVC = segue.destination as? SWIconSelectorViewController else { return }
+		iconSelectorVC.delegate = self
+		iconSelectorVC.selectedFont = currentIcon
+	}
+}
+
+extension AddCategoryViewController: IconSelectorDelegate {
+	func iconSelected(icon: FontAwesome?) {
+		self.currentIcon = icon
 	}
 }

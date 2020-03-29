@@ -52,6 +52,8 @@
 		CDB1401423C2632F00EFD2CE /* SWAppStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB1401323C2632F00EFD2CE /* SWAppStatus.swift */; };
 		CDC80A1E2017E61D00AD4B35 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC80A1D2017E61D00AD4B35 /* MainTabBarViewController.swift */; };
 		CDD094E3242F864E00F5435A /* UserDefaults+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD094E2242F864E00F5435A /* UserDefaults+Extensions.swift */; };
+		CDD094E5242FD4C900F5435A /* SWIconSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD094E4242FD4C900F5435A /* SWIconSelectorViewController.swift */; };
+		CDD094E7242FD56600F5435A /* SWIconCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD094E6242FD56600F5435A /* SWIconCollectionCell.swift */; };
 		CDD8642D2090E49B00E65E64 /* BudgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD8642C2090E49B00E65E64 /* BudgetViewController.swift */; };
 		CDD8642F2090F59A00E65E64 /* BudgetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD8642E2090F59A00E65E64 /* BudgetTableViewCell.swift */; };
 		CDD9510B223DC13600178C99 /* DisplayRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD9510A223DC13600178C99 /* DisplayRecordViewController.swift */; };
@@ -140,6 +142,8 @@
 		CDB1401323C2632F00EFD2CE /* SWAppStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWAppStatus.swift; sourceTree = "<group>"; };
 		CDC80A1D2017E61D00AD4B35 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		CDD094E2242F864E00F5435A /* UserDefaults+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extensions.swift"; sourceTree = "<group>"; };
+		CDD094E4242FD4C900F5435A /* SWIconSelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIconSelectorViewController.swift; sourceTree = "<group>"; };
+		CDD094E6242FD56600F5435A /* SWIconCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIconCollectionCell.swift; sourceTree = "<group>"; };
 		CDD8642C2090E49B00E65E64 /* BudgetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetViewController.swift; sourceTree = "<group>"; };
 		CDD8642E2090F59A00E65E64 /* BudgetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetTableViewCell.swift; sourceTree = "<group>"; };
 		CDD864302093F02700E65E64 /* intro.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = intro.mp4; sourceTree = "<group>"; };
@@ -217,6 +221,7 @@
 				CD397BC92078F5EA00103E5C /* DashboardTableViewCell.swift */,
 				CDD8642E2090F59A00E65E64 /* BudgetTableViewCell.swift */,
 				CD003DE223CFEB0500C48083 /* SWCategoryTableViewCell.swift */,
+				CDD094E6242FD56600F5435A /* SWIconCollectionCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -325,6 +330,7 @@
 				CD2E553A2046D3FF00976EAA /* AddCategoryViewController.swift */,
 				CD397BCF207AC3B400103E5C /* ChooseCurrencyTableViewController.swift */,
 				CDD960182093F10600254F9F /* SplashViewController.swift */,
+				CDD094E4242FD4C900F5435A /* SWIconSelectorViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -614,6 +620,7 @@
 				CDB1401223C2440B00EFD2CE /* Categories+Extensions.swift in Sources */,
 				CD2E553D204B0E3800976EAA /* AddRecordViewController.swift in Sources */,
 				CD0F711A2014D379000B2BCD /* AppDelegate.swift in Sources */,
+				CDD094E7242FD56600F5435A /* SWIconCollectionCell.swift in Sources */,
 				CDEBB2AB2017E350009ED68F /* Categories+CoreDataProperties.swift in Sources */,
 				CDF8D789231F0FDE00B2AAC0 /* NSLocale+Extensions.swift in Sources */,
 				CDD9510B223DC13600178C99 /* DisplayRecordViewController.swift in Sources */,
@@ -630,6 +637,7 @@
 				CD31509520531661001AD682 /* Style.swift in Sources */,
 				CD003DDD23CBDBB300C48083 /* Records+Extensions.swift in Sources */,
 				CDEBB2AD2017E350009ED68F /* Records+CoreDataProperties.swift in Sources */,
+				CDD094E5242FD4C900F5435A /* SWIconSelectorViewController.swift in Sources */,
 				CD152F82231C433E0042A6E8 /* SWMonth.swift in Sources */,
 				CD315098205316CF001AD682 /* Style+MyApp.swift in Sources */,
 				CD152F80231C3EB90042A6E8 /* DateFormatter+Extensions.swift in Sources */,
