@@ -21,7 +21,8 @@ class SWIconSelectorViewController: UIViewController {
 	let fontColor = SWIconConfig.color
 	lazy var fontList = FontAwesome.fontList(style: self.fontStyle)
 
-	let selectedBgColor = UIColor.green.withAlphaComponent(0.1)
+	let selectedColor = UIColor.green.withAlphaComponent(0.1)
+	let deselectedColor = UIColor.white
 
 	var selectedFont: FontAwesome?
 
@@ -46,7 +47,13 @@ extension SWIconSelectorViewController: UICollectionViewDelegate {
 
 	func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
 		if let cell = collectionView.cellForItem(at: indexPath) {
-			cell.contentView.backgroundColor = selectedBgColor
+			cell.contentView.backgroundColor = selectedColor
+		}
+	}
+
+	func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
+		if let cell = collectionView.cellForItem(at: indexPath) {
+			cell.contentView.backgroundColor = deselectedColor
 		}
 	}
 
@@ -70,7 +77,7 @@ extension SWIconSelectorViewController: UICollectionViewDataSource {
 		)
 
 		let isSelected = fontItem == selectedFont
-		cell.contentView.backgroundColor = isSelected ? selectedBgColor : .white
+		cell.contentView.backgroundColor = isSelected ? selectedColor : deselectedColor
 
 		return cell
 	}
