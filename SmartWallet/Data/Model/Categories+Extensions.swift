@@ -13,7 +13,7 @@ import FontAwesome
 enum SWIconConfig {
 	static let style: FontAwesomeStyle = .solid
 	static let color: UIColor = .black
-	static let defaultSize = CGSize(width: 256, height: 256)
+	static let defaultSize = CGSize(width: 128, height: 128)
 }
 
 extension UIImage {
