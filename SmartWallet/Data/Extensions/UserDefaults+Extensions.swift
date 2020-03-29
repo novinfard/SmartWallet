@@ -10,4 +10,5 @@ import Foundation
 
 extension UserDefaults {
 	static let currencySymbolKey = "currencySymbol"
+	static let snapshotKey = "FASTLANE_SNAPSHOT"
 }

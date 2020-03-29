@@ -38,7 +38,8 @@ struct StoreReviewHelper {
 	}
 
 	fileprivate func requestReview() {
-		if #available(iOS 10.3, *) {
+		if #available(iOS 10.3, *),
+			!SWAppConfig.isSnapshot {
 			SKStoreReviewController.requestReview()
 		}
 	}

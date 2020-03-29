@@ -28,7 +28,7 @@ class MainTabBarViewController: UITabBarController {
 
 	private func showSplashScreen() {
 		guard UserDefaults.standard.bool(forKey: "introduced") == false ||
-			UserDefaults.standard.bool(forKey: "FASTLANE_SNAPSHOT") == true else {
+			SWAppConfig.isSnapshot else {
 				return
 		}
 		let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -37,7 +37,7 @@ class MainTabBarViewController: UITabBarController {
 			) as? SplashViewController else {
 			return
 		}
-		if UserDefaults.standard.bool(forKey: "FASTLANE_SNAPSHOT") == true {
+		if SWAppConfig.isSnapshot {
 			Facade.share.model.addSampleData()
 		}
 		present(splashVC, animated: false)
