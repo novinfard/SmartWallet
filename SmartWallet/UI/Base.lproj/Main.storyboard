@@ -239,16 +239,16 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Categories" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ilW-zH-z7f">
-                                                    <rect key="frame" x="64" y="12" width="83.5" height="20.5"/>
+                                                    <rect key="frame" x="52" y="12" width="83.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CategoryIcon" translatesAutoresizingMaskIntoConstraints="NO" id="XP0-g9-Qaj">
-                                                    <rect key="frame" x="16" y="4" width="36" height="36"/>
+                                                    <rect key="frame" x="16" y="10" width="24" height="24"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="36" id="FdM-un-Egm"/>
-                                                        <constraint firstAttribute="height" constant="36" id="hN5-lA-uZE"/>
+                                                        <constraint firstAttribute="width" constant="24" id="FdM-un-Egm"/>
+                                                        <constraint firstAttribute="height" constant="24" id="hN5-lA-uZE"/>
                                                     </constraints>
                                                 </imageView>
                                             </subviews>
@@ -272,16 +272,16 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Currency" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GUo-aJ-Y9b">
-                                                    <rect key="frame" x="64" y="12" width="70.5" height="20.5"/>
+                                                    <rect key="frame" x="52" y="12" width="70.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CurrencyIcon" translatesAutoresizingMaskIntoConstraints="NO" id="7j1-RB-bZi">
-                                                    <rect key="frame" x="16" y="4" width="36" height="36"/>
+                                                    <rect key="frame" x="16" y="10" width="24" height="24"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="36" id="Nxe-ev-NKI"/>
-                                                        <constraint firstAttribute="width" constant="36" id="YW2-hc-uOQ"/>
+                                                        <constraint firstAttribute="height" constant="24" id="Nxe-ev-NKI"/>
+                                                        <constraint firstAttribute="width" constant="24" id="YW2-hc-uOQ"/>
                                                     </constraints>
                                                 </imageView>
                                             </subviews>
