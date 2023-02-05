@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		289AB48A298FC8F700AB8576 /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 289AB489298FC8F700AB8576 /* Charts */; };
 		8A9C529B4CE63FD813D87F6E /* Pods_SmartWallet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8989CB5E46A29FD42343368F /* Pods_SmartWallet.framework */; };
 		CD003DD923CBA19F00C48083 /* SWRecordHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD003DD823CBA19F00C48083 /* SWRecordHeaderView.swift */; };
 		CD003DDB23CBBE4F00C48083 /* SWRecordHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD003DDA23CBBE4F00C48083 /* SWRecordHeaderView.xib */; };
@@ -169,6 +170,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A9C529B4CE63FD813D87F6E /* Pods_SmartWallet.framework in Frameworks */,
+				289AB48A298FC8F700AB8576 /* Charts in Frameworks */,
 				CD4F9752242D3C45009839C6 /* FontAwesome in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -431,6 +433,7 @@
 			name = SmartWallet;
 			packageProductDependencies = (
 				CD4F9751242D3C45009839C6 /* FontAwesome */,
+				289AB489298FC8F700AB8576 /* Charts */,
 			);
 			productName = SmartWallet;
 			productReference = CD0F71162014D379000B2BCD /* SmartWallet.app */;
@@ -511,6 +514,7 @@
 			mainGroup = CD0F710D2014D378000B2BCD;
 			packageReferences = (
 				CD4F9750242D3C45009839C6 /* XCRemoteSwiftPackageReference "FontAwesome.swift" */,
+				289AB488298FC8F700AB8576 /* XCRemoteSwiftPackageReference "Charts" */,
 			);
 			productRefGroup = CD0F71172014D379000B2BCD /* Products */;
 			projectDirPath = "";
@@ -581,12 +585,10 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-SmartWallet/Pods-SmartWallet-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
 				"${BUILT_PRODUCTS_DIR}/Segmentio/Segmentio.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Segmentio.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -845,7 +847,7 @@
 				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = VQ3DDEUQ7K;
 				INFOPLIST_FILE = SmartWallet/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -866,7 +868,7 @@
 				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = VQ3DDEUQ7K;
 				INFOPLIST_FILE = SmartWallet/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1014,6 +1016,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		289AB488298FC8F700AB8576 /* XCRemoteSwiftPackageReference "Charts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/danielgindi/Charts.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 4.1.0;
+			};
+		};
 		CD4F9750242D3C45009839C6 /* XCRemoteSwiftPackageReference "FontAwesome.swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/thii/FontAwesome.swift.git";
@@ -1025,6 +1035,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		289AB489298FC8F700AB8576 /* Charts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 289AB488298FC8F700AB8576 /* XCRemoteSwiftPackageReference "Charts" */;
+			productName = Charts;
+		};
 		CD4F9751242D3C45009839C6 /* FontAwesome */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CD4F9750242D3C45009839C6 /* XCRemoteSwiftPackageReference "FontAwesome.swift" */;

@@ -64,7 +64,7 @@ class DashboardViewController: UITableViewController {
 
 		lineChartView?.delegate = self
 
-		lineChartView?.chartDescription?.enabled = false
+		lineChartView?.chartDescription.enabled = false
 		lineChartView?.dragEnabled = true
 		lineChartView?.setScaleEnabled(false)
 		lineChartView?.pinchZoomEnabled = false
@@ -134,7 +134,7 @@ class DashboardViewController: UITableViewController {
 
 		chartDataSet.fillAlpha = 0.5
 		if let gradient = gradient {
-			chartDataSet.fill = Fill(linearGradient: gradient, angle: 90)
+            chartDataSet.fill = LinearGradientFill(gradient: gradient, angle: 90)
 		}
 		chartDataSet.drawFilledEnabled = true
 
@@ -441,7 +441,7 @@ extension DashboardViewController: ChartViewDelegate {
 
 }
 
-extension DashboardViewController: IAxisValueFormatter {
+extension DashboardViewController: AxisValueFormatter {
 	func stringForValue( _ value: Double, axis _: AxisBase?) -> String {
 		let yearMonth = monthData[safe: Int(value)]?.month
 		if let month = yearMonth?.shortTitleWithCurrentYear {
