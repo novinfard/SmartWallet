@@ -48,9 +48,9 @@ class SplashViewController: UIViewController {
 	}
 
 	@objc func playerItemDidReachEnd(notification: Notification) {
-		if let player = notification.object as? AVPlayerItem {
+        if let player = notification.object as? AVPlayerItem {
             player.seek(to: CMTime.zero, completionHandler: nil)
-		}
+        }
 	}
 
 	override func viewDidAppear(_ animated: Bool) {
