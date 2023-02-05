@@ -9,6 +9,4 @@ target 'SmartWallet' do
 
   # Pods for SmartWallet
   pod 'Segmentio', '~> 3.0'
-  pod 'Fabric'
-  pod 'Crashlytics'
 end
